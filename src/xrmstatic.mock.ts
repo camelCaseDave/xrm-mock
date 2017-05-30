@@ -13,3 +13,4 @@ class XrmStaticMock {
         this.Panel = panel;
     }
 }
+
