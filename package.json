@@ -1,0 +1,28 @@
+{
+  "name": "xrm-mock",
+  "version": "1.0.0",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camelCaseDave/xrm-mock.git"
+  },
+  "author": "Dave Clark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camelCaseDave/xrm-mock/issues"
+  },
+  "homepage": "https://github.com/camelCaseDave/xrm-mock#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.47",
+    "@types/xrm": "^8.2.5",
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-typescript": "^3.1.7",
+    "typescript": "^2.3.3"
+  }
+}
