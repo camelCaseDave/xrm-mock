@@ -1,5 +1,10 @@
-*.js
-*.js.map
-*.d.ts
+# Ignore tsc compilation files
+test/**/*.js
+test/**/*.js.map
+test/**/*.d.ts
+
+src/**/*.js
+src/**/*.js.map
+src/**/*.d.ts
 
 node_modules
