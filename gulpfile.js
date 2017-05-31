@@ -1,24 +1,23 @@
 var gulp = require('gulp'),
     ts = require('gulp-typescript'),
     sourcemaps = require('gulp-sourcemaps'),
-    tsSrcProject = ts.createProject('tsconfig.json'),
-    tsTestProject = ts.createProject('tsconfig.json'),
-    jasmine = require('gulp-jasmine');
+    jasmine = require('gulp-jasmine'),
+    watch = require('gulp-watch');
 
-gulp.task('default', ['build-src', 'build-test']);
-
-gulp.task('build-src', function () {
-    var tsSrcResult = gulp.src('src/**/*.ts')
+gulp.task('default', function () {
+    var tsResult = gulp.src(['src/**/*.ts','test/**/*.ts'])
         .pipe(sourcemaps.init())
-        .pipe(tsSrcProject()).js
-        .pipe(sourcemaps.write({ sourceRoot: "/js" }))
-        .pipe(gulp.dest("src"));
+        .pipe(ts({
+            noImplicitAny: true,
+            outFile: 'build.js'
+        }));        
+
+        return tsResult.js
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./'))
+            .pipe(jasmine());
 });
 
-gulp.task('build-test', function () {
-    var tsSrcResult = gulp.src('test/**/*.ts')
-        .pipe(sourcemaps.init())
-        .pipe(tsTestProject()).js
-        .pipe(sourcemaps.write({ sourceRoot: "/js" }))
-        .pipe(gulp.dest("test"));
+gulp.task('watch', function() {
+    gulp.watch(['src/**/*.ts','test/**/*.ts'], ['default']);
 });

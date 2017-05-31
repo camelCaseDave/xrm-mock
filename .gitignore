@@ -8,3 +8,7 @@ src/**/*.js.map
 src/**/*.d.ts
 
 node_modules
+
+build.js
+
+.vscode
