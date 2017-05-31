@@ -8,6 +8,7 @@ src/**/*.js.map
 src/**/*.d.ts
 
 node_modules
+coverage
 
 build.js
 
