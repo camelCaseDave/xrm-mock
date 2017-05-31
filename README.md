@@ -3,3 +3,4 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 
 [![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)
 [![Coverage Status](https://coveralls.io/repos/github/camelCaseDave/xrm-mock/badge.svg?branch=master)](https://coveralls.io/github/camelCaseDave/xrm-mock?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/camelcasedave/xrm-mock/badge.svg)](https://snyk.io/test/github/camelcasedave/xrm-mock)
