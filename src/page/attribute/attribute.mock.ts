@@ -76,5 +76,6 @@ class AttributeMock implements Xrm.Page.Attribute {
 
     setValue(value: any): void {
         this.value = value;
+        this.isDirty = true;
     }
 }

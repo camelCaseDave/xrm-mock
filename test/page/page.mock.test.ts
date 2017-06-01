@@ -8,7 +8,7 @@
 /// <reference path="../../src/page/entity/entity.mock.ts" />
 /// <reference path="../../src/collection/itemcollection/itemcollection.mock.ts" />
 
-describe('Xrm.Page Mock', function () {
+describe('Xrm.Page Mock', () => {
     beforeEach(() => {
         let attributes: AttributeMock[] = [];
         attributes.push(new AttributeMock('firstname', 'Joe', false, 'none'));
@@ -22,7 +22,7 @@ describe('Xrm.Page Mock', function () {
                     new ItemCollectionMock<AttributeMock>(attributes))));
     });
 
-    it('should initialise', () => {
+    it('should instantiate', () => {
         expect(this.xrmPageMock).toBeDefined();
     });
 
