@@ -19,7 +19,7 @@ describe('Xrm.Page.OptionSetAttribute Mock', () => {
 
     it('should instantiate', () => {
         expect(this.optionSetAttribute).toBeDefined();
-    })
+    });
 
     it('should have a language format', () => {
         expect(this.optionSetAttribute.getFormat()).toBe('language');
