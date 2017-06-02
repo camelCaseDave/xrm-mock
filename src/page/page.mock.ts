@@ -23,7 +23,6 @@ class PageMock implements Xrm.Page {
         }
         else if (param && typeof param === 'string') {
             return this.data.entity.attributes.get(param);
-            //return this.data.entity.attributes.get(item => item.getName() === param)[0];
         }
         
         else if (typeof param === 'number') {
