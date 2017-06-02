@@ -2,7 +2,6 @@
 
 class AttributeMock implements Xrm.Page.Attribute {    
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-
     isDirty: boolean;
     name: string;
     requiredLevel: Xrm.Page.RequirementLevel;

@@ -69,7 +69,6 @@ class NumberAttributeMock implements Xrm.Page.NumberAttribute {
         return this.attribute.getName();
     }
 
-
     getParent(): Xrm.Page.Entity {
         return this.attribute.getParent();
     }
