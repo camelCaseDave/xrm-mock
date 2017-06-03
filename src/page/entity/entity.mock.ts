@@ -19,7 +19,6 @@ class EntityMock implements Xrm.Page.Entity {
         throw ('getDataXml not implemented');
     }
 
-
     getId(): string {
         throw ('getId not implemented');
     }

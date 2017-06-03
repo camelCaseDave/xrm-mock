@@ -3,24 +3,24 @@
 
 /// <reference path="../../../src/collection/itemcollection/itemcollection.mock.ts" />
 
-describe('Xrm.Collection.ItemCollection Mock', function () {
-    beforeEach(function () {
+describe('Xrm.Collection.ItemCollection Mock', () => {
+    beforeEach(() => {
         let items = ['One', 'Two', 'Three'];
         this.itemCollectionMock = new ItemCollectionMock(items);
     });
 
-    it('should initialise', function () {
+    it('should initialise', () => {
         expect(this.itemCollectionMock).toBeDefined();
     });
 
-    it('should get One at index 0', function () {  
+    it('should return One at index 0', () => {
         expect(this.itemCollectionMock.get(0)).toBe('One');
     });
 
-    describe('getLength', function () {
-        it('should return 3', function () {
+    describe('getLength', () => {
+        it('should return 3', () => {
             let length = this.itemCollectionMock.getLength();
             expect(length).toBe(3);
         });
-    });  
+    });
 });
