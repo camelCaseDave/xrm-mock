@@ -7,9 +7,12 @@ class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
         this.itemCollection = itemCollection || [];
     }
 
-    forEach(delegate: Xrm.Collection.IterativeDelegate<T>): void {
+    forEach(delegate: Xrm.Collection.IterativeDelegate<T> | Function): void {
         this.itemCollection.forEach(i => (i: any) => {
-            delegate(i);
+            if (<Xrm.Collection.IterativeDelegate<T>>delegate !== undefined)
+                (delegate as Xrm.Collection.IterativeDelegate<T>)(i);
+            else
+                (delegate as Function)(i);
         });
     }
 
@@ -22,7 +25,7 @@ class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
         if (param === undefined || param === null) {
             return this.itemCollection as T[];
         }
-        else if (param && typeof param === 'string') {           
+        else if (param && typeof param === 'string') {
             let attrs = this.itemCollection.filter(function (item) {
                 return ((<Xrm.Page.Attribute><any>item).getName() === param);
             });

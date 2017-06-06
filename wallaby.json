@@ -4,5 +4,6 @@
     ],
     "tests": [
         "test/**/*.ts"
-    ]
+    ],
+    "debug": true
 }

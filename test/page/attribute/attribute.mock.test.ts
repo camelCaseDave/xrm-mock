@@ -3,41 +3,41 @@
 
 /// <reference path="../../../src/page/attribute/attribute.mock.ts" />
 
-describe('Xrm.Page.Attribute Mock', function () {
-    beforeEach(function () {
+describe('Xrm.Page.Attribute Mock', () => {
+    beforeEach(() => {
         this.attributeMock = new AttributeMock('firstname', 'Joe', false, 'none', 'dirty');
     });
 
-    it('should initialise', function () {
+    it('should initialise', () => {
         expect(this.attributeMock).toBeDefined();
     });
 
-    it('has a string attribute type', function () {
+    it('has a string attribute type', () => {
         let attributeType = this.attributeMock.getAttributeType();
         expect(attributeType).toBe('string');
     });
 
-    it('is not dirty', function () {
+    it('is not dirty', () => {
         let isDirty = this.attributeMock.getIsDirty();
         expect(isDirty).toBe(false);
     });
 
-    it('should have the name firstname', function () {
+    it('should have the name firstname', () => {
         let name = this.attributeMock.getName();
         expect(name).toBe('firstname');
     });
 
-    it('should not be required', function () {
+    it('should not be required', () => {
         let required = this.attributeMock.getRequiredLevel();
         expect(required).toBe('none');
     });
 
-    it('should have a submit mode of dirty', function () {
+    it('should have a submit mode of dirty', () =>{
         let submitMode = this.attributeMock.getSubmitMode();
         expect(submitMode).toBe('dirty');
     });
 
-    it('should set required level to mandatory', function () {
+    it('should set required level to mandatory', () => {
         let required = this.attributeMock.getRequiredLevel();
         expect(required).toBe('none');
 
@@ -46,7 +46,7 @@ describe('Xrm.Page.Attribute Mock', function () {
         expect(required).toBe('required');
     });
 
-    it('should set submit mode to always', function () {
+    it('should set submit mode to always', () => {
         let submitMode = this.attributeMock.getSubmitMode();
         expect(submitMode).toBe('dirty');
 
@@ -55,12 +55,12 @@ describe('Xrm.Page.Attribute Mock', function () {
         expect(submitMode).toBe('always');
     });
 
-    it('should have a value of Joe', function () {
+    it('should have a value of Joe', () => {
         let value = this.attributeMock.getValue();
         expect(value).toBe('Joe');
     });
 
-    it('should set value to Alan', function () {
+    it('should set value to Alan', () => {
         let value = this.attributeMock.getValue();
         expect(value).toBe('Joe');
 
