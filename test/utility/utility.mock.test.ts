@@ -6,6 +6,7 @@
 describe('Xrm.Utility Mock', () => {
     beforeEach(() => {
         this.utility = new UtilityMock();
+        
     });
 
     it('should instantiate', () => {

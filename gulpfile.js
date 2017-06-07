@@ -39,5 +39,6 @@ gulp.task('build-test', function () {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./'))
         .pipe(jasmineBrowser.specRunner({ console: true }))
-        .pipe(jasmineBrowser.headless());
+        .pipe(jasmineBrowser.headless())
+        .pipe(istanbul.writeReports());
 });

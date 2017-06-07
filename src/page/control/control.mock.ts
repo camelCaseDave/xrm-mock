@@ -1,18 +1,30 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 
 class ControlMock implements Xrm.Page.Control {
-    constructor(private uiLabelElement: Xrm.Page.UiLabelElement, private uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement) { }
+    name: string;
+    controlType: Xrm.Page.ControlType;
+    parent: Xrm.Page.Section;
+    uiLabelElement: Xrm.Page.UiLabelElement;
+    uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement
+
+    constructor(name: string, controlType: Xrm.Page.ControlType, uiLabelElement: Xrm.Page.UiLabelElement, uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement, parent?: Xrm.Page.Section) {
+        this.controlType = controlType;
+        this.uiLabelElement = uiLabelElement;
+        this.uiCanGetVisibleElement = uiCanGetVisibleElement;
+        this.name = name;
+        this.parent = parent;
+     }
 
     getControlType(): Xrm.Page.ControlType | string {
-        throw ('getControlType not implemented');
+        return this.controlType;
     }
 
     getName(): string {
-        throw ('getName not implemented');
+        return this.name;
     }
 
     getParent(): Xrm.Page.Section {
-        throw ('getParent not implemented');
+        return this.parent;
     }
 
     getLabel(): string {
