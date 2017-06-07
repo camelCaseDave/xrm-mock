@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     ts = require('gulp-typescript'),
     sourcemaps = require('gulp-sourcemaps'),
     jasmine = require('gulp-jasmine'),
+    jasmineBrowser = require('gulp-jasmine-browser'),
     watch = require('gulp-watch'),
     istanbul = require('gulp-istanbul');
 
@@ -17,7 +18,8 @@ gulp.task('default', function () {
         .pipe(istanbul())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./'))
-        .pipe(jasmine())
+        .pipe(jasmineBrowser.specRunner({ console: true }))
+        .pipe(jasmineBrowser.headless())
         .pipe(istanbul.writeReports());
 });
 
@@ -36,5 +38,6 @@ gulp.task('build-test', function () {
     return tsResult.js
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./'))
-        .pipe(jasmine());
+        .pipe(jasmineBrowser.specRunner({ console: true }))
+        .pipe(jasmineBrowser.headless());
 });
