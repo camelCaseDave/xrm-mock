@@ -35,4 +35,4 @@ describe('Xrm.Ui Mock', () => {
         this.uiStandardElement.setLabel('Section_2');
         expect(this.uiStandardElement.getLabel()).toBe('Section_2');
     });
-});
+})
