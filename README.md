@@ -35,7 +35,6 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 
 ```typescript
 // This example uses Jasmine
-
 describe('Contact', function() {
     beforeEach(function () {
         let attributes: AttributeMock[] = [];
