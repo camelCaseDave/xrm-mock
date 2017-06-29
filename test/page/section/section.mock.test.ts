@@ -1,10 +1,10 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock.ts" />
-/// <reference path="../../../src/page/uilabelelement/uilabelelement.mock.ts" />
-/// <reference path="../../../src/page/uistandardelement/uistandardelement.mock.ts" />
-/// <reference path="../../../src/page/section/section.mock.ts" />
+import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';
+import { UiLabelElementMock } from '../../../src/page/uilabelelement/uilabelelement.mock';
+import { UiStandardElementMock } from '../../../src/page/uistandardelement/uistandardelement.mock';
+import { SectionMock } from '../../../src/page/section/section.mock';
 
 describe('Xrm.Page.Section Mock', () => {
     beforeEach(() => {
@@ -44,5 +44,5 @@ describe('Xrm.Page.Section Mock', () => {
         expect(this.section.getLabel()).toBe('Main Section');
         this.section.setLabel('Not Main Section');
         expect(this.section.getLabel()).toBe('Not Main Section');
-    });    
+    });
 });

@@ -1,4 +1,4 @@
-class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
+export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
     standardControl: Xrm.Page.StandardControl;
     uiKeyPressable: Xrm.Page.UiKeyPressable;
 

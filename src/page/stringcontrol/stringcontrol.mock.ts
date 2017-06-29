@@ -1,4 +1,4 @@
-class StringControlMock implements Xrm.Page.StringControl {
+export class StringControlMock implements Xrm.Page.StringControl {
     autoLookupControl: Xrm.Page.AutoLookupControl;
 
     constructor(autoLookupControl: Xrm.Page.AutoLookupControl) {

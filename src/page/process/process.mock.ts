@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class ProcessMock implements Xrm.Page.Process {
+export class ProcessMock implements Xrm.Page.Process {
     id: string;
     name: string;
     stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>;

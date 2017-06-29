@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class ControlMock implements Xrm.Page.Control {
+export class ControlMock implements Xrm.Page.Control {
     name: string;
     controlType: Xrm.Page.ControlType;
     parent: Xrm.Page.Section;

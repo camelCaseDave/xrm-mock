@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
+export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
     itemCollection: T[];
 
     constructor(itemCollection?: T[]) {

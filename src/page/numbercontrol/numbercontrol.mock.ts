@@ -1,4 +1,4 @@
-class NumberControlMock implements Xrm.Page.NumberControl {
+export class NumberControlMock implements Xrm.Page.NumberControl {
      autoLookupControl: Xrm.Page.AutoLookupControl;
 
     constructor(autoLookupControl: Xrm.Page.AutoLookupControl) {

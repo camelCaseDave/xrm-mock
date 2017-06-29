@@ -1,8 +1,9 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/booleanattribute/booleanattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { BooleanAttributeMock } from '../../../src/page/booleanattribute/booleanattribute.mock';
+import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute.mock';
 
 describe('Xrm.Page.BooleanAttribute Mock', () => {
     beforeEach(() => {

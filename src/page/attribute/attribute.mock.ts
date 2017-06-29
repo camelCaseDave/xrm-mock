@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class AttributeMock implements Xrm.Page.Attribute {    
+export class AttributeMock implements Xrm.Page.Attribute {    
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     isDirty: boolean;
     name: string;
@@ -8,7 +6,7 @@ class AttributeMock implements Xrm.Page.Attribute {
     submitMode: Xrm.Page.SubmitMode;
     value: any;
 
-    constructor(name: string, value: any, isDirty?: boolean, requiredLevel?: Xrm.Page.RequirementLevel, submitMode?: Xrm.Page.SubmitMode, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
+    public constructor(name: string, value: any, isDirty?: boolean, requiredLevel?: Xrm.Page.RequirementLevel, submitMode?: Xrm.Page.SubmitMode, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
         this.name = name;
         this.value = value;
         this.isDirty = isDirty;

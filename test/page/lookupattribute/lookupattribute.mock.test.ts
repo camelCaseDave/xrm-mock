@@ -1,9 +1,9 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/lookupvalue/lookupvalue.mock.ts" />
-/// <reference path="../../../src/page/lookupattribute/lookupattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { LookupValueMock } from '../../../src/page/lookupvalue/lookupvalue.mock';
+import { LookupAttributeMock} from '../../../src/page/lookupattribute/lookupattribute.mock';
 
 describe('Xrm.Page.LookupAttribute Mock', () => {
     beforeEach(() => {

@@ -1,7 +1,7 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/stage/stage.mock.ts" />
+import { StageMock } from '../../../src/page/stage/stage.mock';
 
 describe('Xrm.Page.Stage Mock', () => {
     beforeEach(() => {

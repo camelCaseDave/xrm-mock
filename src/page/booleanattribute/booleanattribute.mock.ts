@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class BooleanAttributeMock implements Xrm.Page.BooleanAttribute {
+export class BooleanAttributeMock implements Xrm.Page.BooleanAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     attribute: Xrm.Page.EnumAttribute;
     initialValue: boolean;

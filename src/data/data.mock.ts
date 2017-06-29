@@ -1,6 +1,4 @@
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-
-class DataMock implements Xrm.Data {
+export class DataMock implements Xrm.Data {
     entity: Xrm.Page.Entity;
     process: Xrm.Page.data.ProcessManager;
     

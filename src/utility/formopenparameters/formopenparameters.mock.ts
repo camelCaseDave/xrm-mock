@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class FormOpenParametersMock implements Xrm.Utility.OpenParameters {
+export class FormOpenParametersMock implements Xrm.Utility.OpenParameters {
     [index: string]: string | undefined;
     formid?: string;
     navbar?: Xrm.Url.NavBarDisplay;    

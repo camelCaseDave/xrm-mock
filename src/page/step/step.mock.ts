@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class StepMock implements Xrm.Page.Step {
+export class StepMock implements Xrm.Page.Step {
     required: boolean;
     name: string;
     attribute: string;

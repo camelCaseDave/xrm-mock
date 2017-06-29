@@ -1,4 +1,4 @@
-class SectionMock implements Xrm.Page.Section {
+export class SectionMock implements Xrm.Page.Section {
     name: string;
     parent: Xrm.Page.Tab;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;

@@ -1,9 +1,0 @@
-{
-    "files": [
-        "src/**/*.ts"
-    ],
-    "tests": [
-        "test/**/*.ts"
-    ],
-    "debug": true
-}

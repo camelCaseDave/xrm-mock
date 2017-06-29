@@ -1,6 +1,6 @@
 /// <reference path="../../node_modules/@types/xrm/index.d.ts" />
 
-class PageMock implements Xrm.Page {    
+export class PageMock implements Xrm.Page {    
     context: Xrm.Context;
     data: Xrm.Data;
     ui: Xrm.Ui;

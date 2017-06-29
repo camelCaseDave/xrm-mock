@@ -1,4 +1,4 @@
-class UiStandardElementMock implements Xrm.Page.UiStandardElement {
+export class UiStandardElementMock implements Xrm.Page.UiStandardElement {
     uiLabelElement: Xrm.Page.UiLabelElement;
     uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
 

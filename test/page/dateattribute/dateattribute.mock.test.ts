@@ -1,8 +1,8 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/dateattribute/dateattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { DateAttributeMock } from '../../../src/page/dateattribute/dateattribute.mock';
 
 describe('Xrm.Page.DateAttribute Mock', () => {
     beforeEach(() => {

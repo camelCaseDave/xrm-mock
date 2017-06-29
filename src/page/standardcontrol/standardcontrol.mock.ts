@@ -1,4 +1,4 @@
-class StandardControlMock implements Xrm.Page.StandardControl {
+export class StandardControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;
     control: Xrm.Page.Control;
     uiStandardElement: Xrm.Page.UiStandardElement;

@@ -1,8 +1,8 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/numberattribute/numberattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { NumberAttributeMock } from '../../../src/page/numberattribute/numberattribute.mock';
 
 describe('Xrm.Page.NumberAttribute', () => {
     beforeEach(() => {

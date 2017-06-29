@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class StageMock implements Xrm.Page.Stage {
+export class StageMock implements Xrm.Page.Stage {
     id: string;
     name: string;
     status: Xrm.Page.Status;

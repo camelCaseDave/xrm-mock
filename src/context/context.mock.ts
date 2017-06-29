@@ -1,6 +1,4 @@
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-
-class ContextMock implements Xrm.Context {
+export class ContextMock implements Xrm.Context {
     client: Xrm.ClientContext;
 
     constructor(clientContext: Xrm.ClientContext) {

@@ -1,7 +1,7 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/optionsetvalue/optionsetvalue.mock.ts" />
+import { OptionSetValueMock} from '../../../src/page/optionsetvalue/optionsetvalue.mock';
 
 describe('Xrm.Page.OptionSetValue Mock', () => {
     beforeEach(() => {

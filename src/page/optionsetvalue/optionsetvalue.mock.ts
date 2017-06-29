@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class OptionSetValueMock implements Xrm.Page.OptionSetValue {
+export class OptionSetValueMock implements Xrm.Page.OptionSetValue {
     text: string;
     value: number;
 

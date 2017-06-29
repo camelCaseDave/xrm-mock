@@ -1,7 +1,6 @@
-/// <reference path="../attribute/attribute.mock.ts" />
-/// <reference path="../dateattribute/dateattribute.mock.ts" />
+import {DateAttributeMock } from '../dateattribute/dateattribute.mock';
 
-class DateControlMock implements Xrm.Page.DateControl {
+export class DateControlMock implements Xrm.Page.DateControl {
     standardControl: Xrm.Page.StandardControl;
 
     constructor(standardControl: Xrm.Page.StandardControl) {

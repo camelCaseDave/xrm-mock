@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class StringAttributeMock implements Xrm.Page.StringAttribute {
+export class StringAttributeMock implements Xrm.Page.StringAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>;
     stringAttributeFormat: Xrm.Page.StringAttributeFormat;
     maxLength: number;

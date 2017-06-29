@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class EntityMock implements Xrm.Page.Entity {
+export class EntityMock implements Xrm.Page.Entity {
     attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>;
 
     constructor(attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>) {

@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class NumberAttributeMock implements Xrm.Page.NumberAttribute {
+export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
     min: number;
     max: number;
     precision: number;

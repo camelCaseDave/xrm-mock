@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class UiCanGetVisibleElementMock implements Xrm.Page.UiCanGetVisibleElement {
+export class UiCanGetVisibleElementMock implements Xrm.Page.UiCanGetVisibleElement {
     isVisible: boolean;
 
     constructor(isVisible: boolean) {

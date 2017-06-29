@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
+export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     enabledProcesses: Xrm.Page.Process[] | Xrm.Page.data.ProcessDictionary;
 
     constructor(enabledProcesses: Xrm.Page.Process[]) {

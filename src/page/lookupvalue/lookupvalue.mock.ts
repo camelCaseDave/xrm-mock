@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class LookupValueMock implements Xrm.Page.LookupValue {
+export class LookupValueMock implements Xrm.Page.LookupValue {
     id: string;
     name?: string;
     entityType: string;

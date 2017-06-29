@@ -1,12 +1,14 @@
-/// <reference path="../node_modules/@types/xrm/index.d.ts" />
+import { ProcessManagerMock } from './data/processmanager/processmanager.mock';
+import { PageMock } from './page/page.mock';
+import { UtilityMock } from './utility/utility.mock';
 
-class XrmStaticMock {
-    Page: Xrm.Page;
-    Utility: Xrm.Utility;
+export class XrmStaticMock {
+    Page: PageMock;
+    Utility: UtilityMock;
     Mobile: Xrm.Mobile;
     Panel: Xrm.Panel;
 
-    constructor(page: Xrm.Page, utility?: Xrm.Utility, mobile?: Xrm.Mobile, panel?: Xrm.Panel) {
+    constructor(page: PageMock, utility?: UtilityMock, mobile?: Xrm.Mobile, panel?: Xrm.Panel) {
         this.Page = page;
         this.Utility = utility;
         this.Mobile = mobile;

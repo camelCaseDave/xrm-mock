@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
+export class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.OptionSetControl>;
     attribute: Xrm.Page.EnumAttribute;
     options: Xrm.Page.OptionSetValue[];

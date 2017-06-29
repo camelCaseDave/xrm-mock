@@ -1,10 +1,10 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/process/process.mock.ts" />
-/// <reference path="../../../src/page/stage/stage.mock.ts" />
-/// <reference path="../../../src/page/step/step.mock.ts" />
-/// <reference path="../../../src/collection/itemcollection/itemcollection.mock.ts" />
+import { ProcessMock} from '../../../src/page/process/process.mock';
+import { StageMock} from '../../../src/page/stage/stage.mock';
+import { StepMock } from '../../../src/page/step/step.mock';
+import { ItemCollectionMock} from '../../../src/collection/itemcollection/itemcollection.mock';
 
 describe('Xrm.Page.Process Mock', () => {
     beforeEach(() => {

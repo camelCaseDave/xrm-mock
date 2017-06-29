@@ -1,12 +1,12 @@
 /// <reference path="../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../src/data/data.mock.ts" />
-/// <reference path="../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../src/page/page.mock.ts" />
-/// <reference path="../../src/xrmstatic.mock.ts" />
-/// <reference path="../../src/page/entity/entity.mock.ts" />
-/// <reference path="../../src/collection/itemcollection/itemcollection.mock.ts" />
+import { XrmStaticMock } from '../../src/xrmstatic.mock';
+import { EntityMock } from '../../src/page/entity/entity.mock';
+import { DataMock } from '../../src/data/data.mock';
+import { AttributeMock } from '../../src/page/attribute/attribute.mock';
+import { ItemCollectionMock} from '../../src/collection/itemcollection/itemcollection.mock';
+import { PageMock } from '../../src/page/page.mock';
 
 describe('Xrm.Page Mock', () => {
     beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Xrm.Page Mock', () => {
         attributes.push(new AttributeMock('description', ''));
         this.lastName = new AttributeMock('lastname', 'Bloggs', true, 'recommended', 'always');
         attributes.push(this.lastName);
-
+        
         this.xrmPageMock = new PageMock(
             new DataMock(
                 new EntityMock(
@@ -32,7 +32,7 @@ describe('Xrm.Page Mock', () => {
         });
 
         it('by string should return Bloggs for lastname', () => {
-            expect(this.xrmPageMock.getAttribute('lastname')).toBe(this.lastName);
+            expect(this.xrmPageMock.getAttribute('lastname')).toBe(this.lastName);       
         });
 
         it('by index should return Bloggs for 2', () => {

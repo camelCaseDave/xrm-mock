@@ -1,4 +1,4 @@
-class UiKeyPressable implements Xrm.Page.UiKeyPressable {
+export class UiKeyPressable implements Xrm.Page.UiKeyPressable {
     keyPressHandlers: Xrm.Page.ContextSensitiveHandler[];
 
     addOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {

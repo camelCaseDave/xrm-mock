@@ -1,6 +1,4 @@
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-
-class UiMock implements Xrm.Ui {
+export class UiMock implements Xrm.Ui {
     process: Xrm.Page.ui.ProcessManager;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     formSelector: Xrm.Page.FormSelector;

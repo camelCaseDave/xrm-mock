@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class DateAttributeMock implements Xrm.Page.Attribute {
+export class DateAttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
     attribute: Xrm.Page.Attribute;
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;

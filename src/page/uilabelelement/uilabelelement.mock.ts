@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class UiLabelElementMock implements Xrm.Page.UiLabelElement {
+export class UiLabelElementMock implements Xrm.Page.UiLabelElement {
     constructor(private label: string) { }
 
     getLabel(): string {

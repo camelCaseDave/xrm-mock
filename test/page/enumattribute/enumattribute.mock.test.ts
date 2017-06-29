@@ -1,8 +1,8 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/enumattribute/enumattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute.mock';
 
 describe('Xrm.Page.EnumAttribute Mock', () => {
     beforeEach(() => {

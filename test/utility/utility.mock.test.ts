@@ -1,7 +1,7 @@
 /// <reference path="../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../src/utility/utility.mock.ts" />
+import { UtilityMock } from '../../src/utility/utility.mock';
 
 describe('Xrm.Utility Mock', () => {
     beforeEach(() => {

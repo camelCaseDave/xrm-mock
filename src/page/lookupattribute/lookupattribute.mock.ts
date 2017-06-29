@@ -1,6 +1,4 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-
-class LookupAttributeMock implements Xrm.Page.Attribute {
+export class LookupAttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.LookupControl>;
     attribute: Xrm.Page.Attribute;
     isPartyList: boolean;

@@ -1,8 +1,8 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/page/attribute/attribute.mock.ts" />
-/// <reference path="../../../src/page/stringattribute/stringattribute.mock.ts" />
+import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
+import { StringAttributeMock} from '../../../src/page/stringattribute/stringattribute.mock';
 
 describe('Xrm.Page.StringAttribute Mock', () => {
     beforeEach(() => {

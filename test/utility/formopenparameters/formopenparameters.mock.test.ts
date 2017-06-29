@@ -1,7 +1,7 @@
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 
-/// <reference path="../../../src/utility/formopenparameters/formopenparameters.mock.ts" />
+import { FormOpenParametersMock } from '../../../src/utility/formopenparameters/formopenparameters.mock';
 
 describe('Xrm.Utility.FormOpenParameters Mock', () => {
     beforeEach(() => {

@@ -1,9 +1,9 @@
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 /// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
 
-/// <reference path="../../../src/page/control/control.mock.ts" />
-/// <reference path="../../../src/page/uilabelelement/uilabelelement.mock.ts" />
-/// <reference path="../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock.ts" />
+import { ControlMock } from '../../../src/page/control/control.mock';
+import { UiLabelElementMock } from '../../../src/page/uilabelelement/uilabelelement.mock';
+import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';
 
 describe('Xrm.Page.Control Mock', () => {
     beforeEach(() => {

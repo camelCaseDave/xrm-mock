@@ -1,6 +1,4 @@
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-
-class UtilityMock implements Xrm.Utility {  
+export class UtilityMock implements Xrm.Utility {  
     alertDialog(message: string, onCloseCallback: () => void): void {
         alert(message);
         onCloseCallback();
