@@ -1,6 +1,3 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
-
 import { LookupValueMock} from '../../../src/page/lookupvalue/lookupvalue.mock';
 
 describe('Xrm.Page.LookupValue Mock', () => {

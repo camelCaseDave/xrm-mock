@@ -1,9 +1,15 @@
 {
   "name": "xrm-mock",
-  "version": "1.0.2",
+  "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
+  "version": "1.2.0",
   "directories": {
     "test": "test"
   },
+  "keywords": [
+    "dynamics-crm",
+    "dynamics-365",
+    "xrm"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
@@ -43,6 +49,6 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0"
+    "@types/xrm":"^8.2.5"
   }
 }

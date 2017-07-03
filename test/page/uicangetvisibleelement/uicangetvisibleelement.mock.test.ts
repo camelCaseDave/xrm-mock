@@ -1,6 +1,3 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
-
 import { UiCanGetVisibleElementMock} from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';
 
 describe('Xrm.Page.UiCanGetVisible Mock', () => {

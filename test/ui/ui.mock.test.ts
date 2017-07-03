@@ -1,6 +1,3 @@
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
-
 import { UiMock } from '../../src/ui/ui.mock';
 
 describe('Xrm.Ui Mock', function () {

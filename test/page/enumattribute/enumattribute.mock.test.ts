@@ -1,6 +1,3 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
-
 import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
 import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute.mock';
 

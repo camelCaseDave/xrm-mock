@@ -1,6 +1,3 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
-
 import { UiStandardElementMock } from '../../../src/page/uistandardelement/uistandardelement.mock';
 import { UiLabelElementMock } from '../../../src/page/uilabelelement/uilabelelement.mock';
 import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';

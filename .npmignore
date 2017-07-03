@@ -1,2 +1,15 @@
 test
 coverage
+src
+
+tslint.json
+LICENSE
+.travis.yml
+node_modules
+gulpfile.js
+wallaby.js
+.gitignore
+.gitattributes
+.vscode
+.npmignore
+tsconfig.json

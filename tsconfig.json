@@ -2,10 +2,15 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "noEmit": true
+        "noEmit": false,
+        "outDir": "dist"
     },
     "exclude": [
         "node_modules",
-        "wwwroot"
+        "wwwroot",
+        "test"
+    ],
+    "include": [
+        "src"
     ]
 }

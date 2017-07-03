@@ -1,6 +1,3 @@
-/// <reference path="../../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
-
 import { ProcessMock} from '../../../src/page/process/process.mock';
 import { StageMock} from '../../../src/page/stage/stage.mock';
 import { StepMock } from '../../../src/page/step/step.mock';
