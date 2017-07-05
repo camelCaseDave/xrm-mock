@@ -5,12 +5,8 @@ var ItemCollectionMock = (function () {
         this.itemCollection = itemCollection || [];
     }
     ItemCollectionMock.prototype.forEach = function (delegate) {
-        this.itemCollection.forEach(function (i) { return function (i) {
-            if (delegate !== undefined)
-                delegate(i);
-            else
-                delegate(i);
-        }; });
+        var modifiedCollection = this.itemCollection.map(delegate);
+        this.itemCollection = modifiedCollection;
     };
     ItemCollectionMock.prototype.get = function (param) {
         if (param === undefined || param === null) {

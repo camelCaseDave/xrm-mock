@@ -16,7 +16,6 @@ var UiMock = (function () {
         throw ('clearFormNotification not implemented');
     };
     UiMock.prototype.close = function () {
-        throw ('close not implemented');
     };
     UiMock.prototype.getFormType = function () {
         throw ('getFormType not implemented');

@@ -5,13 +5,11 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
         this.itemCollection = itemCollection || [];
     }
 
-    forEach(delegate: Xrm.Collection.IterativeDelegate<T> | Function): void {
-        this.itemCollection.forEach(i => (i: any) => {
-            if (<Xrm.Collection.IterativeDelegate<T>>delegate !== undefined)
-                (delegate as Xrm.Collection.IterativeDelegate<T>)(i);
-            else
-                (delegate as Function)(i);
-        });
+    forEach(delegate: () => void): void;
+    forEach(delegate: Xrm.Collection.IterativeDelegate<T>): void;
+    forEach(delegate: any): void {
+        let modifiedCollection = this.itemCollection.map(delegate);
+        this.itemCollection = <T[]><any>modifiedCollection;
     }
 
     get(delegate: Xrm.Collection.MatchingDelegate<T>): T[];

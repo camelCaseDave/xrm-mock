@@ -17,7 +17,17 @@ var EntityMock = (function () {
         throw ('getId not implemented');
     };
     EntityMock.prototype.getIsDirty = function () {
-        throw ('getIsDirty not implemented');
+        var isDirty = false;
+        if (this.attributes) {
+            for (var i = 0; i < this.attributes.getLength(); i++) {
+                var attr = this.attributes.get(i);
+                if (attr.getIsDirty()) {
+                    isDirty = true;
+                    break;
+                }
+            }
+        }
+        return isDirty;
     };
     EntityMock.prototype.getPrimaryAttributeValue = function () {
         throw ('getPrimaryAttributeValue not implemented');

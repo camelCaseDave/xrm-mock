@@ -4,7 +4,7 @@ describe('XrmStatic Mock', () => {
     beforeEach(() => {
         this.xrmStaticMock = new XrmStaticMock(null);
     });
-    it('should initialise', () => {  
+    it('should exist', () => {  
         expect(this.xrmStaticMock).toBeDefined();        
     });
 })

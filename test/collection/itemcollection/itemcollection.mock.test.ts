@@ -1,17 +1,30 @@
-import { ItemCollectionMock } from '../../../src/collection/itemcollection/itemcollection.mock';
+import { ItemCollectionMock } from './../../../src/collection/itemcollection/itemcollection.mock';
 
 describe('Xrm.Collection.ItemCollection Mock', () => {
     beforeEach(() => {
-        let items = ['One', 'Two', 'Three'];
+        let items = [1,2,3];
         this.itemCollectionMock = new ItemCollectionMock(items);
     });
 
-    it('should initialise', () => {
+    it('should exist', () => {
         expect(this.itemCollectionMock).toBeDefined();
     });
 
-    it('should return One at index 0', () => {
-        expect(this.itemCollectionMock.get(0)).toBe('One');
+    it('should return 1 at index 0', () => {
+        expect(this.itemCollectionMock.get(0)).toBe(1);
+    });
+
+    it('should iterate and double every element', () => {       
+        expect(this.itemCollectionMock.get(0)).toBe(1);
+        expect(this.itemCollectionMock.get(1)).toBe(2);
+        expect(this.itemCollectionMock.get(2)).toBe(3);
+        
+        this.itemCollectionMock.forEach((i) => {
+            return i * 2;
+        });
+        expect(this.itemCollectionMock.get(0)).toBe(2);
+        expect(this.itemCollectionMock.get(1)).toBe(4);
+        expect(this.itemCollectionMock.get(2)).toBe(6);
     });
 
     describe('getLength', () => {

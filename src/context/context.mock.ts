@@ -1,28 +1,52 @@
 export class ContextMock implements Xrm.Context {
     client: Xrm.ClientContext;
+    clientUrl: string;
+    currentTheme: Xrm.Theme;
+    isAutoSaveEnabled: boolean;
+    orgLcid: number;
+    orgUniqueName: string;
+    timeZoneOffset: number;
+    userId: string;
+    userLcid: number;
+    userName: string;
+    userRoles: string[];
+    version: string;
 
-    constructor(clientContext: Xrm.ClientContext) {
+    constructor(clientContext: Xrm.ClientContext, clientUrl?: string, currentTheme?: Xrm.Theme, isAutoSaveEnabled?: boolean, 
+    orgLcid?: number, orgUniqueName?: string, timeZoneOffset?: number, userId?: string, userLcid?: number, 
+    userName?: string, userRoles?: string[], version?: string) {
         this.client = clientContext;
+        this.clientUrl = clientUrl;
+        this.currentTheme = currentTheme;
+        this.isAutoSaveEnabled = isAutoSaveEnabled;
+        this.orgLcid = orgLcid;
+        this.orgUniqueName = orgUniqueName;
+        this.timeZoneOffset = timeZoneOffset;
+        this.userId = userId;
+        this.userLcid = userLcid;
+        this.userName = userName;
+        this.userRoles = userRoles;
+        this.version = version;
     }
 
     getClientUrl(): string {
-        throw ('get client url not implemented');
+        return this.clientUrl;
     }
 
     getCurrentTheme(): Xrm.Theme {
-        throw ('get current theme not implemented');
+        return this.currentTheme;
     }
 
     getIsAutoSaveEnabled(): boolean {
-        throw ('get is auto save enabled not implemented');
+        return this.isAutoSaveEnabled;
     }
 
     getOrgLcid(): number {
-        throw ('get org lcid not implemented');
+        return this.orgLcid;
     }
 
     getOrgUniqueName(): string {
-        throw ('get org unique name not implemented');
+        return this.orgUniqueName;
     }
 
     getQueryStringParameters(): { [index: string]: any } {
@@ -30,30 +54,30 @@ export class ContextMock implements Xrm.Context {
     }
 
     getTimeZoneOffsetMinutes(): number {
-        throw ('get time zone offset minutes not implemented');
+        return this.timeZoneOffset;
     }
 
     getUserId(): string {
-        throw ('get user id not implemented');
+        return this.userId;
     }
 
     getUserLcid(): number {
-        throw ('get user lcid not implemented');
+        return this.userLcid;
     }
 
     getUserName(): string {
-        throw ('get user name not implemented');
+        return this.userName;
     }
 
     getUserRoles(): string[] {
-        throw ('get user roles not implemented');
+        return this.userRoles;
     }
 
     getVersion(): string {
-        throw ('get version not implemented');
+        return this.version;
     }
 
     prependOrgName(sPath: string): string {
-        throw ('prepend org name not implemented');
+        return sPath + this.orgUniqueName;
     }
 }

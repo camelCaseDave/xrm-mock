@@ -22,7 +22,18 @@ export class EntityMock implements Xrm.Page.Entity {
     }
 
     getIsDirty(): boolean {
-        throw ('getIsDirty not implemented');
+        let isDirty = false;
+
+        if (this.attributes) {
+            for (var i = 0; i < this.attributes.getLength(); i++) {
+                  let attr = this.attributes.get(i);
+                  if (attr.getIsDirty()) {
+                      isDirty = true;
+                      break;
+                  }             
+            }                  
+        }
+        return isDirty;
     }
 
     getPrimaryAttributeValue(): string {

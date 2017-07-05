@@ -6,7 +6,7 @@ describe('Xrm.Utility Mock', () => {
         
     });
 
-    it('should instantiate', () => {
+    it('should exist', () => {
         expect(this.utility).toBeDefined();
     });
 

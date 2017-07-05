@@ -8,10 +8,12 @@ var UtilityMock = (function () {
         onCloseCallback();
     };
     UtilityMock.prototype.confirmDialog = function (message, yesCloseCallback, noCloseCallback) {
-        if (confirm(message))
+        if (confirm(message)) {
             yesCloseCallback();
-        else
+        }
+        else {
             noCloseCallback();
+        }
     };
     UtilityMock.prototype.isActivityType = function (entityType) {
         throw ('is activity type not implemented');

@@ -25,7 +25,7 @@ export class UiMock implements Xrm.Ui {
     }
     
     close(): void {
-        throw ('close not implemented');
+
     }
 
     getFormType(): XrmEnum.FormType {

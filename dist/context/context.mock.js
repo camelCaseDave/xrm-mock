@@ -1,47 +1,58 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ContextMock = (function () {
-    function ContextMock(clientContext) {
+    function ContextMock(clientContext, clientUrl, currentTheme, isAutoSaveEnabled, orgLcid, orgUniqueName, timeZoneOffset, userId, userLcid, userName, userRoles, version) {
         this.client = clientContext;
+        this.clientUrl = clientUrl;
+        this.currentTheme = currentTheme;
+        this.isAutoSaveEnabled = isAutoSaveEnabled;
+        this.orgLcid = orgLcid;
+        this.orgUniqueName = orgUniqueName;
+        this.timeZoneOffset = timeZoneOffset;
+        this.userId = userId;
+        this.userLcid = userLcid;
+        this.userName = userName;
+        this.userRoles = userRoles;
+        this.version = version;
     }
     ContextMock.prototype.getClientUrl = function () {
-        throw ('get client url not implemented');
+        return this.clientUrl;
     };
     ContextMock.prototype.getCurrentTheme = function () {
-        throw ('get current theme not implemented');
+        return this.currentTheme;
     };
     ContextMock.prototype.getIsAutoSaveEnabled = function () {
-        throw ('get is auto save enabled not implemented');
+        return this.isAutoSaveEnabled;
     };
     ContextMock.prototype.getOrgLcid = function () {
-        throw ('get org lcid not implemented');
+        return this.orgLcid;
     };
     ContextMock.prototype.getOrgUniqueName = function () {
-        throw ('get org unique name not implemented');
+        return this.orgUniqueName;
     };
     ContextMock.prototype.getQueryStringParameters = function () {
         throw ('get query string parameters not implemented');
     };
     ContextMock.prototype.getTimeZoneOffsetMinutes = function () {
-        throw ('get time zone offset minutes not implemented');
+        return this.timeZoneOffset;
     };
     ContextMock.prototype.getUserId = function () {
-        throw ('get user id not implemented');
+        return this.userId;
     };
     ContextMock.prototype.getUserLcid = function () {
-        throw ('get user lcid not implemented');
+        return this.userLcid;
     };
     ContextMock.prototype.getUserName = function () {
-        throw ('get user name not implemented');
+        return this.userName;
     };
     ContextMock.prototype.getUserRoles = function () {
-        throw ('get user roles not implemented');
+        return this.userRoles;
     };
     ContextMock.prototype.getVersion = function () {
-        throw ('get version not implemented');
+        return this.version;
     };
     ContextMock.prototype.prependOrgName = function (sPath) {
-        throw ('prepend org name not implemented');
+        return sPath + this.orgUniqueName;
     };
     return ContextMock;
 }());
