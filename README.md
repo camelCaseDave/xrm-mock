@@ -7,7 +7,7 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 |[![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)|[![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|[![NPM](https://img.shields.io/npm/v/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)|[![Coverage Status](https://coveralls.io/repos/github/camelCaseDave/xrm-mock/badge.svg?branch=master)](https://coveralls.io/github/camelCaseDave/xrm-mock?branch=master)|[![Known Vulnerabilities](https://snyk.io/test/github/camelcasedave/xrm-mock/badge.svg)](https://snyk.io/test/github/camelcasedave/xrm-mock)|[![Code Climate](https://codeclimate.com/github/camelCaseDave/xrm-mock/badges/gpa.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock)|
 
 
-## Usage:
+## :books: Usage:
  - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm install xrm-mock```
 
  - Create a `.ts` file for your entity form:
