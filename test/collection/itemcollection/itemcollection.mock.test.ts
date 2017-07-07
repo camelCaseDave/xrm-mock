@@ -19,7 +19,7 @@ describe('Xrm.Collection.ItemCollection Mock', () => {
         expect(this.itemCollectionMock.get(1)).toBe(2);
         expect(this.itemCollectionMock.get(2)).toBe(3);
         
-        this.itemCollectionMock.forEach((i) => {
+        this.itemCollectionMock.forEach((i: any) => {
             return i * 2;
         });
         expect(this.itemCollectionMock.get(0)).toBe(2);

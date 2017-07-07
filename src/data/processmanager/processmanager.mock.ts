@@ -28,7 +28,7 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     getActiveStage(): Xrm.Page.Stage {
         let activeProcess = this.getActiveProcess();
         let stages = activeProcess.getStages();
-        return stages.forEach((s): any => {
+        return stages.forEach((s: Xrm.Page.Stage): any => {
             return s.getStatus() === 'active'
         })[0] || undefined;
     }
@@ -36,7 +36,7 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     setActiveStage(stageId: string, callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
         let activeProcess = this.getActiveProcess();
         let stages = activeProcess.getStages();
-        return stages.forEach((s): any => {
+        return stages.forEach((s: Xrm.Page.Stage): any => {
             return s.getId() === stageId
         })[0] || undefined;
     }
