@@ -9,7 +9,6 @@ export class EventContextMock implements Xrm.Page.EventContext {
         throw ('not implemented');
     }
 
-
     getEventArgs(): Xrm.Page.SaveEventArguments {
         throw ('not implemented');
     }
