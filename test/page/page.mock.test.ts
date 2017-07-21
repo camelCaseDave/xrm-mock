@@ -38,5 +38,9 @@ describe('Xrm.Page Mock', () => {
         it('by index should return Bloggs for 2', () => {
             expect(this.xrmPageMock.getAttribute(2)).toBe(this.lastName);
         });
+
+        it('should get attribute and value in one line', () => {
+            expect(this.xrmPageMock.getAttribute('firstname').getValue()).toBe('Joe');
+        });
     });
 })

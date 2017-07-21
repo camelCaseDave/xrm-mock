@@ -5,6 +5,7 @@ export class UiMock implements Xrm.Ui {
     navigation: Xrm.Page.Navigation;
     tabs: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
     quickForms: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>;
+    formNotifications: [{ message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string }];
 
     constructor(process?: Xrm.Page.ui.ProcessManager, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>, formSelector?: Xrm.Page.FormSelector, navigation?: Xrm.Page.Navigation,
         tabs?: Xrm.Collection.ItemCollection<Xrm.Page.Tab>, quickForms?: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>) {
@@ -17,15 +18,47 @@ export class UiMock implements Xrm.Ui {
     }
 
     setFormNotification(message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string): boolean {
-        throw ('setFormNotification not implemented');
+        let formNotificationAlreadyExists = false;
+        if (this.formNotifications && this.formNotifications.length) {
+            formNotificationAlreadyExists = function () {
+                let matchingNotificationsById = this.formNotifications.filter(function (item) {
+                    return item.uniqueId === uniqueId;
+                });
+                return matchingNotificationsById && matchingNotificationsById.length;
+            }();
+        }
+
+        if (formNotificationAlreadyExists) {
+            return false;
+        } else {
+            if (this.formNotifications && this.formNotifications.length) {
+                this.formNotifications.push({ message, level, uniqueId });
+            } else {
+                this.formNotifications = [{ message, level, uniqueId }];
+            }
+            return true;
+        }
     }
 
     clearFormNotification(uniqueId: string): boolean {
-        throw ('clearFormNotification not implemented');
-    }
-    
-    close(): void {
+        if (this.formNotifications && this.formNotifications.length) {
+            let matchingNotificationsById = this.formNotifications.filter(function (item) {
+                return item.uniqueId === uniqueId;
+            });
 
+            if (matchingNotificationsById && matchingNotificationsById.length) {
+                let index = this.formNotifications.indexOf(matchingNotificationsById[0]);
+                this.formNotifications.splice(index, 1);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    close(): void {
+        throw ('close not implemented');
     }
 
     getFormType(): XrmEnum.FormType {
@@ -42,5 +75,5 @@ export class UiMock implements Xrm.Ui {
 
     refreshRibbon(): void {
         throw ('refreshRibbon not implemented');
-    }   
+    }
 }
