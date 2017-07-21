@@ -10,12 +10,46 @@ var UiMock = (function () {
         this.quickForms = quickForms;
     }
     UiMock.prototype.setFormNotification = function (message, level, uniqueId) {
-        throw ('setFormNotification not implemented');
+        var formNotificationAlreadyExists = false;
+        if (this.formNotifications && this.formNotifications.length) {
+            formNotificationAlreadyExists = function () {
+                var matchingNotificationsById = this.formNotifications.filter(function (item) {
+                    return item.uniqueId === uniqueId;
+                });
+                return matchingNotificationsById && matchingNotificationsById.length;
+            }();
+        }
+        if (formNotificationAlreadyExists) {
+            return false;
+        }
+        else {
+            if (this.formNotifications && this.formNotifications.length) {
+                this.formNotifications.push({ message: message, level: level, uniqueId: uniqueId });
+            }
+            else {
+                this.formNotifications = [{ message: message, level: level, uniqueId: uniqueId }];
+            }
+            return true;
+        }
     };
     UiMock.prototype.clearFormNotification = function (uniqueId) {
-        throw ('clearFormNotification not implemented');
+        if (this.formNotifications && this.formNotifications.length) {
+            var matchingNotificationsById = this.formNotifications.filter(function (item) {
+                return item.uniqueId === uniqueId;
+            });
+            if (matchingNotificationsById && matchingNotificationsById.length) {
+                var index = this.formNotifications.indexOf(matchingNotificationsById[0]);
+                this.formNotifications.splice(index, 1);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
     };
     UiMock.prototype.close = function () {
+        throw ('close not implemented');
     };
     UiMock.prototype.getFormType = function () {
         throw ('getFormType not implemented');
