@@ -20,12 +20,12 @@ export class UiMock implements Xrm.Ui {
     setFormNotification(message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string): boolean {
         let formNotificationAlreadyExists = false;
         if (this.formNotifications && this.formNotifications.length) {
-            formNotificationAlreadyExists = function () {
-                let matchingNotificationsById = this.formNotifications.filter(function (item) {
+            formNotificationAlreadyExists = function (notifications) {
+                let matchingNotificationsById = notifications.filter(function (item) {
                     return item.uniqueId === uniqueId;
                 });
-                return matchingNotificationsById && matchingNotificationsById.length;
-            }();
+                return matchingNotificationsById && matchingNotificationsById.length ? true : false;
+            }(this.formNotifications);
         }
 
         if (formNotificationAlreadyExists) {

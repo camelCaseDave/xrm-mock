@@ -10,6 +10,10 @@ describe('Xrm.Ui Mock', function () {
     it('should set a form notification', () => {
         expect(this.xrmUiMock.setFormNotification('You have been notified', 'INFO', 'id1')).toBe(true);
     });
+    it('should not set a form notification if the id already exists', () => {
+        expect(this.xrmUiMock.setFormNotification('You have been notified', 'INFO', 'id1')).toBe(true);
+        expect(this.xrmUiMock.setFormNotification('You have been notified again', 'INFO', 'id1')).toBe(false);
+    });
     it('should not to remove a form notification if it wasnt found', () => {
         expect(this.xrmUiMock.clearFormNotification('id1')).toBe(false);
     });
