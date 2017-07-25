@@ -64,3 +64,8 @@ describe("contact", () => {
     });
 });
 ```
+
+## :heart:  Contributing and Project Roadmap:
+ - Increase test coverage
+ - Increase implementation
+ - Include a project like [rewire](https://github.com/jhnns/rewire) so that non-exported classes can be tested
