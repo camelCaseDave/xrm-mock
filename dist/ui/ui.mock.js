@@ -12,12 +12,12 @@ var UiMock = (function () {
     UiMock.prototype.setFormNotification = function (message, level, uniqueId) {
         var formNotificationAlreadyExists = false;
         if (this.formNotifications && this.formNotifications.length) {
-            formNotificationAlreadyExists = function () {
-                var matchingNotificationsById = this.formNotifications.filter(function (item) {
+            formNotificationAlreadyExists = function (notifications) {
+                var matchingNotificationsById = notifications.filter(function (item) {
                     return item.uniqueId === uniqueId;
                 });
-                return matchingNotificationsById && matchingNotificationsById.length;
-            }();
+                return matchingNotificationsById && matchingNotificationsById.length ? true : false;
+            }(this.formNotifications);
         }
         if (formNotificationAlreadyExists) {
             return false;

@@ -13,3 +13,4 @@ wallaby.js
 .vscode
 .npmignore
 tsconfig.json
+index.ts

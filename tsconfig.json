@@ -3,7 +3,8 @@
         "target": "es5",
         "module": "commonjs",
         "noEmit": false,
-        "outDir": "dist"
+        "outDir": "dist",
+        "declaration": true
     },
     "exclude": [
         "node_modules",
