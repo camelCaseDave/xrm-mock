@@ -1,12 +1,14 @@
+import { AttributeMock } from '../attribute/attribute.mock';
+
 export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
     min: number;
     max: number;
     precision: number;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>
     integerAttributeFormat: Xrm.Page.IntegerAttributeFormat;
-    attribute: Xrm.Page.Attribute;
+    attribute: AttributeMock;
 
-    constructor(attribute: Xrm.Page.Attribute, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>, integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat,
+    constructor(attribute: AttributeMock, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>, integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat,
         min?: number, max?: number, precision?: number) {
         this.attribute = attribute;
         this.controls = controls;
@@ -14,10 +16,11 @@ export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
         this.min = min;
         this.max = max;
         this.precision = precision;
+        this.attribute.attributeFormat = integerAttributeFormat;
     }
 
     getFormat(): Xrm.Page.IntegerAttributeFormat {
-        return this.integerAttributeFormat;
+        return this.attribute.getFormat() as Xrm.Page.IntegerAttributeFormat;
     }
 
     getMax(): number {

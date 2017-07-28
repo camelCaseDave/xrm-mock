@@ -1,16 +1,19 @@
+import { AttributeMock } from './../attribute/attribute.mock';
+
 export class DateAttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
-    attribute: Xrm.Page.Attribute;
+    attribute: AttributeMock
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
 
-    constructor(attribute: Xrm.Page.Attribute, dateAttributeFormat: Xrm.Page.DateAttributeFormat, controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>) {
+    constructor(attribute: AttributeMock, dateAttributeFormat: Xrm.Page.DateAttributeFormat, controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>) {
         this.attribute = attribute;
         this.dateAttributeFormat = dateAttributeFormat;
         this.controls = controls;
+        this.attribute.attributeFormat = dateAttributeFormat;
     }
 
     getFormat(): Xrm.Page.DateAttributeFormat {
-        return this.dateAttributeFormat;
+        return this.attribute.getFormat() as Xrm.Page.DateAttributeFormat;
     }
 
     getValue(): Date {

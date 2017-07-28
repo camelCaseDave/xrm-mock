@@ -1,33 +1,38 @@
+import { EnumAttributeMock } from '../enumattribute/enumattribute.mock';
+
 export class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.OptionSetControl>;
-    attribute: Xrm.Page.EnumAttribute;
+    enumAttribute: EnumAttributeMock;
     options: Xrm.Page.OptionSetValue[];
     selectedOption: Xrm.Page.OptionSetValue;
     optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat;
 
-    constructor(attribute: Xrm.Page.EnumAttribute, options: Xrm.Page.OptionSetValue[], optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat) {
-        this.attribute = attribute;
+    constructor(enumAttribute: EnumAttributeMock, options: Xrm.Page.OptionSetValue[], optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat) {
+        this.enumAttribute = enumAttribute;
         this.options = options;
         this.optionSetAttributeFormat = optionSetAttributeFormat;
-        this.selectedOption = this.getOption(attribute.getValue());
+        this.selectedOption = this.getOption(enumAttribute.getValue());
+        this.enumAttribute.attribute.attributeFormat = optionSetAttributeFormat;
     }
 
     getFormat(): Xrm.Page.OptionSetAttributeFormat {
-        return this.optionSetAttributeFormat;
+        return this.enumAttribute.getFormat() as Xrm.Page.OptionSetAttributeFormat;
     }
 
     getInitialValue(): number {
-        return this.attribute.getInitialValue() as number;
+        return this.enumAttribute.getInitialValue() as number;
     }
 
     getOption(value: number): Xrm.Page.OptionSetValue;
     getOption(label: string): Xrm.Page.OptionSetValue;
 
     getOption(param: number | string): Xrm.Page.OptionSetValue {
-        if (typeof param === 'string')
+        if (typeof param === 'string') {
             return this.options.filter((o) => { return o.text === param; })[0];
-        else if (typeof param === 'number')
+        }
+        else if (typeof param === 'number') {
             return this.options.filter((o) => { return o.value === param; })[0];
+        }
     }
 
     getOptions(): Xrm.Page.OptionSetValue[] {
@@ -43,59 +48,59 @@ export class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
     }
 
     getValue(): number {
-        return this.attribute.getValue();
+        return this.enumAttribute.getValue();
     }
 
     setValue(value: number): void {
-        this.attribute.setValue(value);
+        this.enumAttribute.setValue(value);
         this.selectedOption = this.getOption(value);
     }
 
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.addOnChange(handler);
+        this.enumAttribute.addOnChange(handler);
     }
 
     fireOnChange(): void {
-        this.attribute.fireOnChange();
+        this.enumAttribute.fireOnChange();
     }
 
     getAttributeType(): string {
-        return this.attribute.getAttributeType();
+        return this.enumAttribute.getAttributeType();
     }
 
     getIsDirty(): boolean {
-        return this.attribute.getIsDirty();
+        return this.enumAttribute.getIsDirty();
     }
 
     getName(): string {
-        return this.attribute.getName();
+        return this.enumAttribute.getName();
     }
 
     getParent(): Xrm.Page.Entity {
-        return this.attribute.getParent();
+        return this.enumAttribute.getParent();
     }
 
     getRequiredLevel(): Xrm.Page.RequirementLevel {
-        return this.attribute.getRequiredLevel();
+        return this.enumAttribute.getRequiredLevel();
     }
 
     getSubmitMode(): Xrm.Page.SubmitMode {
-        return this.attribute.getSubmitMode();
+        return this.enumAttribute.getSubmitMode();
     }
 
     getUserPrivilege(): Xrm.Page.Privilege {
-        return this.attribute.getUserPrivilege();
+        return this.enumAttribute.getUserPrivilege();
     }
 
     removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.removeOnChange(handler);
+        this.enumAttribute.removeOnChange(handler);
     }
 
     setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {
-        this.attribute.setRequiredLevel(requirementLevel);
+        this.enumAttribute.setRequiredLevel(requirementLevel);
     }
 
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
-        this.attribute.setSubmitMode(submitMode);
+        this.enumAttribute.setSubmitMode(submitMode);
     }
 }

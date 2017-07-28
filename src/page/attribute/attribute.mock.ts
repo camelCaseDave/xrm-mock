@@ -1,10 +1,11 @@
 export class AttributeMock implements Xrm.Page.Attribute {    
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    isDirty: boolean;
+    public isDirty: boolean;
     name: string;
     requiredLevel: Xrm.Page.RequirementLevel;
     submitMode: Xrm.Page.SubmitMode;
     value: any;
+    attributeFormat: Xrm.Page.AttributeFormat;
 
     public constructor(name: string, value: any, isDirty?: boolean, requiredLevel?: Xrm.Page.RequirementLevel, submitMode?: Xrm.Page.SubmitMode, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
         this.name = name;
@@ -28,7 +29,7 @@ export class AttributeMock implements Xrm.Page.Attribute {
     }
 
     getFormat(): Xrm.Page.AttributeFormat {
-        throw ('getFormat not implemented');
+        return this.attributeFormat;
     }
 
     getIsDirty(): boolean {

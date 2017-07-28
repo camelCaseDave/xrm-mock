@@ -1,18 +1,21 @@
+import { AttributeMock } from './../attribute/attribute.mock';
+
 export class StringAttributeMock implements Xrm.Page.StringAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>;
     stringAttributeFormat: Xrm.Page.StringAttributeFormat;
     maxLength: number;
-    attribute: Xrm.Page.Attribute;
+    attribute: AttributeMock;
 
-    constructor(attribute: Xrm.Page.Attribute, stringAttributeFormat: Xrm.Page.StringAttributeFormat, maxLength: number, controls?: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>) {
+    constructor(attribute: AttributeMock, stringAttributeFormat: Xrm.Page.StringAttributeFormat, maxLength: number, controls?: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>) {
         this.attribute = attribute;
         this.stringAttributeFormat = stringAttributeFormat;
         this.maxLength = maxLength;
         this.controls = controls;
+        attribute.attributeFormat = stringAttributeFormat;
     }
 
     getFormat(): Xrm.Page.StringAttributeFormat {
-        return this.stringAttributeFormat;
+        return this.attribute.getFormat() as Xrm.Page.StringAttributeFormat;
     }
 
     getMaxLength(): number {
@@ -24,10 +27,12 @@ export class StringAttributeMock implements Xrm.Page.StringAttribute {
     }
 
     setValue(value: string): void {
-        if (this.maxLength && value.length > this.maxLength)
+        if (this.maxLength && value.length > this.maxLength) {
             throw ('value cannot be greater than ' + this.maxLength);
-        else
+        }
+        else {
             this.attribute.setValue(value);
+        }
     }
 
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {

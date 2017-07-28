@@ -11,7 +11,7 @@ describe('Xrm.Page.DateAttribute Mock', () => {
     });
 
     it('should have a date format', () => {
-        expect(this.dateAttribute.getFormat()).toBe('date');
+        expect(this.dateAttribute.getFormat()).toBe('date');        
     });   
 
     it('should have a value of January 1, 1990', () => {
