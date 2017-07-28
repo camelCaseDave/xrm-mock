@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var dateattribute_mock_1 = require("../dateattribute/dateattribute.mock");
 var DateControlMock = (function () {
     function DateControlMock(standardControl) {
         this.standardControl = standardControl;
@@ -13,7 +12,7 @@ var DateControlMock = (function () {
         var attribute = this.standardControl.getAttribute();
         var attributeFormat = showTimeValue ? 'datetime' : 'date';
         // TODO test
-        attribute = new dateattribute_mock_1.DateAttributeMock(attribute, attributeFormat);
+        //attribute = new DateAttributeMock(attribute, attributeFormat);
     };
     DateControlMock.prototype.clearNotification = function (uniqueId) {
         return this.standardControl.clearNotification();

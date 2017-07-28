@@ -8,9 +8,10 @@ var NumberAttributeMock = (function () {
         this.min = min;
         this.max = max;
         this.precision = precision;
+        this.attribute.attributeFormat = integerAttributeFormat;
     }
     NumberAttributeMock.prototype.getFormat = function () {
-        return this.integerAttributeFormat;
+        return this.attribute.getFormat();
     };
     NumberAttributeMock.prototype.getMax = function () {
         return this.max;

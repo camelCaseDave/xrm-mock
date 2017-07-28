@@ -1,11 +1,12 @@
 /// <reference types="xrm" />
+import { EnumAttributeMock } from '../enumattribute/enumattribute.mock';
 export declare class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.OptionSetControl>;
-    attribute: Xrm.Page.EnumAttribute;
+    enumAttribute: EnumAttributeMock;
     options: Xrm.Page.OptionSetValue[];
     selectedOption: Xrm.Page.OptionSetValue;
     optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat;
-    constructor(attribute: Xrm.Page.EnumAttribute, options: Xrm.Page.OptionSetValue[], optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat);
+    constructor(enumAttribute: EnumAttributeMock, options: Xrm.Page.OptionSetValue[], optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat);
     getFormat(): Xrm.Page.OptionSetAttributeFormat;
     getInitialValue(): number;
     getOption(value: number): Xrm.Page.OptionSetValue;

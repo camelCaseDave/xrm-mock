@@ -5,9 +5,10 @@ var DateAttributeMock = (function () {
         this.attribute = attribute;
         this.dateAttributeFormat = dateAttributeFormat;
         this.controls = controls;
+        this.attribute.attributeFormat = dateAttributeFormat;
     }
     DateAttributeMock.prototype.getFormat = function () {
-        return this.dateAttributeFormat;
+        return this.attribute.getFormat();
     };
     DateAttributeMock.prototype.getValue = function () {
         return this.attribute.getValue();

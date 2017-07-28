@@ -6,9 +6,10 @@ var StringAttributeMock = (function () {
         this.stringAttributeFormat = stringAttributeFormat;
         this.maxLength = maxLength;
         this.controls = controls;
+        attribute.attributeFormat = stringAttributeFormat;
     }
     StringAttributeMock.prototype.getFormat = function () {
-        return this.stringAttributeFormat;
+        return this.attribute.getFormat();
     };
     StringAttributeMock.prototype.getMaxLength = function () {
         return this.maxLength;
@@ -17,10 +18,12 @@ var StringAttributeMock = (function () {
         return this.attribute.getValue();
     };
     StringAttributeMock.prototype.setValue = function (value) {
-        if (this.maxLength && value.length > this.maxLength)
+        if (this.maxLength && value.length > this.maxLength) {
             throw ('value cannot be greater than ' + this.maxLength);
-        else
+        }
+        else {
             this.attribute.setValue(value);
+        }
     };
     StringAttributeMock.prototype.addOnChange = function (handler) {
         this.attribute.addOnChange(handler);

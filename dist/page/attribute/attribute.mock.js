@@ -19,7 +19,7 @@ var AttributeMock = (function () {
         return typeof this.value;
     };
     AttributeMock.prototype.getFormat = function () {
-        throw ('getFormat not implemented');
+        return this.attributeFormat;
     };
     AttributeMock.prototype.getIsDirty = function () {
         return this.isDirty;

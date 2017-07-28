@@ -17,7 +17,7 @@ export class DateControlMock implements Xrm.Page.DateControl {
         let attributeFormat: Xrm.Page.DateAttributeFormat = showTimeValue ? 'datetime' : 'date';
         
         // TODO test
-        attribute = new DateAttributeMock(attribute, attributeFormat);
+        //attribute = new DateAttributeMock(attribute, attributeFormat);
     }
 
     clearNotification(uniqueId?: string): boolean {
