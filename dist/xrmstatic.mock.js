@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XrmStaticMock = (function () {
-    function XrmStaticMock(page, utility, mobile, panel) {
-        this.Page = page;
-        this.Utility = utility;
-        this.Mobile = mobile;
-        this.Panel = panel;
+    function XrmStaticMock(components) {
+        this.Page = components.page;
+        this.Utility = components.utility;
+        this.Mobile = components.mobile;
+        this.Panel = components.panel;
     }
     return XrmStaticMock;
 }());

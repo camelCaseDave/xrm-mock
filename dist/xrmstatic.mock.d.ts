@@ -6,5 +6,11 @@ export declare class XrmStaticMock {
     Utility: UtilityMock;
     Mobile: Xrm.Mobile;
     Panel: Xrm.Panel;
-    constructor(page: PageMock, utility?: UtilityMock, mobile?: Xrm.Mobile, panel?: Xrm.Panel);
+    constructor(components: XrmStaticComponents);
+}
+export interface XrmStaticComponents {
+    page?: PageMock;
+    utility?: UtilityMock;
+    mobile?: Xrm.Mobile;
+    panel?: Xrm.Panel;
 }

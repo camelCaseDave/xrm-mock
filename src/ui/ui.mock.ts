@@ -7,14 +7,13 @@ export class UiMock implements Xrm.Ui {
     quickForms: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>;
     formNotifications: [{ message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string }];
 
-    constructor(process?: Xrm.Page.ui.ProcessManager, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>, formSelector?: Xrm.Page.FormSelector, navigation?: Xrm.Page.Navigation,
-        tabs?: Xrm.Collection.ItemCollection<Xrm.Page.Tab>, quickForms?: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>) {
-        this.process = process;
-        this.controls = controls;
-        this.formSelector = formSelector;
-        this.navigation = navigation;
-        this.tabs = tabs;
-        this.quickForms = quickForms;
+    constructor(components: UiComponents) {
+        this.process = components.process;
+        this.controls = components.controls;
+        this.formSelector = components.formSelector;
+        this.navigation = components.navigation;
+        this.tabs = components.tabs;
+        this.quickForms = components.quickForms;
     }
 
     setFormNotification(message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string): boolean {
@@ -76,4 +75,13 @@ export class UiMock implements Xrm.Ui {
     refreshRibbon(): void {
         throw ('refreshRibbon not implemented');
     }
+}
+
+export interface UiComponents {
+    process?: Xrm.Page.ui.ProcessManager;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    formSelector?: Xrm.Page.FormSelector;
+    navigation?: Xrm.Page.Navigation;
+    tabs?: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
+    quickForms?: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>
 }

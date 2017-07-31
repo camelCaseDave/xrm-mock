@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var AttributeMock = (function () {
-    function AttributeMock(name, value, isDirty, requiredLevel, submitMode, controls) {
-        this.name = name;
-        this.value = value;
-        this.isDirty = isDirty;
-        this.requiredLevel = requiredLevel;
-        this.submitMode = submitMode;
-        this.controls = controls;
+    function AttributeMock(components) {
+        this.name = components.name;
+        this.value = components.value;
+        this.isDirty = components.isDirty;
+        this.requiredLevel = components.requiredLevel;
+        this.submitMode = components.submitMode;
+        this.controls = components.controls;
     }
     AttributeMock.prototype.addOnChange = function (handler) {
         throw ('addOnChange not implemented');

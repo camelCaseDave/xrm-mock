@@ -5,10 +5,10 @@ export class PageMock implements Xrm.Page {
     data: Xrm.Data;
     ui: Xrm.Ui;
 
-    constructor(data?: Xrm.Data, context?: Xrm.Context, ui?: Xrm.Ui) {
-        this.context = context;
-        this.data = data;
-        this.ui = ui;
+    constructor(components: PageComponents) {
+        this.context = components.context;
+        this.data = components.data;
+        this.ui = components.ui;
     }
 
     getAttribute(): Xrm.Page.Attribute[];
@@ -55,4 +55,10 @@ export class PageMock implements Xrm.Page {
             throw ('getControl not implemented');
         }
     }    
+}
+
+export interface PageComponents {
+    data?: Xrm.Data;
+    context?: Xrm.Context;
+    ui?: Xrm.Ui;
 }

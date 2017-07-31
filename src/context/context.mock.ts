@@ -12,21 +12,19 @@ export class ContextMock implements Xrm.Context {
     userRoles: string[];
     version: string;
 
-    constructor(clientContext: Xrm.ClientContext, clientUrl?: string, currentTheme?: Xrm.Theme, isAutoSaveEnabled?: boolean, 
-    orgLcid?: number, orgUniqueName?: string, timeZoneOffset?: number, userId?: string, userLcid?: number, 
-    userName?: string, userRoles?: string[], version?: string) {
-        this.client = clientContext;
-        this.clientUrl = clientUrl;
-        this.currentTheme = currentTheme;
-        this.isAutoSaveEnabled = isAutoSaveEnabled;
-        this.orgLcid = orgLcid;
-        this.orgUniqueName = orgUniqueName;
-        this.timeZoneOffset = timeZoneOffset;
-        this.userId = userId;
-        this.userLcid = userLcid;
-        this.userName = userName;
-        this.userRoles = userRoles;
-        this.version = version;
+    constructor(components: ContextComponents) {
+        this.client = components.clientContext;
+        this.clientUrl = components.clientUrl;
+        this.currentTheme = components.currentTheme;
+        this.isAutoSaveEnabled = components.isAutoSaveEnabled;
+        this.orgLcid = components.orgLcid;
+        this.orgUniqueName = components.orgUniqueName;
+        this.timeZoneOffset = components.timeZoneOffset;
+        this.userId = components.userId;
+        this.userLcid = components.userLcid;
+        this.userName = components.userName;
+        this.userRoles = components.userRoles;
+        this.version = components.version;
     }
 
     getClientUrl(): string {
@@ -80,4 +78,19 @@ export class ContextMock implements Xrm.Context {
     prependOrgName(sPath: string): string {
         return sPath + this.orgUniqueName;
     }
+}
+
+export interface ContextComponents {
+    clientContext: Xrm.ClientContext;
+    clientUrl?: string;
+    currentTheme?: Xrm.Theme;
+    isAutoSaveEnabled?: boolean;
+    orgLcid?: number;
+    orgUniqueName?: string;
+    timeZoneOffset?: number;
+    userId?: string;
+    userLcid?: number;
+    userName?: string;
+    userRoles?: string[];
+    version?: string
 }

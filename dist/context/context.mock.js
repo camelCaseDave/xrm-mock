@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ContextMock = (function () {
-    function ContextMock(clientContext, clientUrl, currentTheme, isAutoSaveEnabled, orgLcid, orgUniqueName, timeZoneOffset, userId, userLcid, userName, userRoles, version) {
-        this.client = clientContext;
-        this.clientUrl = clientUrl;
-        this.currentTheme = currentTheme;
-        this.isAutoSaveEnabled = isAutoSaveEnabled;
-        this.orgLcid = orgLcid;
-        this.orgUniqueName = orgUniqueName;
-        this.timeZoneOffset = timeZoneOffset;
-        this.userId = userId;
-        this.userLcid = userLcid;
-        this.userName = userName;
-        this.userRoles = userRoles;
-        this.version = version;
+    function ContextMock(components) {
+        this.client = components.clientContext;
+        this.clientUrl = components.clientUrl;
+        this.currentTheme = components.currentTheme;
+        this.isAutoSaveEnabled = components.isAutoSaveEnabled;
+        this.orgLcid = components.orgLcid;
+        this.orgUniqueName = components.orgUniqueName;
+        this.timeZoneOffset = components.timeZoneOffset;
+        this.userId = components.userId;
+        this.userLcid = components.userLcid;
+        this.userName = components.userName;
+        this.userRoles = components.userRoles;
+        this.version = components.version;
     }
     ContextMock.prototype.getClientUrl = function () {
         return this.clientUrl;

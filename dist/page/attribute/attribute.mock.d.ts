@@ -7,7 +7,7 @@ export declare class AttributeMock implements Xrm.Page.Attribute {
     submitMode: Xrm.Page.SubmitMode;
     value: any;
     attributeFormat: Xrm.Page.AttributeFormat;
-    constructor(name: string, value: any, isDirty?: boolean, requiredLevel?: Xrm.Page.RequirementLevel, submitMode?: Xrm.Page.SubmitMode, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>);
+    constructor(components: AttributeComponents);
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
     fireOnChange(): void;
     getAttributeType(): string;
@@ -23,4 +23,12 @@ export declare class AttributeMock implements Xrm.Page.Attribute {
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
     getValue(): any;
     setValue(value: any): void;
+}
+export interface AttributeComponents {
+    name: string;
+    value: any;
+    isDirty?: boolean;
+    requiredLevel?: Xrm.Page.RequirementLevel;
+    submitMode?: Xrm.Page.SubmitMode;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
 }

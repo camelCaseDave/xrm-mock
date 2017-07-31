@@ -35,4 +35,4 @@ export { FormOpenParametersMock } from './dist/utility/formopenparameters/formop
 export { UiMock } from './dist/ui/ui.mock';
 export { UtilityMock } from './dist/utility/utility.mock';
 export { WindowMock } from './dist/window.mock';
-export { XrmStaticMock } from './dist/xrmstatic.mock';
+export { XrmStaticMock, XrmStaticComponents } from './dist/xrmstatic.mock';

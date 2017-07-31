@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiMock = (function () {
-    function UiMock(process, controls, formSelector, navigation, tabs, quickForms) {
-        this.process = process;
-        this.controls = controls;
-        this.formSelector = formSelector;
-        this.navigation = navigation;
-        this.tabs = tabs;
-        this.quickForms = quickForms;
+    function UiMock(components) {
+        this.process = components.process;
+        this.controls = components.controls;
+        this.formSelector = components.formSelector;
+        this.navigation = components.navigation;
+        this.tabs = components.tabs;
+        this.quickForms = components.quickForms;
     }
     UiMock.prototype.setFormNotification = function (message, level, uniqueId) {
         var formNotificationAlreadyExists = false;

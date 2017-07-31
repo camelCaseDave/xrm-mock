@@ -8,11 +8,17 @@ export class XrmStaticMock {
     Mobile: Xrm.Mobile;
     Panel: Xrm.Panel;
 
-    constructor(page: PageMock, utility?: UtilityMock, mobile?: Xrm.Mobile, panel?: Xrm.Panel) {
-        this.Page = page;
-        this.Utility = utility;
-        this.Mobile = mobile;
-        this.Panel = panel;
+    constructor(components: XrmStaticComponents) {
+        this.Page = components.page;
+        this.Utility = components.utility;
+        this.Mobile = components.mobile;
+        this.Panel = components.panel;
     }
 }
- 
+
+export interface XrmStaticComponents {
+    page?: PageMock;
+    utility?: UtilityMock;
+    mobile?: Xrm.Mobile;
+    panel?: Xrm.Panel;
+}

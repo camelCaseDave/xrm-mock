@@ -1,4 +1,4 @@
-export class AttributeMock implements Xrm.Page.Attribute {    
+export class AttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     public isDirty: boolean;
     name: string;
@@ -7,19 +7,19 @@ export class AttributeMock implements Xrm.Page.Attribute {
     value: any;
     attributeFormat: Xrm.Page.AttributeFormat;
 
-    public constructor(name: string, value: any, isDirty?: boolean, requiredLevel?: Xrm.Page.RequirementLevel, submitMode?: Xrm.Page.SubmitMode, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
-        this.name = name;
-        this.value = value;
-        this.isDirty = isDirty;
-        this.requiredLevel = requiredLevel;
-        this.submitMode = submitMode;
-        this.controls = controls;
+    public constructor(components: AttributeComponents) {
+        this.name = components.name;
+        this.value = components.value;
+        this.isDirty = components.isDirty;
+        this.requiredLevel = components.requiredLevel;
+        this.submitMode = components.submitMode;
+        this.controls = components.controls;
     }
 
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
         throw ('addOnChange not implemented');
     }
-    
+
     fireOnChange(): void {
         throw ('fireOnChange not implemented');
     }
@@ -66,7 +66,7 @@ export class AttributeMock implements Xrm.Page.Attribute {
 
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
         this.submitMode = submitMode;
-    }       
+    }
 
     getValue(): any {
         return this.value;
@@ -76,4 +76,13 @@ export class AttributeMock implements Xrm.Page.Attribute {
         this.value = value;
         this.isDirty = true;
     }
+}
+
+export interface AttributeComponents {
+    name: string;
+    value: any;
+    isDirty?: boolean;
+    requiredLevel?: Xrm.Page.RequirementLevel;
+    submitMode?: Xrm.Page.SubmitMode;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
 }

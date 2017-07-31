@@ -12,7 +12,7 @@ export declare class ContextMock implements Xrm.Context {
     userName: string;
     userRoles: string[];
     version: string;
-    constructor(clientContext: Xrm.ClientContext, clientUrl?: string, currentTheme?: Xrm.Theme, isAutoSaveEnabled?: boolean, orgLcid?: number, orgUniqueName?: string, timeZoneOffset?: number, userId?: string, userLcid?: number, userName?: string, userRoles?: string[], version?: string);
+    constructor(components: ContextComponents);
     getClientUrl(): string;
     getCurrentTheme(): Xrm.Theme;
     getIsAutoSaveEnabled(): boolean;
@@ -28,4 +28,18 @@ export declare class ContextMock implements Xrm.Context {
     getUserRoles(): string[];
     getVersion(): string;
     prependOrgName(sPath: string): string;
+}
+export interface ContextComponents {
+    clientContext: Xrm.ClientContext;
+    clientUrl?: string;
+    currentTheme?: Xrm.Theme;
+    isAutoSaveEnabled?: boolean;
+    orgLcid?: number;
+    orgUniqueName?: string;
+    timeZoneOffset?: number;
+    userId?: string;
+    userLcid?: number;
+    userName?: string;
+    userRoles?: string[];
+    version?: string;
 }

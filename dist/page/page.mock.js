@@ -2,10 +2,10 @@
 /// <reference path="../../node_modules/@types/xrm/index.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
 var PageMock = (function () {
-    function PageMock(data, context, ui) {
-        this.context = context;
-        this.data = data;
-        this.ui = ui;
+    function PageMock(components) {
+        this.context = components.context;
+        this.data = components.data;
+        this.ui = components.ui;
     }
     PageMock.prototype.getAttribute = function (param) {
         if (!arguments.length) {
