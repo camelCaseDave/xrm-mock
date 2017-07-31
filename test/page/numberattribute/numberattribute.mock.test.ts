@@ -3,7 +3,7 @@ import { NumberAttributeMock } from '../../../src/page/numberattribute/numberatt
 
 describe('Xrm.Page.NumberAttribute', () => {
     beforeEach(() => {
-        let attribute = new AttributeMock('new_leadcount', 1500, false, 'none', 'dirty');
+        let attribute = new AttributeMock({ name: 'new_leadcount', value: 1500, isDirty: false, requiredLevel: 'none', submitMode: 'dirty' });
         this.numberAttribute = new NumberAttributeMock(attribute, null, 'none', 0, 50000, 0);
     });
 

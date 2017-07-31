@@ -7,14 +7,16 @@ describe('Xrm.Context Mock', () => {
         this.userId = '{B05EC7CE-5D51-DF11-97E0-00155DB232D0}';
         this.userRoles = ['cf4cc7ce-5d51-df11-97e0-00155db232d0'];
         this.version = '8.2.1.185';
-        this.context = new ContextMock(new ClientContextMock('Web', 'Online'),
-        this.clientUrl, 'default', false, 1031, 'Contoso', 0,
-        this.userId, 1031, 'Joe Bloggs', this.userRoles, this.version);
+        this.context = new ContextMock({
+            clientContext: new ClientContextMock('Web', 'Online'),
+            clientUrl: this.clientUrl, currentTheme: 'default', isAutoSaveEnabled: false, orgLcid: 1031, orgUniqueName: 'Contoso', timeZoneOffset: 0,
+            userId: this.userId, userLcid: 1031, userName: 'Joe Bloggs', userRoles: this.userRoles, version: this.version
+        });
     });
 
     it('should exist', () => {
         expect(this.context).toBeDefined();
-    });   
+    });
 
     it('should get the client Url', () => {
         expect(this.context.getClientUrl()).toBe(this.clientUrl);
@@ -28,7 +30,7 @@ describe('Xrm.Context Mock', () => {
         expect(this.context.getIsAutoSaveEnabled()).toBe(false);
     });
 
-    it ('should have an org language code of 1031', () => {
+    it('should have an org language code of 1031', () => {
         expect(this.context.getOrgLcid()).toBe(1031);
     });
 

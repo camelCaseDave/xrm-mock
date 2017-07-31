@@ -2,9 +2,9 @@ import { UiMock } from '../../src/ui/ui.mock';
 
 describe('Xrm.Ui Mock', function () {
     beforeEach(() => {
-        this.xrmUiMock = new UiMock();
+        this.xrmUiMock = new UiMock({});
     });
-    it('should exist', () => {  
+    it('should exist', () => {
         expect(this.xrmUiMock).toBeDefined();
     });
     it('should set a form notification', () => {

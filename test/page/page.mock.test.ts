@@ -5,21 +5,22 @@ import { XrmStaticMock } from '../../src/xrmstatic.mock';
 import { EntityMock } from '../../src/page/entity/entity.mock';
 import { DataMock } from '../../src/data/data.mock';
 import { AttributeMock } from '../../src/page/attribute/attribute.mock';
-import { ItemCollectionMock} from '../../src/collection/itemcollection/itemcollection.mock';
+import { ItemCollectionMock } from '../../src/collection/itemcollection/itemcollection.mock';
 import { PageMock } from '../../src/page/page.mock';
 
 describe('Xrm.Page Mock', () => {
     beforeEach(() => {
         let attributes: AttributeMock[] = [];
-        attributes.push(new AttributeMock('firstname', 'Joe', false, 'none'));
-        attributes.push(new AttributeMock('description', ''));
-        this.lastName = new AttributeMock('lastname', 'Bloggs', true, 'recommended', 'always');
+        attributes.push(new AttributeMock({ name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'none' }));
+        attributes.push(new AttributeMock({ name: 'description', value: '' }));
+        this.lastName = new AttributeMock({ name: 'lastname', value: 'Bloggs', isDirty: true, requiredLevel: 'recommended', submitMode: 'always' });
         attributes.push(this.lastName);
-        
-        this.xrmPageMock = new PageMock(
-            new DataMock(
+
+        this.xrmPageMock = new PageMock({
+            data: new DataMock(
                 new EntityMock(
-                    new ItemCollectionMock<AttributeMock>(attributes))));
+                    new ItemCollectionMock<AttributeMock>(attributes)))
+        });
     });
 
     it('should instantiate', () => {
@@ -32,7 +33,7 @@ describe('Xrm.Page Mock', () => {
         });
 
         it('by string should return Bloggs for lastname', () => {
-            expect(this.xrmPageMock.getAttribute('lastname')).toBe(this.lastName);       
+            expect(this.xrmPageMock.getAttribute('lastname')).toBe(this.lastName);
         });
 
         it('by index should return Bloggs for 2', () => {

@@ -4,7 +4,7 @@ import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute
 
 describe('Xrm.Page.BooleanAttribute Mock', () => {
     beforeEach(() => {
-        this.booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock('new_isHavingFun', true, false)));
+        this.booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock({ name: 'new_isHavingFun', value: true, isDirty: false })));
     });
 
     it('should instantiate', () => {

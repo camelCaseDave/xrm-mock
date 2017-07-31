@@ -2,7 +2,7 @@ import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
 
 describe('Xrm.Page.Attribute Mock', () => {
     beforeEach(() => {
-        this.attributeMock = new AttributeMock('firstname', 'Joe', false, 'none', 'dirty');
+        this.attributeMock = new AttributeMock({name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'none', submitMode: 'dirty'});
     });
 
     it('should initialise', () => {

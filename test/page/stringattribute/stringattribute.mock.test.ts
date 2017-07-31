@@ -1,9 +1,9 @@
 import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { StringAttributeMock} from '../../../src/page/stringattribute/stringattribute.mock';
+import { StringAttributeMock } from '../../../src/page/stringattribute/stringattribute.mock';
 
 describe('Xrm.Page.StringAttribute Mock', () => {
     beforeEach(() => {
-        let attribute = new AttributeMock('firstname', 'Joe', false, 'required', 'dirty');
+        let attribute = new AttributeMock({ name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'required', submitMode: 'dirty' });
         this.stringAttribute = new StringAttributeMock(attribute, 'text', 20);
     });
 

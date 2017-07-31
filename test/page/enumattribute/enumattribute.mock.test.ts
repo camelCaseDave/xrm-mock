@@ -3,7 +3,7 @@ import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute
 
 describe('Xrm.Page.EnumAttribute Mock', () => {
     beforeEach(() => {
-        let attribute = new AttributeMock('new_havingFun', true, false, 'none', 'always');
+        let attribute = new AttributeMock({ name: 'new_havingFun', value: true, isDirty: false, requiredLevel: 'none', submitMode: 'always' });
         this.enumAttribute = new EnumAttributeMock(attribute);
     });
 

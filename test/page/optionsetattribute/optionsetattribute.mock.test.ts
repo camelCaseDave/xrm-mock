@@ -5,7 +5,7 @@ import { OptionSetAttributeMock } from '../../../src/page/optionsetattribute/opt
 
 describe('Xrm.Page.OptionSetAttribute Mock', () => {
     beforeEach(() => {
-        let enumAttribute = new EnumAttributeMock(new AttributeMock('new_leadSources', 100000, false, 'recommended', 'dirty'));
+        let enumAttribute = new EnumAttributeMock(new AttributeMock({ name: 'new_leadSources', value: 100000, isDirty: false, requiredLevel: 'recommended', submitMode: 'dirty' }));
         let options: OptionSetValueMock[] = [
             new OptionSetValueMock('Phone Call', 100000),
             new OptionSetValueMock('In Person', 100001),
