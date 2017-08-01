@@ -4,12 +4,12 @@ export class ProcessMock implements Xrm.Page.Process {
     stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>;
     rendered: boolean;
 
-    constructor(id: string, name: string, stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>, rendered: boolean) {
-        this.id = id;
-        this.name = name;
-        this.stages = stages;
-        this.rendered = rendered;
-    }    
+    constructor(components: ProcessComponents) {
+        this.id = components.id;
+        this.name = components.name;
+        this.stages = components.stages;
+        this.rendered = components.rendered;
+    }
 
     getId(): string {
         return this.id;
@@ -26,4 +26,11 @@ export class ProcessMock implements Xrm.Page.Process {
     isRendered(): boolean {
         return this.rendered;
     }
+}
+
+export interface ProcessComponents {
+    id: string;
+    name: string;
+    stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>;
+    rendered: boolean;
 }

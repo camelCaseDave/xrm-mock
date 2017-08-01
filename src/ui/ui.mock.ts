@@ -1,7 +1,10 @@
+import { FormItemMock } from '../page/formitem/formitem.mock';
+import { FormSelectorMock } from '../page/formselector/formselector.mock';
+
 export class UiMock implements Xrm.Ui {
     process: Xrm.Page.ui.ProcessManager;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    formSelector: Xrm.Page.FormSelector;
+    formSelector: FormSelectorMock;
     navigation: Xrm.Page.Navigation;
     tabs: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
     quickForms: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>;
@@ -61,7 +64,15 @@ export class UiMock implements Xrm.Ui {
     }
 
     getFormType(): XrmEnum.FormType {
-        throw ('getFormType not implemented');
+        if (this.formSelector) {
+            let currentForm = this.formSelector.getCurrentItem() as FormItemMock;
+
+            if (currentForm) {
+                return currentForm.formType;
+            }
+        } else {
+            return XrmEnum.FormType.Undefined;
+        }
     }
 
     getViewPortHeight(): number {
@@ -80,7 +91,7 @@ export class UiMock implements Xrm.Ui {
 export interface UiComponents {
     process?: Xrm.Page.ui.ProcessManager;
     controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    formSelector?: Xrm.Page.FormSelector;
+    formSelector?: FormSelectorMock;
     navigation?: Xrm.Page.Navigation;
     tabs?: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
     quickForms?: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>

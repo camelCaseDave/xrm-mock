@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProcessMock = (function () {
-    function ProcessMock(id, name, stages, rendered) {
-        this.id = id;
-        this.name = name;
-        this.stages = stages;
-        this.rendered = rendered;
+    function ProcessMock(components) {
+        this.id = components.id;
+        this.name = components.name;
+        this.stages = components.stages;
+        this.rendered = components.rendered;
     }
     ProcessMock.prototype.getId = function () {
         return this.id;

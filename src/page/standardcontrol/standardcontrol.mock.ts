@@ -9,7 +9,7 @@ export class StandardControlMock implements Xrm.Page.StandardControl {
 
     constructor(components: StandardControlComponents) {
         this.control = components.control;
-        this.disabled = components.disabled;
+        this.disabled = components.disabled || false;
         this.uiStandardElement = components.uiStandardElement;
         this.uiFocusable = components.uiFocusable;
         this.attribute = components.attribute;

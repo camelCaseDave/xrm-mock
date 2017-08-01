@@ -1,8 +1,20 @@
+import { FormSelectorMock } from '../../src/page/formselector/formselector.mock';
+import { FormItemMock } from '../../src/page/formitem/formitem.mock';
+import { ItemCollectionMock } from '../../src/collection/itemcollection/itemcollection.mock';
 import { UiMock } from '../../src/ui/ui.mock';
 
 describe('Xrm.Ui Mock', function () {
     beforeEach(() => {
-        this.xrmUiMock = new UiMock({});
+        this.xrmUiMock = new UiMock({
+            formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>([
+                new FormItemMock({
+                    id: "5",
+                    label: "Main",
+                    formType: 2,
+                    currentItem: true
+                })
+            ]))
+        });
     });
     it('should exist', () => {
         expect(this.xrmUiMock).toBeDefined();
@@ -20,5 +32,8 @@ describe('Xrm.Ui Mock', function () {
     it('should clear form notification if matched by id', () => {
         expect(this.xrmUiMock.setFormNotification('You have been notified', 'INFO', 'id1')).toBe(true);
         expect(this.xrmUiMock.clearFormNotification('id1')).toBe(true);
+    });
+    it('should have a form type of update', () => {
+        expect(this.xrmUiMock.getFormType()).toBe(2);
     })
 })

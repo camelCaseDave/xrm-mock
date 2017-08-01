@@ -1,7 +1,7 @@
-import { ProcessMock} from '../../../src/page/process/process.mock';
-import { StageMock} from '../../../src/page/stage/stage.mock';
+import { ProcessMock } from '../../../src/page/process/process.mock';
+import { StageMock } from '../../../src/page/stage/stage.mock';
 import { StepMock } from '../../../src/page/step/step.mock';
-import { ItemCollectionMock} from '../../../src/collection/itemcollection/itemcollection.mock';
+import { ItemCollectionMock } from '../../../src/collection/itemcollection/itemcollection.mock';
 
 describe('Xrm.Page.Process Mock', () => {
     beforeEach(() => {
@@ -10,7 +10,7 @@ describe('Xrm.Page.Process Mock', () => {
         let stage1 = new StageMock('6001', 'Start', 'active', null, [firstNameStep]);
         let stage2 = new StageMock('6002', 'Finish', 'active', null, [lastNameStep]);
 
-        this.process = new ProcessMock('4444', 'Sales Process', new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), true);
+        this.process = new ProcessMock({ id: '4444', name: 'Sales Process', stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), rendered: true });
     });
 
     it('should instantiate', () => {

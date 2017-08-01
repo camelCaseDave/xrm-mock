@@ -52,7 +52,15 @@ var UiMock = (function () {
         throw ('close not implemented');
     };
     UiMock.prototype.getFormType = function () {
-        throw ('getFormType not implemented');
+        if (this.formSelector) {
+            var currentForm = this.formSelector.getCurrentItem();
+            if (currentForm) {
+                return currentForm.formType;
+            }
+        }
+        else {
+            return 0 /* Undefined */;
+        }
     };
     UiMock.prototype.getViewPortHeight = function () {
         throw ('getViewPortHeight not implemented');

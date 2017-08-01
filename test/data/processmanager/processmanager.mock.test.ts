@@ -11,8 +11,8 @@ describe('Xrm.Page.data.ProcessManager Mock', () => {
         let stage1 = new StageMock('6001', 'Start', 'active', null, [firstNameStep]);
         let stage2 = new StageMock('6002', 'Finish', 'inactive', null, [lastNameStep]);
 
-        this.process1 = new ProcessMock('4444', 'Sales Process', new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), true);
-        this.process2 = new ProcessMock('5555', 'Service Process', new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), false);
+        this.process1 = new ProcessMock({ id: '4444', name: 'Sales Process', stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), rendered: true });
+        this.process2 = new ProcessMock({ id: '5555', name: 'Service Process', stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), rendered: false });
         this.processManager = new ProcessManagerMock([this.process1, this.process2]);
     });
 
