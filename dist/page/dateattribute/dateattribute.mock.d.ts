@@ -4,7 +4,7 @@ export declare class DateAttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
     attribute: AttributeMock;
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
-    constructor(attribute: AttributeMock, dateAttributeFormat: Xrm.Page.DateAttributeFormat, controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>);
+    constructor(components: DateAttributeComponents);
     getFormat(): Xrm.Page.DateAttributeFormat;
     getValue(): Date;
     setValue(value: Date): void;
@@ -20,4 +20,9 @@ export declare class DateAttributeMock implements Xrm.Page.Attribute {
     removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
     setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void;
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
+}
+export interface DateAttributeComponents {
+    attribute: AttributeMock;
+    dateAttributeFormat: Xrm.Page.DateAttributeFormat;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
 }

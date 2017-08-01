@@ -1,8 +1,9 @@
 /// <reference types="xrm" />
+import { StandardControlMock } from '../../../dist/page/standardcontrol/standardcontrol.mock';
 export declare class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
-    standardControl: Xrm.Page.StandardControl;
+    standardControl: StandardControlMock;
     uiKeyPressable: Xrm.Page.UiKeyPressable;
-    constructor(standardControl: Xrm.Page.StandardControl, uiKeyPressable: Xrm.Page.UiKeyPressable);
+    constructor(standardControl: StandardControlMock, uiKeyPressable: Xrm.Page.UiKeyPressable);
     getValue(): string;
     hideAutoComplete(): void;
     showAutoComplete(resultSet: Xrm.Page.AutoCompleteResultSet): void;

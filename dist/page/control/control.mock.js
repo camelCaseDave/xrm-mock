@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ControlMock = (function () {
-    function ControlMock(name, controlType, uiLabelElement, uiCanGetVisibleElement, parent) {
-        this.controlType = controlType;
-        this.uiLabelElement = uiLabelElement;
-        this.uiCanGetVisibleElement = uiCanGetVisibleElement;
-        this.name = name;
-        this.parent = parent;
+    function ControlMock(components) {
+        this.controlType = components.controlType;
+        this.uiLabelElement = components.uiLabelElement;
+        this.uiCanGetVisibleElement = components.uiCanGetVisibleElement;
+        this.name = components.name;
+        this.parent = components.parent;
     }
     ControlMock.prototype.getControlType = function () {
         return this.controlType;

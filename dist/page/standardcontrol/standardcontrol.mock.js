@@ -21,12 +21,15 @@ var StandardControlMock = (function () {
         throw ('set notification not implemented');
     };
     StandardControlMock.prototype.getAttribute = function () {
-        if (['subgrid', 'iframe', 'webresource'].indexOf(this.control.getControlType()) === -1)
+        if (['subgrid', 'iframe', 'webresource'].indexOf(this.control.getControlType()) === -1) {
             return this.attribute;
-        else
+        }
+        else {
             throw ('control is not bound to an attribute because it is of type ' + this.control.getControlType());
+        }
     };
     StandardControlMock.prototype.getControlType = function () {
+        this.control.controlType = "standard";
         return this.control.getControlType();
     };
     StandardControlMock.prototype.getName = function () {
