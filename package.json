@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "index",
   "directories": {
     "test": "test"

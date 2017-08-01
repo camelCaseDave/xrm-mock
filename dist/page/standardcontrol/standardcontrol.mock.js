@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var StandardControlMock = (function () {
-    function StandardControlMock(control, attribute, disabled, uiStandardElement, uiFocusable) {
-        this.control = control;
-        this.disabled = disabled;
-        this.uiStandardElement = uiStandardElement;
-        this.uiFocusable = uiFocusable;
-        this.attribute = attribute;
+    function StandardControlMock(components) {
+        this.control = components.control;
+        this.disabled = components.disabled;
+        this.uiStandardElement = components.uiStandardElement;
+        this.uiFocusable = components.uiFocusable;
+        this.attribute = components.attribute;
     }
     StandardControlMock.prototype.clearNotification = function (uniqueId) {
         throw ('clear notification not implemented');

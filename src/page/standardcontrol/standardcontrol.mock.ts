@@ -7,12 +7,12 @@ export class StandardControlMock implements Xrm.Page.StandardControl {
     uiFocusable: Xrm.Page.UiFocusable;
     attribute: Xrm.Page.Attribute;
 
-    constructor(control: ControlMock, attribute: Xrm.Page.Attribute, disabled: boolean, uiStandardElement: Xrm.Page.UiStandardElement, uiFocusable: Xrm.Page.UiFocusable) {
-        this.control = control;
-        this.disabled = disabled;
-        this.uiStandardElement = uiStandardElement;
-        this.uiFocusable = uiFocusable;
-        this.attribute = attribute;
+    constructor(components: StandardControlComponents) {
+        this.control = components.control;
+        this.disabled = components.disabled;
+        this.uiStandardElement = components.uiStandardElement;
+        this.uiFocusable = components.uiFocusable;
+        this.attribute = components.attribute;
     }
 
     clearNotification(uniqueId?: string): boolean {
@@ -71,4 +71,12 @@ export class StandardControlMock implements Xrm.Page.StandardControl {
     setFocus(): void {
         this.uiFocusable.setFocus();
     }
+}
+
+export interface StandardControlComponents {
+    control: ControlMock;
+    attribute: Xrm.Page.Attribute;
+    disabled?: boolean;
+    uiStandardElement?: Xrm.Page.UiStandardElement;
+    uiFocusable?: Xrm.Page.UiFocusable;
 }

@@ -1,11 +1,13 @@
+import { ControlMock } from '../control/control.mock';
 /// <reference types="xrm" />
+
 export declare class StandardControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;
     control: Xrm.Page.Control;
     uiStandardElement: Xrm.Page.UiStandardElement;
     uiFocusable: Xrm.Page.UiFocusable;
     attribute: Xrm.Page.Attribute;
-    constructor(control: Xrm.Page.Control, attribute: Xrm.Page.Attribute, disabled: boolean, uiStandardElement: Xrm.Page.UiStandardElement, uiFocusable: Xrm.Page.UiFocusable);
+    constructor(components: StandardControlComponents);
     clearNotification(uniqueId?: string): boolean;
     getDisabled(): boolean;
     setDisabled(disabled: boolean): void;
@@ -19,4 +21,11 @@ export declare class StandardControlMock implements Xrm.Page.StandardControl {
     getVisible(): boolean;
     setVisible(visible: boolean): void;
     setFocus(): void;
+}
+export interface StandardControlComponents {
+    control: ControlMock;
+    attribute: Xrm.Page.Attribute;
+    disabled?: boolean;
+    uiStandardElement?: Xrm.Page.UiStandardElement;
+    uiFocusable?: Xrm.Page.UiFocusable;
 }
