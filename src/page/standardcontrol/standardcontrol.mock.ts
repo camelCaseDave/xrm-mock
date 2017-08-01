@@ -1,11 +1,13 @@
+import { ControlMock } from './../control/control.mock';
+
 export class StandardControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;
-    control: Xrm.Page.Control;
+    control: ControlMock;
     uiStandardElement: Xrm.Page.UiStandardElement;
     uiFocusable: Xrm.Page.UiFocusable;
     attribute: Xrm.Page.Attribute;
 
-    constructor(control: Xrm.Page.Control, attribute: Xrm.Page.Attribute, disabled: boolean, uiStandardElement: Xrm.Page.UiStandardElement, uiFocusable: Xrm.Page.UiFocusable) {
+    constructor(control: ControlMock, attribute: Xrm.Page.Attribute, disabled: boolean, uiStandardElement: Xrm.Page.UiStandardElement, uiFocusable: Xrm.Page.UiFocusable) {
         this.control = control;
         this.disabled = disabled;
         this.uiStandardElement = uiStandardElement;
@@ -30,13 +32,15 @@ export class StandardControlMock implements Xrm.Page.StandardControl {
     }
 
     getAttribute(): Xrm.Page.Attribute {
-        if (['subgrid', 'iframe', 'webresource'].indexOf(this.control.getControlType()) === -1)
+        if (['subgrid', 'iframe', 'webresource'].indexOf(this.control.getControlType()) === -1) {
             return this.attribute;
-
-        else throw ('control is not bound to an attribute because it is of type ' + this.control.getControlType());
+        } else {
+            throw ('control is not bound to an attribute because it is of type ' + this.control.getControlType());
+        }
     }
 
     getControlType(): Xrm.Page.ControlType | string {
+        this.control.controlType = "standard";
         return this.control.getControlType();
     }
 

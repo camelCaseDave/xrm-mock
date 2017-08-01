@@ -20,11 +20,11 @@ export class BooleanAttributeMock implements Xrm.Page.BooleanAttribute {
         this.attribute.setValue(value);
     }
 
-     getFormat(): Xrm.Page.AttributeFormat {
+    getFormat(): Xrm.Page.AttributeFormat {
         return this.attribute.getFormat();
     }
 
-   addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
+    addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
         this.attribute.addOnChange(handler);
     }
 
@@ -70,5 +70,5 @@ export class BooleanAttributeMock implements Xrm.Page.BooleanAttribute {
 
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
         this.attribute.setSubmitMode(submitMode);
-    }  
+    }
 }

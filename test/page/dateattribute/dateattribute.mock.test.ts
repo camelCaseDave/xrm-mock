@@ -3,7 +3,14 @@ import { DateAttributeMock } from '../../../src/page/dateattribute/dateattribute
 
 describe('Xrm.Page.DateAttribute Mock', () => {
     beforeEach(() => {
-        this.dateAttribute = new DateAttributeMock(new AttributeMock({ name: 'birthdate', value: new Date('January 1, 1990'), isDirty: false }), 'date');
+        this.dateAttribute = new DateAttributeMock({
+            attribute: new AttributeMock({
+                name: 'birthdate',
+                value: new Date('January 1, 1990'),
+                isDirty: false
+            }),
+            dateAttributeFormat: 'date'
+        });
     });
 
     it('should instantiate', () => {

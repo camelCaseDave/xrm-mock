@@ -7,14 +7,15 @@ import { EntityMock } from './../../../src/page/entity/entity.mock';
 describe('Xrm.Page.Entity Mock', () => {
     beforeEach(() => {
         let attributes: AttributeMock[] = [];
-        attributes.push(new AttributeMock('firstname', 'Joe', false, 'none'));
-        attributes.push(new AttributeMock('description', ''));
-        this.lastName = new AttributeMock('lastname', 'Bloggs', false, 'recommended', 'always');
+        attributes.push(new AttributeMock({ name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'none' }));
+        attributes.push(new AttributeMock({ name: 'description', value: '' }));
+        this.lastName = new AttributeMock({ name: 'lastname', value: 'Bloggs', isDirty: false, requiredLevel: 'recommended', submitMode: 'always' });
         attributes.push(this.lastName);
 
         this.entityMock = new EntityMock(new ItemCollectionMock<AttributeMock>(attributes));
-        this.xrmPageMock = new PageMock(
-            new DataMock(this.entityMock));
+        this.xrmPageMock = new PageMock({
+            data: new DataMock(this.entityMock)
+        });
     });
 
     it('should exist', () => {

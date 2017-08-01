@@ -4,9 +4,12 @@ import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleele
 
 describe('Xrm.Page.Control Mock', () => {
     beforeEach(() => {
-        this.control = new ControlMock('Subgrid_Main', 'subgrid',
-            new UiLabelElementMock('Main Subgrid'),
-            new UiCanGetVisibleElementMock(true));
+        this.control = new ControlMock({
+            name: 'Subgrid_Main', 
+            controlType: 'subgrid',
+            uiLabelElement: new UiLabelElementMock('Main Subgrid'),
+            uiCanGetVisibleElement: new UiCanGetVisibleElementMock(true)
+        });
     });
 
     it('should initialise', () => {

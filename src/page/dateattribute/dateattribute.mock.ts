@@ -5,11 +5,11 @@ export class DateAttributeMock implements Xrm.Page.Attribute {
     attribute: AttributeMock
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
 
-    constructor(attribute: AttributeMock, dateAttributeFormat: Xrm.Page.DateAttributeFormat, controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>) {
-        this.attribute = attribute;
-        this.dateAttributeFormat = dateAttributeFormat;
-        this.controls = controls;
-        this.attribute.attributeFormat = dateAttributeFormat;
+    constructor(components: DateAttributeComponents) {
+        this.attribute = components.attribute;
+        this.dateAttributeFormat = components.dateAttributeFormat;
+        this.controls = components.controls;
+        this.attribute.attributeFormat = components.dateAttributeFormat;
     }
 
     getFormat(): Xrm.Page.DateAttributeFormat {
@@ -71,4 +71,10 @@ export class DateAttributeMock implements Xrm.Page.Attribute {
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
         this.attribute.setSubmitMode(submitMode);
     }
+}
+
+export interface DateAttributeComponents {
+    attribute: AttributeMock;
+    dateAttributeFormat: Xrm.Page.DateAttributeFormat;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
 }
