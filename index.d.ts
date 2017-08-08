@@ -1,3 +1,6 @@
+export { FormSelectorMock } from './dist/page/formselector/formselector.mock';
+export { FormItemComponents } from './dist/page/formitem/formitem.mock.d';
+export { FormItemMock } from './dist/page/formitem/formitem.mock';
 export { ClientContextMock } from './dist/clientcontext/clientcontext.mock';
 export { ItemCollectionMock } from './dist/collection/itemcollection/itemcollection.mock';
 export { ContextMock } from './dist/context/context.mock';
@@ -35,4 +38,4 @@ export { FormOpenParametersMock } from './dist/utility/formopenparameters/formop
 export { UiMock } from './dist/ui/ui.mock';
 export { UtilityMock } from './dist/utility/utility.mock';
 export { WindowMock } from './dist/window.mock';
-export { XrmStaticMock } from './dist/xrmstatic.mock';
+export { XrmStaticMock, XrmStaticComponents } from './dist/xrmstatic.mock';

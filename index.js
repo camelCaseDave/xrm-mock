@@ -1,5 +1,9 @@
 "use strict";
 exports.__esModule = true;
+var formselector_mock_1 = require("./dist/page/formselector/formselector.mock");
+exports.FormSelectorMock = formselector_mock_1.FormSelectorMock;
+var formitem_mock_1 = require("./dist/page/formitem/formitem.mock");
+exports.FormItemMock = formitem_mock_1.FormItemMock;
 var clientcontext_mock_1 = require("./dist/clientcontext/clientcontext.mock");
 exports.ClientContextMock = clientcontext_mock_1.ClientContextMock;
 var itemcollection_mock_1 = require("./dist/collection/itemcollection/itemcollection.mock");
