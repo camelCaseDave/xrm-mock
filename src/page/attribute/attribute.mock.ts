@@ -6,6 +6,7 @@ export class AttributeMock implements Xrm.Page.Attribute {
     submitMode: Xrm.Page.SubmitMode;
     value: any;
     attributeFormat: Xrm.Page.AttributeFormat;
+    eventHandlers: Xrm.Page.ContextSensitiveHandler[] = [];
 
     public constructor(components: AttributeComponents) {
         this.name = components.name;
@@ -17,11 +18,16 @@ export class AttributeMock implements Xrm.Page.Attribute {
     }
 
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw ('addOnChange not implemented');
+       this.eventHandlers.push(handler);
     }
 
     fireOnChange(): void {
-        throw ('fireOnChange not implemented');
+        if (this.eventHandlers.length) {
+            for (var i =0; i < this.eventHandlers.length; i++) {
+                //TODO test - also potentially accepts context as first and only parameter
+                (this.eventHandlers[i] as Function).call(this);
+            }
+        }
     }
 
     getAttributeType(): string {
@@ -68,12 +74,13 @@ export class AttributeMock implements Xrm.Page.Attribute {
         this.submitMode = submitMode;
     }
 
-    getValue(): any {
+    getValue(): any {        
         return this.value;
     }
 
-    setValue(value: any): void {
+    setValue(value: any): void {        
         this.value = value;
+        this.fireOnChange();
         this.isDirty = true;
     }
 }

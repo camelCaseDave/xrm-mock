@@ -2,10 +2,15 @@ import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
 
 describe('Xrm.Page.Attribute Mock', () => {
     beforeEach(() => {
-        this.attributeMock = new AttributeMock({name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'none', submitMode: 'dirty'});
+        this.attributeMock = new AttributeMock({
+            name: 'firstname', 
+            value: 'Joe', 
+            isDirty: false, 
+            requiredLevel: 'none', 
+            submitMode: 'dirty'});
     });
 
-    it('should initialise', () => {
+    it('should exist', () => {
         expect(this.attributeMock).toBeDefined();
     });
 
@@ -64,5 +69,7 @@ describe('Xrm.Page.Attribute Mock', () => {
         this.attributeMock.setValue('Alan');
         value = this.attributeMock.getValue();
         expect(value).toBe('Alan');
+
+        expect(this.attributeMock.getIsDirty()).toBe(true);
     });
 });
