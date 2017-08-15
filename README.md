@@ -65,6 +65,8 @@ describe("contact", () => {
 });
 ```
 
+Get started <i>even faster</i> with my brother: `xrm-mock-generator` [[link]](https://github.com/camelCaseDave/xrm-mock-generator)
+
 ## :heart:  Contributing and Project Roadmap:
  - Increase test coverage
  - Increase implementation
