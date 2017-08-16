@@ -1,3 +1,9 @@
+import { UiKeyPressableMock } from '../../src/page/uikeypressable/uikeypressable.mock';
+import { StandardControlMock } from './../../src/page/standardcontrol/standardcontrol.mock';
+import { AutoLookupControlMock } from './../../src/page/autolookupcontrol/autolookupcontrol.mock';
+import { StringControlMock } from '../../src/page/stringcontrol/stringcontrol.mock';
+import { ControlMock } from './../../src/page/control/control.mock';
+import { UiMock } from '../../src/ui/ui.mock';
 /// <reference path="../../node_modules/@types/xrm/index.d.ts" />
 /// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
 
@@ -19,17 +25,28 @@ describe('Xrm.Page Mock', () => {
         this.xrmPageMock = new PageMock({
             data: new DataMock(
                 new EntityMock(
-                    new ItemCollectionMock<AttributeMock>(attributes)))
+                    new ItemCollectionMock<AttributeMock>(attributes))),
+                    ui: new UiMock({
+                        controls: new ItemCollectionMock([
+                            new StringControlMock(new AutoLookupControlMock(new StandardControlMock({
+                                attribute: this.lastname,
+                                control: new ControlMock({
+                                    name: 'lastname',
+                                    controlType: 'standard'
+                                })
+                            }), new UiKeyPressableMock))
+                        ])   
+                    })
         });
     });
 
-    it('should instantiate', () => {
+    it('should exist', () => {
         expect(this.xrmPageMock).toBeDefined();
     });
 
     describe('getAttribute', () => {
-        it('should be defined', () => {
-            expect(this.xrmPageMock).toBeDefined();
+        it('should exist', () => {
+            expect(this.xrmPageMock.getAttribute).toBeDefined();
         });
 
         it('by string should return Bloggs for lastname', () => {
@@ -42,6 +59,16 @@ describe('Xrm.Page Mock', () => {
 
         it('should get attribute and value in one line', () => {
             expect(this.xrmPageMock.getAttribute('firstname').getValue()).toBe('Joe');
+        });
+    });
+
+    describe('getControl', () => {
+        it('should exist', () => {
+            expect(this.xrmPageMock.getControl).toBeDefined();
+        });
+
+        it('should return Bloggs for the control\'s bound attribute value', () => {
+            expect(this.xrmPageMock.getControl('lastname').getValue()).toBe('Bloggs');
         });
     });
 })

@@ -30,7 +30,7 @@ export { StringAttributeMock } from './dist/page/stringattribute/stringattribute
 export { StringControlMock } from './dist/page/stringcontrol/stringcontrol.mock';
 export { UiCanGetVisibleElementMock } from './dist/page/uicangetvisibleelement/uicangetvisibleelement.mock';
 export { UiFocusableMock } from './dist/page/uifocusable/uifocusable.mock';
-export { UiKeyPressable } from './dist/page/uikeypressable/uikeypressable.mock';
+export { UiKeyPressableMock } from './dist/page/uikeypressable/uikeypressable.mock';
 export { UiLabelElementMock } from './dist/page/uilabelelement/uilabelelement.mock';
 export { UiStandardElementMock } from './dist/page/uistandardelement/uistandardelement.mock';
 export { OpenParametersMock } from './dist/utility/openparameters/openparameters.mock';
