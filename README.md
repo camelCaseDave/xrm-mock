@@ -8,64 +8,55 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 
 
 ## :books: Usage:
- - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm install xrm-mock```
-
- - Create a `.ts` file for your entity form:
+ - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
  
- ```typescript
-export namespace Company.Contact {
-    export namespace MainForm {
-        let contact: Contact;
+ - install generation tool ```npm i xrm-mock-generator```
 
-        export function onLoad(xrm?: Xrm.XrmStatic): void {
-            contact = new Contact(xrm || Xrm);
-            contact.changeFirstName("Joe");
-        }
+ - Create a  file for your entity form:
+ 
+ #### src/contact.js
+ ```javascript
+(function () {
+    "use strict";
+    
+    var Contact = () => {  };
+    
+    Contact.prototype.onLoad = function () {
+        Xrm.Page.getAttribute("firstname").setValue("Bob");
     }
-
-    class Contact {
-        constructor(xrm?: Xrm.XrmStatic) {
-            Xrm = xrm || Xrm;
-        }
-
-        changeFirstName(newName: string): void {
-            Xrm.Page.getAttribute("firstname").setValue(newName);
-        }
-    }
-}
+    
+    // node
+    module.exports = new Contact();
+    
+    // browser
+    global.Contact = new Contact();    
+}());
  ```
  
- - Create a `.ts` file to test your entity form:
+ - Create a file to test your entity form:
 
-```typescript
-import * as XrmMock from "xrm-mock";
-import { Company } from "../src/contact";
-
-describe("contact", () => {
+#### test/contact.test.js
+```javascript
+describe("Contact Form", () => {
+    var XrmMockGenerator = require("xrm-mock-generator");
+    var ContactForm = require("../src/contact.js");
+    
     beforeEach(() => {
-        let attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute> = new XrmMock.ItemCollectionMock([
-            new XrmMock.AttributeMock("firstname", "Phil", false, "required")
-        ]);
-
-        this.Xrm = new XrmMock.XrmStaticMock(
-            new XrmMock.PageMock(
-                new XrmMock.DataMock(
-                    new XrmMock.EntityMock(
-                        attributes
-                    )
-                )
-            ));
+        XrmMockGenerator.initialise();
+        XrmMockGenerator.createString("firstname", "Joe");
     });
-    it("works", () => {
-        Company.Contact.MainForm.onLoad(this.Xrm);
-        let firstName: string = Xrm.Page.getAttribute("firstname").getValue();
-
-        expect(firstName).toBe("Joe");
+    
+    describe("default", () => {
+        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe"); // true
+    });
+    
+    describe("onLoad", () => {
+        ContactForm.onLoad();
+        
+        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Bob"); // true
     });
 });
 ```
-
-Get started <i>even faster</i> with my brother: `xrm-mock-generator` [[link]](https://github.com/camelCaseDave/xrm-mock-generator)
 
 ## :heart:  Contributing and Project Roadmap:
  - Increase test coverage
