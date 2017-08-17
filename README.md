@@ -10,7 +10,7 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 ## :books: Usage:
  - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
  
- - install generation tool ```npm i xrm-mock-generator```
+ - Install generation tool ```npm i xrm-mock-generator``` (_recommended_)
 
  - Create a  file for your entity form:
  
