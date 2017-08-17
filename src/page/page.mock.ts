@@ -44,15 +44,15 @@ export class PageMock implements Xrm.Page {
         if (!arguments.length) {
             return this.ui.controls.get();
         }
-        else if (param && typeof param === "string") {
+        else if (typeof param === "string") {
             return this.ui.controls.get(item => item.getName() === param)[0];
         }
 
-        else if (param && typeof param === "number") {
+        else if (typeof param === "number") {
             return this.ui.controls.get()[param];
         }
         else if (<Xrm.Collection.MatchingDelegate<Xrm.Page.Control>>param !== undefined) {
-            throw ('getControl not implemented');
+            throw ('getControl as delegate not implemented');
         }
     }    
 }

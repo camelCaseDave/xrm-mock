@@ -7,6 +7,7 @@ export declare class AttributeMock implements Xrm.Page.Attribute {
     submitMode: Xrm.Page.SubmitMode;
     value: any;
     attributeFormat: Xrm.Page.AttributeFormat;
+    eventHandlers: Xrm.Page.ContextSensitiveHandler[];
     constructor(components: AttributeComponents);
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
     fireOnChange(): void;

@@ -25,14 +25,14 @@ var PageMock = (function () {
         if (!arguments.length) {
             return this.ui.controls.get();
         }
-        else if (param && typeof param === "string") {
+        else if (typeof param === "string") {
             return this.ui.controls.get(function (item) { return item.getName() === param; })[0];
         }
-        else if (param && typeof param === "number") {
+        else if (typeof param === "number") {
             return this.ui.controls.get()[param];
         }
         else if (param !== undefined) {
-            throw ('getControl not implemented');
+            throw ('getControl as delegate not implemented');
         }
     };
     return PageMock;

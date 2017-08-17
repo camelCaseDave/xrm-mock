@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var EntityMock = (function () {
-    function EntityMock(attributes) {
+    function EntityMock(id, attributes) {
+        this.id = id;
         this.attributes = attributes;
     }
     EntityMock.prototype.addOnSave = function (handler) {
@@ -14,7 +15,7 @@ var EntityMock = (function () {
         throw ('getDataXml not implemented');
     };
     EntityMock.prototype.getId = function () {
-        throw ('getId not implemented');
+        return this.id;
     };
     EntityMock.prototype.getIsDirty = function () {
         var isDirty = false;

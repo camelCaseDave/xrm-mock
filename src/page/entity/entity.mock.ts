@@ -1,7 +1,9 @@
 export class EntityMock implements Xrm.Page.Entity {
+    id: string;
     attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>;
 
-    constructor(attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>) {
+    constructor(id: string, attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>) {
+        this.id = id;
         this.attributes = attributes;
     }
 
@@ -18,7 +20,7 @@ export class EntityMock implements Xrm.Page.Entity {
     }
 
     getId(): string {
-        throw ('getId not implemented');
+        return this.id;
     }
 
     getIsDirty(): boolean {

@@ -24,7 +24,7 @@ describe('Xrm.Page Mock', () => {
 
         this.xrmPageMock = new PageMock({
             data: new DataMock(
-                new EntityMock(
+                new EntityMock("{0}",
                     new ItemCollectionMock<AttributeMock>(attributes))),
                     ui: new UiMock({
                         controls: new ItemCollectionMock([
@@ -68,7 +68,7 @@ describe('Xrm.Page Mock', () => {
         });
 
         it('should return Bloggs for the control\'s bound attribute value', () => {
-            expect(this.xrmPageMock.getControl('lastname').getValue()).toBe('Bloggs');
+            expect(this.xrmPageMock.getControl().getValue('firstname')).toBe('Bloggs');
         });
     });
 })

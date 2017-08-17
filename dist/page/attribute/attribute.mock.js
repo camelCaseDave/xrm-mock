@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var AttributeMock = (function () {
     function AttributeMock(components) {
+        this.eventHandlers = [];
         this.name = components.name;
         this.value = components.value;
         this.isDirty = components.isDirty;
@@ -10,10 +11,15 @@ var AttributeMock = (function () {
         this.controls = components.controls;
     }
     AttributeMock.prototype.addOnChange = function (handler) {
-        throw ('addOnChange not implemented');
+        this.eventHandlers.push(handler);
     };
     AttributeMock.prototype.fireOnChange = function () {
-        throw ('fireOnChange not implemented');
+        if (this.eventHandlers.length) {
+            for (var i = 0; i < this.eventHandlers.length; i++) {
+                //TODO test - also potentially accepts context as first and only parameter
+                this.eventHandlers[i].call(this);
+            }
+        }
     };
     AttributeMock.prototype.getAttributeType = function () {
         return typeof this.value;
@@ -53,6 +59,7 @@ var AttributeMock = (function () {
     };
     AttributeMock.prototype.setValue = function (value) {
         this.value = value;
+        this.fireOnChange();
         this.isDirty = true;
     };
     return AttributeMock;

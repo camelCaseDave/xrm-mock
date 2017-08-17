@@ -13,8 +13,9 @@ var UiKeyPressableMock = (function () {
     };
     UiKeyPressableMock.prototype.removeOnKeyPress = function (handler) {
         var index = this.keyPressHandlers.indexOf(handler);
-        if (index > -1)
+        if (index > -1) {
             this.keyPressHandlers.splice(index);
+        }
     };
     return UiKeyPressableMock;
 }());
