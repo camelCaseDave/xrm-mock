@@ -1,3 +1,8 @@
+import { AttributeMock } from './../../../src/page/attribute/attribute.mock';
+import { UiKeyPressableMock } from '../../../src/page/uikeypressable/uikeypressable.mock';
+import { StandardControlMock } from './../../../src/page/standardcontrol/standardcontrol.mock';
+import { AutoLookupControlMock } from '../../../src/page/autolookupcontrol/autolookupcontrol.mock';
+import { StringControlMock } from './../../../src/page/stringcontrol/stringcontrol.mock';
 import { ControlMock } from '../../../src/page/control/control.mock';
 import { UiLabelElementMock } from '../../../src/page/uilabelelement/uilabelelement.mock';
 import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';
@@ -5,7 +10,7 @@ import { UiCanGetVisibleElementMock } from '../../../src/page/uicangetvisibleele
 describe('Xrm.Page.Control Mock', () => {
     beforeEach(() => {
         this.control = new ControlMock({
-            name: 'Subgrid_Main', 
+            name: 'Subgrid_Main',
             controlType: 'subgrid',
             uiLabelElement: new UiLabelElementMock('Main Subgrid'),
             uiCanGetVisibleElement: new UiCanGetVisibleElementMock(true)
@@ -42,4 +47,19 @@ describe('Xrm.Page.Control Mock', () => {
     it('should be visible', () => {
         expect(this.control.getVisible()).toBe(true);
     });
+
+    it('should get a value if it has an attribute', () => {
+        let stringControl = new StringControlMock(
+            new AutoLookupControlMock(
+                new StandardControlMock({
+                    attribute: new AttributeMock({ name: 'lastname', value: 'Bloggs' }),
+                    control: new ControlMock({
+                        name: 'lastname',
+                        controlType: 'standard'
+                    })
+                }),
+                new UiKeyPressableMock));
+
+        expect(stringControl.getValue()).toBe('Bloggs');
+    })
 });

@@ -29,7 +29,7 @@ describe('Xrm.Page Mock', () => {
                     ui: new UiMock({
                         controls: new ItemCollectionMock<StringControlMock>([
                             new StringControlMock(new AutoLookupControlMock(new StandardControlMock({
-                                attribute: this.lastname,
+                                attribute: this.lastName,
                                 control: new ControlMock({
                                     name: 'lastname',
                                     controlType: 'standard'
@@ -72,7 +72,7 @@ describe('Xrm.Page Mock', () => {
         });
 
         it('should return Bloggs for the control\'s bound attribute value', () => {
-            expect(this.xrmPageMock.getControl('lastname')).toBeDefined();
+            expect(this.xrmPageMock.getControl('lastname').getValue()).toBe('Bloggs');
         });
     });
 })

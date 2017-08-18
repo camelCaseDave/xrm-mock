@@ -6,7 +6,7 @@ export class StringControlMock implements Xrm.Page.StringControl {
     }
 
     getValue(): string {
-        throw ('get value not implemented');
+        return this.autoLookupControl.getValue();
     }
 
     hideAutoComplete(): void {

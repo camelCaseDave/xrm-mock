@@ -10,7 +10,7 @@ export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
     }
 
     getValue(): string {
-        throw ('get value not implemented');
+        return this.standardControl.attribute.getValue();
     }
 
     hideAutoComplete(): void {
