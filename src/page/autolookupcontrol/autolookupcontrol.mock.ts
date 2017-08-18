@@ -1,10 +1,11 @@
+import { UiKeyPressableMock } from '../uikeypressable/uikeypressable.mock';
 import { StandardControlMock } from '../../../dist/page/standardcontrol/standardcontrol.mock';
 
 export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
     standardControl: StandardControlMock;
-    uiKeyPressable: Xrm.Page.UiKeyPressable;
+    uiKeyPressable: UiKeyPressableMock;
 
-    constructor(standardControl: StandardControlMock, uiKeyPressable: Xrm.Page.UiKeyPressable) {
+    constructor(standardControl: StandardControlMock, uiKeyPressable: UiKeyPressableMock) {
         this.standardControl = standardControl;
         this.uiKeyPressable = uiKeyPressable;
     }
