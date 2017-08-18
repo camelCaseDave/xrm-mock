@@ -6,7 +6,7 @@ var AutoLookupControlMock = (function () {
         this.uiKeyPressable = uiKeyPressable;
     }
     AutoLookupControlMock.prototype.getValue = function () {
-        throw ('get value not implemented');
+        return this.standardControl.attribute.getValue();
     };
     AutoLookupControlMock.prototype.hideAutoComplete = function () {
         throw ('hide autocomplete not implemented');

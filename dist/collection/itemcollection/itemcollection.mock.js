@@ -12,16 +12,23 @@ var ItemCollectionMock = (function () {
         if (param === undefined || param === null) {
             return this.itemCollection;
         }
-        else if (param && typeof param === 'string') {
-            var attrs = this.itemCollection.filter(function (item) {
-                return (item.getName() === param);
-            });
-            return attrs[0] || undefined;
+        else if (typeof param === 'string') {
+            var attribute;
+            for (var i in this.itemCollection) {
+                var item = this.itemCollection[i];
+                if (item.getName !== undefined) {
+                    if (item.getName() === param) {
+                        attribute = item;
+                        break;
+                    }
+                }
+            }
+            return attribute;
         }
         else if (typeof param === 'number') {
             return this.itemCollection[param];
         }
-        else if (param && param !== undefined) {
+        else if (param !== undefined) {
             throw ('get itemcollection as delegate not implemented');
         }
     };

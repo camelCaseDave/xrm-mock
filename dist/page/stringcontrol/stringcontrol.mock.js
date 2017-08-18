@@ -5,7 +5,7 @@ var StringControlMock = (function () {
         this.autoLookupControl = autoLookupControl;
     }
     StringControlMock.prototype.getValue = function () {
-        throw ('get value not implemented');
+        return this.autoLookupControl.getValue();
     };
     StringControlMock.prototype.hideAutoComplete = function () {
         throw ('hide autocomplete not implemented');

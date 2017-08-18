@@ -25,8 +25,8 @@ var PageMock = (function () {
         if (!arguments.length) {
             return this.ui.controls.get();
         }
-        else if (typeof param === "string") {
-            return this.ui.controls.get(function (item) { return item.getName() === param; })[0];
+        else if (typeof param === 'string') {
+            return this.ui.controls.get(param);
         }
         else if (typeof param === "number") {
             return this.ui.controls.get()[param];
