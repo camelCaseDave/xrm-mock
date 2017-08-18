@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UiKeyPressableMock = (function () {
-    function UiKeyPressableMock() {
+    function UiKeyPressableMock(keyPressHandlers) {
+        this.keyPressHandlers = keyPressHandlers;
     }
     UiKeyPressableMock.prototype.addOnKeyPress = function (handler) {
         this.keyPressHandlers.push(handler);
