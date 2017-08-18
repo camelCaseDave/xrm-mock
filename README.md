@@ -10,7 +10,7 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
 ## :books: Usage:
  - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
  
- - Install generation tool ```npm i xrm-mock-generator``` (_recommended_)
+ - Install generation tool ```npm i xrm-mock-generator``` [[link]](https://github.com/camelCaseDave/xrm-mock-generator) (_biased recommendation_)
 
  - Create a  file for your entity form:
  
@@ -21,7 +21,7 @@ A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/g
     
     var Contact = () => {  };
     
-    Contact.prototype.onLoad = function () {
+    Contact.prototype.onLoad = () => {
         Xrm.Page.getAttribute("firstname").setValue("Bob");
     }
     
@@ -51,8 +51,7 @@ describe("Contact Form", () => {
     });
     
     describe("onLoad", () => {
-        ContactForm.onLoad();
-        
+        ContactForm.onLoad();        
         expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Bob"); // true
     });
 });
