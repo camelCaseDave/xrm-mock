@@ -21,17 +21,27 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
         if (param === undefined || param === null) {
             return this.itemCollection as T[];
         }
-        else if (param && typeof param === 'string') {
-            let attrs = this.itemCollection.filter(function (item) {
-                return ((<Xrm.Page.Attribute><any>item).getName() === param);
-            });
+        else if (typeof param === 'string') {
+            var attribute;
+            
+            for (var i in this.itemCollection) {
+                let item = this.itemCollection[i] as any;
 
-            return attrs[0] || undefined;
+                if (item.getName !== undefined) {
+                    if (item.getName() === param) {
+                        attribute = item;
+                        break;
+                    }
+                }
+            }
+
+            return attribute;
         }
         else if (typeof param === 'number') {
             return this.itemCollection[param];
         }
-        else if (param && <Xrm.Collection.MatchingDelegate<T>>param !== undefined) {
+
+        else if (<Xrm.Collection.MatchingDelegate<T>>param !== undefined) {
             throw ('get itemcollection as delegate not implemented');
         }
     }

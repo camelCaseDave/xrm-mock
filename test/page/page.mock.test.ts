@@ -27,7 +27,7 @@ describe('Xrm.Page Mock', () => {
                 new EntityMock("{0}",
                     new ItemCollectionMock<AttributeMock>(attributes))),
                     ui: new UiMock({
-                        controls: new ItemCollectionMock([
+                        controls: new ItemCollectionMock<StringControlMock>([
                             new StringControlMock(new AutoLookupControlMock(new StandardControlMock({
                                 attribute: this.lastname,
                                 control: new ControlMock({
@@ -67,8 +67,12 @@ describe('Xrm.Page Mock', () => {
             expect(this.xrmPageMock.getControl).toBeDefined();
         });
 
+        it('should get by index', () => {
+             expect(this.xrmPageMock.getControl(0)).toBeDefined();
+        });
+
         it('should return Bloggs for the control\'s bound attribute value', () => {
-            expect(this.xrmPageMock.getControl().getValue('firstname')).toBe('Bloggs');
+            expect(this.xrmPageMock.getControl('lastname')).toBeDefined();
         });
     });
 })

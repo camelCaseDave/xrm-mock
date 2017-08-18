@@ -44,8 +44,8 @@ export class PageMock implements Xrm.Page {
         if (!arguments.length) {
             return this.ui.controls.get();
         }
-        else if (typeof param === "string") {
-            return this.ui.controls.get(item => item.getName() === param)[0];
+        else if (typeof param === 'string') {
+            return this.ui.controls.get(param);
         }
 
         else if (typeof param === "number") {
