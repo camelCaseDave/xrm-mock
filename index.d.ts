@@ -20,6 +20,7 @@ export { LookupValueMock } from './dist/page/lookupvalue/lookupvalue.mock';
 export { NumberAttributeMock } from './dist/page/numberattribute/numberattribute.mock';
 export { NumberControlMock } from './dist/page/numbercontrol/numbercontrol.mock';
 export { OptionSetAttributeMock } from './dist/page/optionsetattribute/optionsetattribute.mock';
+export { OptionSetValueMock } from './dist/page/optionsetvalue/optionsetvalue.mock';
 export { PageMock } from './dist/page/page.mock';
 export { ProcessMock } from './dist/page/process/process.mock';
 export { SectionMock } from './dist/page/section/section.mock';
