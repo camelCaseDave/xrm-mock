@@ -50,6 +50,6 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "@types/xrm":"^8.2.5"
+    "@types/xrm": "^8.2.5"
   }
 }
