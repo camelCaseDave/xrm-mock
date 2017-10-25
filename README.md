@@ -1,6 +1,6 @@
-# xrm-mock
 
-A mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
+
+<b>xrm-mock</b> is a mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
 
 |Build|Chat|NPM|Coverage|Vulnerabilities|Climate|
 |-----|----|---|--------|---------------|-------|
