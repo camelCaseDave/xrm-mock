@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ItemCollectionMock = (function () {
+var ItemCollectionMock = /** @class */ (function () {
     function ItemCollectionMock(itemCollection) {
         this.itemCollection = itemCollection || [];
     }
@@ -34,6 +34,9 @@ var ItemCollectionMock = (function () {
     };
     ItemCollectionMock.prototype.getLength = function () {
         return this.itemCollection.length;
+    };
+    ItemCollectionMock.prototype.push = function (item) {
+        this.itemCollection.push(item);
     };
     return ItemCollectionMock;
 }());

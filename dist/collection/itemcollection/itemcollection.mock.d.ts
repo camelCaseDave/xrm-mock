@@ -9,4 +9,5 @@ export declare class ItemCollectionMock<T> implements Xrm.Collection.ItemCollect
     get(itemName: string): T;
     get(): T[];
     getLength(): number;
+    push(item: T): void;
 }

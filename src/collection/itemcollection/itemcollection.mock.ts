@@ -49,4 +49,8 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
     getLength(): number {
         return this.itemCollection.length;
     }
+
+    push(item: T): void {
+        this.itemCollection.push(item);
+    } 
 }
