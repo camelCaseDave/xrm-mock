@@ -1,6 +1,10 @@
-|Build|Chat|NPM|Coverage|Vulnerabilities|Climate|
-|-----|----|---|--------|---------------|-------|
-|[![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)|[![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|[![NPM](https://img.shields.io/npm/v/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)|[![Coverage Status](https://coveralls.io/repos/github/camelCaseDave/xrm-mock/badge.svg?branch=master)](https://coveralls.io/github/camelCaseDave/xrm-mock?branch=master)|[![Known Vulnerabilities](https://snyk.io/test/github/camelcasedave/xrm-mock/badge.svg)](https://snyk.io/test/github/camelcasedave/xrm-mock)|[![Code Climate](https://codeclimate.com/github/camelCaseDave/xrm-mock/badges/gpa.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock)|
+[![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)
+[![npm version](https://badge.fury.io/js/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)
+[![Downloads](https://img.shields.io/npm/dm/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/camelCaseDave/xrm-mock.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock/test_coverage)
+
+# xrm-mock
+[![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <b>xrm-mock</b> is a mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
 
