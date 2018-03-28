@@ -1,17 +1,21 @@
-import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { LookupValueMock } from '../../../src/page/lookupvalue/lookupvalue.mock';
-import { LookupAttributeMock} from '../../../src/page/lookupattribute/lookupattribute.mock';
+import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
+import { LookupAttributeMock} from "../../../src/xrm-mock/page/lookupattribute/lookupattribute.mock";
+import { LookupValueMock } from "../../../src/xrm-mock/page/lookupvalue/lookupvalue.mock";
 
-describe('Xrm.Page.LookupAttribute Mock', () => {
+describe("Xrm.Page.LookupAttribute Mock", () => {
     beforeEach(() => {
-        this.lookupAttribute = new LookupAttributeMock(new AttributeMock('parentorganisationid', new LookupValueMock('5555', 'account', 'Boss')), false);
+        const attributeMock = new AttributeMock({
+            name: "parentorganisationid",
+            value: new LookupValueMock("5555", "account", "Boss"),
+        });
+        this.lookupAttribute = new LookupAttributeMock(attributeMock, false);
     });
 
-    it('should instantiate', () => {
+    it("should instantiate", () => {
         expect(this.lookupAttribute).toBeDefined();
     });
 
-    it('should not be a party list', () => {
+    it("should not be a party list", () => {
         expect(this.lookupAttribute.getIsPartyList()).toBe(false);
     });
 });

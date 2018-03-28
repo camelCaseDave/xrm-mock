@@ -1,40 +1,45 @@
-import { ProcessMock } from '../../../src/page/process/process.mock';
-import { StageMock } from '../../../src/page/stage/stage.mock';
-import { StepMock } from '../../../src/page/step/step.mock';
-import { ItemCollectionMock } from '../../../src/collection/itemcollection/itemcollection.mock';
+import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { ProcessMock } from "../../../src/xrm-mock/page/process/process.mock";
+import { StageMock } from "../../../src/xrm-mock/page/stage/stage.mock";
+import { StepMock } from "../../../src/xrm-mock/page/step/step.mock";
 
-describe('Xrm.Page.Process Mock', () => {
+describe("Xrm.Page.Process Mock", () => {
     beforeEach(() => {
-        let firstNameStep = new StepMock('First Name', 'firstname', false);
-        let lastNameStep = new StepMock('Last Name', 'lastname', false);
-        let stage1 = new StageMock('6001', 'Start', 'active', null, [firstNameStep]);
-        let stage2 = new StageMock('6002', 'Finish', 'active', null, [lastNameStep]);
+        const firstNameStep = new StepMock("First Name", "firstname", false);
+        const lastNameStep = new StepMock("Last Name", "lastname", false);
+        const stage1 = new StageMock("6001", "Start", "active", null, [firstNameStep]);
+        const stage2 = new StageMock("6002", "Finish", "active", null, [lastNameStep]);
 
-        this.process = new ProcessMock({ id: '4444', name: 'Sales Process', stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]), rendered: true });
+        this.process = new ProcessMock({
+            id: "4444",
+            name: "Sales Process",
+            rendered: true,
+            stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]),
+        });
     });
 
-    it('should instantiate', () => {
+    it("should instantiate", () => {
         expect(this.process).toBeDefined();
     });
 
-    it('should have an id of 4444', () => {
-        expect(this.process.getId()).toBe('4444');
+    it("should have an id of 4444", () => {
+        expect(this.process.getId()).toBe("4444");
     });
 
-    it('should be called Sales Process', () => {
-        expect(this.process.getName()).toBe('Sales Process');
+    it("should be called Sales Process", () => {
+        expect(this.process.getName()).toBe("Sales Process");
     });
 
-    it('should be rendered', () => {
+    it("should be rendered", () => {
         expect(this.process.isRendered()).toBe(true);
     });
 
-    it('should be toggled to not rendered', () => {
+    it("should be toggled to not rendered", () => {
         expect(this.process.isRendered()).toBe(true);
     });
 
-    it('should have 2 stages', () => {
-        let stages = this.process.getStages();
+    it("should have 2 stages", () => {
+        const stages = this.process.getStages();
         expect(stages).toBeDefined();
         expect(stages.getLength()).toBe(2);
     });

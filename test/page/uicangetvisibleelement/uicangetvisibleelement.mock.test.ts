@@ -1,15 +1,15 @@
-import { UiCanGetVisibleElementMock} from '../../../src/page/uicangetvisibleelement/uicangetvisibleelement.mock';
+import * as UiVisibleMock from "../../../src/xrm-mock/page/uicangetvisibleelement/uicangetvisibleelement.mock";
 
-describe('Xrm.Page.UiCanGetVisible Mock', () => {
+describe("Xrm.Page.UiCanGetVisible Mock", () => {
     beforeEach(() => {
-        this.uiCanGetVisibleElement = new UiCanGetVisibleElementMock(true);
+        this.uiCanGetVisibleElement = new UiVisibleMock.UiCanGetVisibleElementMock(true);
     });
 
-    it('should instantiate', () => {
+    it("should instantiate", () => {
         expect(this.uiCanGetVisibleElement).toBeDefined();
     });
-    
-    it('should be visible', () => {
+
+    it("should be visible", () => {
         expect(this.uiCanGetVisibleElement.getVisible()).toBe(true);
     });
 });

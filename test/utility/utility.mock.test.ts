@@ -1,62 +1,64 @@
-import { UtilityMock } from '../../src/utility/utility.mock';
+/* tslint:disable:no-console */
 
-describe('Xrm.Utility Mock', () => {
+import { UtilityMock } from "../../src/xrm-mock/utility/utility.mock";
+
+describe("Xrm.Utility Mock", () => {
     beforeEach(() => {
         this.utility = new UtilityMock();
-        
+
     });
 
-    it('should exist', () => {
+    it("should exist", () => {
         expect(this.utility).toBeDefined();
     });
 
-    it('should alert', () => {
-        spyOn(window, 'alert');
-        spyOn(console, 'log');
+    it("should alert", () => {
+        spyOn(window, "alert");
+        spyOn(console, "log");
 
-        this.utility.alertDialog('Are you sure?', () => {
-            console.log('alert closed');
+        this.utility.alertDialog("Are you sure?", () => {
+            console.log("alert closed");
         });
 
-        expect(window.alert).toHaveBeenCalledWith('Are you sure?');
-        expect(console.log).toHaveBeenCalledWith('alert closed');
+        expect(window.alert).toHaveBeenCalledWith("Are you sure?");
+        expect(console.log).toHaveBeenCalledWith("alert closed");
     });
 
-    describe('confirmDialog', () => {
+    describe("confirmDialog", () => {
         beforeEach(() => {
-            spyOn(console, 'log');
+            spyOn(console, "log");
         });
 
-        it('should confirm and call yes callback', () => {
-            spyOn(window, 'confirm').and.returnValue(true);
+        it("should confirm and call yes callback", () => {
+            spyOn(window, "confirm").and.returnValue(true);
 
-            this.utility.confirmDialog('Are you sure?',
+            this.utility.confirmDialog("Are you sure?",
                 () => {
-                    console.log('yes');
+                    console.log("yes");
                 },
                 () => {
-                    console.log('no');
+                    console.log("no");
                 });
 
-            expect(window.confirm).toHaveBeenCalledWith('Are you sure?');
-            expect(console.log).toHaveBeenCalledWith('yes');
-            expect(console.log).not.toHaveBeenCalledWith('no');
+            expect(window.confirm).toHaveBeenCalledWith("Are you sure?");
+            expect(console.log).toHaveBeenCalledWith("yes");
+            expect(console.log).not.toHaveBeenCalledWith("no");
         });
 
-        it('should confirm and call no callback', () => {
-            spyOn(window, 'confirm').and.returnValue(false);
+        it("should confirm and call no callback", () => {
+            spyOn(window, "confirm").and.returnValue(false);
 
-            this.utility.confirmDialog('Are you sure?',
+            this.utility.confirmDialog("Are you sure?",
                 () => {
-                    console.log('yes');
+                    console.log("yes");
                 },
                 () => {
-                    console.log('no');
+                    console.log("no");
                 });
-                
-            expect(window.confirm).toHaveBeenCalledWith('Are you sure?');
-            expect(console.log).toHaveBeenCalledWith('no');
-            expect(console.log).not.toHaveBeenCalledWith('yes');
+
+            expect(window.confirm).toHaveBeenCalledWith("Are you sure?");
+            expect(console.log).toHaveBeenCalledWith("no");
+            expect(console.log).not.toHaveBeenCalledWith("yes");
         });
     });
-})
+});
