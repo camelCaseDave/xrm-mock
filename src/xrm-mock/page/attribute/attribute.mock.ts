@@ -46,7 +46,7 @@ export class AttributeMock implements Xrm.Page.Attribute {
     }
 
     public getParent(): Xrm.Page.Entity {
-        throw new Error(("getParent not implemented"));
+        throw new Error("getParent not implemented");
     }
 
     public getRequiredLevel(): Xrm.Page.RequirementLevel {
@@ -58,11 +58,11 @@ export class AttributeMock implements Xrm.Page.Attribute {
     }
 
     public getUserPrivilege(): Xrm.Page.Privilege {
-        throw new Error(("getUserPrivilege not implemented"));
+        throw new Error("getUserPrivilege not implemented");
     }
 
     public removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw new Error(("removeOnChange not implemented"));
+        throw new Error("removeOnChange not implemented");
     }
 
     public setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {

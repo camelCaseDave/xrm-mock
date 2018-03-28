@@ -34,7 +34,7 @@ var AttributeMock = /** @class */ (function () {
         return this.name;
     };
     AttributeMock.prototype.getParent = function () {
-        throw new Error(("getParent not implemented"));
+        throw new Error("getParent not implemented");
     };
     AttributeMock.prototype.getRequiredLevel = function () {
         return this.requiredLevel;
@@ -43,10 +43,10 @@ var AttributeMock = /** @class */ (function () {
         return this.submitMode;
     };
     AttributeMock.prototype.getUserPrivilege = function () {
-        throw new Error(("getUserPrivilege not implemented"));
+        throw new Error("getUserPrivilege not implemented");
     };
     AttributeMock.prototype.removeOnChange = function (handler) {
-        throw new Error(("removeOnChange not implemented"));
+        throw new Error("removeOnChange not implemented");
     };
     AttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
         this.requiredLevel = requirementLevel;
