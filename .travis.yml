@@ -3,4 +3,4 @@ node_js:
   - "node"
 before_script:
   - npm install -g tslint
-script: build
+script: npm run build
