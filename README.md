@@ -3,12 +3,12 @@
 [![Downloads](https://img.shields.io/npm/dm/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)
 [![Test Coverage](https://img.shields.io/codeclimate/coverage/camelCaseDave/xrm-mock.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock/test_coverage)
 
-# xrm-mock
+# :books:  xrm-mock
 [![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <b>xrm-mock</b> is a mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
 
-## :books: Usage:
+## Usage 
  - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
  
  - Install generation tool ```npm i xrm-mock-generator``` [[link]](https://github.com/camelCaseDave/xrm-mock-generator) (_biased recommendation_)
@@ -58,7 +58,14 @@ describe("Contact Form", () => {
 });
 ```
 
-## :heart:  Contributing and Project Roadmap:
- - Increase test coverage
- - Increase implementation
- - Include a project like [rewire](https://github.com/jhnns/rewire) so that non-exported classes can be tested
+## Contribute
+ - [Submit bugs](https://github.com/camelCaseDave/xrm-mock/issues)
+ - Implement a new function by inheriting `@types\Xrm`
+    - Test your code using `npm run test`
+    - Lint your code using `npm run lint`
+    - Build your code using `npm run build`
+
+## Roadmap
+ - Increased test coverage
+ - Increased implementation against different versions of `@types/Xrm` (8.2 and 9)
+ - Automatic generation of attributes from a given Dynamics organisation
