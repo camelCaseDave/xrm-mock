@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "main": "xrm-mock.js",
   "directories": {
     "output": "coverage",
@@ -19,9 +19,9 @@
   "scripts": {
     "build": "tsc && npm run lint && npm run test",
     "lint": "tslint -c tslint.json 'src/**/*.ts' && tslint -c tslint.json 'test/**/*.ts'",
-    "webpack": "tsc && webpack './dist/index.js' './xrm-mock.js'",
+    "webpack": "webpack dist/index.js --output-path=./ --output-filename=xrm-mock.js -p",
     "test": "jest --coverage",
-    "publish": "npm run webpack"
+    "publish": "npm run webpack && npm publish"
   },
   "repository": {
     "type": "git",
