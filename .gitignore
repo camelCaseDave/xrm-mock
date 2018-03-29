@@ -9,6 +9,7 @@ src/**/*.d.ts
 
 node_modules
 coverage
+package
 
 build.js
 npm-debug.log
