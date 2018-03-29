@@ -29,7 +29,7 @@ Initialise a global `Xrm` object
 XrmMockGenerator.initialise();
 ```
   
-Customise your form by adding attributes
+Customise your form by [adding attributes](https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes)
   
 ```typescript
 XrmMockGenerator.Attribute.createBool("new_havingfun", true);
@@ -43,7 +43,7 @@ Invoke your code and make your assertions
 
 ## Example
 
-This example demonstrates a script with an onLoad event handler registered on a contact form. When invoked, it changes the `firstname` attribute's value to Bob.
+This example demonstrates a script with an onLoad event handler registered on a contact form. When invoked, it changes the `firstname` attribute's value to Bob. See [the Wiki](https://github.com/camelCaseDave/xrm-mock/wiki/Demo) for a visual demo.
  
  #### src/contact.ts
  ```typescript
