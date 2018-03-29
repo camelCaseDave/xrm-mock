@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XrmMock = require("../xrm-mock/index");
+var attribute_1 = require("./attribute");
 var context_1 = require("./context");
 var control_1 = require("./control");
 var form_1 = require("./form");
@@ -19,6 +20,7 @@ var XrmMockGenerator = /** @class */ (function () {
         global.Xrm = xrm;
         return xrm;
     };
+    XrmMockGenerator.Attribute = new attribute_1.default();
     XrmMockGenerator.Context = new context_1.default();
     XrmMockGenerator.Control = new control_1.default();
     XrmMockGenerator.Form = new form_1.default();
