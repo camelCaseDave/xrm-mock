@@ -60,7 +60,7 @@ describe("Contact Form", () => {
 
 ## Contribute
  - [Submit bugs](https://github.com/camelCaseDave/xrm-mock/issues)
- - Implement a new function by inheriting `@types\Xrm`
+ - Implement a new function by inheriting `@types/Xrm`
     - Test your code using `npm run test`
     - Lint your code using `npm run lint`
     - Build your code using `npm run build`
