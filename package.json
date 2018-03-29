@@ -21,7 +21,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts' && tslint -c tslint.json 'test/**/*.ts'",
     "webpack": "webpack dist/index.js --output-path=./ --output-filename=xrm-mock.js -p",
     "test": "jest --coverage",
-    "release": "npm run build && npm run webpack && npm version patch --force && npm publish"
+    "release": "npm run build && npm run webpack && npm version patch --commit-hooks false && npm publish"
   },
   "repository": {
     "type": "git",
