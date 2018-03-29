@@ -1,1 +1,1 @@
-export * from "./xrm-mock-generator";
+export { XrmMockGenerator } from "./xrm-mock-generator";

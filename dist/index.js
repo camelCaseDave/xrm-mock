@@ -4,4 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./xrm-mock/index"));
-__export(require("./xrm-mock-generator/xrm-mock-generator"));
+var index_1 = require("./xrm-mock-generator/index");
+exports.XrmMockGenerator = index_1.XrmMockGenerator;

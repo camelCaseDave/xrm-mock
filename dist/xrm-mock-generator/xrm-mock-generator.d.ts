@@ -3,7 +3,7 @@ import Context from "./context";
 import Control from "./control";
 import Form from "./form";
 import Ui from "./ui";
-export default class XrmMockGenerator {
+export declare class XrmMockGenerator {
     static Context: Context;
     static Control: Control;
     static Form: Form;

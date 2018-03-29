@@ -25,4 +25,4 @@ var XrmMockGenerator = /** @class */ (function () {
     XrmMockGenerator.Ui = new ui_1.default();
     return XrmMockGenerator;
 }());
-exports.default = XrmMockGenerator;
+exports.XrmMockGenerator = XrmMockGenerator;

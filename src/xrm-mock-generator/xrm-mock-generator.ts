@@ -1,10 +1,12 @@
 import * as XrmMock from "../xrm-mock/index";
+import Attribute from "./attribute";
 import Context from "./context";
 import Control from "./control";
 import Form from "./form";
 import Ui from "./ui";
 
-export default class XrmMockGenerator {
+export class XrmMockGenerator {
+  public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
   public static Control: Control = new Control();
   public static Form: Form = new Form();
