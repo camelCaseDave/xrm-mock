@@ -8,53 +8,74 @@
 
 <b>xrm-mock</b> is a mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
 
-## Usage 
- - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
- 
- - Install generation tool ```npm i xrm-mock-generator``` [[link]](https://github.com/camelCaseDave/xrm-mock-generator) (_biased recommendation_)
+## Installing 
 
- - Create a  file for your entity form:
+For the latest stable version:
  
- #### src/contact.js
- ```javascript
-(function () {
-    "use strict";
-    
-    var Contact = () => {  };
-    
-    Contact.prototype.onLoad = () => {
-        Xrm.Page.getAttribute("firstname").setValue("Bob");
-    }
-    
-    // node
-    module.exports = new Contact();
-    
-    // browser
-    global.Contact = new Contact();    
-}());
+```bash
+npm install xrm-mock -D
+```
+     
+## Usage
+Import `XrmMockGenerator` in your unit test file
+ 
+ ```typescript
+ import { XrmMockGenerator } from "xrm-mock";
  ```
  
- - Create a file to test your entity form:
+Initialise a global `Xrm` object
+  
+```typescript
+XrmMockGenerator.initialise();
+```
+  
+Customise your form by adding attributes
+  
+```typescript
+XrmMockGenerator.Attribute.createBool("new_havingfun", true);
+```
+Invoke your code and make your assertions
+ 
+ ```typescript
+ Contact.onLoad();
+ expect(Xrm.Page.getAttribute("new_havingfun").getValue()).toBeTruthy();
+ ```
 
-#### test/contact.test.js
-```javascript
-describe("Contact Form", () => {
-    var XrmMockGenerator = require("xrm-mock-generator");
-    var ContactForm = require("../src/contact.js");
-    
-    beforeEach(() => {
-        XrmMockGenerator.initialise();
-        XrmMockGenerator.createString("firstname", "Joe");
-    });
-    
-    describe("default", () => {
-        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe"); // true
-    });
-    
-    describe("onLoad", () => {
-        ContactForm.onLoad();        
-        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Bob"); // true
-    });
+## Example
+
+This example demonstrates a script with an onLoad event handler registered on a contact form. When invoked, it changes the `firstname` attribute's value to Bob.
+ 
+ #### src/contact.ts
+ ```typescript
+export default class Contact {
+  public static onLoad() {
+    Xrm.Page.getAttribute("firstname").setValue("Bob");
+  }
+}
+ ```
+ 
+
+#### test/contact.test.ts
+```typescript
+import Contact from "../src/contact";
+import { XrmMockGenerator } from "xrm-mock";
+
+describe("Contact", () => {
+  beforeEach(() => {
+    XrmMockGenerator.initialise();
+    XrmMockGenerator.Attribute.createString("firstname", "Joe", "First Name", "text", 100, true, false);
+  });
+
+  it("should initially be called Joe", () => {
+    let name = Xrm.Page.getAttribute("firstname").getValue();
+    expect(name).toBe("Joe"); // Pass
+  });
+
+  it("should change name to Bob onLoad", () => {
+    Contact.onLoad();
+    let name = Xrm.Page.getAttribute("firstname").getValue();
+    expect(name).toBe("Bob"); // Pass
+  });
 });
 ```
 
