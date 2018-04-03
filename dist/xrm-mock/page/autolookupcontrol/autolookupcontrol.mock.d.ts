@@ -4,7 +4,7 @@ import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 export declare class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
     standardControl: StandardControlMock;
     uiKeyPressable: UiKeyPressableMock;
-    constructor(standardControl: StandardControlMock, uiKeyPressable: UiKeyPressableMock);
+    constructor(standardControl: StandardControlMock, uiKeyPressable?: UiKeyPressableMock);
     getValue(): string;
     hideAutoComplete(): void;
     showAutoComplete(resultSet: Xrm.Page.AutoCompleteResultSet): void;

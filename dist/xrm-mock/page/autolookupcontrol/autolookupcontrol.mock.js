@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var uikeypressable_mock_1 = require("../uikeypressable/uikeypressable.mock");
 var AutoLookupControlMock = /** @class */ (function () {
     function AutoLookupControlMock(standardControl, uiKeyPressable) {
         this.standardControl = standardControl;
         this.uiKeyPressable = uiKeyPressable;
+        uiKeyPressable = uiKeyPressable || new uikeypressable_mock_1.UiKeyPressableMock();
     }
     AutoLookupControlMock.prototype.getValue = function () {
         return this.standardControl.attribute.getValue();

@@ -14,7 +14,12 @@ describe("XrmMockGenerator", () => {
   });
 
   it("should create a string attribute", () => {
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", "First Name", "text", 100, true, false);
+    XrmMockGenerator.Attribute.createString("firstname", "Joe", true, false, "text", 100, "First Name");
     expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe");
+  });
+
+  it("should create a string control with Label", () => {
+    XrmMockGenerator.Control.createString(undefined, "firstname", true, false, "First Name");
+    expect(Xrm.Page.getControl("firstname").getLabel()).toBe("First Name");
   });
 });

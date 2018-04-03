@@ -1,33 +1,31 @@
 import * as XrmMock from "../xrm-mock/index";
-
 import Ui from "./ui";
 
 export default class Control {
-  public static createStringControl(name: string, label: string, isVisible: boolean, isDisabled: boolean,
-                                    attribute: XrmMock.StringAttributeMock): void {
+  public createString(attribute: XrmMock.StringAttributeMock, name?: string, isVisible: boolean = true, isDisabled: boolean = false, label?: string): void {
     const stringControl = new XrmMock.StringControlMock(
       new XrmMock.AutoLookupControlMock(
         new XrmMock.StandardControlMock({
           attribute,
-          control: this.createControl(name, label, isVisible, "standard"),
-        }),
-        new XrmMock.UiKeyPressableMock()));
+          control: this.createControl(name, label, isVisible),
+          uiStandardElement: XrmMock.UiStandardElementMock.create(label,isVisible)
+          })));
 
     this.addControl(stringControl);
   }
-  private static createControl(name: string, label: string, isVisible?: boolean,
-                               controlType?: Xrm.Page.ControlType): XrmMock.ControlMock {
+  private createControl(name: string, label: string, isVisible?: boolean,
+                               controlType: Xrm.Page.ControlType = "standard"): XrmMock.ControlMock {
     const control = new XrmMock.ControlMock({
       controlType: controlType || "standard",
       name,
       uiCanGetVisibleElement: Ui.createCanGetVisibleElement(isVisible || true),
-      uiLabelElement: Ui.createLabelElement(label),
+      uiLabelElement: Ui.createLabelElement(label || name),
     });
 
     return control;
   }
 
-  private static addControl(control: Xrm.Page.Control): void {
+  private addControl(control: Xrm.Page.Control): void {
     (Xrm.Page.ui.controls as any).push(control);
   }
 }

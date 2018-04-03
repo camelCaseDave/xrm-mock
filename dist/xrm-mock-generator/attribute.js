@@ -4,6 +4,7 @@ var XrmMock = require("../xrm-mock/index");
 var control_1 = require("./control");
 var Attribute = /** @class */ (function () {
     function Attribute() {
+        this.Control = new control_1.default();
     }
     Attribute.prototype.createBool = function (name, value) {
         var attribute = this.createAttribute(name, value || false);
@@ -48,11 +49,16 @@ var Attribute = /** @class */ (function () {
     Attribute.prototype.createOptionSetOption = function (option) {
         return new XrmMock.OptionSetValueMock(option.text, option.value);
     };
-    Attribute.prototype.createString = function (name, value, label, format, maxLength, isVisible, isDisabled) {
+    Attribute.prototype.createString = function (name, value, isVisible, isDisabled, format, maxLength, label) {
+        if (value === void 0) { value = ""; }
+        if (isVisible === void 0) { isVisible = true; }
+        if (isDisabled === void 0) { isDisabled = false; }
+        if (format === void 0) { format = "text"; }
+        if (maxLength === void 0) { maxLength = 100; }
         var attribute = this.createAttribute(name, value);
         var stringAttribute = new XrmMock.StringAttributeMock(attribute, format || "text", maxLength || 100);
         this.addAttribute(stringAttribute);
-        control_1.default.createStringControl(name, label || "", isVisible || true, isDisabled || false, stringAttribute);
+        this.Control.createString(stringAttribute, name, isVisible, isDisabled, label);
         return stringAttribute;
     };
     Attribute.prototype.createAttribute = function (name, value) {

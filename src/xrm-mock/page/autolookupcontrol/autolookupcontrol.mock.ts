@@ -2,12 +2,8 @@ import { StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
-    public standardControl: StandardControlMock;
-    public uiKeyPressable: UiKeyPressableMock;
-
-    constructor(standardControl: StandardControlMock, uiKeyPressable: UiKeyPressableMock) {
-        this.standardControl = standardControl;
-        this.uiKeyPressable = uiKeyPressable;
+    constructor(public standardControl: StandardControlMock, public uiKeyPressable?: UiKeyPressableMock) {
+        uiKeyPressable = uiKeyPressable || new UiKeyPressableMock();
     }
 
     public getValue(): string {

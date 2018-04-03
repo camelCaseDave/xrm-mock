@@ -2,6 +2,8 @@ import * as XrmMock from "../xrm-mock/index";
 import Control from "./control";
 
 export default class Attribute {
+  private Control = new Control();
+  
   public createBool(name: string, value: boolean): Xrm.Page.BooleanAttribute {
     const attribute = this.createAttribute(name, value || false);
     const boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
@@ -58,13 +60,13 @@ export default class Attribute {
     return new XrmMock.OptionSetValueMock(option.text, option.value);
   }
 
-  public createString(name: string, value: string, label: string, format: Xrm.Page.StringAttributeFormat,
-                      maxLength: number, isVisible: boolean, isDisabled: boolean) {
+  public createString(name: string, value: string= "", isVisible: boolean = true, isDisabled: boolean = false,
+                      format: Xrm.Page.StringAttributeFormat = "text", maxLength: number = 100, label?: string) {
     const attribute = this.createAttribute(name, value);
     const stringAttribute = new XrmMock.StringAttributeMock(attribute, format || "text", maxLength || 100);
 
     this.addAttribute(stringAttribute);
-    Control.createStringControl(name, label || "", isVisible || true, isDisabled || false, stringAttribute);
+    this.Control.createString(stringAttribute, name, isVisible, isDisabled, label);
 
     return stringAttribute;
   }

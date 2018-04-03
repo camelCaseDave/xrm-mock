@@ -1,6 +1,13 @@
+import { UiLabelElementMock } from "../UiLabelElement/UiLabelElement.mock";
+import { UiCanGetVisibleElementMock } from "../UiCanGetVisibleElement/UiCanGetVisibleElement.mock";
+
 export class UiStandardElementMock implements Xrm.Page.UiStandardElement {
     public uiLabelElement: Xrm.Page.UiLabelElement;
     public uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
+
+    public static create(label: string, visible: boolean = true) : UiStandardElementMock {
+        return new UiStandardElementMock(new UiLabelElementMock(label), new UiCanGetVisibleElementMock(visible));
+    }
 
     constructor(uiLabelElement: Xrm.Page.UiLabelElement, uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement) {
         this.uiLabelElement = uiLabelElement;
