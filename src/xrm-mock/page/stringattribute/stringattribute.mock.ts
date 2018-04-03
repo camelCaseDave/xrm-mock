@@ -1,5 +1,5 @@
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
-import { StringControlMock } from "../../page/stringControl/stringControl.mock";
+import { StringControlMock } from "../../page/stringcontrol/stringcontrol.mock";
 import { AttributeMock } from "../attribute/attribute.mock";
 import { ControlMock } from "../control/control.mock";
 
