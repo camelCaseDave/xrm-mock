@@ -55,11 +55,10 @@ var Attribute = /** @class */ (function () {
         if (isDisabled === void 0) { isDisabled = false; }
         if (format === void 0) { format = "text"; }
         if (maxLength === void 0) { maxLength = 100; }
-        var attribute = this.createAttribute(name, value);
-        var stringAttribute = new XrmMock.StringAttributeMock(attribute, format || "text", maxLength || 100);
-        this.addAttribute(stringAttribute);
-        this.Control.createString(stringAttribute, name, isVisible, isDisabled, label);
-        return stringAttribute;
+        var attribute = new XrmMock.StringAttributeMock(this.createAttribute(name, value), format || "text", maxLength || 100);
+        this.addAttribute(attribute.attribute);
+        attribute.controls.push(this.Control.createString(attribute, name, isVisible, isDisabled, label));
+        return attribute;
     };
     Attribute.prototype.createAttribute = function (name, value) {
         var attribute = new XrmMock.AttributeMock({

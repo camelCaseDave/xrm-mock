@@ -3,7 +3,7 @@ import Control from "./control";
 
 export default class Attribute {
   private Control = new Control();
-  
+
   public createBool(name: string, value: boolean): Xrm.Page.BooleanAttribute {
     const attribute = this.createAttribute(name, value || false);
     const boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
@@ -62,13 +62,13 @@ export default class Attribute {
 
   public createString(name: string, value: string= "", isVisible: boolean = true, isDisabled: boolean = false,
                       format: Xrm.Page.StringAttributeFormat = "text", maxLength: number = 100, label?: string) {
-    const attribute = this.createAttribute(name, value);
-    const stringAttribute = new XrmMock.StringAttributeMock(attribute, format || "text", maxLength || 100);
+    const attribute = new XrmMock.StringAttributeMock(this.createAttribute(name, value),
+                                                      format || "text", maxLength || 100);
 
-    this.addAttribute(stringAttribute);
-    this.Control.createString(stringAttribute, name, isVisible, isDisabled, label);
+    this.addAttribute(attribute.attribute);
+    attribute.controls.push(this.Control.createString(attribute, name, isVisible, isDisabled, label));
 
-    return stringAttribute;
+    return attribute;
   }
 
   private createAttribute(name: string, value: any): XrmMock.AttributeMock {

@@ -1,6 +1,8 @@
 /// <reference types="xrm" />
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { ControlMock } from "../control/control.mock";
 export declare class AttributeMock implements Xrm.Page.Attribute {
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    controls: ItemCollectionMock<ControlMock>;
     isDirty: boolean;
     name: string;
     requiredLevel: Xrm.Page.RequirementLevel;
@@ -27,9 +29,9 @@ export declare class AttributeMock implements Xrm.Page.Attribute {
 }
 export interface IAttributeComponents {
     name: string;
-    value: any;
+    value?: any;
     isDirty?: boolean;
     requiredLevel?: Xrm.Page.RequirementLevel;
     submitMode?: Xrm.Page.SubmitMode;
-    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    controls?: ItemCollectionMock<ControlMock>;
 }

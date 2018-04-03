@@ -1,5 +1,8 @@
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { ControlMock } from "../control/control.mock";
+
 export class AttributeMock implements Xrm.Page.Attribute {
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    public controls: ItemCollectionMock<ControlMock>;
     public isDirty: boolean;
     public name: string;
     public requiredLevel: Xrm.Page.RequirementLevel;
@@ -11,10 +14,10 @@ export class AttributeMock implements Xrm.Page.Attribute {
     public constructor(components: IAttributeComponents) {
         this.name = components.name;
         this.value = components.value;
-        this.isDirty = components.isDirty;
-        this.requiredLevel = components.requiredLevel;
-        this.submitMode = components.submitMode;
-        this.controls = components.controls;
+        this.isDirty = components.isDirty === true ? true : false;
+        this.requiredLevel = components.requiredLevel || "none";
+        this.submitMode = components.submitMode || "dirty";
+        this.controls = components.controls || new ItemCollectionMock<ControlMock>();
     }
 
     public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
@@ -86,9 +89,9 @@ export class AttributeMock implements Xrm.Page.Attribute {
 
 export interface IAttributeComponents {
     name: string;
-    value: any;
+    value?: any;
     isDirty?: boolean;
     requiredLevel?: Xrm.Page.RequirementLevel;
     submitMode?: Xrm.Page.SubmitMode;
-    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    controls?: ItemCollectionMock<ControlMock>;
 }

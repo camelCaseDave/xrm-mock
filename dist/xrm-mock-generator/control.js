@@ -9,11 +9,12 @@ var Control = /** @class */ (function () {
         if (isVisible === void 0) { isVisible = true; }
         if (isDisabled === void 0) { isDisabled = false; }
         var stringControl = new XrmMock.StringControlMock(new XrmMock.AutoLookupControlMock(new XrmMock.StandardControlMock({
-            attribute: attribute,
+            attribute: attribute.attribute,
             control: this.createControl(name, label, isVisible),
-            uiStandardElement: XrmMock.UiStandardElementMock.create(label, isVisible)
+            uiStandardElement: XrmMock.UiStandardElementMock.create(label, isVisible),
         })));
         this.addControl(stringControl);
+        return stringControl;
     };
     Control.prototype.createControl = function (name, label, isVisible, controlType) {
         if (controlType === void 0) { controlType = "standard"; }

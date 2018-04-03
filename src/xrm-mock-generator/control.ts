@@ -2,19 +2,21 @@ import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
 export default class Control {
-  public createString(attribute: XrmMock.StringAttributeMock, name?: string, isVisible: boolean = true, isDisabled: boolean = false, label?: string): void {
+  public createString(attribute: XrmMock.StringAttributeMock, name?: string, isVisible: boolean = true,
+                      isDisabled: boolean = false, label?: string): XrmMock.StringControlMock {
     const stringControl = new XrmMock.StringControlMock(
       new XrmMock.AutoLookupControlMock(
         new XrmMock.StandardControlMock({
-          attribute,
+          attribute: attribute.attribute,
           control: this.createControl(name, label, isVisible),
-          uiStandardElement: XrmMock.UiStandardElementMock.create(label,isVisible)
-          })));
+          uiStandardElement: XrmMock.UiStandardElementMock.create(label, isVisible),
+        })));
 
     this.addControl(stringControl);
+    return stringControl;
   }
   private createControl(name: string, label: string, isVisible?: boolean,
-                               controlType: Xrm.Page.ControlType = "standard"): XrmMock.ControlMock {
+                        controlType: Xrm.Page.ControlType = "standard"): XrmMock.ControlMock {
     const control = new XrmMock.ControlMock({
       controlType: controlType || "standard",
       name,

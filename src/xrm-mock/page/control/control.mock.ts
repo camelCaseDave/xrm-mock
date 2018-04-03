@@ -1,9 +1,9 @@
 export class ControlMock implements Xrm.Page.Control {
-    public name: string;
     public controlType: Xrm.Page.ControlType;
     public parent: Xrm.Page.Section;
     public uiLabelElement: Xrm.Page.UiLabelElement;
     public uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
+    private name: string;
 
     constructor(components: IControlComponents) {
         this.controlType = components.controlType;

@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
         this.eventHandlers = [];
         this.name = components.name;
         this.value = components.value;
-        this.isDirty = components.isDirty;
-        this.requiredLevel = components.requiredLevel;
-        this.submitMode = components.submitMode;
-        this.controls = components.controls;
+        this.isDirty = components.isDirty === true ? true : false;
+        this.requiredLevel = components.requiredLevel || "none";
+        this.submitMode = components.submitMode || "dirty";
+        this.controls = components.controls || new itemcollection_mock_1.ItemCollectionMock();
     }
     AttributeMock.prototype.addOnChange = function (handler) {
         this.eventHandlers.push(handler);

@@ -1,11 +1,14 @@
 /// <reference types="xrm" />
-import { AttributeMock } from "./../attribute/attribute.mock";
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { StringControlMock } from "../../page/stringControl/stringControl.mock";
+import { AttributeMock } from "../attribute/attribute.mock";
 export declare class StringAttributeMock implements Xrm.Page.StringAttribute {
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>;
+    attribute: AttributeMock;
     stringAttributeFormat: Xrm.Page.StringAttributeFormat;
     maxLength: number;
-    attribute: AttributeMock;
-    constructor(attribute: AttributeMock, stringAttributeFormat: Xrm.Page.StringAttributeFormat, maxLength: number, controls?: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>);
+    static create(name: string, value?: string): StringAttributeMock;
+    controls: ItemCollectionMock<StringControlMock>;
+    constructor(attribute: AttributeMock, stringAttributeFormat?: Xrm.Page.StringAttributeFormat, maxLength?: number, controls?: ItemCollectionMock<StringControlMock>);
     getFormat(): Xrm.Page.StringAttributeFormat;
     getMaxLength(): number;
     getValue(): string;

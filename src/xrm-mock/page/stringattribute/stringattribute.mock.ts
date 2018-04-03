@@ -1,17 +1,29 @@
-import { AttributeMock } from "./../attribute/attribute.mock";
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { StringControlMock } from "../../page/stringControl/stringControl.mock";
+import { AttributeMock } from "../attribute/attribute.mock";
+import { ControlMock } from "../control/control.mock";
 
 export class StringAttributeMock implements Xrm.Page.StringAttribute {
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>;
-    public stringAttributeFormat: Xrm.Page.StringAttributeFormat;
-    public maxLength: number;
-    public attribute: AttributeMock;
+    public static create(name: string, value?: string): StringAttributeMock {
+        return new StringAttributeMock(new AttributeMock({name, value}));
+    }
 
-    constructor(attribute: AttributeMock, stringAttributeFormat: Xrm.Page.StringAttributeFormat,
-                maxLength: number, controls?: Xrm.Collection.ItemCollection<Xrm.Page.StringControl>) {
+    public controls: ItemCollectionMock<StringControlMock>;
+
+    constructor(public attribute: AttributeMock, public stringAttributeFormat: Xrm.Page.StringAttributeFormat = "text",
+                public maxLength: number = 100, controls?: ItemCollectionMock<StringControlMock>) {
         this.attribute = attribute;
         this.stringAttributeFormat = stringAttributeFormat;
         this.maxLength = maxLength;
+        if (controls) {
+            // Controls have been defined by the user.   Default the controls of the attribute.
+            attribute.controls = controls as any;
+        } else {
+            // Controls were not defined, use the same attributes collection
+            controls = attribute.controls as any;
+        }
         this.controls = controls;
+        attribute.controls.itemCollection = controls.itemCollection as any;
         attribute.attributeFormat = stringAttributeFormat;
     }
 
