@@ -60,7 +60,6 @@ var AttributeMock = /** @class */ (function () {
     };
     AttributeMock.prototype.setValue = function (value) {
         this.value = value;
-        this.fireOnChange();
         this.isDirty = true;
     };
     return AttributeMock;

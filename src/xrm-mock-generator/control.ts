@@ -2,32 +2,34 @@ import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
 export default class Control {
-  public createString(attribute: XrmMock.StringAttributeMock, name?: string, isVisible: boolean = true,
-                      isDisabled: boolean = false, label?: string): XrmMock.StringControlMock {
-    const stringControl = new XrmMock.StringControlMock(
-      new XrmMock.AutoLookupControlMock(
-        new XrmMock.StandardControlMock({
-          attribute: attribute.attribute,
-          control: this.createControl(name, label, isVisible),
-          uiStandardElement: XrmMock.UiStandardElementMock.create(label, isVisible),
-        })));
 
-    this.addControl(stringControl);
-    return stringControl;
+  public createString(components: XrmMock.IStringControlComponents): XrmMock.StringControlMock;
+  public createString(attribute: XrmMock.StringAttributeMock,
+                      name?: string,
+                      visible?: boolean,
+                      disabled?: boolean, label?: string): XrmMock.StringControlMock;
+  public createString(attributeOrComponents: XrmMock.StringAttributeMock | XrmMock.IStringControlComponents,
+                      name?: string,
+                      visible: boolean = true,
+                      disabled: boolean = false,
+                      label?: string): XrmMock.StringControlMock {
+
+    const components: XrmMock.IStringControlComponents =
+      attributeOrComponents instanceof XrmMock.StringAttributeMock
+      ? {
+        attribute: attributeOrComponents,
+        disabled,
+        label: label || name,
+        name,
+        visible,
+      }
+      : attributeOrComponents;
+
+    return this.addControl(new XrmMock.StringControlMock(components));
   }
-  private createControl(name: string, label: string, isVisible?: boolean,
-                        controlType: Xrm.Page.ControlType = "standard"): XrmMock.ControlMock {
-    const control = new XrmMock.ControlMock({
-      controlType: controlType || "standard",
-      name,
-      uiCanGetVisibleElement: Ui.createCanGetVisibleElement(isVisible || true),
-      uiLabelElement: Ui.createLabelElement(label || name),
-    });
 
-    return control;
-  }
-
-  private addControl(control: Xrm.Page.Control): void {
+  private addControl<T extends Xrm.Page.Control>(control: T): T {
     (Xrm.Page.ui.controls as any).push(control);
+    return control;
   }
 }

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ControlMock = /** @class */ (function () {
     function ControlMock(components) {
-        this.controlType = components.controlType;
+        this.controlType = components.controlType || "standard";
         this.uiLabelElement = components.uiLabelElement;
         this.uiCanGetVisibleElement = components.uiCanGetVisibleElement;
         this.name = components.name;

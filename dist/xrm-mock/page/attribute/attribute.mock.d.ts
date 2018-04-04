@@ -1,16 +1,17 @@
 /// <reference types="xrm" />
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../control/control.mock";
-export declare class AttributeMock implements Xrm.Page.Attribute {
-    controls: ItemCollectionMock<ControlMock>;
+export declare type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue[] | Xrm.Page.OptionSetValue | string;
+export declare class AttributeMock<TControl extends ControlMock, TValue extends AttributeReturnType> implements Xrm.Page.Attribute {
+    controls: ItemCollectionMock<TControl>;
     isDirty: boolean;
     name: string;
     requiredLevel: Xrm.Page.RequirementLevel;
     submitMode: Xrm.Page.SubmitMode;
-    value: any;
+    value: TValue;
     attributeFormat: Xrm.Page.AttributeFormat;
     eventHandlers: Xrm.Page.ContextSensitiveHandler[];
-    constructor(components: IAttributeComponents);
+    constructor(components: IAttributeComponents<TControl, TValue>);
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
     fireOnChange(): void;
     getAttributeType(): string;
@@ -24,14 +25,14 @@ export declare class AttributeMock implements Xrm.Page.Attribute {
     removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
     setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void;
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
-    getValue(): any;
-    setValue(value: any): void;
+    getValue(): TValue;
+    setValue(value: TValue): void;
 }
-export interface IAttributeComponents {
+export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
     name: string;
-    value?: any;
+    value?: TValue;
     isDirty?: boolean;
     requiredLevel?: Xrm.Page.RequirementLevel;
     submitMode?: Xrm.Page.SubmitMode;
-    controls?: ItemCollectionMock<ControlMock>;
+    controls?: ItemCollectionMock<T>;
 }

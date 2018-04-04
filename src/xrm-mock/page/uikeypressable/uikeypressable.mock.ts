@@ -1,8 +1,6 @@
 export class UiKeyPressableMock implements Xrm.Page.UiKeyPressable {
-    public keyPressHandlers: Xrm.Page.ContextSensitiveHandler[];
-
-    constructor(keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[]) {
-        this.keyPressHandlers = keyPressHandlers;
+    constructor(public keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[]) {
+        this.keyPressHandlers = keyPressHandlers || [];
     }
 
     public addOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {

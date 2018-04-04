@@ -1,30 +1,29 @@
 /// <reference types="xrm" />
-import { ControlMock } from "./../control/control.mock";
-export declare class StandardControlMock implements Xrm.Page.StandardControl {
+import { AttributeMock, AttributeReturnType } from "./../attribute/attribute.mock";
+import { ControlMock, IControlComponents } from "./../control/control.mock";
+export declare class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends ControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;
-    control: ControlMock;
-    uiStandardElement: Xrm.Page.UiStandardElement;
-    uiFocusable: Xrm.Page.UiFocusable;
-    attribute: Xrm.Page.Attribute;
-    constructor(components: IStandardControlComponents);
+    attribute: TAttribute;
+    protected uiStandardElement: Xrm.Page.UiStandardElement;
+    protected uiFocusable: Xrm.Page.UiFocusable;
+    constructor(components: IStandardControlComponents<TControl, TAttribute, TValue>);
     clearNotification(uniqueId?: string): boolean;
     getDisabled(): boolean;
     setDisabled(disabled: boolean): void;
     setNotification(message: string, uniqueId: string): boolean;
-    getAttribute(): Xrm.Page.Attribute;
-    getControlType(): Xrm.Page.ControlType | string;
-    getName(): string;
-    getParent(): Xrm.Page.Section;
+    getAttribute(): TAttribute;
     getLabel(): string;
     setLabel(label: string): void;
     getVisible(): boolean;
     setVisible(visible: boolean): void;
     setFocus(): void;
 }
-export interface IStandardControlComponents {
-    control: ControlMock;
-    attribute: Xrm.Page.Attribute;
+export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
+    attribute: TAttribute;
+}
+export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IControlComponents {
     disabled?: boolean;
-    uiStandardElement?: Xrm.Page.UiStandardElement;
-    uiFocusable?: Xrm.Page.UiFocusable;
+    label?: string;
+    visible?: boolean;
+    hasFocus?: boolean;
 }

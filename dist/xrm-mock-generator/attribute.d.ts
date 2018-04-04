@@ -8,7 +8,8 @@ export default class Attribute {
     createNumber(name: string, value: number, min?: number, max?: number, precision?: number): Xrm.Page.NumberAttribute;
     createOptionSet(name: string, options: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute;
     createOptionSetOption(option: Xrm.Page.OptionSetValue): XrmMock.OptionSetValueMock;
-    createString(name: string, value?: string, isVisible?: boolean, isDisabled?: boolean, format?: Xrm.Page.StringAttributeFormat, maxLength?: number, label?: string): XrmMock.StringAttributeMock;
+    createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: XrmMock.IAttStringControlComponents[] | XrmMock.IAttStringControlComponents): XrmMock.StringAttributeMock;
+    createString(name: string, value?: string, visible?: boolean, disabled?: boolean, format?: Xrm.Page.StringAttributeFormat, maxLength?: number, label?: string): XrmMock.StringAttributeMock;
     private createAttribute(name, value);
     private addAttribute(attribute);
 }

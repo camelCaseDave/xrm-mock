@@ -1,10 +1,10 @@
 /// <reference types="xrm" />
 export declare class ControlMock implements Xrm.Page.Control {
     controlType: Xrm.Page.ControlType;
+    name: string;
     parent: Xrm.Page.Section;
     uiLabelElement: Xrm.Page.UiLabelElement;
     uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
-    private name;
     constructor(components: IControlComponents);
     getControlType(): Xrm.Page.ControlType | string;
     getName(): string;
@@ -15,7 +15,7 @@ export declare class ControlMock implements Xrm.Page.Control {
 }
 export interface IControlComponents {
     name: string;
-    controlType: Xrm.Page.ControlType;
+    controlType?: Xrm.Page.ControlType;
     uiLabelElement?: Xrm.Page.UiLabelElement;
     uiCanGetVisibleElement?: Xrm.Page.UiCanGetVisibleElement;
     parent?: Xrm.Page.Section;

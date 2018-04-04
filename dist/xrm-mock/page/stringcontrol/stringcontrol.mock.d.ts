@@ -1,24 +1,9 @@
-/// <reference types="xrm" />
-export declare class StringControlMock implements Xrm.Page.StringControl {
-    autoLookupControl: Xrm.Page.AutoLookupControl;
-    constructor(autoLookupControl: Xrm.Page.AutoLookupControl);
-    getValue(): string;
-    hideAutoComplete(): void;
-    showAutoComplete(resultSet: Xrm.Page.AutoCompleteResultSet): void;
-    getAttribute(): Xrm.Page.StringAttribute;
-    clearNotification(uniqueId?: string): boolean;
-    getDisabled(): boolean;
-    setDisabled(disabled: boolean): void;
-    setNotification(message: string, uniqueId: string): boolean;
-    getControlType(): Xrm.Page.ControlType | string;
-    getName(): string;
-    getParent(): Xrm.Page.Section;
-    setVisible(visible: boolean): void;
-    getLabel(): string;
-    setLabel(label: string): void;
-    getVisible(): boolean;
-    setFocus(): void;
-    addOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void;
-    fireOnKeyPress(): void;
-    removeOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void;
+import { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./../autolookupcontrol/autolookupcontrol.mock";
+import { StringAttributeMock } from "./../stringattribute/stringattribute.mock";
+export declare class StringControlMock extends AutoLookupControlMock<StringControlMock, StringAttributeMock, string> implements Xrm.Page.StringControl {
+    constructor(components: IStringControlComponents);
+}
+export interface IStringControlComponents extends IAttStringControlComponents, IAutoLookupControlComponents<StringControlMock, StringAttributeMock, string> {
+}
+export interface IAttStringControlComponents extends IAttAutoLookupControlComponents<StringControlMock, StringAttributeMock, string> {
 }

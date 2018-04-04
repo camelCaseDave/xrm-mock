@@ -1,4 +1,5 @@
 import { AttributeMock } from "./../attribute/attribute.mock";
+import { DateControlMock } from "./../datecontrol/datecontrol.mock";
 
 export class DateAttributeMock implements Xrm.Page.Attribute {
     public controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;

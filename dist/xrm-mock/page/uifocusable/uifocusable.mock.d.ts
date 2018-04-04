@@ -1,4 +1,5 @@
 export declare class UiFocusableMock implements Xrm.Page.UiFocusable {
-    isFocussed: boolean;
+    hasFocus: boolean;
+    constructor(hasFocus?: boolean);
     setFocus(): void;
 }

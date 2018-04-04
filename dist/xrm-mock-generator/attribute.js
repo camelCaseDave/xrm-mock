@@ -49,15 +49,47 @@ var Attribute = /** @class */ (function () {
     Attribute.prototype.createOptionSetOption = function (option) {
         return new XrmMock.OptionSetValueMock(option.text, option.value);
     };
-    Attribute.prototype.createString = function (name, value, isVisible, isDisabled, format, maxLength, label) {
-        if (value === void 0) { value = ""; }
-        if (isVisible === void 0) { isVisible = true; }
-        if (isDisabled === void 0) { isDisabled = false; }
+    Attribute.prototype.createString = function (nameOrComponents, valueOrControlComponents, visible, disabled, format, maxLength, label) {
+        var _this = this;
+        if (valueOrControlComponents === void 0) { valueOrControlComponents = ""; }
+        if (visible === void 0) { visible = true; }
+        if (disabled === void 0) { disabled = false; }
         if (format === void 0) { format = "text"; }
         if (maxLength === void 0) { maxLength = 100; }
-        var attribute = new XrmMock.StringAttributeMock(this.createAttribute(name, value), format || "text", maxLength || 100);
-        this.addAttribute(attribute.attribute);
-        attribute.controls.push(this.Control.createString(attribute, name, isVisible, isDisabled, label));
+        var components;
+        var controls = [];
+        if (typeof (nameOrComponents) === "string") {
+            components = {
+                maxLength: maxLength,
+                name: nameOrComponents,
+                stringAttributeFormat: format,
+                value: valueOrControlComponents,
+            };
+            controls.push({
+                disabled: disabled,
+                label: label || nameOrComponents,
+                name: nameOrComponents,
+                visible: visible,
+            });
+        }
+        else {
+            components = nameOrComponents;
+            if (valueOrControlComponents) {
+                controls = valueOrControlComponents instanceof Array
+                    ? valueOrControlComponents
+                    : [valueOrControlComponents];
+            }
+            else {
+                controls.push({ name: components.name });
+            }
+        }
+        var attribute = new XrmMock.StringAttributeMock(components);
+        this.addAttribute(attribute);
+        controls.forEach(function (c) {
+            var component = c;
+            component.attribute = attribute;
+            _this.Control.createString(component);
+        });
         return attribute;
     };
     Attribute.prototype.createAttribute = function (name, value) {

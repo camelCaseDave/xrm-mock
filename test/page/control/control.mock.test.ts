@@ -5,6 +5,7 @@ import { UiKeyPressableMock } from "../../../src/xrm-mock/page/uikeypressable/ui
 import { UiLabelElementMock } from "../../../src/xrm-mock/page/uilabelelement/uilabelelement.mock";
 import { AttributeMock } from "./../../../src/xrm-mock/page/attribute/attribute.mock";
 import { StandardControlMock } from "./../../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
+import { StringAttributeMock } from "./../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 import { StringControlMock } from "./../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
 
 describe("Xrm.Page.Control Mock", () => {
@@ -48,18 +49,13 @@ describe("Xrm.Page.Control Mock", () => {
         expect(this.control.getVisible()).toBe(true);
     });
 
-    it("should get a value if it has an attribute", () => {
-        const stringControl = new StringControlMock(
-            new AutoLookupControlMock(
-                new StandardControlMock({
-                    attribute: new AttributeMock({ name: "lastname", value: "Bloggs" }),
-                    control: new ControlMock({
-                        controlType: "standard",
-                        name: "lastname",
-                    }),
-                }),
-                new UiKeyPressableMock()));
+    it("should get a value even without an attribute", () => {
+        const control = new StringControlMock({
+            attribute: undefined,
+            name: "lastname",
+            uncommittedText: "Bloggs",
+        });
 
-        expect(stringControl.getValue()).toBe("Bloggs");
+        expect(control.getValue()).toBe("Bloggs");
     });
 });

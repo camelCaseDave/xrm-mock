@@ -1,59 +1,32 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var uikeypressable_mock_1 = require("../uikeypressable/uikeypressable.mock");
-var AutoLookupControlMock = /** @class */ (function () {
-    function AutoLookupControlMock(standardControl, uiKeyPressable) {
-        this.standardControl = standardControl;
-        this.uiKeyPressable = uiKeyPressable;
-        uiKeyPressable = uiKeyPressable || new uikeypressable_mock_1.UiKeyPressableMock();
+var standardcontrol_mock_1 = require("./../standardcontrol/standardcontrol.mock");
+var uikeypressable_mock_1 = require("./../uikeypressable/uikeypressable.mock");
+var AutoLookupControlMock = /** @class */ (function (_super) {
+    __extends(AutoLookupControlMock, _super);
+    function AutoLookupControlMock(components) {
+        var _this = _super.call(this, components) || this;
+        _this.uiKeyPressable = new uikeypressable_mock_1.UiKeyPressableMock(components.keyPressHandlers);
+        return _this;
     }
     AutoLookupControlMock.prototype.getValue = function () {
-        return this.standardControl.attribute.getValue();
+        return this.uncommittedText;
     };
     AutoLookupControlMock.prototype.hideAutoComplete = function () {
         throw new Error(("hide autocomplete not implemented"));
     };
     AutoLookupControlMock.prototype.showAutoComplete = function (resultSet) {
         throw new Error(("show autocomplete not implemented"));
-    };
-    AutoLookupControlMock.prototype.clearNotification = function (uniqueId) {
-        return this.standardControl.clearNotification();
-    };
-    AutoLookupControlMock.prototype.getDisabled = function () {
-        return this.standardControl.getDisabled();
-    };
-    AutoLookupControlMock.prototype.setDisabled = function (disabled) {
-        this.standardControl.setDisabled(disabled);
-    };
-    AutoLookupControlMock.prototype.setNotification = function (message, uniqueId) {
-        return this.standardControl.setNotification(message, uniqueId);
-    };
-    AutoLookupControlMock.prototype.getAttribute = function () {
-        return this.standardControl.getAttribute();
-    };
-    AutoLookupControlMock.prototype.getControlType = function () {
-        return this.standardControl.getControlType();
-    };
-    AutoLookupControlMock.prototype.getName = function () {
-        return this.standardControl.getName();
-    };
-    AutoLookupControlMock.prototype.getParent = function () {
-        return this.standardControl.getParent();
-    };
-    AutoLookupControlMock.prototype.setVisible = function (visible) {
-        this.standardControl.setVisible(visible);
-    };
-    AutoLookupControlMock.prototype.getLabel = function () {
-        return this.standardControl.getLabel();
-    };
-    AutoLookupControlMock.prototype.setLabel = function (label) {
-        this.standardControl.setLabel(label);
-    };
-    AutoLookupControlMock.prototype.getVisible = function () {
-        return this.standardControl.getVisible();
-    };
-    AutoLookupControlMock.prototype.setFocus = function () {
-        this.standardControl.setFocus();
     };
     AutoLookupControlMock.prototype.addOnKeyPress = function (handler) {
         this.uiKeyPressable.addOnKeyPress(handler);
@@ -65,5 +38,5 @@ var AutoLookupControlMock = /** @class */ (function () {
         this.uiKeyPressable.removeOnKeyPress(handler);
     };
     return AutoLookupControlMock;
-}());
+}(standardcontrol_mock_1.StandardControlMock));
 exports.AutoLookupControlMock = AutoLookupControlMock;

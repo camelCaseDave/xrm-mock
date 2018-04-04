@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var UiKeyPressableMock = /** @class */ (function () {
     function UiKeyPressableMock(keyPressHandlers) {
         this.keyPressHandlers = keyPressHandlers;
+        this.keyPressHandlers = keyPressHandlers || [];
     }
     UiKeyPressableMock.prototype.addOnKeyPress = function (handler) {
         this.keyPressHandlers.push(handler);

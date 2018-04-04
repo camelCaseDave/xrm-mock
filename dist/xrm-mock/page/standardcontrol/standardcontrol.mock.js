@@ -1,12 +1,30 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var StandardControlMock = /** @class */ (function () {
+var control_mock_1 = require("./../control/control.mock");
+var uifocusable_mock_1 = require("./../uifocusable/uifocusable.mock");
+var uistandardelement_mock_1 = require("./../uistandardelement/uistandardelement.mock");
+var StandardControlMock = /** @class */ (function (_super) {
+    __extends(StandardControlMock, _super);
     function StandardControlMock(components) {
-        this.control = components.control;
-        this.disabled = components.disabled || false;
-        this.uiStandardElement = components.uiStandardElement;
-        this.uiFocusable = components.uiFocusable;
-        this.attribute = components.attribute;
+        var _this = _super.call(this, components) || this;
+        _this.disabled = components.disabled || false;
+        _this.uiStandardElement = uistandardelement_mock_1.UiStandardElementMock.create(components.label || _this.name, components.visible);
+        _this.uiFocusable = new uifocusable_mock_1.UiFocusableMock(components.hasFocus);
+        _this.attribute = components.attribute;
+        if (_this.attribute && _this.attribute.controls) {
+            _this.attribute.controls.push(_this);
+        }
+        return _this;
     }
     StandardControlMock.prototype.clearNotification = function (uniqueId) {
         throw new Error(("clear notification not implemented"));
@@ -21,22 +39,12 @@ var StandardControlMock = /** @class */ (function () {
         throw new Error(("set notification not implemented"));
     };
     StandardControlMock.prototype.getAttribute = function () {
-        if (["subgrid", "iframe", "webresource"].indexOf(this.control.getControlType()) === -1) {
+        if (["subgrid", "iframe", "webresource"].indexOf(this.getControlType()) === -1) {
             return this.attribute;
         }
         else {
-            throw new Error("control is not bound to an attribute because it is of type " + this.control.getControlType());
+            throw new Error("control is not bound to an attribute because it is of type " + this.getControlType());
         }
-    };
-    StandardControlMock.prototype.getControlType = function () {
-        this.control.controlType = "standard";
-        return this.control.getControlType();
-    };
-    StandardControlMock.prototype.getName = function () {
-        return this.control.getName();
-    };
-    StandardControlMock.prototype.getParent = function () {
-        return this.control.getParent();
     };
     StandardControlMock.prototype.getLabel = function () {
         return this.uiStandardElement.getLabel();
@@ -54,5 +62,5 @@ var StandardControlMock = /** @class */ (function () {
         this.uiFocusable.setFocus();
     };
     return StandardControlMock;
-}());
+}(control_mock_1.ControlMock));
 exports.StandardControlMock = StandardControlMock;

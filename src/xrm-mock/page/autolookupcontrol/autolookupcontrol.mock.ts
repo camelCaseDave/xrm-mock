@@ -1,13 +1,28 @@
-import { StandardControlMock } from "../standardcontrol/standardcontrol.mock";
-import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
+import { AttributeMock, AttributeReturnType } from "./../attribute/attribute.mock";
+import { IAttStandardControlComponents,
+         IStandardControlComponents,
+         StandardControlMock } from "./../standardcontrol/standardcontrol.mock";
+import { UiKeyPressableMock } from "./../uikeypressable/uikeypressable.mock";
 
-export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
-    constructor(public standardControl: StandardControlMock, public uiKeyPressable?: UiKeyPressableMock) {
-        uiKeyPressable = uiKeyPressable || new UiKeyPressableMock();
+export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
+                                   TAttribute extends AttributeMock<TControl, TValue>,
+                                   TValue extends AttributeReturnType>
+                                   extends StandardControlMock<TControl, TAttribute, TValue>
+                                   implements Xrm.Page.AutoLookupControl {
+
+    public uiKeyPressable: UiKeyPressableMock;
+    /**
+     * Allows for testing the value typed into the control, but not yet saved
+     */
+    public uncommittedText: string;
+
+    constructor(components: IAutoLookupControlComponents<TControl, TAttribute, TValue>) {
+        super(components);
+        this.uiKeyPressable = new UiKeyPressableMock(components.keyPressHandlers);
     }
 
     public getValue(): string {
-        return this.standardControl.attribute.getValue();
+        return this.uncommittedText;
     }
 
     public hideAutoComplete(): void {
@@ -16,58 +31,6 @@ export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
 
     public showAutoComplete(resultSet: Xrm.Page.AutoCompleteResultSet): void {
         throw new Error(("show autocomplete not implemented"));
-    }
-
-    public clearNotification(uniqueId?: string): boolean {
-        return this.standardControl.clearNotification();
-    }
-
-    public getDisabled(): boolean {
-        return this.standardControl.getDisabled();
-    }
-
-    public setDisabled(disabled: boolean): void {
-        this.standardControl.setDisabled(disabled);
-    }
-
-    public setNotification(message: string, uniqueId: string): boolean {
-        return this.standardControl.setNotification(message, uniqueId);
-    }
-
-    public getAttribute(): Xrm.Page.Attribute {
-        return this.standardControl.getAttribute();
-    }
-
-    public getControlType(): Xrm.Page.ControlType | string {
-        return this.standardControl.getControlType();
-    }
-
-    public getName(): string {
-        return this.standardControl.getName();
-    }
-
-    public getParent(): Xrm.Page.Section {
-        return this.standardControl.getParent();
-    }
-
-    public setVisible(visible: boolean): void {
-        this.standardControl.setVisible(visible);
-    }
-
-    public getLabel(): string {
-        return this.standardControl.getLabel();
-    }
-
-    public setLabel(label: string): void {
-        this.standardControl.setLabel(label);
-    }
-
-    public getVisible(): boolean {
-        return this.standardControl.getVisible();
-    }
-
-    public setFocus(): void {
-        this.standardControl.setFocus();
     }
 
     public addOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {
@@ -81,4 +44,23 @@ export class AutoLookupControlMock implements Xrm.Page.AutoLookupControl {
     public removeOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {
         this.uiKeyPressable.removeOnKeyPress(handler);
     }
+}
+
+export interface IAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
+                                              TAttribute extends AttributeMock<TControl, TValue>,
+                                              TValue extends AttributeReturnType>
+                                              extends IStandardControlComponents<TControl, TAttribute, TValue>,
+                                                      IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
+}
+
+export interface IAttAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
+                                              TAttribute extends AttributeMock<TControl, TValue>,
+                                              TValue extends AttributeReturnType>
+                                              extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
+    keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[];
+    /**
+     * Auto Lookup allows for getting the value that has currently been typed in,
+     * but not necessarily saved to the attribute
+     */
+    uncommittedText?: string;
 }

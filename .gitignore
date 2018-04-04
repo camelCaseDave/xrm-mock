@@ -13,3 +13,4 @@ package
 
 build.js
 npm-debug.log
+.vscode/settings.json

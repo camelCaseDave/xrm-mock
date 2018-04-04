@@ -1,12 +1,12 @@
 export class ControlMock implements Xrm.Page.Control {
     public controlType: Xrm.Page.ControlType;
+    public name: string;
     public parent: Xrm.Page.Section;
     public uiLabelElement: Xrm.Page.UiLabelElement;
     public uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
-    private name: string;
 
     constructor(components: IControlComponents) {
-        this.controlType = components.controlType;
+        this.controlType = components.controlType || "standard";
         this.uiLabelElement = components.uiLabelElement;
         this.uiCanGetVisibleElement = components.uiCanGetVisibleElement;
         this.name = components.name;
@@ -40,7 +40,7 @@ export class ControlMock implements Xrm.Page.Control {
 
 export interface IControlComponents {
     name: string;
-    controlType: Xrm.Page.ControlType;
+    controlType?: Xrm.Page.ControlType;
     uiLabelElement?: Xrm.Page.UiLabelElement;
     uiCanGetVisibleElement?: Xrm.Page.UiCanGetVisibleElement;
     parent?: Xrm.Page.Section;
