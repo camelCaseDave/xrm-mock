@@ -1,16 +1,17 @@
 import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { StringAttributeMock } from "../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
+import { IStringAttributeComponents,
+         StringAttributeMock } from "../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 
 describe("Xrm.Page.StringAttribute Mock", () => {
     beforeEach(() => {
-        const attribute = new AttributeMock({
+        const attribute: IStringAttributeComponents = {
             isDirty: false,
+            maxLength: 20,
             name: "firstname",
-            requiredLevel: "required",
             submitMode: "dirty",
             value: "Joe",
-        });
-        this.stringAttribute = new StringAttributeMock(attribute, "text", 20);
+        };
+        this.stringAttribute = new StringAttributeMock(attribute);
     });
 
     it("should instantiate", () => {

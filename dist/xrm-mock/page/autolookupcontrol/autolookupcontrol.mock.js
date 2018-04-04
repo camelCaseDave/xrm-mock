@@ -16,6 +16,7 @@ var AutoLookupControlMock = /** @class */ (function (_super) {
     __extends(AutoLookupControlMock, _super);
     function AutoLookupControlMock(components) {
         var _this = _super.call(this, components) || this;
+        _this.uncommittedText = components.uncommittedText;
         _this.uiKeyPressable = new uikeypressable_mock_1.UiKeyPressableMock(components.keyPressHandlers);
         return _this;
     }

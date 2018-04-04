@@ -1,13 +1,12 @@
 /// <reference types="xrm" />
-import { AttributeMock } from "../attribute/attribute.mock";
 export declare class NumberAttributeMock implements Xrm.Page.NumberAttribute {
     min: number;
     max: number;
     precision: number;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>;
     integerAttributeFormat: Xrm.Page.IntegerAttributeFormat;
-    attribute: AttributeMock;
-    constructor(attribute: AttributeMock, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>, integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat, min?: number, max?: number, precision?: number);
+    attribute: any;
+    constructor(attribute: any, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>, integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat, min?: number, max?: number, precision?: number);
     getFormat(): Xrm.Page.IntegerAttributeFormat;
     getMax(): number;
     getMin(): number;

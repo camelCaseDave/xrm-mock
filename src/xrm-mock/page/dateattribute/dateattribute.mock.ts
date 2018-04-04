@@ -3,7 +3,7 @@ import { DateControlMock } from "./../datecontrol/datecontrol.mock";
 
 export class DateAttributeMock implements Xrm.Page.Attribute {
     public controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
-    public attribute: AttributeMock;
+    public attribute: any; // TODO - AttributeMock;
     public dateAttributeFormat: Xrm.Page.DateAttributeFormat;
 
     constructor(components: IDateAttributeComponents) {
@@ -75,7 +75,7 @@ export class DateAttributeMock implements Xrm.Page.Attribute {
 }
 
 export interface IDateAttributeComponents {
-    attribute: AttributeMock;
+    attribute: any; // TODO - AttributeMock;
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
     controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
 }

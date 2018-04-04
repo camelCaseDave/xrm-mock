@@ -18,6 +18,7 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
 
     constructor(components: IAutoLookupControlComponents<TControl, TAttribute, TValue>) {
         super(components);
+        this.uncommittedText = components.uncommittedText;
         this.uiKeyPressable = new UiKeyPressableMock(components.keyPressHandlers);
     }
 

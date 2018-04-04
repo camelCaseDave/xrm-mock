@@ -1,10 +1,9 @@
 /// <reference types="xrm" />
-import { AttributeMock } from "./../attribute/attribute.mock";
 export declare class EnumAttributeMock implements Xrm.Page.EnumAttribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     initialValue: number | boolean;
-    attribute: AttributeMock;
-    constructor(attribute: AttributeMock, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>);
+    attribute: any;
+    constructor(attribute: any, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>);
     getInitialValue(): number | boolean;
     getFormat(): Xrm.Page.AttributeFormat;
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;

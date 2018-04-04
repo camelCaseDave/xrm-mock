@@ -6,9 +6,10 @@ export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
     public precision: number;
     public controls: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>;
     public integerAttributeFormat: Xrm.Page.IntegerAttributeFormat;
-    public attribute: AttributeMock;
+    public attribute: any; // TODO - AttributeMock;
 
-    constructor(attribute: AttributeMock, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>,
+    constructor(attribute: any, // TODO - AttributeMock
+                controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>,
                 integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat,
                 min?: number, max?: number, precision?: number) {
         this.attribute = attribute;

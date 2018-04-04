@@ -3,9 +3,9 @@ import { AttributeMock } from "./../attribute/attribute.mock";
 export class EnumAttributeMock implements Xrm.Page.EnumAttribute {
     public controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
     public initialValue: number | boolean;
-    public attribute: AttributeMock;
+    public attribute: any; // TODO - AttributeMock;
 
-    constructor(attribute: AttributeMock, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
+    constructor(attribute: any, /* TODO - AttributeMock */ controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
         this.attribute = attribute;
         this.initialValue = attribute.getValue();
     }

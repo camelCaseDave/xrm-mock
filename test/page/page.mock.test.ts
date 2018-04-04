@@ -14,6 +14,7 @@ import { XrmStaticMock } from "./../../src/xrm-mock/xrmstatic.mock";
 
 describe("Xrm.Page Mock", () => {
     let lastName: StringAttributeMock;
+    let xrmPageMock: PageMock;
 
     beforeEach(() => {
         const attributes: Array<AttributeMock<StringControlMock, string>> = [];
@@ -26,6 +27,7 @@ describe("Xrm.Page Mock", () => {
             submitMode: "always",
             value: "Bloggs",
         });
+        attributes.push(lastName);
         const control = new StringControlMock({
             attribute: lastName,
             controlType: "standard",
@@ -33,7 +35,7 @@ describe("Xrm.Page Mock", () => {
             uncommittedText: "Bloggs",
         });
 
-        this.xrmPageMock = new PageMock({
+        xrmPageMock = new PageMock({
             data: new DataMock(
                 new EntityMock("{0}", new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes))),
             ui: new UiMock({
@@ -43,38 +45,38 @@ describe("Xrm.Page Mock", () => {
     });
 
     it("should exist", () => {
-        expect(this.xrmPageMock).toBeDefined();
+        expect(xrmPageMock).toBeDefined();
     });
 
     describe("getAttribute", () => {
         it("should exist", () => {
-            expect(this.xrmPageMock.getAttribute).toBeDefined();
+            expect(xrmPageMock.getAttribute).toBeDefined();
         });
 
         it("by string should return Bloggs for lastname", () => {
-            expect(this.xrmPageMock.getAttribute("lastname")).toBe(lastName);
+            expect(xrmPageMock.getAttribute("lastname")).toBe(lastName);
         });
 
         it("by index should return Bloggs for 2", () => {
-            expect(this.xrmPageMock.getAttribute(2)).toBe(lastName);
+            expect(xrmPageMock.getAttribute(2)).toBe(lastName);
         });
 
         it("should get attribute and value in one line", () => {
-            expect(this.xrmPageMock.getAttribute("firstname").getValue()).toBe("Joe");
+            expect(xrmPageMock.getAttribute("firstname").getValue()).toBe("Joe");
         });
     });
 
     describe("getControl", () => {
         it("should exist", () => {
-            expect(this.xrmPageMock.getControl).toBeDefined();
+            expect(xrmPageMock.getControl).toBeDefined();
         });
 
         it("should get by index", () => {
-            expect(this.xrmPageMock.getControl(0)).toBeDefined();
+            expect(xrmPageMock.getControl(0)).toBeDefined();
         });
 
         it("should return Bloggs for the control's bound attribute value", () => {
-            expect(this.xrmPageMock.getControl("lastname").getValue()).toBe("Bloggs");
+            expect(xrmPageMock.getControl<StringControlMock>("lastname").getAttribute().getValue()).toBe("Bloggs");
         });
     });
 });

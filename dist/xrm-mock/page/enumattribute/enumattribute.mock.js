@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var EnumAttributeMock = /** @class */ (function () {
-    function EnumAttributeMock(attribute, controls) {
+    function EnumAttributeMock(attribute, /* TODO - AttributeMock */ controls) {
         this.attribute = attribute;
         this.initialValue = attribute.getValue();
     }

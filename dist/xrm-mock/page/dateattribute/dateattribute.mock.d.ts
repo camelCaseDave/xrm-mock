@@ -1,8 +1,7 @@
 /// <reference types="xrm" />
-import { AttributeMock } from "./../attribute/attribute.mock";
 export declare class DateAttributeMock implements Xrm.Page.Attribute {
     controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
-    attribute: AttributeMock;
+    attribute: any;
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
     constructor(components: IDateAttributeComponents);
     getFormat(): Xrm.Page.DateAttributeFormat;
@@ -22,7 +21,7 @@ export declare class DateAttributeMock implements Xrm.Page.Attribute {
     setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
 }
 export interface IDateAttributeComponents {
-    attribute: AttributeMock;
+    attribute: any;
     dateAttributeFormat: Xrm.Page.DateAttributeFormat;
     controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
 }

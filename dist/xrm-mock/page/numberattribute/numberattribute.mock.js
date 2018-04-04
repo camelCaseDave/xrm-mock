@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var NumberAttributeMock = /** @class */ (function () {
-    function NumberAttributeMock(attribute, controls, integerAttributeFormat, min, max, precision) {
+    function NumberAttributeMock(attribute, // TODO - AttributeMock
+    controls, integerAttributeFormat, min, max, precision) {
         this.attribute = attribute;
         this.controls = controls;
         this.integerAttributeFormat = integerAttributeFormat;
