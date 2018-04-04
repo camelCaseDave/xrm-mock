@@ -1,26 +1,45 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var OptionSetAttributeMock = /** @class */ (function () {
-    function OptionSetAttributeMock(enumAttribute, options, optionSetAttributeFormat) {
-        this.enumAttribute = enumAttribute;
-        this.options = options;
-        this.optionSetAttributeFormat = optionSetAttributeFormat;
-        this.selectedOption = this.getOption(enumAttribute.getValue());
-        this.enumAttribute.attribute.attributeFormat = optionSetAttributeFormat;
-    }
-    OptionSetAttributeMock.prototype.getFormat = function () {
-        return this.enumAttribute.getFormat();
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    OptionSetAttributeMock.prototype.getInitialValue = function () {
-        return this.enumAttribute.getInitialValue();
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var enumattribute_mock_1 = require("./../enumattribute/enumattribute.mock");
+var optionsetvalue_mock_1 = require("./../optionsetvalue/optionsetvalue.mock");
+var OptionSetAttributeMock = /** @class */ (function (_super) {
+    __extends(OptionSetAttributeMock, _super);
+    function OptionSetAttributeMock(components) {
+        var _this = _super.call(this, components) || this;
+        _this.options = components.options
+            ? components.options.map(function (o) {
+                return new optionsetvalue_mock_1.OptionSetValueMock(o.text, o.value);
+            })
+            : components.value || components.value === 0
+                ? [{
+                        text: components.value.toString(),
+                        value: components.value,
+                    }]
+                : [];
+        _this.format = components.format || "language";
+        _this.selectedOption = _this.getOption(_this.getValue());
+        return _this;
+    }
+    OptionSetAttributeMock.create = function (name, value) {
+        return new OptionSetAttributeMock({ name: name, value: value });
+    };
+    OptionSetAttributeMock.prototype.getFormat = function () {
+        return _super.prototype.getFormat.call(this);
     };
     OptionSetAttributeMock.prototype.getOption = function (param) {
-        if (typeof param === "string") {
-            return this.options.filter(function (o) { return o.text === param; })[0];
-        }
-        else if (typeof param === "number") {
-            return this.options.filter(function (o) { return o.value === param; })[0];
-        }
+        return typeof param === "number"
+            ? this.options.filter(function (o) { return o.value === param; })[0]
+            : this.options.filter(function (o) { return o.text === param; })[0];
     };
     OptionSetAttributeMock.prototype.getOptions = function () {
         return this.options;
@@ -31,49 +50,10 @@ var OptionSetAttributeMock = /** @class */ (function () {
     OptionSetAttributeMock.prototype.getText = function () {
         return this.selectedOption.text;
     };
-    OptionSetAttributeMock.prototype.getValue = function () {
-        return this.enumAttribute.getValue();
-    };
     OptionSetAttributeMock.prototype.setValue = function (value) {
-        this.enumAttribute.setValue(value);
+        _super.prototype.setValue.call(this, value);
         this.selectedOption = this.getOption(value);
     };
-    OptionSetAttributeMock.prototype.addOnChange = function (handler) {
-        this.enumAttribute.addOnChange(handler);
-    };
-    OptionSetAttributeMock.prototype.fireOnChange = function () {
-        this.enumAttribute.fireOnChange();
-    };
-    OptionSetAttributeMock.prototype.getAttributeType = function () {
-        return this.enumAttribute.getAttributeType();
-    };
-    OptionSetAttributeMock.prototype.getIsDirty = function () {
-        return this.enumAttribute.getIsDirty();
-    };
-    OptionSetAttributeMock.prototype.getName = function () {
-        return this.enumAttribute.getName();
-    };
-    OptionSetAttributeMock.prototype.getParent = function () {
-        return this.enumAttribute.getParent();
-    };
-    OptionSetAttributeMock.prototype.getRequiredLevel = function () {
-        return this.enumAttribute.getRequiredLevel();
-    };
-    OptionSetAttributeMock.prototype.getSubmitMode = function () {
-        return this.enumAttribute.getSubmitMode();
-    };
-    OptionSetAttributeMock.prototype.getUserPrivilege = function () {
-        return this.enumAttribute.getUserPrivilege();
-    };
-    OptionSetAttributeMock.prototype.removeOnChange = function (handler) {
-        this.enumAttribute.removeOnChange(handler);
-    };
-    OptionSetAttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
-        this.enumAttribute.setRequiredLevel(requirementLevel);
-    };
-    OptionSetAttributeMock.prototype.setSubmitMode = function (submitMode) {
-        this.enumAttribute.setSubmitMode(submitMode);
-    };
     return OptionSetAttributeMock;
-}());
+}(enumattribute_mock_1.EnumAttributeMock));
 exports.OptionSetAttributeMock = OptionSetAttributeMock;

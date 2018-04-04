@@ -6,7 +6,8 @@ import { UiStandardElementMock } from "./../uistandardelement/uistandardelement.
 export class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
                                  TAttribute extends AttributeMock<TControl, TValue>,
                                  TValue extends AttributeReturnType>
-                                 extends ControlMock implements Xrm.Page.StandardControl {
+                                 extends ControlMock
+                                 implements Xrm.Page.StandardControl {
     public disabled: boolean;
     public attribute: TAttribute;
     protected uiStandardElement: Xrm.Page.UiStandardElement;

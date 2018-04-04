@@ -1,7 +1,7 @@
 /// <reference types="xrm" />
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../control/control.mock";
-export declare type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue[] | Xrm.Page.OptionSetValue | string;
+export declare type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue[] | string;
 export declare class AttributeMock<TControl extends ControlMock, TValue extends AttributeReturnType> implements Xrm.Page.Attribute {
     controls: ItemCollectionMock<TControl>;
     isDirty: boolean;
@@ -9,7 +9,7 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     requiredLevel: Xrm.Page.RequirementLevel;
     submitMode: Xrm.Page.SubmitMode;
     value: TValue;
-    attributeFormat: Xrm.Page.AttributeFormat;
+    format: Xrm.Page.AttributeFormat;
     eventHandlers: Xrm.Page.ContextSensitiveHandler[];
     constructor(components: IAttributeComponents<TControl, TValue>);
     addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
@@ -29,6 +29,7 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     setValue(value: TValue): void;
 }
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+    format?: Xrm.Page.AttributeFormat;
     name: string;
     value?: TValue;
     isDirty?: boolean;

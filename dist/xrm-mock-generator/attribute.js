@@ -34,20 +34,68 @@ var Attribute = /** @class */ (function () {
         this.addAttribute(numberAttribute);
         return numberAttribute;
     };
-    Attribute.prototype.createOptionSet = function (name, options) {
-        var optionSetOptions = [];
-        for (var _i = 0, options_1 = options; _i < options_1.length; _i++) {
-            var option = options_1[_i];
-            optionSetOptions.push(new XrmMock.OptionSetValueMock(option.text, option.value));
+    Attribute.prototype.createOptionSet = function (nameOrComponents, valueOrControlComponents, options) {
+        var _this = this;
+        var components;
+        var controls = [];
+        if (typeof (nameOrComponents) === "string") {
+            var value_1 = valueOrControlComponents;
+            var num = void 0;
+            if (value_1 !== null
+                && value_1 !== undefined) {
+                if (!options) {
+                    options = [typeof value_1 === "string"
+                            ? { text: value_1, value: 0 }
+                            : { text: value_1.toString(), value: value_1 }];
+                }
+                if (typeof value_1 === "string") {
+                    var option = options.filter(function (o) { return o.text === value_1; })[0];
+                    num = option.value;
+                }
+                else {
+                    num = value_1;
+                }
+            }
+            else {
+                num = undefined;
+            }
+            components = {
+                name: name,
+                options: options,
+            };
+            if (num || num === 0) {
+                components.value = num;
+            }
+            controls.push({
+                name: name,
+                options: options,
+            });
         }
-        var attribute = this.createAttribute(name, options[0]);
-        var enumAttribute = new XrmMock.EnumAttributeMock(attribute);
-        var optionSetAttribute = new XrmMock.OptionSetAttributeMock(enumAttribute, optionSetOptions, "language");
-        this.addAttribute(optionSetAttribute);
-        return optionSetAttribute;
-    };
-    Attribute.prototype.createOptionSetOption = function (option) {
-        return new XrmMock.OptionSetValueMock(option.text, option.value);
+        else {
+            components = nameOrComponents;
+            if (valueOrControlComponents) {
+                controls = valueOrControlComponents instanceof Array
+                    ? valueOrControlComponents
+                    : [valueOrControlComponents];
+            }
+            else {
+                controls.push({ name: components.name });
+            }
+            if (components.options && components.options.length > 0) {
+                controls.filter(function (c) { return !c.options; })
+                    .forEach(function (c) {
+                    c.options = components.options;
+                });
+            }
+        }
+        var attribute = new XrmMock.OptionSetAttributeMock(components);
+        this.addAttribute(attribute);
+        controls.forEach(function (c) {
+            var component = c;
+            component.attribute = attribute;
+            _this.Control.createOptionSet(component);
+        });
+        return attribute;
     };
     Attribute.prototype.createString = function (nameOrComponents, valueOrControlComponents, visible, disabled, format, maxLength, label) {
         var _this = this;
@@ -60,9 +108,9 @@ var Attribute = /** @class */ (function () {
         var controls = [];
         if (typeof (nameOrComponents) === "string") {
             components = {
+                format: format,
                 maxLength: maxLength,
                 name: nameOrComponents,
-                stringAttributeFormat: format,
                 value: valueOrControlComponents,
             };
             controls.push({

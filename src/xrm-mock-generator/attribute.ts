@@ -42,22 +42,79 @@ export default class Attribute {
     return numberAttribute;
   }
 
-  public createOptionSet(name: string, options: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute {
-    const optionSetOptions = [];
-    for (const option of options) {
-      optionSetOptions.push(new XrmMock.OptionSetValueMock(option.text, option.value));
+  public createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents,
+                         controlComponents?: XrmMock.IAttOptionSetControlComponents[]
+                                           | XrmMock.IAttOptionSetControlComponents): Xrm.Page.OptionSetAttribute;
+  public createOptionSet(name: string,
+                         value?: string | number,
+                         options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute;
+  public createOptionSet(nameOrComponents: string | XrmMock.IOptionSetAttributeComponents,
+                         valueOrControlComponents?: string
+                          | number
+                          | XrmMock.IAttOptionSetControlComponents[]
+                          | XrmMock.IAttOptionSetControlComponents,
+                         options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute {
+    let components: XrmMock.IOptionSetAttributeComponents;
+    let controls: XrmMock.IAttOptionSetControlComponents[] = [];
+    if (typeof(nameOrComponents) === "string") {
+      const value = valueOrControlComponents as number | string;
+      let num: number;
+      if (value !== null
+          && value !== undefined) {
+        if (!options) {
+          options = [ typeof value === "string"
+            ? { text: value, value: 0 }
+            : { text: value.toString(), value }];
+        }
+
+        if (typeof value === "string") {
+          const option = options.filter((o) => o.text === value)[0];
+          num = option.value;
+        } else {
+          num = value;
+        }
+      } else {
+        num = undefined;
+      }
+
+      components = {
+        name,
+        options,
+      };
+
+      if (num || num === 0) {
+        components.value = num;
+      }
+
+      controls.push({
+        name,
+        options,
+      });
+    } else {
+      components = nameOrComponents;
+      if (valueOrControlComponents) {
+        controls = valueOrControlComponents instanceof Array
+          ? valueOrControlComponents
+          : [valueOrControlComponents as XrmMock.IAttOptionSetControlComponents];
+      } else {
+        controls.push({ name: components.name });
+      }
+      if (components.options && components.options.length > 0) {
+        controls.filter((c) => !c.options)
+                .forEach((c) => {
+                  c.options = components.options;
+                });
+      }
     }
 
-    const attribute = this.createAttribute(name, options[0]);
-    const enumAttribute = new XrmMock.EnumAttributeMock(attribute);
-    const optionSetAttribute = new XrmMock.OptionSetAttributeMock(enumAttribute, optionSetOptions, "language");
-
-    this.addAttribute(optionSetAttribute);
-    return optionSetAttribute;
-  }
-
-  public createOptionSetOption(option: Xrm.Page.OptionSetValue) {
-    return new XrmMock.OptionSetValueMock(option.text, option.value);
+    const attribute = new XrmMock.OptionSetAttributeMock(components);
+    this.addAttribute(attribute);
+    controls.forEach((c) => {
+      const component = (c as XrmMock.IOptionSetControlComponents);
+      component.attribute = attribute;
+      this.Control.createOptionSet(component);
+    });
+    return attribute;
   }
 
   public createString(attComponents: XrmMock.IStringAttributeComponents,
@@ -78,9 +135,9 @@ export default class Attribute {
     let controls: XrmMock.IAttStringControlComponents[] = [];
     if (typeof(nameOrComponents) === "string") {
       components = {
+        format,
         maxLength,
         name: nameOrComponents,
-        stringAttributeFormat: format,
         value: valueOrControlComponents as string,
       };
       controls.push({
@@ -122,7 +179,7 @@ export default class Attribute {
     return attribute;
   }
 
-  private addAttribute(attribute: Xrm.Page.Attribute) {
+  private addAttribute(attribute: Xrm.Page.Attribute): void {
     (Xrm.Page.data.entity.attributes as any).push(attribute);
   }
 }

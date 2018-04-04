@@ -15,7 +15,7 @@ var StringAttributeMock = /** @class */ (function (_super) {
     __extends(StringAttributeMock, _super);
     function StringAttributeMock(components) {
         var _this = _super.call(this, components) || this;
-        _this.stringAttributeFormat = components.stringAttributeFormat || "text";
+        _this.format = components.format || "text";
         _this.maxLength = components.maxLength || 100;
         return _this;
     }
@@ -23,7 +23,7 @@ var StringAttributeMock = /** @class */ (function (_super) {
         return new StringAttributeMock({ name: name, value: value });
     };
     StringAttributeMock.prototype.getFormat = function () {
-        return this.stringAttributeFormat;
+        return _super.prototype.getFormat.call(this);
     };
     StringAttributeMock.prototype.getMaxLength = function () {
         return this.maxLength;

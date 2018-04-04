@@ -1,23 +1,10 @@
-/// <reference types="xrm" />
-export declare class EnumAttributeMock implements Xrm.Page.EnumAttribute {
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    initialValue: number | boolean;
-    attribute: any;
-    constructor(attribute: any, controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>);
-    getInitialValue(): number | boolean;
-    getFormat(): Xrm.Page.AttributeFormat;
-    addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    fireOnChange(): void;
-    getAttributeType(): string;
-    getIsDirty(): boolean;
-    getName(): string;
-    getParent(): Xrm.Page.Entity;
-    getRequiredLevel(): Xrm.Page.RequirementLevel;
-    getSubmitMode(): Xrm.Page.SubmitMode;
-    getUserPrivilege(): Xrm.Page.Privilege;
-    removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void;
-    setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
-    getValue(): any;
-    setValue(value: any): void;
+import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
+import { ControlMock } from "./../control/control.mock";
+export declare class EnumAttributeMock<TControl extends ControlMock, TValue extends number | boolean> extends AttributeMock<TControl, TValue> implements Xrm.Page.EnumAttribute {
+    initialValue: TValue;
+    constructor(components: IEnumAttributeComponents<TControl, TValue>);
+    getInitialValue(): TValue;
+}
+export interface IEnumAttributeComponents<TControl extends ControlMock, TValue extends number | boolean> extends IAttributeComponents<TControl, TValue> {
+    initialValue?: TValue;
 }

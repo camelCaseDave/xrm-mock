@@ -12,12 +12,18 @@ describe("Xrm.Page.OptionSetAttribute Mock", () => {
             submitMode: "dirty",
             value: 100000,
         }));
-        const options: OptionSetValueMock[] = [
-            new OptionSetValueMock("Phone Call", 100000),
-            new OptionSetValueMock("In Person", 100001),
-            new OptionSetValueMock("Email", 100002),
-        ];
-        this.optionSetAttribute = new OptionSetAttributeMock(enumAttribute, options, "language");
+        this.optionSetAttribute = new OptionSetAttributeMock({
+            isDirty: false,
+            name: "new_leadSources",
+            options: [
+                new OptionSetValueMock("Phone Call", 100000),
+                new OptionSetValueMock("In Person", 100001),
+                new OptionSetValueMock("Email", 100002),
+            ],
+            requiredLevel: "recommended",
+            submitMode: "dirty",
+            value: 100000,
+        });
     });
 
     it("should instantiate", () => {

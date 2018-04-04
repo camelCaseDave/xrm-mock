@@ -1,58 +1,25 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var BooleanAttributeMock = /** @class */ (function () {
-    function BooleanAttributeMock(attribute, controls) {
-        this.attribute = attribute;
-        this.initialValue = attribute.getValue();
+var enumattribute_mock_1 = require("./../enumattribute/enumattribute.mock");
+var BooleanAttributeMock = /** @class */ (function (_super) {
+    __extends(BooleanAttributeMock, _super);
+    function BooleanAttributeMock(components) {
+        return _super.call(this, components) || this;
     }
-    BooleanAttributeMock.prototype.getInitialValue = function () {
-        return this.initialValue;
-    };
-    BooleanAttributeMock.prototype.getValue = function () {
-        return this.attribute.getValue();
-    };
-    BooleanAttributeMock.prototype.setValue = function (value) {
-        this.attribute.setValue(value);
-    };
-    BooleanAttributeMock.prototype.getFormat = function () {
-        return this.attribute.getFormat();
-    };
-    BooleanAttributeMock.prototype.addOnChange = function (handler) {
-        this.attribute.addOnChange(handler);
-    };
-    BooleanAttributeMock.prototype.fireOnChange = function () {
-        this.attribute.fireOnChange();
-    };
-    BooleanAttributeMock.prototype.getAttributeType = function () {
-        return this.attribute.getAttributeType();
-    };
-    BooleanAttributeMock.prototype.getIsDirty = function () {
-        return this.attribute.getIsDirty();
-    };
-    BooleanAttributeMock.prototype.getName = function () {
-        return this.attribute.getName();
-    };
-    BooleanAttributeMock.prototype.getParent = function () {
-        return this.attribute.getParent();
-    };
-    BooleanAttributeMock.prototype.getRequiredLevel = function () {
-        return this.attribute.getRequiredLevel();
-    };
-    BooleanAttributeMock.prototype.getSubmitMode = function () {
-        return this.attribute.getSubmitMode();
-    };
-    BooleanAttributeMock.prototype.getUserPrivilege = function () {
-        return this.attribute.getUserPrivilege();
-    };
-    BooleanAttributeMock.prototype.removeOnChange = function (handler) {
-        this.attribute.removeOnChange(handler);
-    };
-    BooleanAttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
-        this.attribute.setRequiredLevel(requirementLevel);
-    };
-    BooleanAttributeMock.prototype.setSubmitMode = function (submitMode) {
-        this.attribute.setSubmitMode(submitMode);
+    BooleanAttributeMock.create = function (name, value) {
+        if (value === void 0) { value = false; }
+        return new BooleanAttributeMock({ name: name, value: value });
     };
     return BooleanAttributeMock;
-}());
+}(enumattribute_mock_1.EnumAttributeMock));
 exports.BooleanAttributeMock = BooleanAttributeMock;

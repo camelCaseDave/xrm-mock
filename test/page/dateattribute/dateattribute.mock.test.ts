@@ -5,6 +5,7 @@ describe("Xrm.Page.DateAttribute Mock", () => {
     beforeEach(() => {
         this.dateAttribute = new DateAttributeMock({
             attribute: new AttributeMock({
+                format: "date",
                 isDirty: false,
                 name: "birthdate",
                 value: new Date("January 1, 1990"),

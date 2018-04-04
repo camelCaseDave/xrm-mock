@@ -3,6 +3,32 @@ import Ui from "./ui";
 
 export default class Control {
 
+  public createOptionSet(components: XrmMock.IOptionSetControlComponents): XrmMock.OptionSetControlMock;
+  public createOptionSet(attribute: XrmMock.OptionSetAttributeMock,
+                         name?: string,
+                         visible?: boolean,
+                         disabled?: boolean,
+                         label?: string): XrmMock.OptionSetControlMock;
+  public createOptionSet(attributeOrComponents: XrmMock.OptionSetAttributeMock | XrmMock.IOptionSetControlComponents,
+                         name?: string,
+                         visible: boolean = true,
+                         disabled: boolean = false,
+                         label?: string): XrmMock.OptionSetControlMock {
+
+    const components: XrmMock.IOptionSetControlComponents =
+      attributeOrComponents instanceof XrmMock.OptionSetAttributeMock
+      ? {
+        attribute: attributeOrComponents,
+        disabled,
+        label: label || name,
+        name,
+        visible,
+      }
+      : attributeOrComponents;
+
+    return this.addControl(new XrmMock.OptionSetControlMock(components));
+  }
+
   public createString(components: XrmMock.IStringControlComponents): XrmMock.StringControlMock;
   public createString(attribute: XrmMock.StringAttributeMock,
                       name?: string,

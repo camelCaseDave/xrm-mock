@@ -4,6 +4,7 @@ import { NumberAttributeMock } from "../../../src/xrm-mock/page/numberattribute/
 describe("Xrm.Page.NumberAttribute", () => {
     beforeEach(() => {
         const attribute = new AttributeMock({
+            format: "none",
             isDirty: false,
             name: "new_leadcount",
             requiredLevel: "none",

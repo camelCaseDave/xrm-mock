@@ -4,6 +4,7 @@ var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollect
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
         this.eventHandlers = [];
+        this.format = components.format;
         this.name = components.name;
         this.value = components.value;
         this.isDirty = components.isDirty === true ? true : false;
@@ -26,7 +27,7 @@ var AttributeMock = /** @class */ (function () {
         return typeof this.value;
     };
     AttributeMock.prototype.getFormat = function () {
-        return this.attributeFormat;
+        return this.format;
     };
     AttributeMock.prototype.getIsDirty = function () {
         return this.isDirty;

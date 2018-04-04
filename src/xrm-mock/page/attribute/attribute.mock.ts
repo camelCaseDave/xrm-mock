@@ -1,7 +1,7 @@
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../control/control.mock";
 
-export type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue[] | Xrm.Page.OptionSetValue | string;
+export type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue[] | string;
 
 export class AttributeMock<TControl extends ControlMock,
                            TValue extends AttributeReturnType>
@@ -12,10 +12,11 @@ export class AttributeMock<TControl extends ControlMock,
     public requiredLevel: Xrm.Page.RequirementLevel;
     public submitMode: Xrm.Page.SubmitMode;
     public value: TValue;
-    public attributeFormat: Xrm.Page.AttributeFormat;
+    public format: Xrm.Page.AttributeFormat;
     public eventHandlers: Xrm.Page.ContextSensitiveHandler[] = [];
 
     public constructor(components: IAttributeComponents<TControl, TValue>) {
+        this.format = components.format;
         this.name = components.name;
         this.value = components.value;
         this.isDirty = components.isDirty === true ? true : false;
@@ -41,7 +42,7 @@ export class AttributeMock<TControl extends ControlMock,
     }
 
     public getFormat(): Xrm.Page.AttributeFormat {
-        return this.attributeFormat;
+        return this.format;
     }
 
     public getIsDirty(): boolean {
@@ -91,6 +92,7 @@ export class AttributeMock<TControl extends ControlMock,
 }
 
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+    format?: Xrm.Page.AttributeFormat;
     name: string;
     value?: TValue;
     isDirty?: boolean;

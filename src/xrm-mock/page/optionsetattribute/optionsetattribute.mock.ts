@@ -1,35 +1,41 @@
-import { EnumAttributeMock } from "../enumattribute/enumattribute.mock";
+import { ControlMock } from "./../control/control.mock";
+import { EnumAttributeMock, IEnumAttributeComponents } from "./../enumattribute/enumattribute.mock";
+import { OptionSetControlMock } from "./../optionsetcontrol/optionsetcontrol.mock";
+import { OptionSetValueMock } from "./../optionsetvalue/optionsetvalue.mock";
 
-export class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.OptionSetControl>;
-    public enumAttribute: EnumAttributeMock;
-    public options: Xrm.Page.OptionSetValue[];
-    public selectedOption: Xrm.Page.OptionSetValue;
-    public optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat;
+export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMock, number>
+                                    implements Xrm.Page.OptionSetAttribute {
+    public static create(name: string, value?: number): OptionSetAttributeMock {
+        return new OptionSetAttributeMock({ name, value });
+    }
 
-    constructor(enumAttribute: EnumAttributeMock, options: Xrm.Page.OptionSetValue[],
-                optionSetAttributeFormat: Xrm.Page.OptionSetAttributeFormat) {
-        this.enumAttribute = enumAttribute;
-        this.options = options;
-        this.optionSetAttributeFormat = optionSetAttributeFormat;
-        this.selectedOption = this.getOption(enumAttribute.getValue());
-        this.enumAttribute.attribute.attributeFormat = optionSetAttributeFormat;
+    public options: OptionSetValueMock[];
+    public selectedOption: OptionSetValueMock;
+
+    constructor(components: IOptionSetAttributeComponents) {
+        super(components);
+        this.options = components.options
+            ? components.options.map((o) => {
+                return new OptionSetValueMock(o.text, o.value);
+            })
+            : components.value || components.value === 0
+                ? [{
+                    text: components.value.toString(),
+                    value: components.value,
+                }]
+                : [];
+        this.format = components.format || "language";
+        this.selectedOption = this.getOption(this.getValue());
     }
 
     public getFormat(): Xrm.Page.OptionSetAttributeFormat {
-        return this.enumAttribute.getFormat() as Xrm.Page.OptionSetAttributeFormat;
-    }
-
-    public getInitialValue(): number {
-        return this.enumAttribute.getInitialValue() as number;
+        return super.getFormat() as Xrm.Page.OptionSetAttributeFormat;
     }
 
     public getOption(param: number | string): Xrm.Page.OptionSetValue {
-        if (typeof param === "string") {
-            return this.options.filter((o) => o.text === param)[0];
-        } else if (typeof param === "number") {
-            return this.options.filter((o) => o.value === param)[0];
-        }
+        return typeof param === "number"
+            ? this.options.filter((o) => o.value === param)[0]
+            : this.options.filter((o) => o.text === param)[0];
     }
 
     public getOptions(): Xrm.Page.OptionSetValue[] {
@@ -44,60 +50,14 @@ export class OptionSetAttributeMock implements Xrm.Page.OptionSetAttribute {
         return this.selectedOption.text;
     }
 
-    public getValue(): number {
-        return this.enumAttribute.getValue();
-    }
-
     public setValue(value: number): void {
-        this.enumAttribute.setValue(value);
+        super.setValue(value);
         this.selectedOption = this.getOption(value);
     }
+}
 
-    public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.enumAttribute.addOnChange(handler);
-    }
-
-    public fireOnChange(): void {
-        this.enumAttribute.fireOnChange();
-    }
-
-    public getAttributeType(): string {
-        return this.enumAttribute.getAttributeType();
-    }
-
-    public getIsDirty(): boolean {
-        return this.enumAttribute.getIsDirty();
-    }
-
-    public getName(): string {
-        return this.enumAttribute.getName();
-    }
-
-    public getParent(): Xrm.Page.Entity {
-        return this.enumAttribute.getParent();
-    }
-
-    public getRequiredLevel(): Xrm.Page.RequirementLevel {
-        return this.enumAttribute.getRequiredLevel();
-    }
-
-    public getSubmitMode(): Xrm.Page.SubmitMode {
-        return this.enumAttribute.getSubmitMode();
-    }
-
-    public getUserPrivilege(): Xrm.Page.Privilege {
-        return this.enumAttribute.getUserPrivilege();
-    }
-
-    public removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.enumAttribute.removeOnChange(handler);
-    }
-
-    public setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {
-        this.enumAttribute.setRequiredLevel(requirementLevel);
-    }
-
-    public setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
-        this.enumAttribute.setSubmitMode(submitMode);
-    }
+export interface IOptionSetAttributeComponents extends IEnumAttributeComponents<OptionSetControlMock, number> {
+    format?: Xrm.Page.OptionSetAttributeFormat;
+    options?: Xrm.Page.OptionSetValue[];
+    selectedOption?: Xrm.Page.OptionSetValue;
 }

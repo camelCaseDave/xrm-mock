@@ -1,58 +1,28 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var EnumAttributeMock = /** @class */ (function () {
-    function EnumAttributeMock(attribute, /* TODO - AttributeMock */ controls) {
-        this.attribute = attribute;
-        this.initialValue = attribute.getValue();
+var attribute_mock_1 = require("./../attribute/attribute.mock");
+var EnumAttributeMock = /** @class */ (function (_super) {
+    __extends(EnumAttributeMock, _super);
+    function EnumAttributeMock(components) {
+        var _this = _super.call(this, components) || this;
+        _this.initialValue = "initialValue" in components
+            ? components.initialValue
+            : components.value;
+        return _this;
     }
     EnumAttributeMock.prototype.getInitialValue = function () {
         return this.initialValue;
     };
-    EnumAttributeMock.prototype.getFormat = function () {
-        return this.attribute.getFormat();
-    };
-    EnumAttributeMock.prototype.addOnChange = function (handler) {
-        this.attribute.addOnChange(handler);
-    };
-    EnumAttributeMock.prototype.fireOnChange = function () {
-        this.attribute.fireOnChange();
-    };
-    EnumAttributeMock.prototype.getAttributeType = function () {
-        return this.attribute.getAttributeType();
-    };
-    EnumAttributeMock.prototype.getIsDirty = function () {
-        return this.attribute.getIsDirty();
-    };
-    EnumAttributeMock.prototype.getName = function () {
-        return this.attribute.getName();
-    };
-    EnumAttributeMock.prototype.getParent = function () {
-        return this.attribute.getParent();
-    };
-    EnumAttributeMock.prototype.getRequiredLevel = function () {
-        return this.attribute.getRequiredLevel();
-    };
-    EnumAttributeMock.prototype.getSubmitMode = function () {
-        return this.attribute.getSubmitMode();
-    };
-    EnumAttributeMock.prototype.getUserPrivilege = function () {
-        return this.attribute.getUserPrivilege();
-    };
-    EnumAttributeMock.prototype.removeOnChange = function (handler) {
-        this.attribute.removeOnChange(handler);
-    };
-    EnumAttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
-        this.attribute.setRequiredLevel(requirementLevel);
-    };
-    EnumAttributeMock.prototype.setSubmitMode = function (submitMode) {
-        this.attribute.setSubmitMode(submitMode);
-    };
-    EnumAttributeMock.prototype.getValue = function () {
-        return this.attribute.getValue();
-    };
-    EnumAttributeMock.prototype.setValue = function (value) {
-        this.attribute.setValue(value);
-    };
     return EnumAttributeMock;
-}());
+}(attribute_mock_1.AttributeMock));
 exports.EnumAttributeMock = EnumAttributeMock;

@@ -1,76 +1,25 @@
-import { AttributeMock } from "./../attribute/attribute.mock";
+import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
+import { ControlMock } from "./../control/control.mock";
 
-export class EnumAttributeMock implements Xrm.Page.EnumAttribute {
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    public initialValue: number | boolean;
-    public attribute: any; // TODO - AttributeMock;
+export class EnumAttributeMock<TControl extends ControlMock,
+                               TValue extends number | boolean>
+                               extends AttributeMock<TControl, TValue> implements Xrm.Page.EnumAttribute {
+    public initialValue: TValue;
 
-    constructor(attribute: any, /* TODO - AttributeMock */ controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
-        this.attribute = attribute;
-        this.initialValue = attribute.getValue();
+    constructor(components: IEnumAttributeComponents<TControl, TValue>) {
+        super(components);
+        this.initialValue = "initialValue" in components
+            ? components.initialValue
+            : components.value;
     }
 
-    public getInitialValue(): number | boolean {
+    public getInitialValue(): TValue {
         return this.initialValue;
     }
+}
 
-    public getFormat(): Xrm.Page.AttributeFormat {
-        return this.attribute.getFormat();
-    }
-
-    public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.addOnChange(handler);
-    }
-
-    public fireOnChange(): void {
-        this.attribute.fireOnChange();
-    }
-
-    public getAttributeType(): string {
-        return this.attribute.getAttributeType();
-    }
-
-    public getIsDirty(): boolean {
-        return this.attribute.getIsDirty();
-    }
-
-    public getName(): string {
-        return this.attribute.getName();
-    }
-
-    public getParent(): Xrm.Page.Entity {
-        return this.attribute.getParent();
-    }
-
-    public getRequiredLevel(): Xrm.Page.RequirementLevel {
-        return this.attribute.getRequiredLevel();
-    }
-
-    public getSubmitMode(): Xrm.Page.SubmitMode {
-        return this.attribute.getSubmitMode();
-    }
-
-    public getUserPrivilege(): Xrm.Page.Privilege {
-        return this.attribute.getUserPrivilege();
-    }
-
-    public removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.removeOnChange(handler);
-    }
-
-    public setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {
-        this.attribute.setRequiredLevel(requirementLevel);
-    }
-
-    public setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
-        this.attribute.setSubmitMode(submitMode);
-    }
-
-    public getValue(): any {
-        return this.attribute.getValue();
-    }
-
-    public setValue(value: any): void {
-        this.attribute.setValue(value);
-    }
+export interface IEnumAttributeComponents<TControl extends ControlMock,
+                                          TValue extends number | boolean>
+                                          extends IAttributeComponents<TControl, TValue> {
+    initialValue?: TValue;
 }

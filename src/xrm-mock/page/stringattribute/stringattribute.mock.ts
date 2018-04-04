@@ -10,17 +10,16 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
         return new StringAttributeMock({ name, value }  as any as IStringAttributeComponents);
     }
 
-    public stringAttributeFormat: Xrm.Page.StringAttributeFormat;
     public maxLength: number;
 
     constructor(components: IStringAttributeComponents) {
         super(components);
-        this.stringAttributeFormat = components.stringAttributeFormat || "text";
+        this.format = components.format || "text";
         this.maxLength = components.maxLength || 100;
     }
 
     public getFormat(): Xrm.Page.StringAttributeFormat {
-        return this.stringAttributeFormat;
+        return super.getFormat() as Xrm.Page.StringAttributeFormat;
     }
 
     public getMaxLength(): number {
@@ -37,6 +36,6 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
 }
 
 export interface IStringAttributeComponents extends IAttributeComponents<StringControlMock, string> {
-    stringAttributeFormat?: Xrm.Page.StringAttributeFormat;
+    format?: Xrm.Page.StringAttributeFormat;
     maxLength?: number;
 }
