@@ -1,4 +1,4 @@
-import { ItemCollectionMock } from "./../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
 
 describe("Xrm.Collection.ItemCollection Mock", () => {
     beforeEach(() => {

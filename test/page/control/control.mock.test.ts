@@ -1,12 +1,12 @@
+import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
 import { AutoLookupControlMock } from "../../../src/xrm-mock/page/autolookupcontrol/autolookupcontrol.mock";
 import { ControlMock } from "../../../src/xrm-mock/page/control/control.mock";
+import { StandardControlMock } from "../../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
+import { StringAttributeMock } from "../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
+import { StringControlMock } from "../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
 import * as Visible from "../../../src/xrm-mock/page/uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiKeyPressableMock } from "../../../src/xrm-mock/page/uikeypressable/uikeypressable.mock";
 import { UiLabelElementMock } from "../../../src/xrm-mock/page/uilabelelement/uilabelelement.mock";
-import { AttributeMock } from "./../../../src/xrm-mock/page/attribute/attribute.mock";
-import { StandardControlMock } from "./../../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
-import { StringAttributeMock } from "./../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
-import { StringControlMock } from "./../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
 
 describe("Xrm.Page.Control Mock", () => {
     beforeEach(() => {

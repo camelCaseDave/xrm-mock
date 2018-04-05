@@ -1,8 +1,8 @@
-import { AttributeMock, AttributeReturnType } from "./../attribute/attribute.mock";
+import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
-         StandardControlMock } from "./../standardcontrol/standardcontrol.mock";
-import { UiKeyPressableMock } from "./../uikeypressable/uikeypressable.mock";
+         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
                                    TAttribute extends AttributeMock<TControl, TValue>,

@@ -1,8 +1,8 @@
-import { OptionSetAttributeMock } from "./../optionsetattribute/optionsetattribute.mock";
-import { OptionSetValueMock } from "./../optionsetvalue/optionsetvalue.mock";
+import { OptionSetAttributeMock } from "../optionsetattribute/optionsetattribute.mock";
+import { OptionSetValueMock } from "../optionsetvalue/optionsetvalue.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
-         StandardControlMock } from "./../standardcontrol/standardcontrol.mock";
+         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
 export class OptionSetControlMock extends StandardControlMock<OptionSetControlMock, OptionSetAttributeMock, number>
                                    implements Xrm.Page.OptionSetControl {

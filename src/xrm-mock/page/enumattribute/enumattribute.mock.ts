@@ -1,5 +1,5 @@
-import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
-import { ControlMock } from "./../control/control.mock";
+import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
+import { ControlMock } from "../control/control.mock";
 
 export class EnumAttributeMock<TControl extends ControlMock,
                                TValue extends number | boolean>

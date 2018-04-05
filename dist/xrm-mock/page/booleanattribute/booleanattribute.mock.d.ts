@@ -1,5 +1,5 @@
-import { ControlMock } from "./../control/control.mock";
-import { EnumAttributeMock, IEnumAttributeComponents } from "./../enumattribute/enumattribute.mock";
+import { ControlMock } from "../control/control.mock";
+import { EnumAttributeMock, IEnumAttributeComponents } from "../enumattribute/enumattribute.mock";
 export declare class BooleanAttributeMock extends EnumAttributeMock<ControlMock, boolean> implements Xrm.Page.BooleanAttribute {
     static create(name: string, value?: boolean): BooleanAttributeMock;
     constructor(components: IBooleanAttributeComponents);

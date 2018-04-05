@@ -1,6 +1,6 @@
 /// <reference types="xrm" />
-import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
-import { DateControlMock } from "./../datecontrol/datecontrol.mock";
+import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
+import { DateControlMock } from "../datecontrol/datecontrol.mock";
 export declare class DateAttributeMock extends AttributeMock<DateControlMock, Date> implements Xrm.Page.DateAttribute {
     static create(name: string, value?: Date): DateAttributeMock;
     private static defaultComponents(components);

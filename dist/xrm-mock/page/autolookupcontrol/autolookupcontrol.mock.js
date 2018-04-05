@@ -10,8 +10,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var standardcontrol_mock_1 = require("./../standardcontrol/standardcontrol.mock");
-var uikeypressable_mock_1 = require("./../uikeypressable/uikeypressable.mock");
+var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
+var uikeypressable_mock_1 = require("../uikeypressable/uikeypressable.mock");
 var AutoLookupControlMock = /** @class */ (function (_super) {
     __extends(AutoLookupControlMock, _super);
     function AutoLookupControlMock(components) {

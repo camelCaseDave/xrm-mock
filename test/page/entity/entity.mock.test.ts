@@ -1,13 +1,13 @@
-import { ItemCollectionMock } from "./../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
-import { DataMock } from "./../../../src/xrm-mock/data/data.mock";
-import { AttributeMock } from "./../../../src/xrm-mock/page/attribute/attribute.mock";
-import { EntityMock } from "./../../../src/xrm-mock/page/entity/entity.mock";
-import { PageMock } from "./../../../src/xrm-mock/page/page.mock";
+import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { DataMock } from "../../../src/xrm-mock/data/data.mock";
+import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
+import { EntityMock } from "../../../src/xrm-mock/page/entity/entity.mock";
+import { PageMock } from "../../../src/xrm-mock/page/page.mock";
 
 describe("Xrm.Page.Entity Mock", () => {
     beforeEach(() => {
         this.id = "{0}";
-        const attributes: AttributeMock[] = [];
+        const attributes: Xrm.Page.Attribute[] = [];
         attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
         attributes.push(new AttributeMock({ name: "description", value: "" }));
         this.lastName = new AttributeMock({
@@ -19,7 +19,7 @@ describe("Xrm.Page.Entity Mock", () => {
         });
         attributes.push(this.lastName);
 
-        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<AttributeMock>(attributes));
+        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<Xrm.Page.Attribute>(attributes));
         this.xrmPageMock = new PageMock({
             data: new DataMock(this.entityMock),
         });

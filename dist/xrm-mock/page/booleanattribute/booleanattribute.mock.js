@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var enumattribute_mock_1 = require("./../enumattribute/enumattribute.mock");
+var enumattribute_mock_1 = require("../enumattribute/enumattribute.mock");
 var BooleanAttributeMock = /** @class */ (function (_super) {
     __extends(BooleanAttributeMock, _super);
     function BooleanAttributeMock(components) {

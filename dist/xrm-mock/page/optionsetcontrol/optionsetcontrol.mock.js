@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var standardcontrol_mock_1 = require("./../standardcontrol/standardcontrol.mock");
+var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
 var OptionSetControlMock = /** @class */ (function (_super) {
     __extends(OptionSetControlMock, _super);
     function OptionSetControlMock(components) {

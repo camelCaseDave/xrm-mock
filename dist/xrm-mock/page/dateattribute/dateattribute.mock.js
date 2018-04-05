@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var attribute_mock_1 = require("./../attribute/attribute.mock");
+var attribute_mock_1 = require("../attribute/attribute.mock");
 var DateAttributeMock = /** @class */ (function (_super) {
     __extends(DateAttributeMock, _super);
     function DateAttributeMock(components) {
