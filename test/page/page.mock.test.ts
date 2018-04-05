@@ -64,6 +64,10 @@ describe("Xrm.Page Mock", () => {
         it("should get attribute and value in one line", () => {
             expect(xrmPageMock.getAttribute("firstname").getValue()).toBe("Joe");
         });
+
+        it("should return null if the attribute doesn't exist", () => {
+            expect(xrmPageMock.getAttribute("doesntexist")).toBeNull();
+        });
     });
 
     describe("getControl", () => {
