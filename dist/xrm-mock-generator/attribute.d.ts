@@ -1,17 +1,19 @@
 /// <reference types="xrm" />
 import * as XrmMock from "../xrm-mock/index";
 export declare type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
+export declare type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
 export declare type OptionSetControlComponent = XrmMock.IAttOptionSetControlComponents | XrmMock.IAttOptionSetControlComponents[];
 export declare type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
 export default class Attribute {
     private Control;
-    createBool(name: string, value: boolean): Xrm.Page.BooleanAttribute;
-    createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): Xrm.Page.DateAttribute;
+    createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock;
+    createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
     createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
-    createLookup(name: string, lookup: Xrm.Page.LookupValue): Xrm.Page.LookupAttribute;
+    createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
+    createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
     createNumber(name: string, value: number, min?: number, max?: number, precision?: number): Xrm.Page.NumberAttribute;
-    createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): Xrm.Page.OptionSetAttribute;
-    createOptionSet(name: string, value?: string | number, options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute;
+    createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
+    createOptionSet(name: string, value?: string | number, options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
     createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: StringControlComponent): XrmMock.StringAttributeMock;
     createString(name: string, value?: string): XrmMock.StringAttributeMock;
     private createOptionSetFromParameters(name, value, options);

@@ -1,47 +1,35 @@
 /// <reference types="xrm" />
-export declare class LookupControlMock implements Xrm.Page.LookupControl {
-    standardControl: Xrm.Page.StandardControl;
+import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
+import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+export declare class LookupControlMock extends StandardControlMock<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> implements Xrm.Page.LookupControl {
+    private static defaultComponents(components);
     preSearchHandlers: Xrm.Page.ContextSensitiveHandler[];
-    views: [{
-        viewId: string;
-        entityName: string;
-        viewDisplayName: string;
-        fetchXml: string;
-        layoutXml: string;
-        isDefault: boolean;
-    }];
-    filters: [{
-        filter: string;
-        entityLogicalName?: string;
-    }];
-    constructor(standardControl: Xrm.Page.StandardControl, filters: [{
-        filter: string;
-        entityLogicalName?: string;
-    }], views?: [{
-        viewId: string;
-        entityName: string;
-        viewDisplayName: string;
-        fetchXml: string;
-        layoutXml: string;
-        isDefault: boolean;
-    }], preSearchHandlers?: Xrm.Page.ContextSensitiveHandler[]);
+    views: ILookupView[];
+    filters: ILookupFilter[];
+    constructor(components: ILookupControlComponents);
     addPreSearch(handler: Xrm.Page.ContextSensitiveHandler): void;
     addCustomFilter(filter: string, entityLogicalName?: string): void;
     addCustomView(viewId: string, entityName: string, viewDisplayName: string, fetchXml: string, layoutXml: string, isDefault: boolean): void;
-    getAttribute(): Xrm.Page.LookupAttribute;
     getDefaultView(): string;
     removePreSearch(handler: () => void): void;
     setDefaultView(viewGuid: string): void;
-    clearNotification(uniqueId?: string): boolean;
-    getDisabled(): boolean;
-    setDisabled(disabled: boolean): void;
-    setNotification(message: string, uniqueId: string): boolean;
-    getControlType(): Xrm.Page.ControlType | string;
-    getName(): string;
-    getParent(): Xrm.Page.Section;
-    getLabel(): string;
-    setLabel(label: string): void;
-    getVisible(): boolean;
-    setVisible(visible: boolean): void;
-    setFocus(): void;
+}
+export interface ILookupControlComponents extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]>, IAttLookupControlComponents {
+}
+export interface IAttLookupControlComponents extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> {
+    filters?: ILookupFilter[];
+    views?: ILookupView[];
+    preSearchHandlers?: Xrm.Page.ContextSensitiveHandler[];
+}
+export interface ILookupFilter {
+    filter: string;
+    entityLogicalName?: string;
+}
+export interface ILookupView {
+    viewId: string;
+    entityName: string;
+    viewDisplayName: string;
+    fetchXml: string;
+    layoutXml: string;
+    isDefault: boolean;
 }

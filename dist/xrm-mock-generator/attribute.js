@@ -15,18 +15,25 @@ var Attribute = /** @class */ (function () {
     Attribute.prototype.createDate = function (nameOrComponents, valueOrControlComponents) {
         if (typeof (nameOrComponents) === "string") {
             var components = { name: nameOrComponents, value: valueOrControlComponents };
-            var controls = [{ name: name }];
+            var controls = [{ name: nameOrComponents }];
             return this.associateAttribute(new XrmMock.DateAttributeMock(components), controls, "createDate");
         }
         else {
             return this.associateAttribute(new XrmMock.DateAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createDate");
         }
     };
-    Attribute.prototype.createLookup = function (name, lookup) {
-        var attribute = this.createAttribute(name || "", [new XrmMock.LookupValueMock(lookup.id, lookup.entityType, lookup.name)]);
-        var lookupAttribute = new XrmMock.LookupAttributeMock(attribute, false);
-        this.addAttribute(lookupAttribute);
-        return lookupAttribute;
+    Attribute.prototype.createLookup = function (nameOrComponents, valueOrControlComponents) {
+        if (typeof (nameOrComponents) === "string") {
+            var components = {
+                name: nameOrComponents,
+                value: this.arrayify(valueOrControlComponents)
+            };
+            var controls = [{ name: nameOrComponents }];
+            return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
+        }
+        else {
+            return this.associateAttribute(new XrmMock.LookupAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createLookup");
+        }
     };
     Attribute.prototype.createNumber = function (name, value, min, max, precision) {
         // TODO validate precision <5

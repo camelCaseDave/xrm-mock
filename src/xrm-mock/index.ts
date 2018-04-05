@@ -1,5 +1,6 @@
-/* tslint:disable */
-export { AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
+
+/* tslint:disable:max-line-length */
+export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./page/autolookupcontrol/autolookupcontrol.mock";
 export { BooleanAttributeMock } from "./page/booleanattribute/booleanattribute.mock";
 export { ClientContextMock } from "./clientcontext/clientcontext.mock";
@@ -14,7 +15,8 @@ export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
 export { FormSelectorMock } from "./page/formselector/formselector.mock";
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
-export { LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";
+export { ILookupAttributeComponents, LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";
+export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./page/lookupcontrol/lookupcontrol.mock";
 export { LookupValueMock } from "./page/lookupvalue/lookupvalue.mock";
 export { NumberAttributeMock } from "./page/numberattribute/numberattribute.mock";
 export { NumberControlMock } from "./page/numbercontrol/numbercontrol.mock";

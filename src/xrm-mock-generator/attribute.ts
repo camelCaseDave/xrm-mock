@@ -2,6 +2,7 @@ import * as XrmMock from "../xrm-mock/index";
 import Control, { CreateMethods as ControlCreateMethods } from "./control";
 
 export type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
+export type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
 export type OptionSetControlComponent = XrmMock.IAttOptionSetControlComponents
                                       | XrmMock.IAttOptionSetControlComponents[];
 export type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
@@ -10,7 +11,7 @@ export default class Attribute {
 
   private Control = new Control();
 
-  public createBool(name: string, value: boolean): Xrm.Page.BooleanAttribute {
+  public createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock {
     const attribute = this.createAttribute(name, value || false);
     const boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
     this.addAttribute(boolAttribute);
@@ -18,13 +19,13 @@ export default class Attribute {
   }
 
   public createDate(attComponents: XrmMock.IDateAttributeComponents,
-                    controlComponents?: DateControlComponent): Xrm.Page.DateAttribute;
+                    controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
   public createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
   public createDate(nameOrComponents: string | XrmMock.IDateAttributeComponents,
-                    valueOrControlComponents?: Date | DateControlComponent): Xrm.Page.DateAttribute {
+                    valueOrControlComponents?: Date | DateControlComponent): XrmMock.DateAttributeMock {
     if (typeof(nameOrComponents) === "string") {
       const components = { name: nameOrComponents, value: valueOrControlComponents as Date };
-      const controls = [{name}];
+      const controls = [{name: nameOrComponents}];
 
       return this.associateAttribute(new XrmMock.DateAttributeMock(components), controls, "createDate");
     } else {
@@ -34,13 +35,24 @@ export default class Attribute {
     }
   }
 
-  public createLookup(name: string, lookup: Xrm.Page.LookupValue): Xrm.Page.LookupAttribute {
-    const attribute = this.createAttribute(name || "",
-      [new XrmMock.LookupValueMock(lookup.id, lookup.entityType, lookup.name)]);
-    const lookupAttribute = new XrmMock.LookupAttributeMock(attribute, false);
+  public createLookup(attComponents: XrmMock.ILookupAttributeComponents,
+                      controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
+  public createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
+  public createLookup(nameOrComponents: string | XrmMock.ILookupAttributeComponents,
+                      valueOrControlComponents?: Xrm.Page.LookupValue | Xrm.Page.LookupValue[] | LookupControlComponent)
+                      : XrmMock.LookupAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components: XrmMock.ILookupAttributeComponents = {
+        name: nameOrComponents,
+        value: this.arrayify(valueOrControlComponents as Xrm.Page.LookupValue) };
+      const controls = [{name: nameOrComponents}];
 
-    this.addAttribute(lookupAttribute);
-    return lookupAttribute;
+      return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
+    } else {
+      return this.associateAttribute(new XrmMock.LookupAttributeMock(nameOrComponents),
+                                     this.arrayify(valueOrControlComponents as LookupControlComponent),
+                                    "createLookup");
+    }
   }
 
   public createNumber(name: string, value: number, min?: number, max?: number, precision?: number):
@@ -55,10 +67,10 @@ export default class Attribute {
   }
 
   public createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents,
-                         controlComponents?: OptionSetControlComponent): Xrm.Page.OptionSetAttribute;
+                         controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
   public createOptionSet(name: string,
                          value?: string | number,
-                         options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute;
+                         options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
   public createOptionSet(nameOrComponents: string | XrmMock.IOptionSetAttributeComponents,
                          valueOrControlComponents?: string | number | OptionSetControlComponent,
                          options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock {

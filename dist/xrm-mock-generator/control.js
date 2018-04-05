@@ -7,48 +7,40 @@ var Control = /** @class */ (function () {
     Control.prototype.createDate = function (attributeOrComponents, name, visible, disabled, label) {
         if (visible === void 0) { visible = true; }
         if (disabled === void 0) { disabled = false; }
-        var components = attributeOrComponents instanceof XrmMock.DateAttributeMock
-            ? {
-                attribute: attributeOrComponents,
-                disabled: disabled,
-                label: label || name,
-                name: name,
-                visible: visible,
-            }
-            : attributeOrComponents;
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
         return this.addControl(new XrmMock.DateControlMock(components));
+    };
+    Control.prototype.createLookup = function (attributeOrComponents, name, visible, disabled, label) {
+        if (visible === void 0) { visible = true; }
+        if (disabled === void 0) { disabled = false; }
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+        return this.addControl(new XrmMock.LookupControlMock(components));
     };
     Control.prototype.createOptionSet = function (attributeOrComponents, name, visible, disabled, label) {
         if (visible === void 0) { visible = true; }
         if (disabled === void 0) { disabled = false; }
-        var components = attributeOrComponents instanceof XrmMock.OptionSetAttributeMock
-            ? {
-                attribute: attributeOrComponents,
-                disabled: disabled,
-                label: label || name,
-                name: name,
-                visible: visible,
-            }
-            : attributeOrComponents;
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
         return this.addControl(new XrmMock.OptionSetControlMock(components));
     };
     Control.prototype.createString = function (attributeOrComponents, name, visible, disabled, label) {
-        if (visible === void 0) { visible = true; }
-        if (disabled === void 0) { disabled = false; }
-        var components = attributeOrComponents instanceof XrmMock.StringAttributeMock
-            ? {
-                attribute: attributeOrComponents,
-                disabled: disabled,
-                label: label || name,
-                name: name,
-                visible: visible,
-            }
-            : attributeOrComponents;
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
         return this.addControl(new XrmMock.StringControlMock(components));
     };
     Control.prototype.addControl = function (control) {
         Xrm.Page.ui.controls.push(control);
         return control;
+    };
+    Control.prototype.createStandardComponent = function (attributeOrComponents, name, visible, disabled, label) {
+        var att = attributeOrComponents;
+        return att.controls && att.eventHandlers
+            ? {
+                attribute: attributeOrComponents,
+                disabled: disabled,
+                label: label || name,
+                name: name,
+                visible: visible,
+            }
+            : attributeOrComponents;
     };
     return Control;
 }());

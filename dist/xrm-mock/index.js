@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* tslint:disable */
+/* tslint:disable:max-line-length */
 var attribute_mock_1 = require("./page/attribute/attribute.mock");
 exports.AttributeMock = attribute_mock_1.AttributeMock;
 var autolookupcontrol_mock_1 = require("./page/autolookupcontrol/autolookupcontrol.mock");
@@ -33,6 +33,8 @@ var itemcollection_mock_1 = require("./collection/itemcollection/itemcollection.
 exports.ItemCollectionMock = itemcollection_mock_1.ItemCollectionMock;
 var lookupattribute_mock_1 = require("./page/lookupattribute/lookupattribute.mock");
 exports.LookupAttributeMock = lookupattribute_mock_1.LookupAttributeMock;
+var lookupcontrol_mock_1 = require("./page/lookupcontrol/lookupcontrol.mock");
+exports.LookupControlMock = lookupcontrol_mock_1.LookupControlMock;
 var lookupvalue_mock_1 = require("./page/lookupvalue/lookupvalue.mock");
 exports.LookupValueMock = lookupvalue_mock_1.LookupValueMock;
 var numberattribute_mock_1 = require("./page/numberattribute/numberattribute.mock");

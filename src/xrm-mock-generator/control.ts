@@ -1,7 +1,7 @@
 import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
-export type CreateMethods = "createDate" | "createString" | "createOptionSet";
+export type CreateMethods = "createDate" | "createLookup" | "createOptionSet" |  "createString";
 
 export default class Control {
 
@@ -18,17 +18,26 @@ export default class Control {
                     label?: string): XrmMock.DateControlMock {
 
     const components: XrmMock.IDateControlComponents =
-      attributeOrComponents instanceof XrmMock.DateAttributeMock
-      ? {
-        attribute: attributeOrComponents,
-        disabled,
-        label: label || name,
-        name,
-        visible,
-      }
-      : attributeOrComponents;
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
 
     return this.addControl(new XrmMock.DateControlMock(components));
+  }
+
+  public createLookup(components: XrmMock.ILookupControlComponents): XrmMock.LookupControlMock;
+  public createLookup(attribute: XrmMock.LookupAttributeMock,
+                      name?: string,
+                      visible?: boolean,
+                      disabled?: boolean,
+                      label?: string): XrmMock.LookupControlMock;
+  public createLookup(attributeOrComponents: XrmMock.LookupAttributeMock | XrmMock.ILookupControlComponents,
+                      name?: string,
+                      visible: boolean = true,
+                      disabled: boolean = false,
+                      label?: string): XrmMock.LookupControlMock {
+    const components: XrmMock.ILookupControlComponents =
+    this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+
+    return this.addControl(new XrmMock.LookupControlMock(components));
   }
 
   public createOptionSet(components: XrmMock.IOptionSetControlComponents): XrmMock.OptionSetControlMock;
@@ -42,19 +51,10 @@ export default class Control {
                          visible: boolean = true,
                          disabled: boolean = false,
                          label?: string): XrmMock.OptionSetControlMock {
+      const components: XrmMock.IOptionSetControlComponents =
+        this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
 
-    const components: XrmMock.IOptionSetControlComponents =
-      attributeOrComponents instanceof XrmMock.OptionSetAttributeMock
-      ? {
-        attribute: attributeOrComponents,
-        disabled,
-        label: label || name,
-        name,
-        visible,
-      }
-      : attributeOrComponents;
-
-    return this.addControl(new XrmMock.OptionSetControlMock(components));
+      return this.addControl(new XrmMock.OptionSetControlMock(components));
   }
 
   public createString(components: XrmMock.IStringControlComponents): XrmMock.StringControlMock;
@@ -64,20 +64,11 @@ export default class Control {
                       disabled?: boolean, label?: string): XrmMock.StringControlMock;
   public createString(attributeOrComponents: XrmMock.StringAttributeMock | XrmMock.IStringControlComponents,
                       name?: string,
-                      visible: boolean = true,
-                      disabled: boolean = false,
+                      visible?: boolean,
+                      disabled?: boolean,
                       label?: string): XrmMock.StringControlMock {
-
     const components: XrmMock.IStringControlComponents =
-      attributeOrComponents instanceof XrmMock.StringAttributeMock
-      ? {
-        attribute: attributeOrComponents,
-        disabled,
-        label: label || name,
-        name,
-        visible,
-      }
-      : attributeOrComponents;
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
 
     return this.addControl(new XrmMock.StringControlMock(components));
   }
@@ -85,5 +76,26 @@ export default class Control {
   private addControl<T extends Xrm.Page.Control>(control: T): T {
     (Xrm.Page.ui.controls as any).push(control);
     return control;
+  }
+
+  private createStandardComponent<TControl extends XrmMock.StandardControlMock<TControl, TAttribute, TValue>,
+                                  TAttribute extends XrmMock.AttributeMock<TControl, TValue>,
+                                  TValue extends XrmMock.AttributeReturnType,
+                                  TComponent extends XrmMock.IStandardControlComponents<TControl, TAttribute, TValue>>(
+                                    attributeOrComponents: TAttribute | TComponent,
+                                    name?: string,
+                                    visible?: boolean,
+                                    disabled?: boolean,
+                                    label?: string): TComponent {
+    const att = attributeOrComponents as TAttribute;
+    return att.controls && att.eventHandlers
+    ? {
+      attribute: attributeOrComponents as TAttribute,
+      disabled,
+      label: label || name,
+      name,
+      visible,
+    } as any
+    : attributeOrComponents as TComponent;
   }
 }

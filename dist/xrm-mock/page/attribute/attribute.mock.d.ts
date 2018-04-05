@@ -29,11 +29,12 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     setValue(value: TValue): void;
 }
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+    controls?: ItemCollectionMock<T>;
+    eventHandlers?: Xrm.Page.ContextSensitiveHandler[];
     format?: Xrm.Page.AttributeFormat;
-    name: string;
-    value?: TValue;
     isDirty?: boolean;
+    name: string;
     requiredLevel?: Xrm.Page.RequirementLevel;
     submitMode?: Xrm.Page.SubmitMode;
-    controls?: ItemCollectionMock<T>;
+    value?: TValue;
 }

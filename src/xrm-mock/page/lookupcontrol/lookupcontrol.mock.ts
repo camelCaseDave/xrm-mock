@@ -1,29 +1,36 @@
-export class LookupControlMock implements Xrm.Page.LookupControl {
-    public standardControl: Xrm.Page.StandardControl;
+import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
+import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
+import { IAttStandardControlComponents,
+         IStandardControlComponents,
+         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
+
+export class LookupControlMock extends StandardControlMock<LookupControlMock,
+                                                           LookupAttributeMock, Xrm.Page.LookupValue[]>
+                               implements Xrm.Page.LookupControl {
+
+    private static defaultComponents(components: ILookupControlComponents): ILookupControlComponents {
+        components.controlType = "lookup";
+        return components;
+    }
+
     public preSearchHandlers: Xrm.Page.ContextSensitiveHandler[] = [];
-    public views: [{ viewId: string, entityName: string, viewDisplayName: string,
-                     fetchXml: string, layoutXml: string, isDefault: boolean }];
-    public filters: [{ filter: string, entityLogicalName?: string }];
+    public views: ILookupView[];
+    public filters: ILookupFilter[];
 
-    constructor(standardControl: Xrm.Page.StandardControl,
-                filters: [{ filter: string, entityLogicalName?: string }],
-                views?: [{ viewId: string, entityName: string, viewDisplayName: string,
-                           fetchXml: string, layoutXml: string, isDefault: boolean }],
-                preSearchHandlers?: Xrm.Page.ContextSensitiveHandler[]) {
-        this.standardControl = standardControl;
-        this.views = views;
-        this.filters = filters;
-        this.preSearchHandlers = preSearchHandlers || [];
+    constructor(components: ILookupControlComponents) {
+        super(LookupControlMock.defaultComponents(components));
+        this.views = components.views || [];
+        this.filters = components.filters || [];
+        this.preSearchHandlers = components.preSearchHandlers || [];
 
-        if (views && views.length > 1) {
-            let numberOfDefaultViews = 0;
-            for (const view of views) {
-                if (numberOfDefaultViews > 1) {
-                    throw new Error(("Lookup Control cannot have more than one default view."));
-                }
-                if (view.isDefault) {
-                    numberOfDefaultViews++;
-                }
+        if (this.views && this.views.length > 1) {
+            const defaultViews = this.views.filter((v) => v.isDefault).length;
+
+            if (defaultViews > 1) {
+                throw new Error("Lookup Control cannot have more than one default view.");
+            } else if (defaultViews === 0) {
+                this.views[0].isDefault = true;
             }
         }
     }
@@ -38,7 +45,10 @@ export class LookupControlMock implements Xrm.Page.LookupControl {
 
     public addCustomView(viewId: string, entityName: string, viewDisplayName: string, fetchXml: string,
                          layoutXml: string, isDefault: boolean): void {
-        // TODO check if default view already exists.
+        if (isDefault && this.getDefaultView()) {
+            throw new Error("Lookup Control cannot have more than one default view.");
+        }
+
         this.views.push({
             entityName,
             fetchXml,
@@ -49,16 +59,14 @@ export class LookupControlMock implements Xrm.Page.LookupControl {
         });
     }
 
-    public getAttribute(): Xrm.Page.LookupAttribute {
-        return this.standardControl.getAttribute() as Xrm.Page.LookupAttribute;
-    }
-
     public getDefaultView(): string {
         for (const view of this.views) {
             if (view.isDefault) {
                 return view.viewId;
             }
         }
+
+        throw new Error("No default view was found!");
     }
 
     public removePreSearch(handler: () => void): void {
@@ -70,52 +78,30 @@ export class LookupControlMock implements Xrm.Page.LookupControl {
             view.isDefault = view.viewId === viewGuid;
         }
     }
+}
 
-    public clearNotification(uniqueId?: string): boolean {
-        return this.standardControl.clearNotification(uniqueId);
-    }
+export interface ILookupControlComponents
+    extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]>,
+            IAttLookupControlComponents {
+}
 
-    public getDisabled(): boolean {
-        return this.standardControl.getDisabled();
-    }
+export interface IAttLookupControlComponents
+    extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> {
+    filters?: ILookupFilter[];
+    views?: ILookupView[];
+    preSearchHandlers?: Xrm.Page.ContextSensitiveHandler[];
+}
 
-    public setDisabled(disabled: boolean): void {
-        this.standardControl.setDisabled(disabled);
-    }
+export interface ILookupFilter {
+    filter: string;
+    entityLogicalName?: string;
+}
 
-    public setNotification(message: string, uniqueId: string): boolean {
-        return this.standardControl.setNotification(message, uniqueId);
-    }
-
-    public getControlType(): Xrm.Page.ControlType | string {
-        return this.standardControl.getControlType();
-    }
-
-    public getName(): string {
-        return this.standardControl.getName();
-    }
-
-    public getParent(): Xrm.Page.Section {
-        return this.standardControl.getParent();
-    }
-
-    public getLabel(): string {
-        return this.standardControl.getLabel();
-    }
-
-    public setLabel(label: string): void {
-        this.standardControl.setLabel(label);
-    }
-
-    public getVisible(): boolean {
-        return this.standardControl.getVisible();
-    }
-
-    public setVisible(visible: boolean): void {
-        this.standardControl.setVisible(visible);
-    }
-
-    public setFocus(): void {
-        this.standardControl.setFocus();
-    }
+export interface ILookupView {
+    viewId: string;
+    entityName: string;
+    viewDisplayName: string;
+    fetchXml: string;
+    layoutXml: string;
+    isDefault: boolean;
 }
