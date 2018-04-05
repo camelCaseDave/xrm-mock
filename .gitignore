@@ -14,3 +14,10 @@ package
 build.js
 npm-debug.log
 .vscode/settings.json
+
+# Ignore XrmToolBox files
+.vs
+xrmtoolbox/.vs
+xrmtoolbox/bin
+xrmtoolbox/obj
+xrmtoolbox/packages
