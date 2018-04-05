@@ -12,14 +12,15 @@ var Attribute = /** @class */ (function () {
         this.addAttribute(boolAttribute);
         return boolAttribute;
     };
-    Attribute.prototype.createDate = function (name, value, includeTime) {
-        var attribute = this.createAttribute(name || "", value || false);
-        var dateAttribute = new XrmMock.DateAttributeMock({
-            attribute: attribute,
-            dateAttributeFormat: !includeTime ? "date" : "datetime",
-        });
-        this.addAttribute(dateAttribute);
-        return dateAttribute;
+    Attribute.prototype.createDate = function (nameOrComponents, valueOrControlComponents) {
+        if (typeof (nameOrComponents) === "string") {
+            var components = { name: nameOrComponents, value: valueOrControlComponents };
+            var controls = [{ name: name }];
+            return this.associateAttribute(new XrmMock.DateAttributeMock(components), controls, "createDate");
+        }
+        else {
+            return this.associateAttribute(new XrmMock.DateAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createDate");
+        }
     };
     Attribute.prototype.createLookup = function (name, lookup) {
         var attribute = this.createAttribute(name || "", [new XrmMock.LookupValueMock(lookup.id, lookup.entityType, lookup.name)]);
@@ -35,110 +36,64 @@ var Attribute = /** @class */ (function () {
         return numberAttribute;
     };
     Attribute.prototype.createOptionSet = function (nameOrComponents, valueOrControlComponents, options) {
-        var _this = this;
-        var components;
-        var controls = [];
-        if (typeof (nameOrComponents) === "string") {
-            var value_1 = valueOrControlComponents;
-            var num = void 0;
-            if (value_1 !== null
-                && value_1 !== undefined) {
-                if (!options) {
-                    options = [typeof value_1 === "string"
-                            ? { text: value_1, value: 0 }
-                            : { text: value_1.toString(), value: value_1 }];
-                }
-                if (typeof value_1 === "string") {
-                    var option = options.filter(function (o) { return o.text === value_1; })[0];
-                    num = option.value;
-                }
-                else {
-                    num = value_1;
-                }
-            }
-            else {
-                num = undefined;
-            }
-            components = {
-                name: name,
-                options: options,
-            };
-            if (num || num === 0) {
-                components.value = num;
-            }
-            controls.push({
-                name: name,
-                options: options,
-            });
-        }
-        else {
-            components = nameOrComponents;
-            if (valueOrControlComponents) {
-                controls = valueOrControlComponents instanceof Array
-                    ? valueOrControlComponents
-                    : [valueOrControlComponents];
-            }
-            else {
-                controls.push({ name: components.name });
-            }
-            if (components.options && components.options.length > 0) {
-                controls.filter(function (c) { return !c.options; })
-                    .forEach(function (c) {
-                    c.options = components.options;
-                });
-            }
-        }
-        var attribute = new XrmMock.OptionSetAttributeMock(components);
-        this.addAttribute(attribute);
-        controls.forEach(function (c) {
-            var component = c;
-            component.attribute = attribute;
-            _this.Control.createOptionSet(component);
-        });
-        return attribute;
+        return typeof (nameOrComponents) === "string"
+            ? this.createOptionSetFromParameters(nameOrComponents, valueOrControlComponents, options)
+            : this.createOptionSetFromComponents(nameOrComponents, this.arrayify(valueOrControlComponents));
     };
-    Attribute.prototype.createString = function (nameOrComponents, valueOrControlComponents, visible, disabled, format, maxLength, label) {
-        var _this = this;
+    Attribute.prototype.createString = function (nameOrComponents, valueOrControlComponents) {
         if (valueOrControlComponents === void 0) { valueOrControlComponents = ""; }
-        if (visible === void 0) { visible = true; }
-        if (disabled === void 0) { disabled = false; }
-        if (format === void 0) { format = "text"; }
-        if (maxLength === void 0) { maxLength = 100; }
-        var components;
-        var controls = [];
         if (typeof (nameOrComponents) === "string") {
-            components = {
-                format: format,
-                maxLength: maxLength,
-                name: nameOrComponents,
-                value: valueOrControlComponents,
-            };
-            controls.push({
-                disabled: disabled,
-                label: label || nameOrComponents,
-                name: nameOrComponents,
-                visible: visible,
-            });
+            var components = { name: nameOrComponents, value: valueOrControlComponents };
+            var controls = [{ name: nameOrComponents }];
+            return this.associateAttribute(new XrmMock.StringAttributeMock(components), controls, "createString");
         }
         else {
-            components = nameOrComponents;
-            if (valueOrControlComponents) {
-                controls = valueOrControlComponents instanceof Array
-                    ? valueOrControlComponents
-                    : [valueOrControlComponents];
+            return this.associateAttribute(new XrmMock.StringAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createString");
+        }
+    };
+    Attribute.prototype.createOptionSetFromParameters = function (name, value, options) {
+        var num;
+        if (value !== null
+            && value !== undefined) {
+            if (!options) {
+                options = [typeof value === "string"
+                        ? { text: value, value: 0 }
+                        : { text: value.toString(), value: value }];
+            }
+            if (typeof value === "string") {
+                var option = options.filter(function (o) { return o.text === value; })[0];
+                num = option.value;
             }
             else {
-                controls.push({ name: components.name });
+                num = value;
             }
         }
-        var attribute = new XrmMock.StringAttributeMock(components);
-        this.addAttribute(attribute);
-        controls.forEach(function (c) {
-            var component = c;
-            component.attribute = attribute;
-            _this.Control.createString(component);
-        });
-        return attribute;
+        else {
+            num = undefined;
+        }
+        var components = {
+            name: name,
+            options: options,
+        };
+        if (num || num === 0) {
+            components.value = num;
+        }
+        var controls = [{ name: name, options: options }];
+        return this.associateAttribute(new XrmMock.OptionSetAttributeMock(components), controls, "createOptionSet");
+    };
+    Attribute.prototype.createOptionSetFromComponents = function (components, controls) {
+        if (components.options && components.options.length > 0) {
+            controls.filter(function (c) { return !c.options; })
+                .forEach(function (c) {
+                c.options = components.options;
+            });
+        }
+        return this.associateAttribute(new XrmMock.OptionSetAttributeMock(components), controls, "createOptionSet");
+    };
+    Attribute.prototype.createStringFromParameters = function (name, value) {
+        var components = { name: name, value: value };
+        var controls = [{ name: name }];
+        return this.associateAttribute(new XrmMock.StringAttributeMock(components), controls, "createString");
     };
     Attribute.prototype.createAttribute = function (name, value) {
         var attribute = new XrmMock.AttributeMock({
@@ -151,6 +106,29 @@ var Attribute = /** @class */ (function () {
     };
     Attribute.prototype.addAttribute = function (attribute) {
         Xrm.Page.data.entity.attributes.push(attribute);
+    };
+    /**
+     * Creates the given attribute, as well as the controls for the attribute defined by the components
+     * @param attribute The newly created attribute to be added to the page colleciton of attributes
+     * @param controls Array of Control Components to create controls for the given attribute
+     * @param controlCreateFunction the name of the Control function to call to create the correct type of control
+     */
+    Attribute.prototype.associateAttribute = function (attribute, controls, controlCreateFunction) {
+        var _this = this;
+        this.addAttribute(attribute);
+        controls.forEach(function (c) {
+            c.attribute = attribute;
+            _this.Control[controlCreateFunction](c);
+        });
+        return attribute;
+    };
+    Attribute.prototype.arrayify = function (possibleArray) {
+        if (possibleArray instanceof Array) {
+            return possibleArray;
+        }
+        else {
+            return [possibleArray];
+        }
     };
     return Attribute;
 }());

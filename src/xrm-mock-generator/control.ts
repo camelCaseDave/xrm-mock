@@ -1,7 +1,35 @@
 import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
+export type CreateMethods = "createDate" | "createString" | "createOptionSet";
+
 export default class Control {
+
+  public createDate(components: XrmMock.IDateControlComponents): XrmMock.DateControlMock;
+  public createDate(attribute: XrmMock.DateAttributeMock,
+                    name?: string,
+                    visible?: boolean,
+                    disabled?: boolean,
+                    label?: string): XrmMock.DateControlMock;
+  public createDate(attributeOrComponents: XrmMock.DateAttributeMock | XrmMock.IDateControlComponents,
+                    name?: string,
+                    visible: boolean = true,
+                    disabled: boolean = false,
+                    label?: string): XrmMock.DateControlMock {
+
+    const components: XrmMock.IDateControlComponents =
+      attributeOrComponents instanceof XrmMock.DateAttributeMock
+      ? {
+        attribute: attributeOrComponents,
+        disabled,
+        label: label || name,
+        name,
+        visible,
+      }
+      : attributeOrComponents;
+
+    return this.addControl(new XrmMock.DateControlMock(components));
+  }
 
   public createOptionSet(components: XrmMock.IOptionSetControlComponents): XrmMock.OptionSetControlMock;
   public createOptionSet(attribute: XrmMock.OptionSetAttributeMock,

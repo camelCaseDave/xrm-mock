@@ -1,27 +1,12 @@
 /// <reference types="xrm" />
-export declare class DateAttributeMock implements Xrm.Page.Attribute {
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
-    attribute: any;
-    dateAttributeFormat: Xrm.Page.DateAttributeFormat;
+import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
+import { DateControlMock } from "./../datecontrol/datecontrol.mock";
+export declare class DateAttributeMock extends AttributeMock<DateControlMock, Date> implements Xrm.Page.DateAttribute {
+    static create(name: string, value?: Date): DateAttributeMock;
+    private static defaultComponents(components);
     constructor(components: IDateAttributeComponents);
     getFormat(): Xrm.Page.DateAttributeFormat;
-    getValue(): Date;
-    setValue(value: Date): void;
-    addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    fireOnChange(): void;
-    getAttributeType(): string;
-    getIsDirty(): boolean;
-    getName(): string;
-    getParent(): Xrm.Page.Entity;
-    getRequiredLevel(): Xrm.Page.RequirementLevel;
-    getSubmitMode(): Xrm.Page.SubmitMode;
-    getUserPrivilege(): Xrm.Page.Privilege;
-    removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void;
-    setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
 }
-export interface IDateAttributeComponents {
-    attribute: any;
-    dateAttributeFormat: Xrm.Page.DateAttributeFormat;
-    controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
+export interface IDateAttributeComponents extends IAttributeComponents<DateControlMock, Date> {
+    format?: Xrm.Page.DateAttributeFormat;
 }

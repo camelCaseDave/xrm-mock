@@ -7,7 +7,7 @@ export { ContextMock, IContextComponents } from "./context/context.mock";
 export { ControlMock } from "./page/control/control.mock";
 export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./page/dateattribute/dateattribute.mock";
-export { DateControlMock } from "./page/datecontrol/datecontrol.mock";
+export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./page/datecontrol/datecontrol.mock";
 export { EntityMock } from "./page/entity/entity.mock";
 export { EnumAttributeMock } from "./page/enumattribute/enumattribute.mock";
 export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock";

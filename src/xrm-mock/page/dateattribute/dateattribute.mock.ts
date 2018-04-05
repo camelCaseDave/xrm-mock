@@ -1,81 +1,28 @@
-import { AttributeMock } from "./../attribute/attribute.mock";
+import { AttributeMock, IAttributeComponents } from "./../attribute/attribute.mock";
 import { DateControlMock } from "./../datecontrol/datecontrol.mock";
 
-export class DateAttributeMock implements Xrm.Page.Attribute {
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
-    public attribute: any; // TODO - AttributeMock;
-    public dateAttributeFormat: Xrm.Page.DateAttributeFormat;
+export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
+                               implements Xrm.Page.DateAttribute {
+    public static create(name: string, value?: Date): DateAttributeMock {
+        return new DateAttributeMock({ name, value });
+    }
+
+    private static defaultComponents(components: IDateAttributeComponents): IDateAttributeComponents {
+        if (!components.format) {
+            components.format = "date";
+        }
+        return components;
+    }
 
     constructor(components: IDateAttributeComponents) {
-        this.attribute = components.attribute;
-        this.dateAttributeFormat = components.dateAttributeFormat;
-        this.controls = components.controls;
-        this.attribute.attributeFormat = components.dateAttributeFormat;
+        super(DateAttributeMock.defaultComponents(components));
     }
 
     public getFormat(): Xrm.Page.DateAttributeFormat {
-        return this.attribute.getFormat() as Xrm.Page.DateAttributeFormat;
-    }
-
-    public getValue(): Date {
-        return this.attribute.getValue() as Date;
-    }
-
-    public setValue(value: Date): void {
-        this.attribute.setValue(value);
-    }
-
-    public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.addOnChange(handler);
-    }
-
-    public fireOnChange(): void {
-        this.attribute.fireOnChange();
-    }
-
-    public getAttributeType(): string {
-        return this.attribute.getAttributeType();
-    }
-
-    public getIsDirty(): boolean {
-        return this.attribute.getIsDirty();
-    }
-
-    public getName(): string {
-        return this.attribute.getName();
-    }
-
-    public getParent(): Xrm.Page.Entity {
-        return this.attribute.getParent();
-    }
-
-    public getRequiredLevel(): Xrm.Page.RequirementLevel {
-        return this.attribute.getRequiredLevel();
-    }
-
-    public getSubmitMode(): Xrm.Page.SubmitMode {
-        return this.attribute.getSubmitMode();
-    }
-
-    public getUserPrivilege(): Xrm.Page.Privilege {
-        return this.attribute.getUserPrivilege();
-    }
-
-    public removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.removeOnChange(handler);
-    }
-
-    public setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {
-        this.attribute.setRequiredLevel(requirementLevel);
-    }
-
-    public setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
-        this.attribute.setSubmitMode(submitMode);
+        return super.getFormat() as Xrm.Page.DateAttributeFormat;
     }
 }
 
-export interface IDateAttributeComponents {
-    attribute: any; // TODO - AttributeMock;
-    dateAttributeFormat: Xrm.Page.DateAttributeFormat;
-    controls?: Xrm.Collection.ItemCollection<Xrm.Page.DateControl>;
+export interface IDateAttributeComponents extends IAttributeComponents<DateControlMock, Date>  {
+    format?: Xrm.Page.DateAttributeFormat;
 }

@@ -1,74 +1,43 @@
-import {DateAttributeMock } from "../dateattribute/dateattribute.mock";
+import { DateAttributeMock } from "../dateattribute/dateattribute.mock";
+import { IAttStandardControlComponents,
+         IStandardControlComponents,
+         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
-export class DateControlMock implements Xrm.Page.DateControl {
-    public standardControl: Xrm.Page.StandardControl;
+export class DateControlMock extends StandardControlMock<DateControlMock, DateAttributeMock, Date>
+                             implements Xrm.Page.DateControl {
 
-    constructor(standardControl: Xrm.Page.StandardControl) {
-        this.standardControl = standardControl;
+    private static defaultComponents(components: IDateControlComponents): IDateControlComponents {
+        if (!("showTime" in components)) {
+            components.showTime = components.attribute
+                ? components.attribute.getFormat() === "date"
+                : false;
+        }
+
+        return components;
+    }
+
+    public showTime: boolean;
+
+    constructor(components: IDateControlComponents) {
+        super(DateControlMock.defaultComponents(components));
+        this.showTime = components.showTime;
     }
 
     public getShowTime(): boolean {
-        const attribute = this.standardControl.getAttribute() as Xrm.Page.DateAttribute;
-        return attribute.getFormat() === "datetime";
+        return this.showTime;
     }
 
-    public setShowTime(showTimeValue: boolean): void {
-        const attribute = this.standardControl.getAttribute() as Xrm.Page.DateAttribute;
-        const attributeFormat: Xrm.Page.DateAttributeFormat = showTimeValue ? "datetime" : "date";
-
-        // TODO test
-        // attribute = new DateAttributeMock(attribute, attributeFormat);
+    public setShowTime(showTime: boolean): void {
+        // TODO: Does the Attribute format need to get updated as well?
+        this.showTime = showTime;
     }
+}
 
-    public clearNotification(uniqueId?: string): boolean {
-        return this.standardControl.clearNotification();
-    }
+export interface IDateControlComponents extends IAttDateControlComponents,
+                                                IStandardControlComponents<DateControlMock, DateAttributeMock, Date> {
+}
 
-    public getDisabled(): boolean {
-        return this.standardControl.getDisabled();
-    }
-
-    public setDisabled(disabled: boolean): void {
-        this.standardControl.setDisabled(disabled);
-    }
-
-    public setNotification(message: string, uniqueId: string): boolean {
-        return this.standardControl.setNotification(message, uniqueId);
-    }
-
-    public getAttribute(): Xrm.Page.DateAttribute {
-        return this.standardControl.getAttribute() as Xrm.Page.DateAttribute;
-    }
-
-    public getControlType(): Xrm.Page.ControlType | string {
-        return this.standardControl.getControlType();
-    }
-
-    public getName(): string {
-        return this.standardControl.getName();
-    }
-
-    public getParent(): Xrm.Page.Section {
-        return this.standardControl.getParent();
-    }
-
-    public setVisible(visible: boolean): void {
-        this.standardControl.setVisible(visible);
-    }
-
-    public getLabel(): string {
-        return this.standardControl.getLabel();
-    }
-
-    public setLabel(label: string): void {
-        this.standardControl.setLabel(label);
-    }
-
-    public getVisible(): boolean {
-        return this.standardControl.getVisible();
-    }
-
-    public setFocus(): void {
-        this.standardControl.setFocus();
-    }
+export interface IAttDateControlComponents
+        extends IAttStandardControlComponents<DateControlMock, DateAttributeMock, Date> {
+    showTime?: boolean;
 }
