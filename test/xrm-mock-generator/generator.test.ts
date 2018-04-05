@@ -14,25 +14,4 @@ describe("XrmMockGenerator", () => {
   it("should have an Attribute property", () => {
     expect(XrmMockGenerator.Attribute).toBeDefined();
   });
-
-  it("should create a string attribute", () => {
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", true, false, "text", 100, "First Name");
-    expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe");
-  });
-
-  it("should create a string attribute and default the control", () => {
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", true, false, "text", 100, "First Name");
-    let count = 0;
-    Xrm.Page.getAttribute("firstname").controls.forEach((c) => {
-      count++;
-      expect(c.getName()).toBe("firstname");
-    });
-    expect(count).toBe(1);
-  });
-
-  it("should create a string control with Label", () => {
-    XrmMockGenerator.Control.createString(StringAttributeMock.create("firstname"), "firstname", true, false,
-                                          "First Name");
-    expect(Xrm.Page.getControl("firstname").getLabel()).toBe("First Name");
-  });
 });
