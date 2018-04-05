@@ -8,12 +8,12 @@ describe("XrmMockGenerator.Attribute", () => {
   });
 
   it("should create a string attribute", () => {
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", true, false, "text", 100, "First Name");
+    XrmMockGenerator.Attribute.createString("firstname", "Joe");
     expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe");
   });
 
   it("should create a string attribute and default the control", () => {
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", true, false, "text", 100, "First Name");
+    XrmMockGenerator.Attribute.createString("firstname", "Joe");
     let count = 0;
     Xrm.Page.getAttribute("firstname").controls.forEach((c) => {
       count++;
@@ -35,7 +35,7 @@ describe("XrmMockGenerator.Attribute", () => {
 
   it("should create a date attribute without a time component", () => {
     const christmas = new Date(1960, 12, 25);
-    XrmMockGenerator.Attribute.createDate("christmas", christmas, false);
+    XrmMockGenerator.Attribute.createDate("christmas", christmas);
     expect(Xrm.Page.getAttribute("christmas").getValue()).toBe(christmas);
   });
 
