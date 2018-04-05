@@ -1,14 +1,5 @@
 import { LookupAttributeMock } from "../../../src/xrm-mock";
-import { AttributeMock, IAttributeComponents } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { ControlMock, IControlComponents } from "../../../src/xrm-mock/page/control/control.mock";
-import { EventContextMock } from "../../../src/xrm-mock/page/eventcontext/eventcontext.mock";
 import { ILookupView, LookupControlMock } from "../../../src/xrm-mock/page/lookupcontrol/lookupcontrol.mock";
-import { LookupValueMock } from "../../../src/xrm-mock/page/lookupvalue/lookupvalue.mock";
-import { StandardControlMock } from "../../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
-import * as Visible from "../../../src/xrm-mock/page/uicangetvisibleelement/uicangetvisibleelement.mock";
-import { UiFocusableMock } from "../../../src/xrm-mock/page/uifocusable/uifocusable.mock";
-import { UiLabelElementMock } from "../../../src/xrm-mock/page/uilabelelement/uilabelelement.mock";
-import { UiStandardElementMock } from "../../../src/xrm-mock/page/uistandardelement/uistandardelement.mock";
 
 describe("Xrm.Page.LookupControl Mock", () => {
     let lookupControl: LookupControlMock;
@@ -22,7 +13,6 @@ describe("Xrm.Page.LookupControl Mock", () => {
         }];
         const views = [createView("1"), createView("2", false)];
         this.name = "parentaccountid";
-        this.label = new UiLabelElementMock("Parent Account");
         lookupControl = new LookupControlMock({
             attribute: new LookupAttributeMock({
                 name: this.name,
@@ -32,7 +22,7 @@ describe("Xrm.Page.LookupControl Mock", () => {
                 }],
             }),
             filters,
-            label: this.label,
+            label: "Parent Account",
             name: this.name,
             views,
             visible: true,

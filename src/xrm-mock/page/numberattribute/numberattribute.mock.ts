@@ -1,28 +1,30 @@
-import { AttributeMock } from "../attribute/attribute.mock";
+import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
+import { ControlMock } from "../control/control.mock";
+import { NumberControlMock } from "../numbercontrol/numbercontrol.mock";
 
-export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
+export class NumberAttributeMock extends AttributeMock<NumberControlMock, number>
+                                 implements Xrm.Page.NumberAttribute {
+
+    private static defaultComponents(components: INumberAttributeComponents): INumberAttributeComponents {
+        components.format = components.format || "none";
+        components.precision = components.precision || 0;
+        return components;
+    }
+
     public min: number;
     public max: number;
     public precision: number;
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>;
-    public integerAttributeFormat: Xrm.Page.IntegerAttributeFormat;
-    public attribute: any; // TODO - AttributeMock;
 
-    constructor(attribute: any, // TODO - AttributeMock
-                controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>,
-                integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat,
-                min?: number, max?: number, precision?: number) {
-        this.attribute = attribute;
-        this.controls = controls;
-        this.integerAttributeFormat = integerAttributeFormat;
-        this.min = min;
-        this.max = max;
-        this.precision = precision;
-        this.attribute.attributeFormat = integerAttributeFormat;
+    constructor(components: INumberAttributeComponents) {
+        super(NumberAttributeMock.defaultComponents(components));
+        this.min = components.min;
+        this.max = components.max;
+        this.precision = components.precision;
+        this.validatePrecision();
     }
 
     public getFormat(): Xrm.Page.IntegerAttributeFormat {
-        return this.attribute.getFormat() as Xrm.Page.IntegerAttributeFormat;
+        return super.getFormat() as Xrm.Page.IntegerAttributeFormat;
     }
 
     public getMax(): number {
@@ -37,65 +39,28 @@ export class NumberAttributeMock implements Xrm.Page.NumberAttribute {
         return this.precision;
     }
 
-    public getValue(): number {
-        return this.attribute.getValue();
-    }
-
     public setValue(value: number): void {
-        if (this.min !== null && this.min > value) {
+        if ((this.min || this.min === 0) && this.min > value) {
             throw new Error(("value cannot be below the min of " + this.min));
-        } else if (this.max && this.max < value) {
+        } else if ((this.max || this.max === 0) && this.max < value) {
             throw new Error(("value cannot be above the max of " + this.max));
-             } else {
-            this.attribute.setValue(value);
-             }
+        } else {
+            super.setValue(value);
+        }
     }
 
-    public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.addOnChange(handler);
+    private validatePrecision(): void {
+        if (this.precision > 4) {
+            throw new Error((`precision cannot be greater than 4, but was ${this.precision}`));
+        } else if (this.precision < 0) {
+            throw new Error((`precision cannot be less than 0, but was ${this.precision}`));
+        }
     }
+}
 
-    public fireOnChange(): void {
-        this.attribute.fireOnChange();
-    }
-
-    public getAttributeType(): string {
-        return this.attribute.getAttributeType();
-    }
-
-    public getIsDirty(): boolean {
-        return this.attribute.getIsDirty();
-    }
-
-    public getName(): string {
-        return this.attribute.getName();
-    }
-
-    public getParent(): Xrm.Page.Entity {
-        return this.attribute.getParent();
-    }
-
-    public getRequiredLevel(): Xrm.Page.RequirementLevel {
-        return this.attribute.getRequiredLevel();
-    }
-
-    public getSubmitMode(): Xrm.Page.SubmitMode {
-        return this.attribute.getSubmitMode();
-    }
-
-    public getUserPrivilege(): Xrm.Page.Privilege {
-        return this.attribute.getUserPrivilege();
-    }
-
-    public removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        this.attribute.removeOnChange(handler);
-    }
-
-    public setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void {
-        this.attribute.setRequiredLevel(requirementLevel);
-    }
-
-    public setSubmitMode(submitMode: Xrm.Page.SubmitMode): void {
-        this.attribute.setSubmitMode(submitMode);
-    }
+export interface INumberAttributeComponents extends IAttributeComponents<NumberControlMock, number> {
+    min?: number;
+    max?: number;
+    precision?: number;
+    format?: Xrm.Page.IntegerAttributeFormat;
 }

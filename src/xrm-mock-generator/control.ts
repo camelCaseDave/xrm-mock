@@ -1,7 +1,7 @@
 import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
-export type CreateMethods = "createDate" | "createLookup" | "createOptionSet" |  "createString";
+export type CreateMethods = "createDate" |  "createLookup" | "createNumber" | "createOptionSet" |  "createString";
 
 export default class Control {
 
@@ -35,9 +35,26 @@ export default class Control {
                       disabled: boolean = false,
                       label?: string): XrmMock.LookupControlMock {
     const components: XrmMock.ILookupControlComponents =
-    this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
 
     return this.addControl(new XrmMock.LookupControlMock(components));
+  }
+
+  public createNumber(components: XrmMock.INumberControlComponents): XrmMock.NumberControlMock;
+  public createNumber(attribute: XrmMock.NumberAttributeMock,
+                      name?: string,
+                      visible?: boolean,
+                      disabled?: boolean,
+                      label?: string): XrmMock.NumberControlMock;
+  public createNumber(attributeOrComponents: XrmMock.NumberAttributeMock | XrmMock.INumberControlComponents,
+                      name?: string,
+                      visible: boolean = true,
+                      disabled: boolean = false,
+                      label?: string): XrmMock.NumberControlMock {
+    const components: XrmMock.INumberControlComponents =
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+
+    return this.addControl(new XrmMock.NumberControlMock(components));
   }
 
   public createOptionSet(components: XrmMock.IOptionSetControlComponents): XrmMock.OptionSetControlMock;

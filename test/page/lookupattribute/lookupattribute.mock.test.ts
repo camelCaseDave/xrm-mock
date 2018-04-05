@@ -4,11 +4,10 @@ import { LookupValueMock } from "../../../src/xrm-mock/page/lookupvalue/lookupva
 
 describe("Xrm.Page.LookupAttribute Mock", () => {
     beforeEach(() => {
-        const attributeMock = new AttributeMock({
+        this.lookupAttribute = new LookupAttributeMock({
             name: "parentorganisationid",
-            value: new LookupValueMock("5555", "account", "Boss"),
+            value: [new LookupValueMock("5555", "account", "Boss")],
         });
-        this.lookupAttribute = new LookupAttributeMock(attributeMock, false);
     });
 
     it("should instantiate", () => {

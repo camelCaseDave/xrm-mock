@@ -3,6 +3,7 @@ import Control, { CreateMethods as ControlCreateMethods } from "./control";
 
 export type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
 export type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
+export type NumberControlComponent = XrmMock.IAttNumberControlComponents | XrmMock.IAttNumberControlComponents[];
 export type OptionSetControlComponent = XrmMock.IAttOptionSetControlComponents
                                       | XrmMock.IAttOptionSetControlComponents[];
 export type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
@@ -55,15 +56,20 @@ export default class Attribute {
     }
   }
 
-  public createNumber(name: string, value: number, min?: number, max?: number, precision?: number):
-    Xrm.Page.NumberAttribute {
-    // TODO validate precision <5
-    const attribute = this.createAttribute(name || "", value || 0);
-    const numberAttribute = new XrmMock.NumberAttributeMock(
-      attribute, null, "none", min || 0, max || 0, precision || 1);
-
-    this.addAttribute(numberAttribute);
-    return numberAttribute;
+  public createNumber(attComponents: XrmMock.INumberAttributeComponents,
+                      controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;
+  public createNumber(name: string, value?: number): XrmMock.NumberAttributeMock;
+  public createNumber(nameOrComponents: string | XrmMock.INumberAttributeComponents,
+                      valueOrControlComponents: NumberControlComponent | number): XrmMock.NumberAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components = { name: nameOrComponents, value: valueOrControlComponents as number };
+      const controls = [{name: nameOrComponents}];
+      return this.associateAttribute(new XrmMock.NumberAttributeMock(components), controls, "createNumber");
+    } else {
+      return this.associateAttribute(new XrmMock.NumberAttributeMock(nameOrComponents),
+                                    this.arrayify(valueOrControlComponents as NumberControlComponent),
+                                    "createNumber");
+    }
   }
 
   public createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents,

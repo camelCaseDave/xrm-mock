@@ -9,7 +9,7 @@ export class DateControlMock extends StandardControlMock<DateControlMock, DateAt
     private static defaultComponents(components: IDateControlComponents): IDateControlComponents {
         if (!("showTime" in components)) {
             components.showTime = components.attribute
-                ? components.attribute.getFormat() === "date"
+                ? components.attribute.getFormat() === "datetime"
                 : false;
         }
 
