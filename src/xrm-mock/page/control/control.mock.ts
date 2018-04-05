@@ -2,13 +2,13 @@ export class ControlMock implements Xrm.Page.Control {
     public controlType: Xrm.Page.ControlType;
     public name: string;
     public parent: Xrm.Page.Section;
-    public uiLabelElement: Xrm.Page.UiLabelElement;
-    public uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
+    public label: string;
+    public visible: boolean;
 
     constructor(components: IControlComponents) {
         this.controlType = components.controlType || "standard";
-        this.uiLabelElement = components.uiLabelElement;
-        this.uiCanGetVisibleElement = components.uiCanGetVisibleElement;
+        this.label = components.label;
+        this.visible = components.visible;
         this.name = components.name;
         this.parent = components.parent;
     }
@@ -26,22 +26,22 @@ export class ControlMock implements Xrm.Page.Control {
     }
 
     public getLabel(): string {
-        return this.uiLabelElement.getLabel();
+        return this.label;
     }
 
     public setLabel(label: string): void {
-        this.uiLabelElement.setLabel(label);
+        this.label = label;
     }
 
     public getVisible(): boolean {
-        return this.uiCanGetVisibleElement.getVisible();
+        return this.visible;
     }
 }
 
 export interface IControlComponents {
     name: string;
     controlType?: Xrm.Page.ControlType;
-    uiLabelElement?: Xrm.Page.UiLabelElement;
-    uiCanGetVisibleElement?: Xrm.Page.UiCanGetVisibleElement;
+    label?: string;
+    visible?: boolean;
     parent?: Xrm.Page.Section;
 }
