@@ -10,7 +10,7 @@ var ItemCollectionMock = /** @class */ (function () {
     };
     ItemCollectionMock.prototype.get = function (param) {
         if (param === undefined || param === null) {
-            return this.itemCollection;
+            return this.itemCollection || null;
         }
         else if (typeof param === "string") {
             var attribute = void 0;
@@ -23,10 +23,10 @@ var ItemCollectionMock = /** @class */ (function () {
                     }
                 }
             }
-            return attribute;
+            return attribute || null;
         }
         else if (typeof param === "number") {
-            return this.itemCollection[param];
+            return this.itemCollection[param] || null;
         }
         else if (param !== undefined) {
             throw new Error("get itemcollection as delegate not implemented");

@@ -18,7 +18,7 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
 
     public get(param?: string | number | Xrm.Collection.MatchingDelegate<T> | T[]): T | T[] {
         if (param === undefined || param === null) {
-            return this.itemCollection as T[];
+            return (this.itemCollection as T[]) || null;
         } else if (typeof param === "string") {
             let attribute;
 
@@ -31,9 +31,9 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
                 }
             }
 
-            return attribute;
+            return attribute || null;
         } else if (typeof param === "number") {
-            return this.itemCollection[param];
+            return this.itemCollection[param] || null;
         } else if (param as Xrm.Collection.MatchingDelegate<T> !== undefined) {
             throw new Error("get itemcollection as delegate not implemented");
         }
