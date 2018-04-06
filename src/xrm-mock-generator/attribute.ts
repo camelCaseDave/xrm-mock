@@ -1,171 +1,161 @@
 import * as XrmMock from "../xrm-mock/index";
-import Control from "./control";
+import Control, { CreateMethods as ControlCreateMethods } from "./control";
+
+export type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
+export type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
+export type NumberControlComponent = XrmMock.IAttNumberControlComponents | XrmMock.IAttNumberControlComponents[];
+export type OptionSetControlComponent = XrmMock.IAttOptionSetControlComponents
+                                      | XrmMock.IAttOptionSetControlComponents[];
+export type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
 
 export default class Attribute {
+
   private Control = new Control();
 
-  public createBool(name: string, value: boolean): Xrm.Page.BooleanAttribute {
+  public createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock {
     const attribute = this.createAttribute(name, value || false);
     const boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
     this.addAttribute(boolAttribute);
     return boolAttribute;
   }
 
-  public createDate(name: string, value: Date, includeTime: boolean): Xrm.Page.DateAttribute {
-    const attribute = this.createAttribute(name || "", value || false);
-    const dateAttribute = new XrmMock.DateAttributeMock({
-      attribute,
-      dateAttributeFormat: !includeTime ? "date" : "datetime",
-    });
+  public createDate(attComponents: XrmMock.IDateAttributeComponents,
+                    controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
+  public createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
+  public createDate(nameOrComponents: string | XrmMock.IDateAttributeComponents,
+                    valueOrControlComponents?: Date | DateControlComponent): XrmMock.DateAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components = { name: nameOrComponents, value: valueOrControlComponents as Date };
+      const controls = [{name: nameOrComponents}];
 
-    this.addAttribute(dateAttribute);
-    return dateAttribute;
+      return this.associateAttribute(new XrmMock.DateAttributeMock(components), controls, "createDate");
+    } else {
+      return this.associateAttribute(new XrmMock.DateAttributeMock(nameOrComponents),
+                                     this.arrayify(valueOrControlComponents as StringControlComponent),
+                                    "createDate");
+    }
   }
 
-  public createLookup(name: string, lookup: Xrm.Page.LookupValue): Xrm.Page.LookupAttribute {
-    const attribute = this.createAttribute(name || "",
-      [new XrmMock.LookupValueMock(lookup.id, lookup.entityType, lookup.name)]);
-    const lookupAttribute = new XrmMock.LookupAttributeMock(attribute, false);
+  public createLookup(attComponents: XrmMock.ILookupAttributeComponents,
+                      controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
+  public createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
+  public createLookup(nameOrComponents: string | XrmMock.ILookupAttributeComponents,
+                      valueOrControlComponents?: Xrm.Page.LookupValue | Xrm.Page.LookupValue[] | LookupControlComponent)
+                      : XrmMock.LookupAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components: XrmMock.ILookupAttributeComponents = {
+        name: nameOrComponents,
+        value: this.arrayify(valueOrControlComponents as Xrm.Page.LookupValue) };
+      const controls = [{name: nameOrComponents}];
 
-    this.addAttribute(lookupAttribute);
-    return lookupAttribute;
+      return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
+    } else {
+      return this.associateAttribute(new XrmMock.LookupAttributeMock(nameOrComponents),
+                                     this.arrayify(valueOrControlComponents as LookupControlComponent),
+                                    "createLookup");
+    }
   }
 
-  public createNumber(name: string, value: number, min?: number, max?: number, precision?: number):
-    Xrm.Page.NumberAttribute {
-    // TODO validate precision <5
-    const attribute = this.createAttribute(name || "", value || 0);
-    const numberAttribute = new XrmMock.NumberAttributeMock(
-      attribute, null, "none", min || 0, max || 0, precision || 1);
-
-    this.addAttribute(numberAttribute);
-    return numberAttribute;
+  public createNumber(attComponents: XrmMock.INumberAttributeComponents,
+                      controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;
+  public createNumber(name: string, value?: number): XrmMock.NumberAttributeMock;
+  public createNumber(nameOrComponents: string | XrmMock.INumberAttributeComponents,
+                      valueOrControlComponents: NumberControlComponent | number): XrmMock.NumberAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components = { name: nameOrComponents, value: valueOrControlComponents as number };
+      const controls = [{name: nameOrComponents}];
+      return this.associateAttribute(new XrmMock.NumberAttributeMock(components), controls, "createNumber");
+    } else {
+      return this.associateAttribute(new XrmMock.NumberAttributeMock(nameOrComponents),
+                                    this.arrayify(valueOrControlComponents as NumberControlComponent),
+                                    "createNumber");
+    }
   }
 
   public createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents,
-                         controlComponents?: XrmMock.IAttOptionSetControlComponents[]
-                                           | XrmMock.IAttOptionSetControlComponents): Xrm.Page.OptionSetAttribute;
+                         controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
   public createOptionSet(name: string,
                          value?: string | number,
-                         options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute;
+                         options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
   public createOptionSet(nameOrComponents: string | XrmMock.IOptionSetAttributeComponents,
-                         valueOrControlComponents?: string
-                          | number
-                          | XrmMock.IAttOptionSetControlComponents[]
-                          | XrmMock.IAttOptionSetControlComponents,
-                         options?: Xrm.Page.OptionSetValue[]): Xrm.Page.OptionSetAttribute {
-    let components: XrmMock.IOptionSetAttributeComponents;
-    let controls: XrmMock.IAttOptionSetControlComponents[] = [];
-    if (typeof(nameOrComponents) === "string") {
-      const value = valueOrControlComponents as number | string;
-      let num: number;
-      if (value !== null
-          && value !== undefined) {
-        if (!options) {
-          options = [ typeof value === "string"
-            ? { text: value, value: 0 }
-            : { text: value.toString(), value }];
-        }
-
-        if (typeof value === "string") {
-          const option = options.filter((o) => o.text === value)[0];
-          num = option.value;
-        } else {
-          num = value;
-        }
-      } else {
-        num = undefined;
-      }
-
-      components = {
-        name,
-        options,
-      };
-
-      if (num || num === 0) {
-        components.value = num;
-      }
-
-      controls.push({
-        name,
-        options,
-      });
-    } else {
-      components = nameOrComponents;
-      if (valueOrControlComponents) {
-        controls = valueOrControlComponents instanceof Array
-          ? valueOrControlComponents
-          : [valueOrControlComponents as XrmMock.IAttOptionSetControlComponents];
-      } else {
-        controls.push({ name: components.name });
-      }
-      if (components.options && components.options.length > 0) {
-        controls.filter((c) => !c.options)
-                .forEach((c) => {
-                  c.options = components.options;
-                });
-      }
-    }
-
-    const attribute = new XrmMock.OptionSetAttributeMock(components);
-    this.addAttribute(attribute);
-    controls.forEach((c) => {
-      const component = (c as XrmMock.IOptionSetControlComponents);
-      component.attribute = attribute;
-      this.Control.createOptionSet(component);
-    });
-    return attribute;
+                         valueOrControlComponents?: string | number | OptionSetControlComponent,
+                         options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
+    return typeof(nameOrComponents) === "string"
+      ? this.createOptionSetFromParameters(nameOrComponents, valueOrControlComponents as string | number, options)
+      : this.createOptionSetFromComponents(nameOrComponents,
+          this.arrayify(valueOrControlComponents as OptionSetControlComponent));
   }
 
   public createString(attComponents: XrmMock.IStringAttributeComponents,
-                      controlComponents?: XrmMock.IAttStringControlComponents[] | XrmMock.IAttStringControlComponents):
+                      controlComponents?: StringControlComponent):
                       XrmMock.StringAttributeMock;
-  public createString(name: string, value?: string,
-                      visible?: boolean, disabled?: boolean,
-                      format?: Xrm.Page.StringAttributeFormat, maxLength?: number,
-                      label?: string): XrmMock.StringAttributeMock;
+  public createString(name: string, value?: string): XrmMock.StringAttributeMock;
   public createString(nameOrComponents: string | XrmMock.IStringAttributeComponents,
-                      valueOrControlComponents: XrmMock.IAttStringControlComponents[]
-                        | XrmMock.IAttStringControlComponents
-                        | string = "",
-                      visible: boolean = true, disabled: boolean = false,
-                      format: Xrm.Page.StringAttributeFormat = "text", maxLength: number = 100,
-                      label?: string): XrmMock.StringAttributeMock {
-    let components: XrmMock.IStringAttributeComponents;
-    let controls: XrmMock.IAttStringControlComponents[] = [];
+                      valueOrControlComponents: StringControlComponent | string = ""): XrmMock.StringAttributeMock {
     if (typeof(nameOrComponents) === "string") {
-      components = {
-        format,
-        maxLength,
-        name: nameOrComponents,
-        value: valueOrControlComponents as string,
-      };
-      controls.push({
-        disabled,
-        label: label || nameOrComponents,
-        name: nameOrComponents,
-        visible,
-      });
+      const components = { name: nameOrComponents, value: valueOrControlComponents as string };
+      const controls = [{name: nameOrComponents}];
+
+      return this.associateAttribute(new XrmMock.StringAttributeMock(components), controls, "createString");
     } else {
-      components = nameOrComponents;
-      if (valueOrControlComponents) {
-        controls = valueOrControlComponents instanceof Array
-          ? valueOrControlComponents
-          : [valueOrControlComponents as XrmMock.IAttStringControlComponents];
-      } else {
-        controls.push({ name: components.name });
+      return this.associateAttribute(new XrmMock.StringAttributeMock(nameOrComponents),
+                                     this.arrayify(valueOrControlComponents as StringControlComponent),
+                                    "createString");
+    }
+  }
+
+  private createOptionSetFromParameters(name: string,
+                                        value: string | number,
+                                        options: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
+    let num: number;
+    if (value !== null
+      && value !== undefined) {
+      if (!options) {
+        options = [typeof value === "string"
+          ? { text: value, value: 0 }
+          : { text: value.toString(), value }];
       }
+
+      if (typeof value === "string") {
+        const option = options.filter((o) => o.text === value)[0];
+        num = option.value;
+      } else {
+        num = value;
+      }
+    } else {
+      num = undefined;
     }
 
-    const attribute = new XrmMock.StringAttributeMock(components);
-    this.addAttribute(attribute);
-    controls.forEach((c) => {
-      const component = (c as XrmMock.IStringControlComponents);
-      component.attribute = attribute;
-      this.Control.createString(component);
-    });
+    const components: XrmMock.IOptionSetAttributeComponents = {
+      name,
+      options,
+    };
 
-    return attribute;
+    if (num || num === 0) {
+      components.value = num;
+    }
+
+    const controls = [{ name, options }];
+    return this.associateAttribute(new XrmMock.OptionSetAttributeMock(components), controls, "createOptionSet");
+  }
+
+  private createOptionSetFromComponents(components: XrmMock.IOptionSetAttributeComponents,
+                                        controls: XrmMock.IAttOptionSetControlComponents[])
+                                        : XrmMock.OptionSetAttributeMock {
+    if (components.options && components.options.length > 0) {
+      controls.filter((c) => !c.options)
+        .forEach((c) => {
+          c.options = components.options;
+        });
+    }
+    return this.associateAttribute(new XrmMock.OptionSetAttributeMock(components), controls, "createOptionSet");
+  }
+
+  private createStringFromParameters(name: string, value: string): XrmMock.StringAttributeMock {
+      const components = { name, value };
+      const controls = [{name}];
+
+      return this. associateAttribute(new XrmMock.StringAttributeMock(components), controls, "createString");
   }
 
   private createAttribute(name: string, value: any): any {
@@ -181,5 +171,30 @@ export default class Attribute {
 
   private addAttribute(attribute: Xrm.Page.Attribute): void {
     (Xrm.Page.data.entity.attributes as any).push(attribute);
+  }
+
+  /**
+   * Creates the given attribute, as well as the controls for the attribute defined by the components
+   * @param attribute The newly created attribute to be added to the page colleciton of attributes
+   * @param controls Array of Control Components to create controls for the given attribute
+   * @param controlCreateFunction the name of the Control function to call to create the correct type of control
+   */
+  private associateAttribute<TAtt extends Xrm.Page.Attribute>(attribute: TAtt,
+                                                              controls: any[],
+                                                              controlCreateFunction: ControlCreateMethods): TAtt {
+      this.addAttribute(attribute);
+      controls.forEach((c) => {
+        c.attribute = attribute;
+        (this.Control[controlCreateFunction] as any)(c);
+      });
+      return attribute;
+  }
+
+  private arrayify<T>(possibleArray: T[] | T): T[] {
+    if (possibleArray instanceof Array) {
+      return possibleArray;
+    } else {
+      return [possibleArray];
+    }
   }
 }

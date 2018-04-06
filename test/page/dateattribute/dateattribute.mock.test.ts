@@ -2,27 +2,29 @@ import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mo
 import { DateAttributeMock } from "../../../src/xrm-mock/page/dateattribute/dateattribute.mock";
 
 describe("Xrm.Page.DateAttribute Mock", () => {
+    let dateAttribute: DateAttributeMock;
     beforeEach(() => {
-        this.dateAttribute = new DateAttributeMock({
-            attribute: new AttributeMock({
+        dateAttribute = new DateAttributeMock({
                 format: "date",
                 isDirty: false,
                 name: "birthdate",
                 value: new Date("January 1, 1990"),
-            }),
-            dateAttributeFormat: "date",
         });
     });
 
     it("should instantiate", () => {
-        expect(this.dateAttribute).toBeDefined();
+        expect(dateAttribute).toBeDefined();
+    });
+
+    it("should default format to date", () => {
+        expect(DateAttributeMock.create("empty").getFormat()).toBe("date");
     });
 
     it("should have a date format", () => {
-        expect(this.dateAttribute.getFormat()).toBe("date");
+        expect(dateAttribute.getFormat()).toBe("date");
     });
 
     it("should have a value of January 1, 1990", () => {
-        expect(this.dateAttribute.getValue()).toEqual(new Date("January 1, 1990"));
+        expect(dateAttribute.getValue()).toEqual(new Date("January 1, 1990"));
     });
 });

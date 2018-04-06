@@ -1,5 +1,5 @@
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
-import { FormItemMock } from "./../formitem/formitem.mock";
+import { FormItemMock } from "../formitem/formitem.mock";
 
 export class FormSelectorMock implements Xrm.Page.FormSelector {
     public items: ItemCollectionMock<FormItemMock>;

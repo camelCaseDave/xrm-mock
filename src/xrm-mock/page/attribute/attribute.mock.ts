@@ -13,7 +13,7 @@ export class AttributeMock<TControl extends ControlMock,
     public submitMode: Xrm.Page.SubmitMode;
     public value: TValue;
     public format: Xrm.Page.AttributeFormat;
-    public eventHandlers: Xrm.Page.ContextSensitiveHandler[] = [];
+    public eventHandlers: Xrm.Page.ContextSensitiveHandler[];
 
     public constructor(components: IAttributeComponents<TControl, TValue>) {
         this.format = components.format;
@@ -23,6 +23,7 @@ export class AttributeMock<TControl extends ControlMock,
         this.requiredLevel = components.requiredLevel || "none";
         this.submitMode = components.submitMode || "dirty";
         this.controls = components.controls || new ItemCollectionMock<TControl>();
+        this.eventHandlers = components.eventHandlers || [] as Xrm.Page.ContextSensitiveHandler[];
     }
 
     public addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void {
@@ -92,11 +93,12 @@ export class AttributeMock<TControl extends ControlMock,
 }
 
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+    controls?: ItemCollectionMock<T>;
+    eventHandlers?: Xrm.Page.ContextSensitiveHandler[];
     format?: Xrm.Page.AttributeFormat;
-    name: string;
-    value?: TValue;
     isDirty?: boolean;
+    name: string;
     requiredLevel?: Xrm.Page.RequirementLevel;
     submitMode?: Xrm.Page.SubmitMode;
-    controls?: ItemCollectionMock<T>;
+    value?: TValue;
 }

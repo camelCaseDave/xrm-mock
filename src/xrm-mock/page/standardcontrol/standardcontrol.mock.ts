@@ -1,7 +1,7 @@
-import { AttributeMock, AttributeReturnType } from "./../attribute/attribute.mock";
-import { ControlMock, IControlComponents } from "./../control/control.mock";
-import { UiFocusableMock } from "./../uifocusable/uifocusable.mock";
-import { UiStandardElementMock } from "./../uistandardelement/uistandardelement.mock";
+import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
+import { ControlMock, IControlComponents } from "../control/control.mock";
+import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
 
 export class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
                                  TAttribute extends AttributeMock<TControl, TValue>,

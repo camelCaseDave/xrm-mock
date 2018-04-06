@@ -10,9 +10,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var control_mock_1 = require("./../control/control.mock");
-var uifocusable_mock_1 = require("./../uifocusable/uifocusable.mock");
-var uistandardelement_mock_1 = require("./../uistandardelement/uistandardelement.mock");
+var control_mock_1 = require("../control/control.mock");
+var uifocusable_mock_1 = require("../uifocusable/uifocusable.mock");
+var uistandardelement_mock_1 = require("../uistandardelement/uistandardelement.mock");
 var StandardControlMock = /** @class */ (function (_super) {
     __extends(StandardControlMock, _super);
     function StandardControlMock(components) {

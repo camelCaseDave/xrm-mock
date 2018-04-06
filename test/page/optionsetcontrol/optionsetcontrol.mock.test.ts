@@ -1,5 +1,3 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { EnumAttributeMock } from "../../../src/xrm-mock/page/enumattribute/enumattribute.mock";
 import { OptionSetAttributeMock } from "../../../src/xrm-mock/page/optionsetattribute/optionsetattribute.mock";
 import { OptionSetControlMock } from "../../../src/xrm-mock/page/optionsetcontrol/optionsetcontrol.mock";
 import { OptionSetValueMock } from "../../../src/xrm-mock/page/optionsetvalue/optionsetvalue.mock";

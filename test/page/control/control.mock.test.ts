@@ -1,20 +1,13 @@
-import { AutoLookupControlMock } from "../../../src/xrm-mock/page/autolookupcontrol/autolookupcontrol.mock";
 import { ControlMock } from "../../../src/xrm-mock/page/control/control.mock";
-import * as Visible from "../../../src/xrm-mock/page/uicangetvisibleelement/uicangetvisibleelement.mock";
-import { UiKeyPressableMock } from "../../../src/xrm-mock/page/uikeypressable/uikeypressable.mock";
-import { UiLabelElementMock } from "../../../src/xrm-mock/page/uilabelelement/uilabelelement.mock";
-import { AttributeMock } from "./../../../src/xrm-mock/page/attribute/attribute.mock";
-import { StandardControlMock } from "./../../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
-import { StringAttributeMock } from "./../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
-import { StringControlMock } from "./../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
+import { StringControlMock } from "../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
 
 describe("Xrm.Page.Control Mock", () => {
     beforeEach(() => {
         this.control = new ControlMock({
             controlType: "subgrid",
+            label: "Main Subgrid",
             name: "Subgrid_Main",
-            uiCanGetVisibleElement: new Visible.UiCanGetVisibleElementMock(true),
-            uiLabelElement: new UiLabelElementMock("Main Subgrid"),
+            visible: true,
         });
     });
 
@@ -35,11 +28,11 @@ describe("Xrm.Page.Control Mock", () => {
         expect(this.control.getParent()).toBeUndefined();
     });
 
-    it("should be labelled Main Subgrid", () => {
+    it("should be labeled Main Subgrid", () => {
         expect(this.control.getLabel()).toBe("Main Subgrid");
     });
 
-    it("should be labelled Sub Subgrid", () => {
+    it("should be labeled Sub Subgrid", () => {
         expect(this.control.getLabel()).toBe("Main Subgrid");
         this.control.setLabel("Sub Subgrid");
         expect(this.control.getLabel()).toBe("Sub Subgrid");

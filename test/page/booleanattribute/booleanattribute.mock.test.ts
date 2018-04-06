@@ -13,6 +13,7 @@ describe("Xrm.Page.BooleanAttribute Mock", () => {
 
     it("should instantiate", () => {
         expect(this.booleanAttribute).toBeDefined();
+        expect(BooleanAttributeMock.create("empty").getName()).toBe("empty");
     });
 
     it("should have an initial value of true", () => {

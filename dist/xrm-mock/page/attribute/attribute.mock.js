@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
-        this.eventHandlers = [];
         this.format = components.format;
         this.name = components.name;
         this.value = components.value;
@@ -11,6 +10,7 @@ var AttributeMock = /** @class */ (function () {
         this.requiredLevel = components.requiredLevel || "none";
         this.submitMode = components.submitMode || "dirty";
         this.controls = components.controls || new itemcollection_mock_1.ItemCollectionMock();
+        this.eventHandlers = components.eventHandlers || [];
     }
     AttributeMock.prototype.addOnChange = function (handler) {
         this.eventHandlers.push(handler);

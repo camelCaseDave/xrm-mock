@@ -1,25 +1,39 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var LookupControlMock = /** @class */ (function () {
-    function LookupControlMock(standardControl, filters, views, preSearchHandlers) {
-        this.preSearchHandlers = [];
-        this.standardControl = standardControl;
-        this.views = views;
-        this.filters = filters;
-        this.preSearchHandlers = preSearchHandlers || [];
-        if (views && views.length > 1) {
-            var numberOfDefaultViews = 0;
-            for (var _i = 0, views_1 = views; _i < views_1.length; _i++) {
-                var view = views_1[_i];
-                if (numberOfDefaultViews > 1) {
-                    throw new Error(("Lookup Control cannot have more than one default view."));
-                }
-                if (view.isDefault) {
-                    numberOfDefaultViews++;
-                }
+var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
+var LookupControlMock = /** @class */ (function (_super) {
+    __extends(LookupControlMock, _super);
+    function LookupControlMock(components) {
+        var _this = _super.call(this, LookupControlMock.defaultComponents(components)) || this;
+        _this.preSearchHandlers = [];
+        _this.views = components.views || [];
+        _this.filters = components.filters || [];
+        _this.preSearchHandlers = components.preSearchHandlers || [];
+        if (_this.views && _this.views.length > 1) {
+            var defaultViews = _this.views.filter(function (v) { return v.isDefault; }).length;
+            if (defaultViews > 1) {
+                throw new Error("Lookup Control cannot have more than one default view.");
+            }
+            else if (defaultViews === 0) {
+                _this.views[0].isDefault = true;
             }
         }
+        return _this;
     }
+    LookupControlMock.defaultComponents = function (components) {
+        components.controlType = "lookup";
+        return components;
+    };
     LookupControlMock.prototype.addPreSearch = function (handler) {
         this.preSearchHandlers.push(handler);
     };
@@ -27,7 +41,9 @@ var LookupControlMock = /** @class */ (function () {
         this.filters.push({ filter: filter, entityLogicalName: entityLogicalName });
     };
     LookupControlMock.prototype.addCustomView = function (viewId, entityName, viewDisplayName, fetchXml, layoutXml, isDefault) {
-        // TODO check if default view already exists.
+        if (isDefault && this.getDefaultView()) {
+            throw new Error("Lookup Control cannot have more than one default view.");
+        }
         this.views.push({
             entityName: entityName,
             fetchXml: fetchXml,
@@ -37,9 +53,6 @@ var LookupControlMock = /** @class */ (function () {
             viewId: viewId,
         });
     };
-    LookupControlMock.prototype.getAttribute = function () {
-        return this.standardControl.getAttribute();
-    };
     LookupControlMock.prototype.getDefaultView = function () {
         for (var _i = 0, _a = this.views; _i < _a.length; _i++) {
             var view = _a[_i];
@@ -47,6 +60,7 @@ var LookupControlMock = /** @class */ (function () {
                 return view.viewId;
             }
         }
+        throw new Error("No default view was found!");
     };
     LookupControlMock.prototype.removePreSearch = function (handler) {
         throw new Error("remove presearch not implemented");
@@ -57,42 +71,6 @@ var LookupControlMock = /** @class */ (function () {
             view.isDefault = view.viewId === viewGuid;
         }
     };
-    LookupControlMock.prototype.clearNotification = function (uniqueId) {
-        return this.standardControl.clearNotification(uniqueId);
-    };
-    LookupControlMock.prototype.getDisabled = function () {
-        return this.standardControl.getDisabled();
-    };
-    LookupControlMock.prototype.setDisabled = function (disabled) {
-        this.standardControl.setDisabled(disabled);
-    };
-    LookupControlMock.prototype.setNotification = function (message, uniqueId) {
-        return this.standardControl.setNotification(message, uniqueId);
-    };
-    LookupControlMock.prototype.getControlType = function () {
-        return this.standardControl.getControlType();
-    };
-    LookupControlMock.prototype.getName = function () {
-        return this.standardControl.getName();
-    };
-    LookupControlMock.prototype.getParent = function () {
-        return this.standardControl.getParent();
-    };
-    LookupControlMock.prototype.getLabel = function () {
-        return this.standardControl.getLabel();
-    };
-    LookupControlMock.prototype.setLabel = function (label) {
-        this.standardControl.setLabel(label);
-    };
-    LookupControlMock.prototype.getVisible = function () {
-        return this.standardControl.getVisible();
-    };
-    LookupControlMock.prototype.setVisible = function (visible) {
-        this.standardControl.setVisible(visible);
-    };
-    LookupControlMock.prototype.setFocus = function () {
-        this.standardControl.setFocus();
-    };
     return LookupControlMock;
-}());
+}(standardcontrol_mock_1.StandardControlMock));
 exports.LookupControlMock = LookupControlMock;

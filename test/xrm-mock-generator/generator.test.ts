@@ -14,4 +14,8 @@ describe("XrmMockGenerator", () => {
   it("should have an Attribute property", () => {
     expect(XrmMockGenerator.Attribute).toBeDefined();
   });
+
+  it("should have a Control property", () => {
+    expect(XrmMockGenerator.Control).toBeDefined();
+  });
 });

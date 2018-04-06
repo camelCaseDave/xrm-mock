@@ -1,58 +1,38 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var DateControlMock = /** @class */ (function () {
-    function DateControlMock(standardControl) {
-        this.standardControl = standardControl;
+var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
+var DateControlMock = /** @class */ (function (_super) {
+    __extends(DateControlMock, _super);
+    function DateControlMock(components) {
+        var _this = _super.call(this, DateControlMock.defaultComponents(components)) || this;
+        _this.showTime = components.showTime;
+        return _this;
     }
+    DateControlMock.defaultComponents = function (components) {
+        if (!("showTime" in components)) {
+            components.showTime = components.attribute
+                ? components.attribute.getFormat() === "date"
+                : false;
+        }
+        return components;
+    };
     DateControlMock.prototype.getShowTime = function () {
-        var attribute = this.standardControl.getAttribute();
-        return attribute.getFormat() === "datetime";
+        return this.showTime;
     };
-    DateControlMock.prototype.setShowTime = function (showTimeValue) {
-        var attribute = this.standardControl.getAttribute();
-        var attributeFormat = showTimeValue ? "datetime" : "date";
-        // TODO test
-        // attribute = new DateAttributeMock(attribute, attributeFormat);
-    };
-    DateControlMock.prototype.clearNotification = function (uniqueId) {
-        return this.standardControl.clearNotification();
-    };
-    DateControlMock.prototype.getDisabled = function () {
-        return this.standardControl.getDisabled();
-    };
-    DateControlMock.prototype.setDisabled = function (disabled) {
-        this.standardControl.setDisabled(disabled);
-    };
-    DateControlMock.prototype.setNotification = function (message, uniqueId) {
-        return this.standardControl.setNotification(message, uniqueId);
-    };
-    DateControlMock.prototype.getAttribute = function () {
-        return this.standardControl.getAttribute();
-    };
-    DateControlMock.prototype.getControlType = function () {
-        return this.standardControl.getControlType();
-    };
-    DateControlMock.prototype.getName = function () {
-        return this.standardControl.getName();
-    };
-    DateControlMock.prototype.getParent = function () {
-        return this.standardControl.getParent();
-    };
-    DateControlMock.prototype.setVisible = function (visible) {
-        this.standardControl.setVisible(visible);
-    };
-    DateControlMock.prototype.getLabel = function () {
-        return this.standardControl.getLabel();
-    };
-    DateControlMock.prototype.setLabel = function (label) {
-        this.standardControl.setLabel(label);
-    };
-    DateControlMock.prototype.getVisible = function () {
-        return this.standardControl.getVisible();
-    };
-    DateControlMock.prototype.setFocus = function () {
-        this.standardControl.setFocus();
+    DateControlMock.prototype.setShowTime = function (showTime) {
+        // TODO: Does the Attribute format need to get updated as well?
+        this.showTime = showTime;
     };
     return DateControlMock;
-}());
+}(standardcontrol_mock_1.StandardControlMock));
 exports.DateControlMock = DateControlMock;
