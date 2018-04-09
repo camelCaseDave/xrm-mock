@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* tslint:disable:max-line-length */
 var attribute_mock_1 = require("./page/attribute/attribute.mock");
 exports.AttributeMock = attribute_mock_1.AttributeMock;
 var autolookupcontrol_mock_1 = require("./page/autolookupcontrol/autolookupcontrol.mock");
