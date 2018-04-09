@@ -8,21 +8,20 @@ describe("Xrm.Page.data.ProcessManager Mock", () => {
     beforeEach(() => {
         const firstNameStep = new StepMock("First Name", "firstname", false);
         const lastNameStep = new StepMock("Last Name", "lastname", false);
-        const stage1 = new StageMock("6001", "Start", "active", null, [firstNameStep]);
-        const stage2 = new StageMock("6002", "Finish", "inactive", null, [lastNameStep]);
+        this.stage1 = new StageMock("6001", "Start", "active", null, [firstNameStep]);
+        this.stage2 = new StageMock("6002", "Finish", "inactive", null, [lastNameStep]);
 
-        this.process1 = new ProcessMock(
-            {
-                id: "4444",
-                name: "Sales Process",
-                rendered: true,
-                stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]),
-            });
+        this.process1 = new ProcessMock({
+            id: "4444",
+            name: "Sales Process",
+            rendered: true,
+            stages: new ItemCollectionMock<Xrm.Page.Stage>([this.stage1, this.stage2]),
+        });
         this.process2 = new ProcessMock({
             id: "5555",
             name: "Service Process",
             rendered: false,
-            stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]),
+            stages: new ItemCollectionMock<Xrm.Page.Stage>([this.stage1, this.stage2]),
         });
         this.processManager = new ProcessManagerMock([this.process1, this.process2]);
     });
@@ -44,4 +43,18 @@ describe("Xrm.Page.data.ProcessManager Mock", () => {
         expect(this.processManager.getActiveProcess()).toBe(this.process2);
         expect(this.processManager.getActiveProcess()).not.toBe(this.process1);
     });
+
+    it("should get instance id of the active process", () => {
+        expect(this.processManager.getInstanceId()).toBe("4444");
+    });
+
+    it("should get instance name of the active process", () => {
+        expect(this.processManager.getInstanceName()).toBe("Sales Process");
+    });
+
+    it("should get the active stage", () => {
+        const activeStage = this.processManager.getActiveStage();
+        expect(activeStage).toBe(this.stage1);
+    });
+
 });
