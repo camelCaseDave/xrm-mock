@@ -1,5 +1,3 @@
-
-/* tslint:disable:max-line-length */
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./page/autolookupcontrol/autolookupcontrol.mock";
 export { BooleanAttributeMock } from "./page/booleanattribute/booleanattribute.mock";

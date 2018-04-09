@@ -65,7 +65,7 @@ import { XrmMockGenerator } from "xrm-mock";
 describe("Contact", () => {
   beforeEach(() => {
     XrmMockGenerator.initialise();
-    XrmMockGenerator.Attribute.createString("firstname", "Joe", "First Name", "text", 100, true, false);
+    XrmMockGenerator.Attribute.createString("firstname", "Joe");
   });
 
   it("should initially be called Joe", () => {
