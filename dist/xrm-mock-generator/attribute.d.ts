@@ -2,6 +2,7 @@
 import * as XrmMock from "../xrm-mock/index";
 export declare type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
 export declare type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
+export declare type NumberControlComponent = XrmMock.IAttNumberControlComponents | XrmMock.IAttNumberControlComponents[];
 export declare type OptionSetControlComponent = XrmMock.IAttOptionSetControlComponents | XrmMock.IAttOptionSetControlComponents[];
 export declare type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
 export default class Attribute {
@@ -11,7 +12,8 @@ export default class Attribute {
     createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
     createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
     createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
-    createNumber(name: string, value: number, min?: number, max?: number, precision?: number): Xrm.Page.NumberAttribute;
+    createNumber(attComponents: XrmMock.INumberAttributeComponents, controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;
+    createNumber(name: string, value?: number): XrmMock.NumberAttributeMock;
     createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
     createOptionSet(name: string, value?: string | number, options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
     createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: StringControlComponent): XrmMock.StringAttributeMock;

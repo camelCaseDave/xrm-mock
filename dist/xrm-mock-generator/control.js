@@ -16,6 +16,12 @@ var Control = /** @class */ (function () {
         var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
         return this.addControl(new XrmMock.LookupControlMock(components));
     };
+    Control.prototype.createNumber = function (attributeOrComponents, name, visible, disabled, label) {
+        if (visible === void 0) { visible = true; }
+        if (disabled === void 0) { disabled = false; }
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+        return this.addControl(new XrmMock.NumberControlMock(components));
+    };
     Control.prototype.createOptionSet = function (attributeOrComponents, name, visible, disabled, label) {
         if (visible === void 0) { visible = true; }
         if (disabled === void 0) { disabled = false; }

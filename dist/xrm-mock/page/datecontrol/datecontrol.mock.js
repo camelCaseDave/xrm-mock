@@ -21,7 +21,7 @@ var DateControlMock = /** @class */ (function (_super) {
     DateControlMock.defaultComponents = function (components) {
         if (!("showTime" in components)) {
             components.showTime = components.attribute
-                ? components.attribute.getFormat() === "date"
+                ? components.attribute.getFormat() === "datetime"
                 : false;
         }
         return components;

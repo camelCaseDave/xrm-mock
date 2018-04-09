@@ -1,18 +1,33 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var NumberAttributeMock = /** @class */ (function () {
-    function NumberAttributeMock(attribute, // TODO - AttributeMock
-    controls, integerAttributeFormat, min, max, precision) {
-        this.attribute = attribute;
-        this.controls = controls;
-        this.integerAttributeFormat = integerAttributeFormat;
-        this.min = min;
-        this.max = max;
-        this.precision = precision;
-        this.attribute.attributeFormat = integerAttributeFormat;
+var attribute_mock_1 = require("../attribute/attribute.mock");
+var NumberAttributeMock = /** @class */ (function (_super) {
+    __extends(NumberAttributeMock, _super);
+    function NumberAttributeMock(components) {
+        var _this = _super.call(this, NumberAttributeMock.defaultComponents(components)) || this;
+        _this.min = components.min;
+        _this.max = components.max;
+        _this.precision = components.precision;
+        _this.validatePrecision();
+        return _this;
     }
+    NumberAttributeMock.defaultComponents = function (components) {
+        components.format = components.format || "none";
+        components.precision = components.precision || 0;
+        return components;
+    };
     NumberAttributeMock.prototype.getFormat = function () {
-        return this.attribute.getFormat();
+        return _super.prototype.getFormat.call(this);
     };
     NumberAttributeMock.prototype.getMax = function () {
         return this.max;
@@ -23,56 +38,25 @@ var NumberAttributeMock = /** @class */ (function () {
     NumberAttributeMock.prototype.getPrecision = function () {
         return this.precision;
     };
-    NumberAttributeMock.prototype.getValue = function () {
-        return this.attribute.getValue();
-    };
     NumberAttributeMock.prototype.setValue = function (value) {
-        if (this.min !== null && this.min > value) {
+        if ((this.min || this.min === 0) && this.min > value) {
             throw new Error(("value cannot be below the min of " + this.min));
         }
-        else if (this.max && this.max < value) {
+        else if ((this.max || this.max === 0) && this.max < value) {
             throw new Error(("value cannot be above the max of " + this.max));
         }
         else {
-            this.attribute.setValue(value);
+            _super.prototype.setValue.call(this, value);
         }
     };
-    NumberAttributeMock.prototype.addOnChange = function (handler) {
-        this.attribute.addOnChange(handler);
-    };
-    NumberAttributeMock.prototype.fireOnChange = function () {
-        this.attribute.fireOnChange();
-    };
-    NumberAttributeMock.prototype.getAttributeType = function () {
-        return this.attribute.getAttributeType();
-    };
-    NumberAttributeMock.prototype.getIsDirty = function () {
-        return this.attribute.getIsDirty();
-    };
-    NumberAttributeMock.prototype.getName = function () {
-        return this.attribute.getName();
-    };
-    NumberAttributeMock.prototype.getParent = function () {
-        return this.attribute.getParent();
-    };
-    NumberAttributeMock.prototype.getRequiredLevel = function () {
-        return this.attribute.getRequiredLevel();
-    };
-    NumberAttributeMock.prototype.getSubmitMode = function () {
-        return this.attribute.getSubmitMode();
-    };
-    NumberAttributeMock.prototype.getUserPrivilege = function () {
-        return this.attribute.getUserPrivilege();
-    };
-    NumberAttributeMock.prototype.removeOnChange = function (handler) {
-        this.attribute.removeOnChange(handler);
-    };
-    NumberAttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
-        this.attribute.setRequiredLevel(requirementLevel);
-    };
-    NumberAttributeMock.prototype.setSubmitMode = function (submitMode) {
-        this.attribute.setSubmitMode(submitMode);
+    NumberAttributeMock.prototype.validatePrecision = function () {
+        if (this.precision > 4) {
+            throw new Error(("precision cannot be greater than 4, but was " + this.precision));
+        }
+        else if (this.precision < 0) {
+            throw new Error(("precision cannot be less than 0, but was " + this.precision));
+        }
     };
     return NumberAttributeMock;
-}());
+}(attribute_mock_1.AttributeMock));
 exports.NumberAttributeMock = NumberAttributeMock;

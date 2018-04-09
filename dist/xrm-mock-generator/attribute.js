@@ -35,12 +35,15 @@ var Attribute = /** @class */ (function () {
             return this.associateAttribute(new XrmMock.LookupAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createLookup");
         }
     };
-    Attribute.prototype.createNumber = function (name, value, min, max, precision) {
-        // TODO validate precision <5
-        var attribute = this.createAttribute(name || "", value || 0);
-        var numberAttribute = new XrmMock.NumberAttributeMock(attribute, null, "none", min || 0, max || 0, precision || 1);
-        this.addAttribute(numberAttribute);
-        return numberAttribute;
+    Attribute.prototype.createNumber = function (nameOrComponents, valueOrControlComponents) {
+        if (typeof (nameOrComponents) === "string") {
+            var components = { name: nameOrComponents, value: valueOrControlComponents };
+            var controls = [{ name: nameOrComponents }];
+            return this.associateAttribute(new XrmMock.NumberAttributeMock(components), controls, "createNumber");
+        }
+        else {
+            return this.associateAttribute(new XrmMock.NumberAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createNumber");
+        }
     };
     Attribute.prototype.createOptionSet = function (nameOrComponents, valueOrControlComponents, options) {
         return typeof (nameOrComponents) === "string"

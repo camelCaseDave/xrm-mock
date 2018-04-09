@@ -16,8 +16,8 @@ export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.m
 export { ILookupAttributeComponents, LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";
 export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./page/lookupcontrol/lookupcontrol.mock";
 export { LookupValueMock } from "./page/lookupvalue/lookupvalue.mock";
-export { NumberAttributeMock } from "./page/numberattribute/numberattribute.mock";
-export { NumberControlMock } from "./page/numbercontrol/numbercontrol.mock";
+export { INumberAttributeComponents, NumberAttributeMock } from "./page/numberattribute/numberattribute.mock";
+export { IAttNumberControlComponents, INumberControlComponents, NumberControlMock } from "./page/numbercontrol/numbercontrol.mock";
 export { OpenParametersMock } from "./utility/openparameters/openparameters.mock";
 export { IOptionSetAttributeComponents, OptionSetAttributeMock } from "./page/optionsetattribute/optionsetattribute.mock";
 export { IAttOptionSetControlComponents, IOptionSetControlComponents, OptionSetControlMock } from "./page/optionsetcontrol/optionsetcontrol.mock";
