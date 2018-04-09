@@ -41,3 +41,4 @@ var AutoLookupControlMock = /** @class */ (function (_super) {
     return AutoLookupControlMock;
 }(standardcontrol_mock_1.StandardControlMock));
 exports.AutoLookupControlMock = AutoLookupControlMock;
+//# sourceMappingURL=autolookupcontrol.mock.js.map

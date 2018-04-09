@@ -22,3 +22,4 @@ var ProcessMock = /** @class */ (function () {
     return ProcessMock;
 }());
 exports.ProcessMock = ProcessMock;
+//# sourceMappingURL=process.mock.js.map

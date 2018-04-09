@@ -13,3 +13,4 @@ var UiLabelElementMock = /** @class */ (function () {
     return UiLabelElementMock;
 }());
 exports.UiLabelElementMock = UiLabelElementMock;
+//# sourceMappingURL=uilabelelement.mock.js.map

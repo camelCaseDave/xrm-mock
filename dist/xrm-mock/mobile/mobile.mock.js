@@ -7,3 +7,4 @@ var MobileMock = /** @class */ (function () {
     return MobileMock;
 }());
 exports.MobileMock = MobileMock;
+//# sourceMappingURL=mobile.mock.js.map

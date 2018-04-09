@@ -4,7 +4,11 @@
         "module": "commonjs",
         "noEmit": false,
         "outDir": "dist",
-        "declaration": true
+        "declaration": true,
+        "sourceMap": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
     },
     "exclude": [
         "node_modules",

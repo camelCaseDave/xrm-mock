@@ -10,3 +10,4 @@ var XrmStaticMock = /** @class */ (function () {
     return XrmStaticMock;
 }());
 exports.XrmStaticMock = XrmStaticMock;
+//# sourceMappingURL=xrmstatic.mock.js.map

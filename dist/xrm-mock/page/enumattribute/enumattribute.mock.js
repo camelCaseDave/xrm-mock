@@ -26,3 +26,4 @@ var EnumAttributeMock = /** @class */ (function (_super) {
     return EnumAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.EnumAttributeMock = EnumAttributeMock;
+//# sourceMappingURL=enumattribute.mock.js.map

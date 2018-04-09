@@ -60,3 +60,4 @@ var NumberAttributeMock = /** @class */ (function (_super) {
     return NumberAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.NumberAttributeMock = NumberAttributeMock;
+//# sourceMappingURL=numberattribute.mock.js.map

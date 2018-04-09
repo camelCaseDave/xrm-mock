@@ -8,3 +8,4 @@ var ErrorCallbackObjectMock = /** @class */ (function () {
     return ErrorCallbackObjectMock;
 }());
 exports.ErrorCallbackObjectMock = ErrorCallbackObjectMock;
+//# sourceMappingURL=errorcallbackobject.mock.js.map

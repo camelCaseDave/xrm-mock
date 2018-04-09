@@ -10,3 +10,4 @@ var OfflineErrorCallbackObjectMock = /** @class */ (function () {
     return OfflineErrorCallbackObjectMock;
 }());
 exports.OfflineErrorCallbackObjectMock = OfflineErrorCallbackObjectMock;
+//# sourceMappingURL=offlineerrorcallbackobject.mock.js.map

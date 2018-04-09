@@ -10,3 +10,4 @@ var UiCanGetVisibleElementMock = /** @class */ (function () {
     return UiCanGetVisibleElementMock;
 }());
 exports.UiCanGetVisibleElementMock = UiCanGetVisibleElementMock;
+//# sourceMappingURL=uicangetvisibleelement.mock.js.map

@@ -26,3 +26,4 @@ var UiStandardElementMock = /** @class */ (function () {
     return UiStandardElementMock;
 }());
 exports.UiStandardElementMock = UiStandardElementMock;
+//# sourceMappingURL=uistandardelement.mock.js.map

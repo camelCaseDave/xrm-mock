@@ -1,11 +1,8 @@
-/* tslint:disable:no-console */
-
 import { UtilityMock } from "../../src/xrm-mock/utility/utility.mock";
 
 describe("Xrm.Utility Mock", () => {
     beforeEach(() => {
         this.utility = new UtilityMock();
-
     });
 
     it("should exist", () => {
@@ -13,52 +10,37 @@ describe("Xrm.Utility Mock", () => {
     });
 
     it("should alert", () => {
-        spyOn(window, "alert");
-        spyOn(console, "log");
+        const windowSpy = jest.spyOn(window, "alert");
+        this.utility.alertDialog("Are you sure?", () => true);
 
-        this.utility.alertDialog("Are you sure?", () => {
-            console.log("alert closed");
-        });
-
-        expect(window.alert).toHaveBeenCalledWith("Are you sure?");
-        expect(console.log).toHaveBeenCalledWith("alert closed");
+        expect(windowSpy).toHaveBeenCalledWith("Are you sure?");
     });
 
     describe("confirmDialog", () => {
         beforeEach(() => {
-            spyOn(console, "log");
+            this.confirmSpy = jest.spyOn(window, "confirm");
         });
 
         it("should confirm and call yes callback", () => {
-            spyOn(window, "confirm").and.returnValue(true);
-
+            this.confirmSpy.mockReturnValueOnce(true);
             this.utility.confirmDialog("Are you sure?",
                 () => {
-                    console.log("yes");
+                    expect(true);
                 },
                 () => {
-                    console.log("no");
+                    fail();
                 });
-
-            expect(window.confirm).toHaveBeenCalledWith("Are you sure?");
-            expect(console.log).toHaveBeenCalledWith("yes");
-            expect(console.log).not.toHaveBeenCalledWith("no");
         });
 
         it("should confirm and call no callback", () => {
-            spyOn(window, "confirm").and.returnValue(false);
-
+            this.confirmSpy.mockReturnValueOnce(false);
             this.utility.confirmDialog("Are you sure?",
                 () => {
-                    console.log("yes");
+                    fail();
                 },
                 () => {
-                    console.log("no");
+                    expect(true);
                 });
-
-            expect(window.confirm).toHaveBeenCalledWith("Are you sure?");
-            expect(console.log).toHaveBeenCalledWith("no");
-            expect(console.log).not.toHaveBeenCalledWith("yes");
         });
     });
 });

@@ -40,10 +40,7 @@
     "jest": "^22.4.3",
     "ts-jest": "^22.4.2",
     "tslint": "^5.9.1",
-    "typescript": "^2.8.1",
-    "wallaby-webpack": "latest",
-    "webpack": "latest",
-    "webpack-cli": "^2.0.13"
+    "typescript": "^2.8.1"   
   },
   "jest": {
     "moduleFileExtensions": [

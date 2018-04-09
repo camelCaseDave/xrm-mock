@@ -24,3 +24,4 @@ var MobileOfflineMock = /** @class */ (function () {
     return MobileOfflineMock;
 }());
 exports.MobileOfflineMock = MobileOfflineMock;
+//# sourceMappingURL=mobileoffline.mock.js.map

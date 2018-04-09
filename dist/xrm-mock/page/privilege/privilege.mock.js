@@ -9,3 +9,4 @@ var PrivilegeMock = /** @class */ (function () {
     return PrivilegeMock;
 }());
 exports.PrivilegeMock = PrivilegeMock;
+//# sourceMappingURL=privilege.mock.js.map

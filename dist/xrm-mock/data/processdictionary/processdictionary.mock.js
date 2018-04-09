@@ -6,3 +6,4 @@ var ProcessDictionaryMock = /** @class */ (function () {
     return ProcessDictionaryMock;
 }());
 exports.ProcessDictionaryMock = ProcessDictionaryMock;
+//# sourceMappingURL=processdictionary.mock.js.map

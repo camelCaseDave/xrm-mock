@@ -7,3 +7,4 @@ var OpenQuickCreateSuccessCallbackObjectMock = /** @class */ (function () {
     return OpenQuickCreateSuccessCallbackObjectMock;
 }());
 exports.OpenQuickCreateSuccessCallbackObjectMock = OpenQuickCreateSuccessCallbackObjectMock;
+//# sourceMappingURL=openquickcreatesuccesscallbackobject.mock.js.map

@@ -8,3 +8,4 @@ var OfflineOperationSuccessCallbackObjectMock = /** @class */ (function () {
     return OfflineOperationSuccessCallbackObjectMock;
 }());
 exports.OfflineOperationSuccessCallbackObjectMock = OfflineOperationSuccessCallbackObjectMock;
+//# sourceMappingURL=offlineoperationsuccesscallbackobject.mock.js.map

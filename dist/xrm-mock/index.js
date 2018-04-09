@@ -86,3 +86,4 @@ var window_mock_1 = require("./window.mock");
 exports.WindowMock = window_mock_1.WindowMock;
 var xrmstatic_mock_1 = require("./xrmstatic.mock");
 exports.XrmStaticMock = xrmstatic_mock_1.XrmStaticMock;
+//# sourceMappingURL=index.js.map

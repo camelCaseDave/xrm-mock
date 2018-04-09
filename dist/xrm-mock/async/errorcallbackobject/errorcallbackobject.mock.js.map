@@ -1,0 +1,1 @@
+{"version":3,"file":"errorcallbackobject.mock.js","sourceRoot":"","sources":["../../../../src/xrm-mock/async/errorcallbackobject/errorcallbackobject.mock.ts"],"names":[],"mappings":";;AAAA;IAII,iCAAY,SAAiB,EAAE,OAAe;QAC1C,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;QAC3B,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;IACL,8BAAC;AAAD,CAAC,AARD,IAQC;AARY,0DAAuB"}

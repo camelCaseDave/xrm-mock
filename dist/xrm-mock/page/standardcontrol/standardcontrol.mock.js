@@ -64,3 +64,4 @@ var StandardControlMock = /** @class */ (function (_super) {
     return StandardControlMock;
 }(control_mock_1.ControlMock));
 exports.StandardControlMock = StandardControlMock;
+//# sourceMappingURL=standardcontrol.mock.js.map

@@ -75,3 +75,4 @@ var UiMock = /** @class */ (function () {
     return UiMock;
 }());
 exports.UiMock = UiMock;
+//# sourceMappingURL=ui.mock.js.map

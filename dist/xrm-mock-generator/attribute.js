@@ -143,3 +143,4 @@ var Attribute = /** @class */ (function () {
     return Attribute;
 }());
 exports.default = Attribute;
+//# sourceMappingURL=attribute.js.map
