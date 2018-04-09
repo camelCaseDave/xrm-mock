@@ -40,7 +40,7 @@ Invoke your code and make your assertions
  
  ```typescript
  Contact.onLoad();
- expect(Xrm.Page.getAttribute("new_havingfun").getValue()).toBeTruthy();
+ expect(Xrm.Page.getAttribute("new_havingfun").getValue()).toBe(true);
  ```
 
 ## Example
