@@ -10,3 +10,4 @@ var WindowMock = /** @class */ (function () {
     return WindowMock;
 }());
 exports.WindowMock = WindowMock;
+//# sourceMappingURL=window.mock.js.map

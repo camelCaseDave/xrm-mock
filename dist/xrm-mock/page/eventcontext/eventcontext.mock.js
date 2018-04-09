@@ -24,3 +24,4 @@ var EventContextMock = /** @class */ (function () {
     return EventContextMock;
 }());
 exports.EventContextMock = EventContextMock;
+//# sourceMappingURL=eventcontext.mock.js.map

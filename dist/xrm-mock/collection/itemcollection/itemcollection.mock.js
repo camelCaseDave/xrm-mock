@@ -38,3 +38,4 @@ var ItemCollectionMock = /** @class */ (function () {
     return ItemCollectionMock;
 }());
 exports.ItemCollectionMock = ItemCollectionMock;
+//# sourceMappingURL=itemcollection.mock.js.map

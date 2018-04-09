@@ -6,3 +6,4 @@ var OpenParametersMock = /** @class */ (function () {
     return OpenParametersMock;
 }());
 exports.OpenParametersMock = OpenParametersMock;
+//# sourceMappingURL=openparameters.mock.js.map

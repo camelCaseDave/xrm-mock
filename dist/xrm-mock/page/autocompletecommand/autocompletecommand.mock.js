@@ -13,3 +13,4 @@ var AutoCompleteCommandMock = /** @class */ (function () {
     return AutoCompleteCommandMock;
 }());
 exports.AutoCompleteCommandMock = AutoCompleteCommandMock;
+//# sourceMappingURL=autocompletecommand.mock.js.map

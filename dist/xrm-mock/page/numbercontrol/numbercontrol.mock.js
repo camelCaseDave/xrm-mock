@@ -22,3 +22,4 @@ var NumberControlMock = /** @class */ (function (_super) {
     return NumberControlMock;
 }(autolookupcontrol_mock_1.AutoLookupControlMock));
 exports.NumberControlMock = NumberControlMock;
+//# sourceMappingURL=numbercontrol.mock.js.map

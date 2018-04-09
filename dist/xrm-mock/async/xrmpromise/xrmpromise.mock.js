@@ -9,3 +9,4 @@ var XrmPromiseMock = /** @class */ (function () {
     return XrmPromiseMock;
 }());
 exports.XrmPromiseMock = XrmPromiseMock;
+//# sourceMappingURL=xrmpromise.mock.js.map

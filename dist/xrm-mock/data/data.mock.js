@@ -14,3 +14,4 @@ var DataMock = /** @class */ (function () {
     return DataMock;
 }());
 exports.DataMock = DataMock;
+//# sourceMappingURL=data.mock.js.map

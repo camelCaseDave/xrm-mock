@@ -23,3 +23,4 @@ var BooleanAttributeMock = /** @class */ (function (_super) {
     return BooleanAttributeMock;
 }(enumattribute_mock_1.EnumAttributeMock));
 exports.BooleanAttributeMock = BooleanAttributeMock;
+//# sourceMappingURL=booleanattribute.mock.js.map

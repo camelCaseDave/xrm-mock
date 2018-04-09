@@ -66,3 +66,4 @@ var AttributeMock = /** @class */ (function () {
     return AttributeMock;
 }());
 exports.AttributeMock = AttributeMock;
+//# sourceMappingURL=attribute.mock.js.map

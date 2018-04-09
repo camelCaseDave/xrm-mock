@@ -39,3 +39,4 @@ var StringAttributeMock = /** @class */ (function (_super) {
     return StringAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.StringAttributeMock = StringAttributeMock;
+//# sourceMappingURL=stringattribute.mock.js.map

@@ -42,3 +42,4 @@ var EntityMock = /** @class */ (function () {
     return EntityMock;
 }());
 exports.EntityMock = EntityMock;
+//# sourceMappingURL=entity.mock.js.map

@@ -8,3 +8,4 @@ var AutoCompleteResultSetMock = /** @class */ (function () {
     return AutoCompleteResultSetMock;
 }());
 exports.AutoCompleteResultSetMock = AutoCompleteResultSetMock;
+//# sourceMappingURL=autocompleteresultset.mock.js.map

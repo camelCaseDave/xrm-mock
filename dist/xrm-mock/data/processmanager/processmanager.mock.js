@@ -44,10 +44,10 @@ var ProcessManagerMock = /** @class */ (function () {
         return instanceName;
     };
     ProcessManagerMock.prototype.getStatus = function () {
-        throw new Error(("get status not implemented."));
+        throw new Error("get status not implemented.");
     };
     ProcessManagerMock.prototype.setStatus = function (status, callbackFunction) {
-        throw new Error(("set status not implemented."));
+        throw new Error("set status not implemented.");
     };
     ProcessManagerMock.prototype.getActiveStage = function () {
         var activeProcess = this.getActiveProcess();
@@ -64,10 +64,13 @@ var ProcessManagerMock = /** @class */ (function () {
         var activeProcess = this.getActiveProcess();
         var stages = activeProcess.getStages();
         var setStatus = "";
-        var activeStage = stages.forEach(function (s) {
+        stages.forEach(function (s) {
             if (s.getId() === stageId) {
                 s._setStatus("active");
                 setStatus = "active";
+            }
+            else {
+                s._setStatus("inactive");
             }
         });
         if (callbackFunction) {
@@ -75,32 +78,33 @@ var ProcessManagerMock = /** @class */ (function () {
         }
     };
     ProcessManagerMock.prototype.getActivePath = function () {
-        throw new Error(("get active path not implemented"));
+        throw new Error("get active path not implemented");
     };
     ProcessManagerMock.prototype.getEnabledProcesses = function (callbackFunction) {
         callbackFunction(this.enabledProcesses);
     };
     ProcessManagerMock.prototype.getSelectedStage = function () {
-        throw new Error(("get selected not implemented"));
+        throw new Error("get selected not implemented");
     };
     ProcessManagerMock.prototype.addOnStageChange = function (handler) {
-        throw new Error(("add on stage change not implemented"));
+        throw new Error("add on stage change not implemented");
     };
     ProcessManagerMock.prototype.addOnStageSelected = function (handler) {
-        throw new Error(("add on stage selected not implemented"));
+        throw new Error("add on stage selected not implemented");
     };
     ProcessManagerMock.prototype.removeOnStageChange = function (handler) {
-        throw new Error(("remove on stage change not implemented"));
+        throw new Error("remove on stage change not implemented");
     };
     ProcessManagerMock.prototype.removeOnStageSelected = function (handler) {
-        throw new Error(("remove on stage selected not implemented"));
+        throw new Error("remove on stage selected not implemented");
     };
     ProcessManagerMock.prototype.moveNext = function (callbackFunction) {
-        throw new Error(("move next not implemented"));
+        throw new Error("move next not implemented");
     };
     ProcessManagerMock.prototype.movePrevious = function (callbackFunction) {
-        throw new Error(("move previous not implemented"));
+        throw new Error("move previous not implemented");
     };
     return ProcessManagerMock;
 }());
 exports.ProcessManagerMock = ProcessManagerMock;
+//# sourceMappingURL=processmanager.mock.js.map

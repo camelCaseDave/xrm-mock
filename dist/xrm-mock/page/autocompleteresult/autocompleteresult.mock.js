@@ -9,3 +9,4 @@ var AutoCompleteResult = /** @class */ (function () {
     return AutoCompleteResult;
 }());
 exports.AutoCompleteResult = AutoCompleteResult;
+//# sourceMappingURL=autocompleteresult.mock.js.map

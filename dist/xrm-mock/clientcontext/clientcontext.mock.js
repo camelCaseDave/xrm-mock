@@ -14,3 +14,4 @@ var ClientContextMock = /** @class */ (function () {
     return ClientContextMock;
 }());
 exports.ClientContextMock = ClientContextMock;
+//# sourceMappingURL=clientcontext.mock.js.map

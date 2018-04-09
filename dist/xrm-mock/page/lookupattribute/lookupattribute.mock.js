@@ -30,3 +30,4 @@ var LookupAttributeMock = /** @class */ (function (_super) {
     return LookupAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.LookupAttributeMock = LookupAttributeMock;
+//# sourceMappingURL=lookupattribute.mock.js.map

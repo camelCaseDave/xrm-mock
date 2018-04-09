@@ -57,3 +57,4 @@ var OptionSetAttributeMock = /** @class */ (function (_super) {
     return OptionSetAttributeMock;
 }(enumattribute_mock_1.EnumAttributeMock));
 exports.OptionSetAttributeMock = OptionSetAttributeMock;
+//# sourceMappingURL=optionsetattribute.mock.js.map

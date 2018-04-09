@@ -57,19 +57,19 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     }
 
     public getStatus(): Xrm.Page.ProcessStatus {
-        throw new Error(("get status not implemented."));
+        throw new Error("get status not implemented.");
     }
 
     public setStatus(status: Xrm.Page.ProcessStatus, callbackFunction: Xrm.Page.data.ProcessSetStatusDelegate): void {
-        throw new Error(("set status not implemented."));
+        throw new Error("set status not implemented.");
     }
 
-    public getActiveStage(): Xrm.Page.Stage {
+    public getActiveStage(): StageMock | Xrm.Page.Stage {
         const activeProcess = this.getActiveProcess();
         const stages = activeProcess.getStages();
         const activeStages: Xrm.Page.Stage[] = [];
 
-        stages.forEach((s: Xrm.Page.Stage): void => {
+        stages.forEach((s: StageMock): void => {
             if (s.getStatus() === "active") {
                 activeStages.push(s);
             }
@@ -83,10 +83,12 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
         const stages = activeProcess.getStages();
         let setStatus = "";
 
-        const activeStage = stages.forEach((s: StageMock): void => {
+        stages.forEach((s: StageMock): void => {
             if (s.getId() === stageId) {
                 s._setStatus("active");
                 setStatus = "active";
+            } else {
+                s._setStatus("inactive");
             }
         });
 
@@ -96,7 +98,7 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     }
 
     public getActivePath(): Xrm.Collection.ItemCollection<Xrm.Page.Stage> {
-        throw new Error(("get active path not implemented"));
+        throw new Error("get active path not implemented");
     }
 
     public getEnabledProcesses(callbackFunction: (enabledProcesses: Xrm.Page.data.ProcessDictionary) => void): void {
@@ -104,30 +106,30 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     }
 
     public getSelectedStage(): Xrm.Page.Stage {
-        throw new Error(("get selected not implemented"));
+        throw new Error("get selected not implemented");
     }
 
     public addOnStageChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw new Error(("add on stage change not implemented"));
+        throw new Error("add on stage change not implemented");
     }
 
     public addOnStageSelected(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw new Error(("add on stage selected not implemented"));
+        throw new Error("add on stage selected not implemented");
     }
 
     public removeOnStageChange(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw new Error(("remove on stage change not implemented"));
+        throw new Error("remove on stage change not implemented");
     }
 
     public removeOnStageSelected(handler: Xrm.Page.ContextSensitiveHandler): void {
-        throw new Error(("remove on stage selected not implemented"));
+        throw new Error("remove on stage selected not implemented");
     }
 
     public moveNext(callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
-        throw new Error(("move next not implemented"));
+        throw new Error("move next not implemented");
     }
 
     public movePrevious(callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
-        throw new Error(("move previous not implemented"));
+        throw new Error("move previous not implemented");
     }
 }

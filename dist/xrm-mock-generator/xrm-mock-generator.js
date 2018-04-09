@@ -28,3 +28,4 @@ var XrmMockGenerator = /** @class */ (function () {
     return XrmMockGenerator;
 }());
 exports.XrmMockGenerator = XrmMockGenerator;
+//# sourceMappingURL=xrm-mock-generator.js.map

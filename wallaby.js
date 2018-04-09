@@ -1,17 +1,16 @@
-var wallabyWebpack = require('wallaby-webpack');
-var webpackPostprocessor = wallabyWebpack({});
-
 module.exports = function () {
     return {
         files: [
-            { pattern: 'src/**/*.ts', load: false }
+            'tsconfig.json',
+            'src/**/*.ts'
         ],
         tests: [
-            { pattern: 'test/**/*.ts', load: false }
+            'test/**/*.ts'
         ],
-        postprocessor: webpackPostprocessor,
-        bootstrap: function () {
-            window.__moduleBundler.loadTests();
-        }
+        env: {
+            type: 'node',
+            runner: 'node'
+        },
+        testFramework: 'jest'
     };
 };

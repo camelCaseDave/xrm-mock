@@ -31,3 +31,4 @@ var DateAttributeMock = /** @class */ (function (_super) {
     return DateAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.DateAttributeMock = DateAttributeMock;
+//# sourceMappingURL=dateattribute.mock.js.map

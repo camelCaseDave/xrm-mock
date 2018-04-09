@@ -36,3 +36,4 @@ var StageMock = /** @class */ (function () {
     return StageMock;
 }());
 exports.StageMock = StageMock;
+//# sourceMappingURL=stage.mock.js.map

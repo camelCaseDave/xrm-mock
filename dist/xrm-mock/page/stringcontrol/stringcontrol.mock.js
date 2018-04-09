@@ -19,3 +19,4 @@ var StringControlMock = /** @class */ (function (_super) {
     return StringControlMock;
 }(autolookupcontrol_mock_1.AutoLookupControlMock));
 exports.StringControlMock = StringControlMock;
+//# sourceMappingURL=stringcontrol.mock.js.map
