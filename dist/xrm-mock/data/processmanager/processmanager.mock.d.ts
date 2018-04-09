@@ -1,4 +1,5 @@
 /// <reference types="xrm" />
+import { StageMock } from "../../page/stage/stage.mock";
 export declare class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     enabledProcesses: Xrm.Page.Process[] | Xrm.Page.data.ProcessDictionary;
     constructor(enabledProcesses: Xrm.Page.Process[]);
@@ -12,7 +13,7 @@ export declare class ProcessManagerMock implements Xrm.Page.data.ProcessManager 
     getInstanceName(): string;
     getStatus(): Xrm.Page.ProcessStatus;
     setStatus(status: Xrm.Page.ProcessStatus, callbackFunction: Xrm.Page.data.ProcessSetStatusDelegate): void;
-    getActiveStage(): Xrm.Page.Stage;
+    getActiveStage(): StageMock | Xrm.Page.Stage;
     setActiveStage(stageId: string, callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void;
     getActivePath(): Xrm.Collection.ItemCollection<Xrm.Page.Stage>;
     getEnabledProcesses(callbackFunction: (enabledProcesses: Xrm.Page.data.ProcessDictionary) => void): void;

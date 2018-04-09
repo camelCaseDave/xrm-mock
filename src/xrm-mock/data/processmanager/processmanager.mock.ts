@@ -28,7 +28,7 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     }
 
     public setActiveProcessInstance(processInstanceId: string,
-        callbackFunction: Xrm.Page.data.SetProcessInstanceDelegate): void {
+                                    callbackFunction: Xrm.Page.data.SetProcessInstanceDelegate): void {
         throw new Error("set active process instance not implemented.");
     }
 
