@@ -50,6 +50,7 @@ export class OptionSetControlMock extends StandardControlMock<OptionSetControlMo
 export interface IOptionSetControlComponents
     extends IStandardControlComponents<OptionSetControlMock, OptionSetAttributeMock, number>,
             IAttOptionSetControlComponents {
+    name: string;
 }
 
 export interface IAttOptionSetControlComponents

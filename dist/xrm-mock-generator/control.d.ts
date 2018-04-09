@@ -1,10 +1,12 @@
 import * as XrmMock from "../xrm-mock/index";
-export declare type CreateMethods = "createDate" | "createLookup" | "createOptionSet" | "createString";
+export declare type CreateMethods = "createDate" | "createLookup" | "createNumber" | "createOptionSet" | "createString";
 export default class Control {
     createDate(components: XrmMock.IDateControlComponents): XrmMock.DateControlMock;
     createDate(attribute: XrmMock.DateAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.DateControlMock;
     createLookup(components: XrmMock.ILookupControlComponents): XrmMock.LookupControlMock;
     createLookup(attribute: XrmMock.LookupAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.LookupControlMock;
+    createNumber(components: XrmMock.INumberControlComponents): XrmMock.NumberControlMock;
+    createNumber(attribute: XrmMock.NumberAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.NumberControlMock;
     createOptionSet(components: XrmMock.IOptionSetControlComponents): XrmMock.OptionSetControlMock;
     createOptionSet(attribute: XrmMock.OptionSetAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.OptionSetControlMock;
     createString(components: XrmMock.IStringControlComponents): XrmMock.StringControlMock;

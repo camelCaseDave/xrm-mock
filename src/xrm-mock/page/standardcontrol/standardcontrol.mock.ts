@@ -1,5 +1,5 @@
 import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
-import { ControlMock, IControlComponents } from "../control/control.mock";
+import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
 import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
 
@@ -73,14 +73,16 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
 export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
                                             TAttribute extends AttributeMock<TControl, TValue>,
                                             TValue extends AttributeReturnType>
-                                            extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
+                                            extends IAttStandardControlComponents<TControl, TAttribute, TValue>,
+                                                    IControlComponents {
     attribute: TAttribute;
+    name: string;
 }
 
 export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
                                                TAttribute extends AttributeMock<TControl, TValue>,
                                                TValue extends AttributeReturnType>
-                                               extends IControlComponents {
+                                               extends IAttControlComponents {
     disabled?: boolean;
     label?: string;
     visible?: boolean;

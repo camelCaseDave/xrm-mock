@@ -15,6 +15,7 @@ export declare class LookupControlMock extends StandardControlMock<LookupControl
     setDefaultView(viewGuid: string): void;
 }
 export interface ILookupControlComponents extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]>, IAttLookupControlComponents {
+    name: string;
 }
 export interface IAttLookupControlComponents extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> {
     filters?: ILookupFilter[];

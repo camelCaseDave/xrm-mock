@@ -18,6 +18,7 @@ export class NumberControlMock extends AutoLookupControlMock<NumberControlMock, 
 export interface INumberControlComponents
     extends IAutoLookupControlComponents<NumberControlMock, NumberAttributeMock, number>,
             IAttNumberControlComponents {
+    name: string;
 }
 
 export interface IAttNumberControlComponents

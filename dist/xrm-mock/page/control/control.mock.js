@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ControlMock = /** @class */ (function () {
     function ControlMock(components) {
         this.controlType = components.controlType || "standard";
-        this.uiLabelElement = components.uiLabelElement;
-        this.uiCanGetVisibleElement = components.uiCanGetVisibleElement;
+        this.label = components.label;
+        this.visible = components.visible;
         this.name = components.name;
         this.parent = components.parent;
     }
@@ -18,13 +18,13 @@ var ControlMock = /** @class */ (function () {
         return this.parent;
     };
     ControlMock.prototype.getLabel = function () {
-        return this.uiLabelElement.getLabel();
+        return this.label;
     };
     ControlMock.prototype.setLabel = function (label) {
-        this.uiLabelElement.setLabel(label);
+        this.label = label;
     };
     ControlMock.prototype.getVisible = function () {
-        return this.uiCanGetVisibleElement.getVisible();
+        return this.visible;
     };
     return ControlMock;
 }());

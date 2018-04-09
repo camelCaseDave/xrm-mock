@@ -17,6 +17,7 @@ export declare class AutoLookupControlMock<TControl extends AutoLookupControlMoc
     removeOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void;
 }
 export interface IAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IStandardControlComponents<TControl, TAttribute, TValue>, IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
+    name: string;
 }
 export interface IAttAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
     keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[];

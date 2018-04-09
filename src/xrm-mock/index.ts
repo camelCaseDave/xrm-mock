@@ -3,7 +3,7 @@ export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupCont
 export { BooleanAttributeMock } from "./page/booleanattribute/booleanattribute.mock";
 export { ClientContextMock } from "./clientcontext/clientcontext.mock";
 export { ContextMock, IContextComponents } from "./context/context.mock";
-export { ControlMock } from "./page/control/control.mock";
+export { ControlMock, IAttControlComponents, IControlComponents } from "./page/control/control.mock";
 export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./page/dateattribute/dateattribute.mock";
 export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./page/datecontrol/datecontrol.mock";

@@ -52,6 +52,7 @@ export interface IAutoLookupControlComponents<TControl extends AutoLookupControl
                                               TValue extends AttributeReturnType>
                                               extends IStandardControlComponents<TControl, TAttribute, TValue>,
                                                       IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
+    name: string;
 }
 
 export interface IAttAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,

@@ -8,6 +8,7 @@ export declare class DateControlMock extends StandardControlMock<DateControlMock
     setShowTime(showTime: boolean): void;
 }
 export interface IDateControlComponents extends IAttDateControlComponents, IStandardControlComponents<DateControlMock, DateAttributeMock, Date> {
+    name: string;
 }
 export interface IAttDateControlComponents extends IAttStandardControlComponents<DateControlMock, DateAttributeMock, Date> {
     showTime?: boolean;

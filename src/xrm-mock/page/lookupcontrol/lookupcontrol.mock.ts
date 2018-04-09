@@ -83,6 +83,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
 export interface ILookupControlComponents
     extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]>,
             IAttLookupControlComponents {
+    name: string;
 }
 
 export interface IAttLookupControlComponents

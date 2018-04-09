@@ -8,34 +8,30 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
     public forEach(delegate: () => void): void;
     public forEach(delegate: Xrm.Collection.IterativeDelegate<T>): void;
     public forEach(delegate: any): void {
-        const modifiedCollection = this.itemCollection.map(delegate);
-        this.itemCollection = modifiedCollection as any as T[];
+        this.itemCollection.map(delegate);
     }
 
     public get(delegate: Xrm.Collection.MatchingDelegate<T>): T[];
     public get(item: number | string): T;
     public get(): T[];
-
     public get(param?: string | number | Xrm.Collection.MatchingDelegate<T> | T[]): T | T[] {
         if (param === undefined || param === null) {
-            return (this.itemCollection as T[]) || null;
+            return (this.itemCollection.splice(0) as T[]);
         } else if (typeof param === "string") {
-            let attribute;
+            let attribute: T;
 
             for (const item of this.itemCollection as any) {
-                if (item.getName !== undefined) {
-                    if (item.getName() === param) {
-                        attribute = item;
-                        break;
-                    }
+                if (item.getName !== undefined && item.getName() === param) {
+                    attribute = item;
+                    break;
                 }
             }
 
             return attribute || null;
         } else if (typeof param === "number") {
             return this.itemCollection[param] || null;
-        } else if (param as Xrm.Collection.MatchingDelegate<T> !== undefined) {
-            throw new Error("get itemcollection as delegate not implemented");
+        } else {
+            return this.itemCollection.filter(param as Xrm.Collection.MatchingDelegate<T>);
         }
     }
 

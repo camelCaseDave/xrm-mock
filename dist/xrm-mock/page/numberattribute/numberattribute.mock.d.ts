@@ -1,28 +1,22 @@
 /// <reference types="xrm" />
-export declare class NumberAttributeMock implements Xrm.Page.NumberAttribute {
+import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
+import { NumberControlMock } from "../numbercontrol/numbercontrol.mock";
+export declare class NumberAttributeMock extends AttributeMock<NumberControlMock, number> implements Xrm.Page.NumberAttribute {
+    private static defaultComponents(components);
     min: number;
     max: number;
     precision: number;
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>;
-    integerAttributeFormat: Xrm.Page.IntegerAttributeFormat;
-    attribute: any;
-    constructor(attribute: any, controls?: Xrm.Collection.ItemCollection<Xrm.Page.NumberControl>, integerAttributeFormat?: Xrm.Page.IntegerAttributeFormat, min?: number, max?: number, precision?: number);
+    constructor(components: INumberAttributeComponents);
     getFormat(): Xrm.Page.IntegerAttributeFormat;
     getMax(): number;
     getMin(): number;
     getPrecision(): number;
-    getValue(): number;
     setValue(value: number): void;
-    addOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    fireOnChange(): void;
-    getAttributeType(): string;
-    getIsDirty(): boolean;
-    getName(): string;
-    getParent(): Xrm.Page.Entity;
-    getRequiredLevel(): Xrm.Page.RequirementLevel;
-    getSubmitMode(): Xrm.Page.SubmitMode;
-    getUserPrivilege(): Xrm.Page.Privilege;
-    removeOnChange(handler: Xrm.Page.ContextSensitiveHandler): void;
-    setRequiredLevel(requirementLevel: Xrm.Page.RequirementLevel): void;
-    setSubmitMode(submitMode: Xrm.Page.SubmitMode): void;
+    private validatePrecision();
+}
+export interface INumberAttributeComponents extends IAttributeComponents<NumberControlMock, number> {
+    min?: number;
+    max?: number;
+    precision?: number;
+    format?: Xrm.Page.IntegerAttributeFormat;
 }

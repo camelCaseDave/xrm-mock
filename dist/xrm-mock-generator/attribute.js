@@ -35,12 +35,15 @@ var Attribute = /** @class */ (function () {
             return this.associateAttribute(new XrmMock.LookupAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createLookup");
         }
     };
-    Attribute.prototype.createNumber = function (name, value, min, max, precision) {
-        // TODO validate precision <5
-        var attribute = this.createAttribute(name || "", value || 0);
-        var numberAttribute = new XrmMock.NumberAttributeMock(attribute, null, "none", min || 0, max || 0, precision || 1);
-        this.addAttribute(numberAttribute);
-        return numberAttribute;
+    Attribute.prototype.createNumber = function (nameOrComponents, valueOrControlComponents) {
+        if (typeof (nameOrComponents) === "string") {
+            var components = { name: nameOrComponents, value: valueOrControlComponents };
+            var controls = [{ name: nameOrComponents }];
+            return this.associateAttribute(new XrmMock.NumberAttributeMock(components), controls, "createNumber");
+        }
+        else {
+            return this.associateAttribute(new XrmMock.NumberAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createNumber");
+        }
     };
     Attribute.prototype.createOptionSet = function (nameOrComponents, valueOrControlComponents, options) {
         return typeof (nameOrComponents) === "string"
@@ -125,9 +128,26 @@ var Attribute = /** @class */ (function () {
         this.addAttribute(attribute);
         controls.forEach(function (c) {
             c.attribute = attribute;
+            _this.defaultName(c, attribute);
             _this.Control[controlCreateFunction](c);
         });
         return attribute;
+    };
+    Attribute.prototype.defaultName = function (control, attribute) {
+        var names = [];
+        attribute.controls.forEach(function (c) {
+            names.push(c.getName());
+        });
+        if (!control.name) {
+            control.name = attribute.getName();
+        }
+        else if (names.indexOf(control.name) >= 0) {
+            throw new Error("Name " + control.name + " has already been defined for a control for attribute " + attribute.getName());
+        }
+        var i = 1;
+        while (names.indexOf(control.name) >= 0) {
+            control.name = attribute.getName() + i++;
+        }
     };
     Attribute.prototype.arrayify = function (possibleArray) {
         if (possibleArray instanceof Array) {

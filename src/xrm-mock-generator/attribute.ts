@@ -175,9 +175,29 @@ export default class Attribute {
       this.addAttribute(attribute);
       controls.forEach((c) => {
         c.attribute = attribute;
+        this.defaultName(c, attribute);
+
         (this.Control[controlCreateFunction] as any)(c);
       });
       return attribute;
+  }
+
+  private defaultName(control: any, attribute: Xrm.Page.Attribute) {
+    const names: string[] = [];
+    attribute.controls.forEach((c) => {
+      names.push(c.getName());
+    });
+
+    if (!control.name) {
+      control.name = attribute.getName();
+    } else if (names.indexOf(control.name) >= 0) {
+      throw new Error(`Name ${control.name} has already been defined for a control for attribute ${attribute.getName()}`);
+    }
+
+    let i = 1;
+    while (names.indexOf(control.name) >= 0) {
+      control.name = attribute.getName() + i++;
+    }
   }
 
   private arrayify<T>(possibleArray: T[] | T): T[] {

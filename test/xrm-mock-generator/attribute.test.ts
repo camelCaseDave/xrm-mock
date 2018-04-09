@@ -78,6 +78,23 @@ describe("XrmMockGenerator.Attribute", () => {
     expect(page.getAttribute("countries").getValue()).toBe(0);
   });
 
+  it("should default name for control from attribute", () => {
+    // This example creates an attribute with the given properties, as well as two controls for it
+    const stringAttribute = XrmMockGenerator.Attribute.createNumber({
+      name: "number",
+    },
+    // This can be a single instance of control components, or an array of control components as it is here
+    [{
+      label: "Number 1",
+    }, {
+      label: "Number 2",
+    }]);
+    const controls = page.getAttribute("number").controls;
+    expect(controls.getLength()).toBe(2);
+    expect(controls.get("number")).toBeTruthy();
+    expect(controls.get("number1")).toBeTruthy();
+  });
+
   it("should run wiki component code", () => {
     // This is the Component Code that is displayed on the wiki:
     // https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes

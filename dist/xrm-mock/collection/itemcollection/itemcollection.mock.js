@@ -5,8 +5,7 @@ var ItemCollectionMock = /** @class */ (function () {
         this.itemCollection = itemCollection || [];
     }
     ItemCollectionMock.prototype.forEach = function (delegate) {
-        var modifiedCollection = this.itemCollection.map(delegate);
-        this.itemCollection = modifiedCollection;
+        this.itemCollection.map(delegate);
     };
     ItemCollectionMock.prototype.get = function (param) {
         if (param === undefined || param === null) {
@@ -16,11 +15,9 @@ var ItemCollectionMock = /** @class */ (function () {
             var attribute = void 0;
             for (var _i = 0, _a = this.itemCollection; _i < _a.length; _i++) {
                 var item = _a[_i];
-                if (item.getName !== undefined) {
-                    if (item.getName() === param) {
-                        attribute = item;
-                        break;
-                    }
+                if (item.getName !== undefined && item.getName() === param) {
+                    attribute = item;
+                    break;
                 }
             }
             return attribute || null;

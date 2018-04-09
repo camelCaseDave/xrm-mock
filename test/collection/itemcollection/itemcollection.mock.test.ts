@@ -1,35 +1,50 @@
 import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
 
 describe("Xrm.Collection.ItemCollection Mock", () => {
+    let itemCollection: ItemCollectionMock<number>;
     beforeEach(() => {
         const items = [1, 2, 3];
-        this.itemCollectionMock = new ItemCollectionMock(items);
+        itemCollection = new ItemCollectionMock(items);
     });
 
     it("should exist", () => {
-        expect(this.itemCollectionMock).toBeDefined();
+        expect(itemCollection).toBeDefined();
     });
 
-    it("should return 1 at index 0", () => {
-        expect(this.itemCollectionMock.get(0)).toBe(1);
-    });
+    describe("forEach", () => {
+        it("should iterate and double every element", () => {
+            expect(itemCollection.get(0)).toBe(1);
+            expect(itemCollection.get(1)).toBe(2);
+            expect(itemCollection.get(2)).toBe(3);
 
-    it("should iterate and double every element", () => {
-        expect(this.itemCollectionMock.get(0)).toBe(1);
-        expect(this.itemCollectionMock.get(1)).toBe(2);
-        expect(this.itemCollectionMock.get(2)).toBe(3);
-
-        this.itemCollectionMock.forEach((i: any) => {
-            return i * 2;
+            itemCollection.forEach((i: any) => {
+                itemCollection.itemCollection[i - 1] = i * 2;
+            });
+            expect(itemCollection.get(0)).toBe(2);
+            expect(itemCollection.get(1)).toBe(4);
+            expect(itemCollection.get(2)).toBe(6);
         });
-        expect(this.itemCollectionMock.get(0)).toBe(2);
-        expect(this.itemCollectionMock.get(1)).toBe(4);
-        expect(this.itemCollectionMock.get(2)).toBe(6);
+    });
+
+    describe("get", () => {
+        it("should return 1 at index 0", () => {
+            expect(itemCollection.get(0)).toBe(1);
+        });
+
+        it("should return matching elements", () => {
+            const result = itemCollection.get((n) => n % 2 === 0);
+            expect(result.length).toBe(1);
+            expect(result[0] === 2);
+        });
+
+        it("should return null if not found", () => {
+            expect(itemCollection.get(-100)).toBeNull();
+        });
     });
 
     describe("getLength", () => {
         it("should return 3", () => {
-            const length = this.itemCollectionMock.getLength();
+            const length = itemCollection.getLength();
             expect(length).toBe(3);
         });
     });

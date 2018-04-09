@@ -38,8 +38,12 @@ export class ControlMock implements Xrm.Page.Control {
     }
 }
 
-export interface IControlComponents {
+export interface IControlComponents extends IAttControlComponents {
     name: string;
+}
+
+export interface IAttControlComponents {
+    name?: string;
     controlType?: Xrm.Page.ControlType;
     label?: string;
     visible?: boolean;

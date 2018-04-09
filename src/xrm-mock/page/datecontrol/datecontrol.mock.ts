@@ -35,6 +35,7 @@ export class DateControlMock extends StandardControlMock<DateControlMock, DateAt
 
 export interface IDateControlComponents extends IAttDateControlComponents,
                                                 IStandardControlComponents<DateControlMock, DateAttributeMock, Date> {
+    name: string;
 }
 
 export interface IAttDateControlComponents

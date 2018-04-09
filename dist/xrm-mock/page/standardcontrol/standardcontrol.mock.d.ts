@@ -1,6 +1,6 @@
 /// <reference types="xrm" />
 import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
-import { ControlMock, IControlComponents } from "../control/control.mock";
+import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 export declare class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends ControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;
     attribute: TAttribute;
@@ -18,10 +18,11 @@ export declare class StandardControlMock<TControl extends StandardControlMock<TC
     setVisible(visible: boolean): void;
     setFocus(): void;
 }
-export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
+export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IAttStandardControlComponents<TControl, TAttribute, TValue>, IControlComponents {
     attribute: TAttribute;
+    name: string;
 }
-export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IControlComponents {
+export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends IAttControlComponents {
     disabled?: boolean;
     label?: string;
     visible?: boolean;

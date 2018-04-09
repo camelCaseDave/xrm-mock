@@ -4,6 +4,7 @@ export declare class StringControlMock extends AutoLookupControlMock<StringContr
     constructor(components: IStringControlComponents);
 }
 export interface IStringControlComponents extends IAttStringControlComponents, IAutoLookupControlComponents<StringControlMock, StringAttributeMock, string> {
+    name: string;
 }
 export interface IAttStringControlComponents extends IAttAutoLookupControlComponents<StringControlMock, StringAttributeMock, string> {
 }
