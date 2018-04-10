@@ -9,7 +9,7 @@ export default class Attribute {
     private Control;
     createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock;
     createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
-    createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
+    createDate(name: string, value?: Date): XrmMock.DateAttributeMock;
     createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
     createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
     createNumber(attComponents: XrmMock.INumberAttributeComponents, controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;

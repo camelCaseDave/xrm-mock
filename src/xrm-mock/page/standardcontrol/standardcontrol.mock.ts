@@ -24,6 +24,10 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
         }
     }
 
+    public addNotification(notification: Xrm.Controls.AddControlNotificationOptions): void {
+        throw new Error("Method not implemented.");
+    }
+
     public clearNotification(uniqueId?: string): boolean {
         throw new Error(("clear notification not implemented"));
     }

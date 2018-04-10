@@ -1,4 +1,3 @@
-/// <reference types="xrm" />
 export declare class MobileOfflineMock implements Xrm.MobileOffline {
     isOfflineEnabled(entityType: string): boolean;
     createRecord(entityType: string, data: {

@@ -7,6 +7,7 @@ export declare class StandardControlMock<TControl extends StandardControlMock<TC
     protected uiStandardElement: Xrm.Page.UiStandardElement;
     protected uiFocusable: Xrm.Page.UiFocusable;
     constructor(components: IStandardControlComponents<TControl, TAttribute, TValue>);
+    addNotification(notification: Xrm.Controls.AddControlNotificationOptions): void;
     clearNotification(uniqueId?: string): boolean;
     getDisabled(): boolean;
     setDisabled(disabled: boolean): void;

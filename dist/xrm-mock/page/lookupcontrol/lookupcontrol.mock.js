@@ -62,6 +62,12 @@ var LookupControlMock = /** @class */ (function (_super) {
         }
         throw new Error("No default view was found!");
     };
+    LookupControlMock.prototype.getEntityTypes = function () {
+        throw new Error("Method not implemented.");
+    };
+    LookupControlMock.prototype.setEntityTypes = function (entityLogicalNames) {
+        throw new Error("Method not implemented.");
+    };
     LookupControlMock.prototype.removePreSearch = function (handler) {
         throw new Error("remove presearch not implemented");
     };

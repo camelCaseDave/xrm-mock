@@ -11,6 +11,8 @@ export declare class LookupControlMock extends StandardControlMock<LookupControl
     addCustomFilter(filter: string, entityLogicalName?: string): void;
     addCustomView(viewId: string, entityName: string, viewDisplayName: string, fetchXml: string, layoutXml: string, isDefault: boolean): void;
     getDefaultView(): string;
+    getEntityTypes(): string[];
+    setEntityTypes(entityLogicalNames: string[]): void;
     removePreSearch(handler: () => void): void;
     setDefaultView(viewGuid: string): void;
 }

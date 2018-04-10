@@ -91,7 +91,7 @@ export default class Control {
   }
 
   private addControl<T extends Xrm.Page.Control>(control: T): T {
-    (Xrm.Page.ui.controls as any).push(control);
+    (Xrm.Page.ui.controls as XrmMock.ItemCollectionMock<Xrm.Page.Control>).push(control);
     return control;
   }
 

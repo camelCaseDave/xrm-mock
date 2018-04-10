@@ -26,6 +26,9 @@ var StandardControlMock = /** @class */ (function (_super) {
         }
         return _this;
     }
+    StandardControlMock.prototype.addNotification = function (notification) {
+        throw new Error("Method not implemented.");
+    };
     StandardControlMock.prototype.clearNotification = function (uniqueId) {
         throw new Error(("clear notification not implemented"));
     };

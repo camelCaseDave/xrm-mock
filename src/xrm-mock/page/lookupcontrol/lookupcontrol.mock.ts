@@ -69,6 +69,14 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         throw new Error("No default view was found!");
     }
 
+    public getEntityTypes(): string[] {
+        throw new Error("Method not implemented.");
+    }
+
+    public setEntityTypes(entityLogicalNames: string[]): void {
+        throw new Error("Method not implemented.");
+    }
+
     public removePreSearch(handler: () => void): void {
         throw new Error("remove presearch not implemented");
     }

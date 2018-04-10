@@ -1,8 +1,10 @@
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+
 export class EntityMock implements Xrm.Page.Entity {
     public id: string;
-    public attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>;
+    public attributes: ItemCollectionMock<Xrm.Page.Attribute>;
 
-    constructor(id: string, attributes: Xrm.Collection.ItemCollection<Xrm.Page.Attribute>) {
+    constructor(id: string, attributes: ItemCollectionMock<Xrm.Page.Attribute>) {
         this.id = id;
         this.attributes = attributes;
     }
@@ -17,6 +19,10 @@ export class EntityMock implements Xrm.Page.Entity {
 
     public getDataXml(): string {
         throw new Error(("getDataXml not implemented"));
+    }
+
+    public getEntityReference(): Xrm.LookupValue {
+        throw new Error("Method not implemented.");
     }
 
     public getId(): string {
@@ -40,6 +46,10 @@ export class EntityMock implements Xrm.Page.Entity {
 
     public getPrimaryAttributeValue(): string {
         throw new Error(("getPrimaryAttributeValue not implemented"));
+    }
+
+    public isValid(): boolean {
+        throw new Error("Method not implemented.");
     }
 
     public removeOnSave(handler: Xrm.Page.ContextSensitiveHandler): void {

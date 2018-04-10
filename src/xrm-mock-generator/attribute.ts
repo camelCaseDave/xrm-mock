@@ -19,7 +19,7 @@ export default class Attribute {
   }
 
   public createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
-  public createDate(name: string, value?: Date): Xrm.Page.DateAttribute;
+  public createDate(name: string, value?: Date): XrmMock.DateAttributeMock;
   public createDate(nameOrComponents: string | XrmMock.IDateAttributeComponents,
                     valueOrControlComponents?: Date | DateControlComponent): XrmMock.DateAttributeMock {
     if (typeof(nameOrComponents) === "string") {
@@ -160,7 +160,7 @@ export default class Attribute {
   }
 
   private addAttribute(attribute: Xrm.Page.Attribute): void {
-    (Xrm.Page.data.entity.attributes as any).push(attribute);
+    (Xrm.Page.data.entity as XrmMock.EntityMock).attributes.push(attribute);
   }
 
   /**
