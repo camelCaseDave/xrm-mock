@@ -1,4 +1,6 @@
-export class ContextMock implements Xrm.Context {
+export class ContextMock implements Xrm.GlobalContext {
+    public organizationSettings: Xrm.OrganizationSettings;
+    public userSettings: Xrm.UserSettings;
     public client: Xrm.ClientContext;
     public clientUrl: string;
     public currentTheme: Xrm.Theme;
@@ -77,6 +79,26 @@ export class ContextMock implements Xrm.Context {
 
     public prependOrgName(sPath: string): string {
         return sPath + this.orgUniqueName;
+    }
+
+    public getAdvancedConfigSetting(setting: "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"): number {
+        throw new Error("Method not implemented.");
+    }
+
+    public getCurrentAppName(): Xrm.Async.PromiseLike<string> {
+        throw new Error("Method not implemented.");
+    }
+
+    public getCurrentAppProperties(): Xrm.Async.PromiseLike<Xrm.AppProperties> {
+        throw new Error("Method not implemented.");
+    }
+
+    public getCurrentAppUrl(): string {
+        throw new Error("Method not implemented.");
+    }
+
+    public isOnPremise(): boolean {
+        throw new Error("Method not implemented.");
     }
 }
 

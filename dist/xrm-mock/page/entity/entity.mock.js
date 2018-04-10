@@ -14,6 +14,9 @@ var EntityMock = /** @class */ (function () {
     EntityMock.prototype.getDataXml = function () {
         throw new Error(("getDataXml not implemented"));
     };
+    EntityMock.prototype.getEntityReference = function () {
+        throw new Error("Method not implemented.");
+    };
     EntityMock.prototype.getId = function () {
         return this.id;
     };
@@ -32,6 +35,9 @@ var EntityMock = /** @class */ (function () {
     };
     EntityMock.prototype.getPrimaryAttributeValue = function () {
         throw new Error(("getPrimaryAttributeValue not implemented"));
+    };
+    EntityMock.prototype.isValid = function () {
+        throw new Error("Method not implemented.");
     };
     EntityMock.prototype.removeOnSave = function (handler) {
         throw new Error(("removeOnSave not implemented"));

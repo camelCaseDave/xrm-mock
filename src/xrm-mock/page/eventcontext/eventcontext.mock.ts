@@ -1,5 +1,5 @@
 export class EventContextMock implements Xrm.Page.EventContext {
-    public getContext(): Xrm.Context {
+    public getContext(): Xrm.GlobalContext {
         throw new Error("not implemented");
     }
 
@@ -13,6 +13,10 @@ export class EventContextMock implements Xrm.Page.EventContext {
 
     public getEventSource(): Xrm.Page.Attribute | Xrm.Page.Control | Xrm.Page.Entity {
         throw new Error("not implemented");
+    }
+
+    public getFormContext(): Xrm.FormContext {
+        throw new Error("Method not implemented.");
     }
 
     public getSharedVariable<T>(key: string): T {

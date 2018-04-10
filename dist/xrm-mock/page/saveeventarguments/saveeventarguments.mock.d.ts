@@ -6,4 +6,11 @@ export declare class SaveEventArgumentsMock implements Xrm.Page.SaveEventArgumen
     getSaveMode(): XrmEnum.SaveMode;
     isDefaultPrevented(): boolean;
     preventDefault(): void;
+    getEventArgs(): Xrm.Events.SaveEventArguments;
+    getContext(): Xrm.GlobalContext;
+    getDepth(): number;
+    getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
+    getFormContext(): Xrm.FormContext;
+    getSharedVariable<T>(key: string): T;
+    setSharedVariable<T>(key: string, value: T): void;
 }

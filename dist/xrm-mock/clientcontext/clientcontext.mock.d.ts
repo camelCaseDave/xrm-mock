@@ -5,4 +5,6 @@ export declare class ClientContextMock implements Xrm.ClientContext {
     constructor(client: Xrm.Client, clientState: Xrm.ClientState);
     getClient(): Xrm.Client;
     getClientState(): Xrm.ClientState;
+    getFormFactor(): XrmEnum.ClientFormFactor;
+    isOffline(): boolean;
 }

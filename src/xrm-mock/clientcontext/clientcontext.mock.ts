@@ -14,4 +14,12 @@ export class ClientContextMock implements Xrm.ClientContext {
     public getClientState(): Xrm.ClientState {
         return this.clientState;
     }
+
+    public getFormFactor(): XrmEnum.ClientFormFactor {
+        throw new Error("Method not implemented.");
+    }
+
+    public isOffline(): boolean {
+        throw new Error("Method not implemented.");
+    }
 }

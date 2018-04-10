@@ -1,7 +1,5 @@
 /// <reference types="xrm" />
 export declare class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
-    [index: number]: T;
-    [key: string]: T | any;
     itemCollection: T[];
     constructor(itemCollection?: T[]);
     forEach(delegate: () => void): void;

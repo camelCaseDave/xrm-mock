@@ -1,5 +1,5 @@
 export class PageMock implements Xrm.Page {
-    public context: Xrm.Context;
+    public context: Xrm.GlobalContext;
     public data: Xrm.Data;
     public ui: Xrm.Ui;
 
@@ -46,6 +46,6 @@ export class PageMock implements Xrm.Page {
 
 export interface IPageComponents {
     data?: Xrm.Data;
-    context?: Xrm.Context;
+    context?: Xrm.GlobalContext;
     ui?: Xrm.Ui;
 }

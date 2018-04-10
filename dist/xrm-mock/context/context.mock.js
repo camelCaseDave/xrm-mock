@@ -54,6 +54,21 @@ var ContextMock = /** @class */ (function () {
     ContextMock.prototype.prependOrgName = function (sPath) {
         return sPath + this.orgUniqueName;
     };
+    ContextMock.prototype.getAdvancedConfigSetting = function (setting) {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.getCurrentAppName = function () {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.getCurrentAppProperties = function () {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.getCurrentAppUrl = function () {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.isOnPremise = function () {
+        throw new Error("Method not implemented.");
+    };
     return ContextMock;
 }());
 exports.ContextMock = ContextMock;

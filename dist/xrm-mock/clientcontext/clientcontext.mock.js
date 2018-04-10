@@ -11,6 +11,12 @@ var ClientContextMock = /** @class */ (function () {
     ClientContextMock.prototype.getClientState = function () {
         return this.clientState;
     };
+    ClientContextMock.prototype.getFormFactor = function () {
+        throw new Error("Method not implemented.");
+    };
+    ClientContextMock.prototype.isOffline = function () {
+        throw new Error("Method not implemented.");
+    };
     return ClientContextMock;
 }());
 exports.ClientContextMock = ClientContextMock;

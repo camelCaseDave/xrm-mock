@@ -15,6 +15,9 @@ var EventContextMock = /** @class */ (function () {
     EventContextMock.prototype.getEventSource = function () {
         throw new Error("not implemented");
     };
+    EventContextMock.prototype.getFormContext = function () {
+        throw new Error("Method not implemented.");
+    };
     EventContextMock.prototype.getSharedVariable = function (key) {
         throw new Error("not implemented");
     };

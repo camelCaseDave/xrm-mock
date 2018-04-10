@@ -1,5 +1,7 @@
 /// <reference types="xrm" />
-export declare class ContextMock implements Xrm.Context {
+export declare class ContextMock implements Xrm.GlobalContext {
+    organizationSettings: Xrm.OrganizationSettings;
+    userSettings: Xrm.UserSettings;
     client: Xrm.ClientContext;
     clientUrl: string;
     currentTheme: Xrm.Theme;
@@ -28,6 +30,11 @@ export declare class ContextMock implements Xrm.Context {
     getUserRoles(): string[];
     getVersion(): string;
     prependOrgName(sPath: string): string;
+    getAdvancedConfigSetting(setting: "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"): number;
+    getCurrentAppName(): Xrm.Async.PromiseLike<string>;
+    getCurrentAppProperties(): Xrm.Async.PromiseLike<Xrm.AppProperties>;
+    getCurrentAppUrl(): string;
+    isOnPremise(): boolean;
 }
 export interface IContextComponents {
     clientContext: Xrm.ClientContext;

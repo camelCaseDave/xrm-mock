@@ -1,6 +1,6 @@
 /// <reference types="xrm" />
 export declare class PageMock implements Xrm.Page {
-    context: Xrm.Context;
+    context: Xrm.GlobalContext;
     data: Xrm.Data;
     ui: Xrm.Ui;
     constructor(components: IPageComponents);
@@ -13,6 +13,6 @@ export declare class PageMock implements Xrm.Page {
 }
 export interface IPageComponents {
     data?: Xrm.Data;
-    context?: Xrm.Context;
+    context?: Xrm.GlobalContext;
     ui?: Xrm.Ui;
 }

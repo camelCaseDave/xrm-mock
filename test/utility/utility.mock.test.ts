@@ -1,17 +1,18 @@
 import { UtilityMock } from "../../src/xrm-mock/utility/utility.mock";
 
 describe("Xrm.Utility Mock", () => {
+    let utility: UtilityMock;
     beforeEach(() => {
-        this.utility = new UtilityMock();
+        utility = new UtilityMock();
     });
 
     it("should exist", () => {
-        expect(this.utility).toBeDefined();
+        expect(utility).toBeDefined();
     });
 
     it("should alert", () => {
-        const windowSpy = jest.spyOn(window, "alert");
-        this.utility.alertDialog("Are you sure?", () => true);
+        const windowSpy = spyOn(window, "alert");
+        utility.alertDialog("Are you sure?", () => true);
 
         expect(windowSpy).toHaveBeenCalledWith("Are you sure?");
     });
@@ -23,7 +24,7 @@ describe("Xrm.Utility Mock", () => {
 
         it("should confirm and call yes callback", () => {
             this.confirmSpy.mockReturnValueOnce(true);
-            this.utility.confirmDialog("Are you sure?",
+            utility.confirmDialog("Are you sure?",
                 () => {
                     expect(true);
                 },
@@ -34,7 +35,7 @@ describe("Xrm.Utility Mock", () => {
 
         it("should confirm and call no callback", () => {
             this.confirmSpy.mockReturnValueOnce(false);
-            this.utility.confirmDialog("Are you sure?",
+            utility.confirmDialog("Are you sure?",
                 () => {
                     fail();
                 },

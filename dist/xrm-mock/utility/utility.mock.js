@@ -27,6 +27,33 @@ var UtilityMock = /** @class */ (function () {
     UtilityMock.prototype.openWebResource = function (webResourceName, webResourceData, width, height) {
         throw new Error(("open web resource not implemented"));
     };
+    UtilityMock.prototype.closeProgressIndicator = function () {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getAllowedStatusTransitions = function (entityName, stateCode) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getEntityMetadata = function (entityName, attributes) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getGlobalContext = function () {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getResourceString = function (webResourceName, key) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.invokeProcessAction = function (name, parameters) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.lookupObjects = function (lookupOptions) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.refreshParentGrid = function (lookupOptions) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.showProgressIndicator = function (message) {
+        throw new Error("Method not implemented.");
+    };
     return UtilityMock;
 }());
 exports.UtilityMock = UtilityMock;

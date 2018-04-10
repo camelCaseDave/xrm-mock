@@ -3,8 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var XrmPromiseMock = /** @class */ (function () {
     function XrmPromiseMock() {
     }
-    XrmPromiseMock.prototype.then = function (successCallback, errorCallback) {
-        throw new Error("not implemented");
+    XrmPromiseMock.prototype.then = function (onFulfilled, onRejected) {
+        throw new Error("Method not implemented.");
+    };
+    XrmPromiseMock.prototype.fail = function (onRejected) {
+        throw new Error("Method not implemented.");
+    };
+    XrmPromiseMock.prototype.always = function (alwaysCallback) {
+        throw new Error("Method not implemented.");
+    };
+    XrmPromiseMock.prototype.catch = function (onRejected) {
+        throw new Error("Method not implemented.");
+    };
+    XrmPromiseMock.prototype.finally = function (finallyCallback) {
+        throw new Error("Method not implemented.");
     };
     return XrmPromiseMock;
 }());
