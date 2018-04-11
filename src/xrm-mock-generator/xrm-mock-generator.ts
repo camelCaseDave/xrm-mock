@@ -5,6 +5,8 @@ import Control from "./control";
 import Form from "./form";
 import Ui from "./ui";
 
+declare var global: any;
+
 export class XrmMockGenerator {
   public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
@@ -24,7 +26,7 @@ export class XrmMockGenerator {
       }),
     });
 
-    (global as any).Xrm = xrm;
+    global.Xrm = xrm;
     return xrm;
   }
 }
