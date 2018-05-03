@@ -17,4 +17,14 @@ describe("Xrm.Page.LookupAttribute Mock", () => {
     it("should not be a party list", () => {
         expect(this.lookupAttribute.getIsPartyList()).toBe(false);
     });
+
+    it("should accept being a party list", () => {
+        const att = new LookupAttributeMock({
+            isPartyList: true,
+            name: "parentorganisationid",
+            value: [new LookupValueMock("5555", "account", "Boss")],
+        });
+
+        expect(att.getIsPartyList()).toBe(true);
+    });
 });
