@@ -19,11 +19,11 @@ export class ExecuteResponseMock implements Xrm.ExecuteResponse {
 }
 
 export interface IExecuteResponseComponents {
-  body: string;
-  headers: any;
-  ok: boolean;
-  status: number;
-  statusText: string;
-  type: string;
-  url: string;
+  body?: string;
+  headers?: any;
+  ok?: boolean;
+  status?: number;
+  statusText?: string;
+  type?: string;
+  url?: string;
 }
