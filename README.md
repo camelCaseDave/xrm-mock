@@ -6,7 +6,7 @@
 # :books:  xrm-mock
 [![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-<b>xrm-mock</b> is a fake implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
+<b>xrm-mock</b> is a fake implementation of the <a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference">Dynamics 365 Client API</a> and Xrm object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
 
 <b>xrm-mock-generator</b> is an opinionated toolset for building fake Xrm objects.
 
