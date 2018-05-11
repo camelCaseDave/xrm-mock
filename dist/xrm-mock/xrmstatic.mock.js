@@ -2,10 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var XrmStaticMock = /** @class */ (function () {
     function XrmStaticMock(components) {
-        this.Page = components.page;
-        this.Utility = components.utility;
+        this.Device = components.device;
+        this.Encoding = components.encoding;
         this.Mobile = components.mobile;
+        this.Navigation = components.navigation;
+        this.Page = components.page;
         this.Panel = components.panel;
+        this.Utility = components.utility;
+        this.WebApi = components.webApi;
     }
     return XrmStaticMock;
 }());
