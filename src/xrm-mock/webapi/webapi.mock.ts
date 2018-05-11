@@ -7,7 +7,9 @@ export class WebApiMock implements Xrm.WebApi {
   private clientContext: Xrm.ClientContext;
   private isOffline: boolean;
 
-  public WebApiMock(clientContext: Xrm.ClientContext) {
+  constructor(clientContext: Xrm.ClientContext, online: Xrm.WebApiOnline, offline: Xrm.WebApiOffline) {
+    this.online = online;
+    this.offline = offline;
     this.clientContext = clientContext;
     this.isOffline = clientContext.getClientState() === "Offline";
   }

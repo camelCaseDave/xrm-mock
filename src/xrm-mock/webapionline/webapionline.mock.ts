@@ -2,7 +2,7 @@ export class WebApiOnlineMock implements Xrm.WebApiOnline {
   private offline: Xrm.WebApiOffline;
   private notImplementedError = "WebApi methods not implemented. Consider faking API calls using a tool such as Sinon.JS";
 
-  public WebApiOnlineMock(offlineCapabilities: Xrm.WebApiOffline) {
+  constructor(offlineCapabilities: Xrm.WebApiOffline) {
     this.offline = offlineCapabilities;
   }
 

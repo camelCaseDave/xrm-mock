@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var WebApiMock = /** @class */ (function () {
-    function WebApiMock() {
-    }
-    WebApiMock.prototype.WebApiMock = function (clientContext) {
+    function WebApiMock(clientContext, online, offline) {
+        this.online = online;
+        this.offline = offline;
         this.clientContext = clientContext;
         this.isOffline = clientContext.getClientState() === "Offline";
-    };
+    }
     WebApiMock.prototype.createRecord = function (entityLogicalName, record) {
         if (this.isOffline) {
             return this.offline.createRecord(entityLogicalName, record);

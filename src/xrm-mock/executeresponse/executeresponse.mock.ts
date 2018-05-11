@@ -7,7 +7,7 @@ export class ExecuteResponseMock implements Xrm.ExecuteResponse {
   public type: string;
   public url: string;
 
-  public ExecuteResponseMock(components: IExecuteResponseComponents) {
+  constructor(components: IExecuteResponseComponents) {
     this.body = components.body;
     this.headers = components.headers;
     this.ok = components.ok;

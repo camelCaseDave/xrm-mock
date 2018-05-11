@@ -4,7 +4,7 @@ export declare class WebApiMock implements Xrm.WebApi {
     offline: Xrm.WebApiOffline;
     private clientContext;
     private isOffline;
-    WebApiMock(clientContext: Xrm.ClientContext): void;
+    constructor(clientContext: Xrm.ClientContext, online: Xrm.WebApiOnline, offline: Xrm.WebApiOffline);
     createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<string>;
     deleteRecord(entityLogicalName: string, id: string): Xrm.Async.PromiseLike<string>;
     retrieveRecord(entityLogicalName: string, id: string, options: string): Xrm.Async.PromiseLike<any>;

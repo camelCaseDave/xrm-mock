@@ -2,7 +2,7 @@
 export declare class WebApiOnlineMock implements Xrm.WebApiOnline {
     private offline;
     private notImplementedError;
-    WebApiOnlineMock(offlineCapabilities: Xrm.WebApiOffline): void;
+    constructor(offlineCapabilities: Xrm.WebApiOffline);
     execute(request: any): Xrm.Async.PromiseLike<Xrm.ExecuteResponse>;
     executeMultiple(request: any[]): Xrm.Async.PromiseLike<Xrm.ExecuteResponse[]>;
     createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<string>;

@@ -6,7 +6,7 @@ export declare class ExecuteResponseMock implements Xrm.ExecuteResponse {
     statusText: string;
     type: string;
     url: string;
-    ExecuteResponseMock(components: IExecuteResponseComponents): void;
+    constructor(components: IExecuteResponseComponents);
 }
 export interface IExecuteResponseComponents {
     body: string;
