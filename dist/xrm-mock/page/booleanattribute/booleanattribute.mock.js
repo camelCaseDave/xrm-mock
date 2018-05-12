@@ -14,11 +14,15 @@ var enumattribute_mock_1 = require("../enumattribute/enumattribute.mock");
 var BooleanAttributeMock = /** @class */ (function (_super) {
     __extends(BooleanAttributeMock, _super);
     function BooleanAttributeMock(components) {
-        return _super.call(this, components) || this;
+        return _super.call(this, BooleanAttributeMock.defaultComponents(components)) || this;
     }
     BooleanAttributeMock.create = function (name, value) {
         if (value === void 0) { value = false; }
         return new BooleanAttributeMock({ name: name, value: value });
+    };
+    BooleanAttributeMock.defaultComponents = function (components) {
+        components.attributeType = "boolean";
+        return components;
     };
     return BooleanAttributeMock;
 }(enumattribute_mock_1.EnumAttributeMock));

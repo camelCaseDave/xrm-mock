@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
+        this.attributeType = components.attributeType || "string";
         this.format = components.format;
         this.name = components.name;
         this.value = components.value;
@@ -24,7 +25,7 @@ var AttributeMock = /** @class */ (function () {
         }
     };
     AttributeMock.prototype.getAttributeType = function () {
-        return typeof this.value;
+        return this.attributeType;
     };
     AttributeMock.prototype.getFormat = function () {
         return this.format;

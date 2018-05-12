@@ -14,13 +14,17 @@ var attribute_mock_1 = require("../attribute/attribute.mock");
 var StringAttributeMock = /** @class */ (function (_super) {
     __extends(StringAttributeMock, _super);
     function StringAttributeMock(components) {
-        var _this = _super.call(this, components) || this;
+        var _this = _super.call(this, StringAttributeMock.defaultComponents(components)) || this;
         _this.format = components.format || "text";
         _this.maxLength = components.maxLength || 100;
         return _this;
     }
     StringAttributeMock.create = function (name, value) {
         return new StringAttributeMock({ name: name, value: value });
+    };
+    StringAttributeMock.defaultComponents = function (components) {
+        components.attributeType = "string";
+        return components;
     };
     StringAttributeMock.prototype.getFormat = function () {
         return _super.prototype.getFormat.call(this);

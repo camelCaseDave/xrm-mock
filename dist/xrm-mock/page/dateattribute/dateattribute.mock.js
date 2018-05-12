@@ -23,6 +23,7 @@ var DateAttributeMock = /** @class */ (function (_super) {
         if (!components.format) {
             components.format = "date";
         }
+        components.attributeType = "datetime";
         return components;
     };
     DateAttributeMock.prototype.getFormat = function () {

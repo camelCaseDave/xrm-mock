@@ -15,7 +15,7 @@ var optionsetvalue_mock_1 = require("../optionsetvalue/optionsetvalue.mock");
 var OptionSetAttributeMock = /** @class */ (function (_super) {
     __extends(OptionSetAttributeMock, _super);
     function OptionSetAttributeMock(components) {
-        var _this = _super.call(this, components) || this;
+        var _this = _super.call(this, OptionSetAttributeMock.defaultComponents(components)) || this;
         _this.options = components.options
             ? components.options.map(function (o) {
                 return new optionsetvalue_mock_1.OptionSetValueMock(o.text, o.value);
@@ -32,6 +32,10 @@ var OptionSetAttributeMock = /** @class */ (function (_super) {
     }
     OptionSetAttributeMock.create = function (name, value) {
         return new OptionSetAttributeMock({ name: name, value: value });
+    };
+    OptionSetAttributeMock.defaultComponents = function (components) {
+        components.attributeType = "optionset";
+        return components;
     };
     OptionSetAttributeMock.prototype.getFormat = function () {
         return _super.prototype.getFormat.call(this);

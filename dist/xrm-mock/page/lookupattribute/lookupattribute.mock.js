@@ -22,6 +22,7 @@ var LookupAttributeMock = /** @class */ (function (_super) {
         if (!("isPartyList" in components)) {
             components.isPartyList = false;
         }
+        components.attributeType = "lookup";
         return components;
     };
     LookupAttributeMock.prototype.getIsPartyList = function () {

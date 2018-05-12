@@ -24,6 +24,9 @@ var NumberAttributeMock = /** @class */ (function (_super) {
     NumberAttributeMock.defaultComponents = function (components) {
         components.format = components.format || "none";
         components.precision = components.precision || 0;
+        if (!components.attributeType) {
+            components.attributeType = "decimal";
+        }
         return components;
     };
     NumberAttributeMock.prototype.getFormat = function () {
