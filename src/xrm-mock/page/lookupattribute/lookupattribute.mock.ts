@@ -8,7 +8,7 @@ export class LookupAttributeMock extends AttributeMock<LookupControlMock, Xrm.Pa
         if (!("isPartyList" in components)) {
             components.isPartyList = false;
         }
-
+        components.attributeType = "lookup";
         return components;
     }
 

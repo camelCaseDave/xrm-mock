@@ -9,11 +9,16 @@ export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMo
         return new OptionSetAttributeMock({ name, value });
     }
 
+    private static defaultComponents(components: IOptionSetAttributeComponents): IOptionSetAttributeComponents {
+        components.attributeType = "optionset";
+        return components;
+    }
+
     public options: OptionSetValueMock[];
     public selectedOption: OptionSetValueMock;
 
     constructor(components: IOptionSetAttributeComponents) {
-        super(components);
+        super(OptionSetAttributeMock.defaultComponents(components));
         this.options = components.options
             ? components.options.map((o) => {
                 return new OptionSetValueMock(o.text, o.value);

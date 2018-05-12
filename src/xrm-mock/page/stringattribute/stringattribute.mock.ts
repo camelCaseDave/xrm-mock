@@ -10,10 +10,15 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
         return new StringAttributeMock({ name, value }  as any as IStringAttributeComponents);
     }
 
+    private static defaultComponents(components: IStringAttributeComponents): IStringAttributeComponents {
+        components.attributeType = "string";
+        return components;
+    }
+
     public maxLength: number;
 
     constructor(components: IStringAttributeComponents) {
-        super(components);
+        super(StringAttributeMock.defaultComponents(components));
         this.format = components.format || "text";
         this.maxLength = components.maxLength || 100;
     }

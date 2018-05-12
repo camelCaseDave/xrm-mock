@@ -11,6 +11,7 @@ export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
         if (!components.format) {
             components.format = "date";
         }
+        components.attributeType = "datetime";
         return components;
     }
 

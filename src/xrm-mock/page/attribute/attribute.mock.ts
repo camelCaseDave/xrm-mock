@@ -6,6 +6,7 @@ export type AttributeReturnType = boolean | Date | number | Xrm.Page.LookupValue
 export class AttributeMock<TControl extends ControlMock,
                            TValue extends AttributeReturnType>
                            implements Xrm.Page.Attribute {
+    public attributeType: Xrm.Attributes.AttributeType;
     public controls: ItemCollectionMock<TControl>;
     public isDirty: boolean;
     public name: string;
@@ -16,6 +17,7 @@ export class AttributeMock<TControl extends ControlMock,
     public eventHandlers: Xrm.Page.ContextSensitiveHandler[];
 
     public constructor(components: IAttributeComponents<TControl, TValue>) {
+        this.attributeType = components.attributeType || "string";
         this.format = components.format;
         this.name = components.name;
         this.value = components.value;
@@ -38,8 +40,8 @@ export class AttributeMock<TControl extends ControlMock,
         }
     }
 
-    public getAttributeType(): string {
-        return typeof this.value;
+    public getAttributeType(): Xrm.Page.AttributeType {
+        return this.attributeType;
     }
 
     public getFormat(): Xrm.Page.AttributeFormat {
@@ -93,6 +95,7 @@ export class AttributeMock<TControl extends ControlMock,
 }
 
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+    attributeType?: Xrm.Attributes.AttributeType;
     controls?: ItemCollectionMock<T>;
     eventHandlers?: Xrm.Page.ContextSensitiveHandler[];
     format?: Xrm.Page.AttributeFormat;

@@ -61,7 +61,7 @@ describe("Xrm.Page.NumberAttribute", () => {
     });
 
     it("should have an attribute type of number", () => {
-        expect(numberAttribute.getAttributeType()).toBe("number");
+        expect(numberAttribute.getAttributeType()).toBe("decimal");
     });
 
     it("should not be dirty", () => {

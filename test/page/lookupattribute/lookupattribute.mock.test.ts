@@ -3,19 +3,25 @@ import { LookupAttributeMock} from "../../../src/xrm-mock/page/lookupattribute/l
 import { LookupValueMock } from "../../../src/xrm-mock/page/lookupvalue/lookupvalue.mock";
 
 describe("Xrm.Page.LookupAttribute Mock", () => {
+    let lookupAttribute: LookupAttributeMock;
+
     beforeEach(() => {
-        this.lookupAttribute = new LookupAttributeMock({
+        lookupAttribute = new LookupAttributeMock({
             name: "parentorganisationid",
             value: [new LookupValueMock("5555", "account", "Boss")],
         });
     });
 
     it("should instantiate", () => {
-        expect(this.lookupAttribute).toBeDefined();
+        expect(lookupAttribute).toBeDefined();
+    });
+
+    it("should be a lookupType", () => {
+        expect(lookupAttribute.getAttributeType()).toBe("lookup");
     });
 
     it("should not be a party list", () => {
-        expect(this.lookupAttribute.getIsPartyList()).toBe(false);
+        expect(lookupAttribute.getIsPartyList()).toBe(false);
     });
 
     it("should accept being a party list", () => {
