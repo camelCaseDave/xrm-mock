@@ -11,7 +11,7 @@ node_modules
 coverage
 package
 
-build.js
+build/**/*
 npm-debug.log
 .vscode/settings.json
 

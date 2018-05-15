@@ -30,7 +30,11 @@ export class XrmMockGenerator {
       webApi: WebApi.createApi(context.client),
     });
 
-    global.Xrm = xrm;
+    if (global) {
+      global.Xrm = xrm;
+    } else {
+      window.Xrm = xrm;
+    }
     return xrm;
   }
 }

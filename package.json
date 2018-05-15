@@ -19,6 +19,7 @@
   ],
   "scripts": {
     "build": "tsc && npm run lint && npm run test",
+    "buildOne": "tsc --outFile ./build/build.js --module amd",
     "lint": "tslint -c tslint.json 'src/**/*.ts' && tslint -c tslint.json 'test/**/*.ts'",
     "test": "jest --coverage",
     "tsc": "tsc"
