@@ -30,10 +30,10 @@ export class XrmMockGenerator {
       webApi: WebApi.createApi(context.client),
     });
 
-    if (global) {
-      global.Xrm = xrm;
-    } else {
+    if (typeof global === "undefined") {
       window.Xrm = xrm;
+    } else {
+      global.Xrm = xrm;
     }
     return xrm;
   }
