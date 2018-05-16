@@ -20,7 +20,12 @@ var XrmMockGenerator = /** @class */ (function () {
             }),
             webApi: webapi_1.default.createApi(context.client),
         });
-        global.Xrm = xrm;
+        if (typeof global === "undefined") {
+            window.Xrm = xrm;
+        }
+        else {
+            global.Xrm = xrm;
+        }
         return xrm;
     };
     XrmMockGenerator.Attribute = new attribute_1.default();

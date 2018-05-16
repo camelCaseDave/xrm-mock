@@ -10,6 +10,7 @@ export { DateControlMock, IAttDateControlComponents, IDateControlComponents } fr
 export { EntityMock } from "./page/entity/entity.mock";
 export { EnumAttributeMock } from "./page/enumattribute/enumattribute.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
+export { EventContextMock } from "./page/eventcontext/eventcontext.mock";
 export { IExecuteResponseComponents, ExecuteResponseMock } from "./executeresponse/executeresponse.mock";
 export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
