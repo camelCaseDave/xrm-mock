@@ -14,25 +14,27 @@ var PageMock = /** @class */ (function () {
             return this.data.entity.attributes.get(param);
         }
         else if (typeof param === "number") {
-            return this.data.entity.attributes.get()[param];
+            return this.data.entity.attributes.get(param);
         }
-        else if (param !== undefined) {
-            throw new Error(("Xrm.Page.getAttribute(delegate) not implemented"));
+        else if (typeof param === "function") {
+            return this.data.entity.attributes.get(param);
         }
+        throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
     };
     PageMock.prototype.getControl = function (param) {
-        if (!arguments.length) {
+        if (!arguments.length || param === undefined || param === null) {
             return this.ui.controls.get();
         }
         else if (typeof param === "string") {
             return this.ui.controls.get(param);
         }
         else if (typeof param === "number") {
-            return this.ui.controls.get()[param];
+            return this.ui.controls.get(param);
         }
-        else if (param !== undefined) {
-            throw new Error(("getControl as delegate not implemented"));
+        else if (typeof param === "function") {
+            return this.ui.controls.get(param);
         }
+        throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
     };
     return PageMock;
 }());

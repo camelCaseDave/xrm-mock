@@ -9,38 +9,38 @@ export class PageMock implements Xrm.Page {
         this.ui = components.ui;
     }
 
-    public getAttribute<T extends Xrm.Page.Attribute>(attributeName: string): T;
-    public getAttribute(param: string | number): Xrm.Page.Attribute;
-    public getAttribute(delegateFunction?: Xrm.Collection.MatchingDelegate<Xrm.Page.Attribute>): Xrm.Page.Attribute[];
+    public getAttribute<T extends Xrm.Page.Attribute>(attributeNameOrIndex: number | string): T;
+    public getAttribute<T extends Xrm.Page.Attribute>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
 
     public getAttribute<T extends Xrm.Page.Attribute>(param?: number | string |
-        Xrm.Collection.MatchingDelegate<Xrm.Page.Attribute>): T | Xrm.Page.Attribute | Xrm.Page.Attribute[] {
+        Xrm.Collection.MatchingDelegate<T>): T | Xrm.Page.Attribute[] {
         if (!arguments.length) {
             return this.data.entity.attributes.get();
         } else if (param && typeof param === "string") {
-            return this.data.entity.attributes.get(param);
+            return this.data.entity.attributes.get<T>(param);
         } else if (typeof param === "number") {
-            return this.data.entity.attributes.get()[param];
-        } else if (param as Xrm.Collection.MatchingDelegate<Xrm.Page.Attribute> !== undefined) {
-            throw new Error(("Xrm.Page.getAttribute(delegate) not implemented"));
+            return this.data.entity.attributes.get(param) as T;
+        } else if (typeof param === "function") {
+            return this.data.entity.attributes.get(param as Xrm.Collection.MatchingDelegate<T>) as T[];
         }
+        throw new Error(`Collection.Get called with unknown parameter type: ${typeof param}`);
     }
 
-    public getControl<T extends Xrm.Page.Control>(param: string | number): T;
-    public getControl(param: string | number): Xrm.Page.Control;
-    public getControl(delegateFunction?: Xrm.Collection.MatchingDelegate<Xrm.Page.Control>): Xrm.Page.Control[];
+    public getControl<T extends Xrm.Page.Control>(controlNameOrIndex: string | number): T;
+    public getControl<T extends Xrm.Page.Control>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
 
     public getControl<T extends Xrm.Page.Control>(param?: number | string |
-        Xrm.Collection.MatchingDelegate<Xrm.Page.Control>): T | Xrm.Page.Control | Xrm.Page.Control[] {
-        if (!arguments.length) {
-            return this.ui.controls.get();
+        Xrm.Collection.MatchingDelegate<T>): T | T[] {
+        if (!arguments.length || param === undefined || param === null) {
+            return this.ui.controls.get() as T[];
         } else if (typeof param === "string") {
-            return this.ui.controls.get(param);
+            return this.ui.controls.get<T>(param);
         } else if (typeof param === "number") {
-            return this.ui.controls.get()[param];
-        } else if (param as Xrm.Collection.MatchingDelegate<Xrm.Page.Control> !== undefined) {
-            throw new Error(("getControl as delegate not implemented"));
+            return this.ui.controls.get(param) as T;
+        } else if (typeof param === "function") {
+            return this.ui.controls.get(param as Xrm.Collection.MatchingDelegate<T>) as T[];
         }
+        throw new Error(`Collection.Get called with unknown parameter type: ${typeof param}`);
     }
 }
 

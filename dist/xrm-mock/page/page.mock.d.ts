@@ -4,12 +4,10 @@ export declare class PageMock implements Xrm.Page {
     data: Xrm.Data;
     ui: Xrm.Ui;
     constructor(components: IPageComponents);
-    getAttribute<T extends Xrm.Page.Attribute>(attributeName: string): T;
-    getAttribute(param: string | number): Xrm.Page.Attribute;
-    getAttribute(delegateFunction?: Xrm.Collection.MatchingDelegate<Xrm.Page.Attribute>): Xrm.Page.Attribute[];
-    getControl<T extends Xrm.Page.Control>(param: string | number): T;
-    getControl(param: string | number): Xrm.Page.Control;
-    getControl(delegateFunction?: Xrm.Collection.MatchingDelegate<Xrm.Page.Control>): Xrm.Page.Control[];
+    getAttribute<T extends Xrm.Page.Attribute>(attributeNameOrIndex: number | string): T;
+    getAttribute<T extends Xrm.Page.Attribute>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
+    getControl<T extends Xrm.Page.Control>(controlNameOrIndex: string | number): T;
+    getControl<T extends Xrm.Page.Control>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
 }
 export interface IPageComponents {
     data?: Xrm.Data;
