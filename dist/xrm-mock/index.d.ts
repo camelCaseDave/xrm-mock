@@ -15,6 +15,7 @@ export { IExecuteResponseComponents, ExecuteResponseMock } from "./executerespon
 export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
 export { FormSelectorMock } from "./page/formselector/formselector.mock";
+export { GridControlMock, IAttGridControlComponents, IGridControlComponents } from "./page/gridcontrol/gridcontrol.mock";
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
 export { ILookupAttributeComponents, LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";
 export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./page/lookupcontrol/lookupcontrol.mock";
