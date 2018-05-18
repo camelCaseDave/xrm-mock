@@ -46,7 +46,7 @@ describe("XrmMockGenerator.Attribute", () => {
     expect(Xrm.Page.getAttribute("primarycustomerid").getValue()[0].id).toBe("5555");
   });
 
-  it("should create a number", () => {
+  it("should create a number attribute", () => {
     XrmMockGenerator.Attribute.createNumber("units", 3);
     expect(Xrm.Page.getAttribute("units").getValue()).toBe(3);
   });

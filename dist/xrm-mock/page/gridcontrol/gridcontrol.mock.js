@@ -22,7 +22,7 @@ var GridControlMock = /** @class */ (function (_super) {
     }
     GridControlMock.defaultComponents = function (components) {
         components.controlType = "subgrid";
-        components.contextType = components.contextType || 4 /* FormContextRelated */;
+        components.contextType = components.contextType || 4;
         components.entityName = components.entityName || "contact";
         components.onLoadHandlers = components.onLoadHandlers || [];
         return components;

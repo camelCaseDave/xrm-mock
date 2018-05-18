@@ -23,6 +23,23 @@ export default class Control {
     return this.addControl(new XrmMock.DateControlMock(components));
   }
 
+  public createGrid(components: XrmMock.IGridControlComponents): XrmMock.GridControlMock;
+  public createGrid(name?: string,
+                    visible?: boolean,
+                    label?: string): XrmMock.GridControlMock;
+  public createGrid(nameOrComponents: XrmMock.IGridControlComponents | string,
+                    visible: boolean = true,
+                    label?: string): XrmMock.GridControlMock {
+    const components: XrmMock.IGridControlComponents = (nameOrComponents as XrmMock.IGridControlComponents).name
+      ? nameOrComponents as XrmMock.IGridControlComponents
+      : {
+        label,
+        name: nameOrComponents as string,
+        visible };
+
+    return this.addControl(new XrmMock.GridControlMock(components));
+  }
+
   public createLookup(components: XrmMock.ILookupControlComponents): XrmMock.LookupControlMock;
   public createLookup(attribute: XrmMock.LookupAttributeMock,
                       name?: string,

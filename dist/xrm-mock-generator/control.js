@@ -10,6 +10,17 @@ var Control = /** @class */ (function () {
         var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
         return this.addControl(new XrmMock.DateControlMock(components));
     };
+    Control.prototype.createGrid = function (nameOrComponents, visible, label) {
+        if (visible === void 0) { visible = true; }
+        var components = nameOrComponents.name
+            ? nameOrComponents
+            : {
+                label: label,
+                name: nameOrComponents,
+                visible: visible
+            };
+        return this.addControl(new XrmMock.GridControlMock(components));
+    };
     Control.prototype.createLookup = function (attributeOrComponents, name, visible, disabled, label) {
         if (visible === void 0) { visible = true; }
         if (disabled === void 0) { disabled = false; }

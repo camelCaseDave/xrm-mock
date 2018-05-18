@@ -3,6 +3,8 @@ export declare type CreateMethods = "createDate" | "createLookup" | "createNumbe
 export default class Control {
     createDate(components: XrmMock.IDateControlComponents): XrmMock.DateControlMock;
     createDate(attribute: XrmMock.DateAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.DateControlMock;
+    createGrid(components: XrmMock.IGridControlComponents): XrmMock.GridControlMock;
+    createGrid(name?: string, visible?: boolean, label?: string): XrmMock.GridControlMock;
     createLookup(components: XrmMock.ILookupControlComponents): XrmMock.LookupControlMock;
     createLookup(attribute: XrmMock.LookupAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.LookupControlMock;
     createNumber(components: XrmMock.INumberControlComponents): XrmMock.NumberControlMock;

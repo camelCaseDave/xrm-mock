@@ -6,7 +6,7 @@ import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 export class GridControlMock extends ControlMock implements Xrm.Page.GridControl {
     private static defaultComponents(components: IGridControlComponents): IGridControlComponents {
         components.controlType = "subgrid";
-        components.contextType = components.contextType || XrmEnum.GridControlContext.FormContextRelated;
+        components.contextType = components.contextType || 4 as XrmEnum.GridControlContext.FormContextRelated;
         components.entityName = components.entityName || "contact";
         components.onLoadHandlers = components.onLoadHandlers || [];
         return components;
