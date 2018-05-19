@@ -16,7 +16,7 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
     public get(): T[];
     public get(param?: string | number | Xrm.Collection.MatchingDelegate<T> | T[]): T | T[] {
         if (param === undefined || param === null) {
-            return (this.itemCollection.splice(0) as T[]);
+            return (this.itemCollection as T[]);
         } else if (typeof param === "string") {
             let attribute: T;
 

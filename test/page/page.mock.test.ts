@@ -98,6 +98,7 @@ describe("Xrm.Page Mock", () => {
 
         it("should get all", () => {
             expect(xrmPageMock.getControl().length).toBe(2);
+            expect(xrmPageMock.getControl().length).toBe(2);
         });
 
         it("should get by index", () => {
@@ -109,6 +110,7 @@ describe("Xrm.Page Mock", () => {
         });
 
         it("by delegate", () => {
+            expect(xrmPageMock.getControl((c) => c.getControlType() === "standard").length).toBe(2);
             expect(xrmPageMock.getControl((c) => c.getControlType() === "standard").length).toBe(2);
             expect(xrmPageMock.getControl((c) => c.getName() === "firstname").length).toBe(1);
             expect(xrmPageMock.getControl((c) => c.getName() === "notExist").length).toBe(0);

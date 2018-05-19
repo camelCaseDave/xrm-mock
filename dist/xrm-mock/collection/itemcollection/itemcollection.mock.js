@@ -9,7 +9,7 @@ var ItemCollectionMock = /** @class */ (function () {
     };
     ItemCollectionMock.prototype.get = function (param) {
         if (param === undefined || param === null) {
-            return this.itemCollection.splice(0);
+            return this.itemCollection;
         }
         else if (typeof param === "string") {
             var attribute = void 0;
