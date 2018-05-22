@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
@@ -37,8 +37,10 @@
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/node": "8.10.12",
+    "@types/sinon": "^4.3.3",
     "@types/xrm": "^9.0.5",
     "jest": "^22.4.4",
+    "sinon": "^5.0.7",
     "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
