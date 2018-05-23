@@ -26,6 +26,7 @@ export { OpenParametersMock } from "./utility/openparameters/openparameters.mock
 export { IOptionSetAttributeComponents, OptionSetAttributeMock } from "./page/optionsetattribute/optionsetattribute.mock";
 export { IAttOptionSetControlComponents, IOptionSetControlComponents, OptionSetControlMock } from "./page/optionsetcontrol/optionsetcontrol.mock";
 export { OptionSetValueMock } from "./page/optionsetvalue/optionsetvalue.mock";
+export { IOrganizationSettingsComponents, OrganizationSettingsMock } from "./organizationsettings/organizationsettings.mock";
 export { PageMock, IPageComponents } from "./page/page.mock";
 export { ProcessDictionaryMock } from "./data/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./data/processmanager/processmanager.mock";

@@ -2,7 +2,7 @@ import { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
 import { PageMock } from "./page/page.mock";
 import { UtilityMock } from "./utility/utility.mock";
 
-export class XrmStaticMock {
+export class XrmStaticMock implements Xrm.XrmStatic {
     public Device: Xrm.Device;
     public Encoding: Xrm.Encoding;
     public Mobile: Xrm.Mobile;

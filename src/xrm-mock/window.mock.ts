@@ -8,7 +8,7 @@ export class WindowMock {
         this.Xrm = xrm;
     }
 
-    public GetGlobalContext(): ContextMock {
+    public GetGlobalContext(): Xrm.GlobalContext {
         throw new Error("not implemented");
     }
 }
