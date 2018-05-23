@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import { FormSelectorMock } from "../page/formselector/formselector.mock";
+import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 export declare class UiMock implements Xrm.Ui {
     process: Xrm.Page.ui.ProcessManager;
     controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;

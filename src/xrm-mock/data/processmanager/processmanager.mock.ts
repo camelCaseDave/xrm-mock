@@ -1,4 +1,4 @@
-import { StageMock } from "../../page/stage/stage.mock";
+import { StageMock } from "../../processflow/stage/stage.mock";
 
 export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     public enabledProcesses: Xrm.Page.Process[] | Xrm.Page.data.ProcessDictionary;

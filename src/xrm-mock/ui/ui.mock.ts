@@ -1,5 +1,5 @@
-import { FormItemMock } from "../page/formitem/formitem.mock";
-import { FormSelectorMock } from "../page/formselector/formselector.mock";
+import { FormItemMock } from "../controls/formitem/formitem.mock";
+import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 
 export class UiMock implements Xrm.Ui {
     public process: Xrm.Page.ui.ProcessManager;
