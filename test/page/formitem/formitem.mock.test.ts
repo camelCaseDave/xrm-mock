@@ -1,6 +1,6 @@
-import { FormItemMock } from "../../../src/xrm-mock/page/formitem/formitem.mock";
+import { FormItemMock } from "../../../src/xrm-mock/controls/formitem/formitem.mock";
 
-describe("Xrm.Page.FormItem Mock", () => {
+describe("Xrm.Controls.FormItem Mock", () => {
     beforeEach(() => {
         this.formItemMock = new FormItemMock({
             currentItem: true,

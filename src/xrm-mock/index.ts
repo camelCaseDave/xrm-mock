@@ -18,7 +18,7 @@ export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
 export { EventContextMock } from "./events/eventcontext/eventcontext.mock";
 export { IExecuteResponseComponents, ExecuteResponseMock } from "./executeresponse/executeresponse.mock";
 export { FormContextMock } from "./formcontext/formcontext.mock";
-export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock";
+export { FormItemMock, IFormItemComponents } from "./controls/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
 export { FormSelectorMock } from "./page/formselector/formselector.mock";
 export { GridControlMock, IAttGridControlComponents, IGridControlComponents } from "./page/gridcontrol/gridcontrol.mock";
