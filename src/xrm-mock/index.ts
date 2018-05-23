@@ -1,3 +1,4 @@
+export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./page/autolookupcontrol/autolookupcontrol.mock";
