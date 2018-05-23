@@ -46,6 +46,7 @@ export { UiKeyPressableMock } from "./page/uikeypressable/uikeypressable.mock";
 export { UiLabelElementMock } from "./page/uilabelelement/uilabelelement.mock";
 export { UiMock } from "./ui/ui.mock";
 export { UiStandardElementMock } from "./page/uistandardelement/uistandardelement.mock";
+export { IUserSettingsComponents, UserSettingsMock } from "./usersettings/usersettings.mock";
 export { UtilityMock } from "./utility/utility.mock";
 export { WebApiMock } from "./webapi/webapi.mock";
 export { WebApiOfflineMock } from "./webapioffline/webapioffline.mock";
