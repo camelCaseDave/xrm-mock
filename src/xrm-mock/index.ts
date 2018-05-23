@@ -48,6 +48,7 @@ export { SaveEventContextMock } from "./events/saveeventcontext/saveeventcontext
 export { SaveOptionsMock } from "./saveoptions/saveoptions.mock";
 export { SectionMock } from "./page/section/section.mock";
 export { StageChangeEventArgumentsMock } from "./events/stagechangeeventarguments/stagechangeeventarguments.mock";
+export { StageChangeEventContextMock } from "./events/stagechangeeventcontext/stagechangeeventcontext.mock";
 export { StageMock } from "./processflow/stage/stage.mock";
 export { StageSelectedEventArgumentsMock } from "./events/stageselectedeventarguments/stageselectedeventarguments.mock";
 export { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "./page/standardcontrol/standardcontrol.mock";
