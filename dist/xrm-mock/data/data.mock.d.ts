@@ -1,6 +1,6 @@
 /// <reference types="xrm" />
+import { AttributeMock, AttributeReturnType } from "../attributes/attribute/attribute.mock";
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
-import { AttributeMock, AttributeReturnType } from "../page/attribute/attribute.mock";
 import { ControlMock } from "../page/control/control.mock";
 export declare class DataMock implements Xrm.Data {
     attributes: ItemCollectionMock<AttributeMock<ControlMock, AttributeReturnType>>;

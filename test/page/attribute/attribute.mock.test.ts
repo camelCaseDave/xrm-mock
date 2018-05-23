@@ -1,4 +1,4 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 
 describe("Xrm.Page.Attribute Mock", () => {
     beforeEach(() => {

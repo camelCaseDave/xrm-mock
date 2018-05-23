@@ -1,5 +1,5 @@
+import { StringAttributeMock } from "../../attributes/stringattribute/stringattribute.mock";
 import { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "../autolookupcontrol/autolookupcontrol.mock";
-import { StringAttributeMock } from "../stringattribute/stringattribute.mock";
 export declare class StringControlMock extends AutoLookupControlMock<StringControlMock, StringAttributeMock, string> implements Xrm.Page.StringControl {
     constructor(components: IStringControlComponents);
 }

@@ -1,7 +1,7 @@
 /// <reference types="xrm" />
-import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
+import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
+import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
 import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
-import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 export declare class AutoLookupControlMock<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends StandardControlMock<TControl, TAttribute, TValue> implements Xrm.Page.AutoLookupControl {
     uiKeyPressable: UiKeyPressableMock;
     /**

@@ -1,7 +1,7 @@
-import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
+import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
+import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattribute.mock";
+import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
-import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
-import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class GridControlMock extends ControlMock implements Xrm.Page.GridControl {
     private static defaultComponents(components: IGridControlComponents): IGridControlComponents {

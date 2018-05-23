@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
+import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattribute.mock";
 import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 export declare class LookupControlMock extends StandardControlMock<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> implements Xrm.Page.LookupControl {
     private static defaultComponents(components);

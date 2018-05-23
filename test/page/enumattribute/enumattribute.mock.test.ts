@@ -1,5 +1,5 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { EnumAttributeMock } from "../../../src/xrm-mock/page/enumattribute/enumattribute.mock";
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
 
 describe("Xrm.Page.EnumAttribute Mock", () => {
     beforeEach(() => {

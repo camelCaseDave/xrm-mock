@@ -1,5 +1,5 @@
+import { OptionSetAttributeMock } from "../../../src/xrm-mock/attributes/optionsetattribute/optionsetattribute.mock";
 import { OptionSetValueMock } from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
-import { OptionSetAttributeMock } from "../../../src/xrm-mock/page/optionsetattribute/optionsetattribute.mock";
 import { OptionSetControlMock } from "../../../src/xrm-mock/page/optionsetcontrol/optionsetcontrol.mock";
 
 describe("Xrm.Page.OptionSetControl Mock", () => {

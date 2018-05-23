@@ -1,7 +1,7 @@
 import { XrmMockGenerator } from "../../src/xrm-mock-generator/index";
+import { StringAttributeMock } from "../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
 import { LookupValueMock, XrmStaticMock } from "../../src/xrm-mock/index";
 import { PageMock } from "../../src/xrm-mock/page/page.mock";
-import { StringAttributeMock } from "../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 
 describe("XrmMockGenerator.Attribute", () => {
   let page: PageMock;

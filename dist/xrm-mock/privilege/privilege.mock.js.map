@@ -1,0 +1,1 @@
+{"version":3,"file":"privilege.mock.js","sourceRoot":"","sources":["../../../src/xrm-mock/privilege/privilege.mock.ts"],"names":[],"mappings":";;AAAA;IAKI,uBAAY,OAAgB,EAAE,SAAkB,EAAE,SAAkB;QAChE,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;QACvB,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;QAC3B,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;IAC/B,CAAC;IACL,oBAAC;AAAD,CAAC,AAVD,IAUC;AAVY,sCAAa"}

@@ -1,5 +1,5 @@
-import { OptionSetAttributeMock } from "../optionsetattribute/optionsetattribute.mock";
-import { OptionSetValueMock } from "../optionsetvalue/optionsetvalue.mock";
+import { OptionSetAttributeMock } from "../../attributes/optionsetattribute/optionsetattribute.mock";
+import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";

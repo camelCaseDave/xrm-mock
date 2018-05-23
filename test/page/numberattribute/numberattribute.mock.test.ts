@@ -1,5 +1,5 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { NumberAttributeMock } from "../../../src/xrm-mock/page/numberattribute/numberattribute.mock";
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { NumberAttributeMock } from "../../../src/xrm-mock/attributes/numberattribute/numberattribute.mock";
 
 describe("Xrm.Page.NumberAttribute", () => {
     let numberAttribute: NumberAttributeMock;

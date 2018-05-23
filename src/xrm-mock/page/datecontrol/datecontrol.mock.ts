@@ -1,4 +1,4 @@
-import { DateAttributeMock } from "../dateattribute/dateattribute.mock";
+import { DateAttributeMock } from "../../attributes/dateattribute/dateattribute.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";

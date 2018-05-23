@@ -1,6 +1,6 @@
+import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
+import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattribute.mock";
 import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
-import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
-import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";

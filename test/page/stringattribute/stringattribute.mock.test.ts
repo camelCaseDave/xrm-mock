@@ -1,6 +1,6 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { IStringAttributeComponents,
-         StringAttributeMock } from "../../../src/xrm-mock/page/stringattribute/stringattribute.mock";
+         StringAttributeMock } from "../../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
 
 describe("Xrm.Page.StringAttribute Mock", () => {
     beforeEach(() => {

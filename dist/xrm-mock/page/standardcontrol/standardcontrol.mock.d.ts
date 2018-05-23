@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
+import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 export declare class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TValue>, TValue extends AttributeReturnType> extends ControlMock implements Xrm.Page.StandardControl {
     disabled: boolean;

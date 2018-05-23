@@ -1,5 +1,5 @@
-import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
-import { DateAttributeMock } from "../../../src/xrm-mock/page/dateattribute/dateattribute.mock";
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { DateAttributeMock } from "../../../src/xrm-mock/attributes/dateattribute/dateattribute.mock";
 
 describe("Xrm.Page.DateAttribute Mock", () => {
     let dateAttribute: DateAttributeMock;
