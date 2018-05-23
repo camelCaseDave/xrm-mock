@@ -44,6 +44,7 @@ export { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
 export { ProcessMock, IProcessComponents } from "./processflow/process/process.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
+export { SaveEventContextMock } from "./events/saveeventcontext/saveeventcontext.mock";
 export { SaveOptionsMock } from "./saveoptions/saveoptions.mock";
 export { SectionMock } from "./page/section/section.mock";
 export { StageChangeEventArgumentsMock } from "./events/stagechangeeventarguments/stagechangeeventarguments.mock";
