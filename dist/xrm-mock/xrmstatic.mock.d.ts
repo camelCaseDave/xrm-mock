@@ -1,7 +1,7 @@
 /// <reference types="xrm" />
 import { PageMock } from "./page/page.mock";
 import { UtilityMock } from "./utility/utility.mock";
-export declare class XrmStaticMock {
+export declare class XrmStaticMock implements Xrm.XrmStatic {
     Device: Xrm.Device;
     Encoding: Xrm.Encoding;
     Mobile: Xrm.Mobile;

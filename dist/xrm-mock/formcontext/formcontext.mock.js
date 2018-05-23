@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var PageMock = /** @class */ (function () {
-    function PageMock(context, formContext) {
-        this.context = context;
-        this.data = formContext.data;
-        this.ui = formContext.ui;
+var FormContextMock = /** @class */ (function () {
+    function FormContextMock(data, ui) {
+        this.data = data;
+        this.ui = ui;
     }
-    PageMock.prototype.getAttribute = function (param) {
+    FormContextMock.prototype.getAttribute = function (param) {
         if (!arguments.length) {
             return this.data.entity.attributes.get();
         }
@@ -21,7 +20,7 @@ var PageMock = /** @class */ (function () {
         }
         throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
     };
-    PageMock.prototype.getControl = function (param) {
+    FormContextMock.prototype.getControl = function (param) {
         if (!arguments.length || param === undefined || param === null) {
             return this.ui.controls.get();
         }
@@ -36,7 +35,7 @@ var PageMock = /** @class */ (function () {
         }
         throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
     };
-    return PageMock;
+    return FormContextMock;
 }());
-exports.PageMock = PageMock;
-//# sourceMappingURL=page.mock.js.map
+exports.FormContextMock = FormContextMock;
+//# sourceMappingURL=formcontext.mock.js.map

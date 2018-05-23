@@ -12,12 +12,9 @@ var XrmMockGenerator = /** @class */ (function () {
     }
     XrmMockGenerator.initialise = function () {
         var context = context_1.default.createContext();
+        var formContext = new XrmMock.FormContextMock(new XrmMock.DataMock(new XrmMock.EntityMock("{00000000-0000-0000-0000-000000000000}", new XrmMock.ItemCollectionMock([]))), ui_1.default.createUi());
         var xrm = new XrmMock.XrmStaticMock({
-            page: new XrmMock.PageMock({
-                context: context,
-                data: new XrmMock.DataMock(new XrmMock.EntityMock("{00000000-0000-0000-0000-000000000000}", new XrmMock.ItemCollectionMock([]))),
-                ui: ui_1.default.createUi(),
-            }),
+            page: new XrmMock.PageMock(context, formContext),
             webApi: webapi_1.default.createApi(context.client),
         });
         if (typeof global === "undefined") {
