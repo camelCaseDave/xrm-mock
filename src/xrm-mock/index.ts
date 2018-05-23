@@ -20,7 +20,7 @@ export { IExecuteResponseComponents, ExecuteResponseMock } from "./executerespon
 export { FormContextMock } from "./formcontext/formcontext.mock";
 export { FormItemMock, IFormItemComponents } from "./controls/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
-export { FormSelectorMock } from "./page/formselector/formselector.mock";
+export { FormSelectorMock } from "./controls/formselector/formselector.mock";
 export { GridControlMock, IAttGridControlComponents, IGridControlComponents } from "./page/gridcontrol/gridcontrol.mock";
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
 export { ILookupAttributeComponents, LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";

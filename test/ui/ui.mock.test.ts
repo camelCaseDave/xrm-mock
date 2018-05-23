@@ -1,6 +1,6 @@
 import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
 import { FormItemMock } from "../../src/xrm-mock/controls/formitem/formitem.mock";
-import { FormSelectorMock } from "../../src/xrm-mock/page/formselector/formselector.mock";
+import { FormSelectorMock } from "../../src/xrm-mock/controls/formselector/formselector.mock";
 import { UiMock } from "../../src/xrm-mock/ui/ui.mock";
 
 describe("Xrm.Ui Mock", function() {
