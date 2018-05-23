@@ -1,4 +1,4 @@
-export class PrivilegeMock implements Xrm.Page.Privilege {
+export class PrivilegeMock implements Xrm.Privilege {
     public canRead: boolean;
     public canUpdate: boolean;
     public canCreate: boolean;

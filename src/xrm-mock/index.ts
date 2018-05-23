@@ -41,6 +41,7 @@ export { OptionSetValueMock } from "./optionsetvalue/optionsetvalue.mock";
 export { IOrganizationSettingsComponents, OrganizationSettingsMock } from "./organizationsettings/organizationsettings.mock";
 export { PageMock } from "./page/page.mock";
 export { PanelMock } from "./panel/panel.mock";
+export { PrivilegeMock } from "./privilege/privilege.mock";
 export { ProcessControlMock } from "./controls/processcontrol/processcontrol.mock";
 export { ProcessDictionaryMock } from "./data/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
