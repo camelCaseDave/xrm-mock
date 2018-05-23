@@ -1,4 +1,4 @@
-import { StepMock } from "../../../src/xrm-mock/page/step/step.mock";
+import { StepMock } from "../../../src/xrm-mock/processflow/step/step.mock";
 
 describe("Xrm.Page.Step Mock", () => {
     beforeEach(() => {

@@ -47,10 +47,10 @@ export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarg
 export { SaveOptionsMock } from "./saveoptions/saveoptions.mock";
 export { SectionMock } from "./page/section/section.mock";
 export { StageChangeEventArgumentsMock } from "./events/stagechangeeventarguments/stagechangeeventarguments.mock";
-export { StageMock } from "./page/stage/stage.mock";
+export { StageMock } from "./processflow/stage/stage.mock";
 export { StageSelectedEventArgumentsMock } from "./events/stageselectedeventarguments/stageselectedeventarguments.mock";
 export { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "./page/standardcontrol/standardcontrol.mock";
-export { StepMock } from "./page/step/step.mock";
+export { StepMock } from "./processflow/step/step.mock";
 export { IStringAttributeComponents, StringAttributeMock } from "./page/stringattribute/stringattribute.mock";
 export { IAttStringControlComponents, IStringControlComponents, StringControlMock } from "./page/stringcontrol/stringcontrol.mock";
 export { UiCanGetVisibleElementMock } from "./page/uicangetvisibleelement/uicangetvisibleelement.mock";
