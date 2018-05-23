@@ -7,6 +7,7 @@ export { ICalendarComponents, CalendarMock } from "./calendar/calendar.mock";
 export { ClientContextMock } from "./clientcontext/clientcontext.mock";
 export { ContextMock, IContextComponents } from "./globalcontext/context.mock";
 export { ControlMock, IAttControlComponents, IControlComponents } from "./page/control/control.mock";
+export { ControlNotificationActionMock } from "./controls/controlnotificationaction/controlnotificationaction.mock";
 export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./page/dateattribute/dateattribute.mock";
 export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./page/datecontrol/datecontrol.mock";
