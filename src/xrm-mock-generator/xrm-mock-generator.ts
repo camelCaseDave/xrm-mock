@@ -18,15 +18,19 @@ export class XrmMockGenerator {
 
   public static initialise(): XrmMock.XrmStaticMock {
     const context = Context.createContext();
+    const formContext = new XrmMock.FormContextMock(
+      new XrmMock.DataMock(
+        new XrmMock.EntityMock(
+          "{00000000-0000-0000-0000-000000000000}",
+          new XrmMock.ItemCollectionMock([]))),
+      Ui.createUi(),
+    );
+
     const xrm = new XrmMock.XrmStaticMock({
-      page: new XrmMock.PageMock({
+      page: new XrmMock.PageMock(
         context,
-        data: new XrmMock.DataMock(
-          new XrmMock.EntityMock(
-            "{00000000-0000-0000-0000-000000000000}",
-            new XrmMock.ItemCollectionMock([]))),
-        ui: Ui.createUi(),
-      }),
+        formContext,
+      ),
       webApi: WebApi.createApi(context.client),
     });
 

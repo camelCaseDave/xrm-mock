@@ -15,6 +15,7 @@ export { EnumAttributeMock } from "./page/enumattribute/enumattribute.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
 export { EventContextMock } from "./events/eventcontext/eventcontext.mock";
 export { IExecuteResponseComponents, ExecuteResponseMock } from "./executeresponse/executeresponse.mock";
+export { FormContextMock } from "./formcontext/formcontext.mock";
 export { FormItemMock, IFormItemComponents } from "./page/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
 export { FormSelectorMock } from "./page/formselector/formselector.mock";
@@ -30,7 +31,7 @@ export { IOptionSetAttributeComponents, OptionSetAttributeMock } from "./page/op
 export { IAttOptionSetControlComponents, IOptionSetControlComponents, OptionSetControlMock } from "./page/optionsetcontrol/optionsetcontrol.mock";
 export { OptionSetValueMock } from "./page/optionsetvalue/optionsetvalue.mock";
 export { IOrganizationSettingsComponents, OrganizationSettingsMock } from "./organizationsettings/organizationsettings.mock";
-export { PageMock, IPageComponents } from "./page/page.mock";
+export { PageMock } from "./page/page.mock";
 export { ProcessDictionaryMock } from "./data/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
 export { ProcessMock, IProcessComponents } from "./page/process/process.mock";

@@ -1,5 +1,6 @@
 import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
 import { DataMock } from "../../src/xrm-mock/data/data.mock";
+import { FormContextMock } from "../../src/xrm-mock/formcontext/formcontext.mock";
 import { AttributeMock } from "../../src/xrm-mock/page/attribute/attribute.mock";
 import { AutoLookupControlMock } from "../../src/xrm-mock/page/autolookupcontrol/autolookupcontrol.mock";
 import { ControlMock } from "../../src/xrm-mock/page/control/control.mock";
@@ -15,6 +16,7 @@ import { XrmStaticMock } from "../../src/xrm-mock/xrmstatic.mock";
 describe("Xrm.Page Mock", () => {
     let lastName: StringAttributeMock;
     let xrmPageMock: PageMock;
+    let formContext: FormContextMock;
 
     beforeEach(() => {
         const attributes: Array<AttributeMock<StringControlMock, string>> = [];
@@ -42,13 +44,14 @@ describe("Xrm.Page Mock", () => {
             uncommittedText: "Bloggs",
         }));
 
-        xrmPageMock = new PageMock({
-            data: new DataMock(
+        formContext = new FormContextMock(
+            new DataMock(
                 new EntityMock("{0}", new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes))),
-            ui: new UiMock({
-                controls: new ItemCollectionMock<StringControlMock>(controls),
-            }),
-        });
+                new UiMock({
+                    controls: new ItemCollectionMock<StringControlMock>(controls),
+                },
+        ));
+        xrmPageMock = new PageMock(null, formContext);
     });
 
     it("should exist", () => {

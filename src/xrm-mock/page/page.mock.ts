@@ -3,10 +3,10 @@ export class PageMock implements Xrm.Page {
     public data: Xrm.Data;
     public ui: Xrm.Ui;
 
-    constructor(components: IPageComponents) {
-        this.context = components.context;
-        this.data = components.data;
-        this.ui = components.ui;
+    constructor(context: Xrm.GlobalContext, formContext: Xrm.FormContext) {
+        this.context = context;
+        this.data = formContext.data;
+        this.ui = formContext.ui;
     }
 
     public getAttribute<T extends Xrm.Page.Attribute>(attributeNameOrIndex: number | string): T;
@@ -42,10 +42,4 @@ export class PageMock implements Xrm.Page {
         }
         throw new Error(`Collection.Get called with unknown parameter type: ${typeof param}`);
     }
-}
-
-export interface IPageComponents {
-    data?: Xrm.Data;
-    context?: Xrm.GlobalContext;
-    ui?: Xrm.Ui;
 }

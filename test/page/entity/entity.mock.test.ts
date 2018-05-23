@@ -1,5 +1,6 @@
 import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
 import { DataMock } from "../../../src/xrm-mock/data/data.mock";
+import { FormContextMock } from "../../../src/xrm-mock/formcontext/formcontext.mock";
 import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
 import { EntityMock } from "../../../src/xrm-mock/page/entity/entity.mock";
 import { PageMock } from "../../../src/xrm-mock/page/page.mock";
@@ -19,10 +20,9 @@ describe("Xrm.Page.Entity Mock", () => {
         });
         attributes.push(this.lastName);
 
+        this.formContext = new FormContextMock(new DataMock(this.entityMock), null);
         this.entityMock = new EntityMock(this.id, new ItemCollectionMock<Xrm.Page.Attribute>(attributes));
-        this.xrmPageMock = new PageMock({
-            data: new DataMock(this.entityMock),
-        });
+        this.xrmPageMock = new PageMock(null, this.formContext);
     });
 
     it("should exist", () => {
