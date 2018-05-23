@@ -60,6 +60,7 @@ export { UiStandardElementMock } from "./page/uistandardelement/uistandardelemen
 export { IUserSettingsComponents, UserSettingsMock } from "./usersettings/usersettings.mock";
 export { UtilityMock } from "./utility/utility.mock";
 export { ViewSelectorMock } from "./controls/viewselector/viewselector.mock";
+export { ViewSelectorItemMock } from "./controls/viewselectoritem/viewselectoritem.mock";
 export { WebApiMock } from "./webapi/webapi.mock";
 export { WebApiOfflineMock } from "./webapioffline/webapioffline.mock";
 export { WebApiOnlineMock } from "./webapionline/webapionline.mock";
