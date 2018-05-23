@@ -41,7 +41,7 @@ export { PanelMock } from "./panel/panel.mock";
 export { ProcessControlMock } from "./controls/processcontrol/processcontrol.mock";
 export { ProcessDictionaryMock } from "./data/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
-export { ProcessMock, IProcessComponents } from "./page/process/process.mock";
+export { ProcessMock, IProcessComponents } from "./processflow/process/process.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
 export { SaveOptionsMock } from "./saveoptions/saveoptions.mock";

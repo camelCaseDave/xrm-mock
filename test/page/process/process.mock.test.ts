@@ -1,7 +1,7 @@
 import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
-import { ProcessMock } from "../../../src/xrm-mock/page/process/process.mock";
 import { StageMock } from "../../../src/xrm-mock/page/stage/stage.mock";
 import { StepMock } from "../../../src/xrm-mock/page/step/step.mock";
+import { ProcessMock } from "../../../src/xrm-mock/processflow/process/process.mock";
 
 describe("Xrm.Page.Process Mock", () => {
     beforeEach(() => {
