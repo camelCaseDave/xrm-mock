@@ -1,6 +1,7 @@
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./page/autolookupcontrol/autolookupcontrol.mock";
 export { BooleanAttributeMock } from "./page/booleanattribute/booleanattribute.mock";
+export { ICalendarComponents, CalendarMock } from "./calendar/calendar.mock";
 export { ClientContextMock } from "./clientcontext/clientcontext.mock";
 export { ContextMock, IContextComponents } from "./globalcontext/context.mock";
 export { ControlMock, IAttControlComponents, IControlComponents } from "./page/control/control.mock";
