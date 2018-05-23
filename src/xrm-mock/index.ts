@@ -56,12 +56,12 @@ export { IAttStandardControlComponents, IStandardControlComponents, StandardCont
 export { StepMock } from "./processflow/step/step.mock";
 export { IStringAttributeComponents, StringAttributeMock } from "./page/stringattribute/stringattribute.mock";
 export { IAttStringControlComponents, IStringControlComponents, StringControlMock } from "./page/stringcontrol/stringcontrol.mock";
-export { UiCanGetVisibleElementMock } from "./page/uicangetvisibleelement/uicangetvisibleelement.mock";
-export { UiFocusableMock } from "./page/uifocusable/uifocusable.mock";
-export { UiKeyPressableMock } from "./page/uikeypressable/uikeypressable.mock";
-export { UiLabelElementMock } from "./page/uilabelelement/uilabelelement.mock";
+export { UiCanGetVisibleElementMock } from "./controls/uicangetvisibleelement/uicangetvisibleelement.mock";
+export { UiFocusableMock } from "./controls/uifocusable/uifocusable.mock";
+export { UiKeyPressableMock } from "./controls/uikeypressable/uikeypressable.mock";
+export { UiLabelElementMock } from "./controls/uilabelelement/uilabelelement.mock";
 export { UiMock } from "./ui/ui.mock";
-export { UiStandardElementMock } from "./page/uistandardelement/uistandardelement.mock";
+export { UiStandardElementMock } from "./controls/uistandardelement/uistandardelement.mock";
 export { IUserSettingsComponents, UserSettingsMock } from "./usersettings/usersettings.mock";
 export { UtilityMock } from "./utility/utility.mock";
 export { ViewSelectorMock } from "./controls/viewselector/viewselector.mock";

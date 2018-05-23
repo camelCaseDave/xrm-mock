@@ -1,5 +1,5 @@
-export class UiKeyPressableMock implements Xrm.Page.UiKeyPressable {
-    constructor(public keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[]) {
+export class UiKeyPressableMock implements Xrm.Controls.UiKeyPressable {
+    constructor(public keyPressHandlers?: Xrm.Events.ContextSensitiveHandler[]) {
         this.keyPressHandlers = keyPressHandlers || [];
     }
 
@@ -7,13 +7,13 @@ export class UiKeyPressableMock implements Xrm.Page.UiKeyPressable {
         this.keyPressHandlers.push(handler);
     }
 
-    public fireOnKeyPress(eventContext?: Xrm.Page.EventContext): void {
+    public fireOnKeyPress(eventContext?: Xrm.Events.EventContext): void {
         this.keyPressHandlers.forEach((k) => {
             k(eventContext);
         });
     }
 
-    public removeOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public removeOnKeyPress(handler: Xrm.Events.ContextSensitiveHandler): void {
         const index = this.keyPressHandlers.indexOf(handler);
         if (index > -1) {
             this.keyPressHandlers.splice(index);

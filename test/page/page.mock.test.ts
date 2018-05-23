@@ -1,4 +1,5 @@
 import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { UiKeyPressableMock } from "../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
 import { DataMock } from "../../src/xrm-mock/data/data.mock";
 import { FormContextMock } from "../../src/xrm-mock/formcontext/formcontext.mock";
 import { AttributeMock } from "../../src/xrm-mock/page/attribute/attribute.mock";
@@ -9,7 +10,6 @@ import { PageMock } from "../../src/xrm-mock/page/page.mock";
 import { StandardControlMock } from "../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
 import { StringAttributeMock } from "../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 import { StringControlMock } from "../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
-import { UiKeyPressableMock } from "../../src/xrm-mock/page/uikeypressable/uikeypressable.mock";
 import { UiMock } from "../../src/xrm-mock/ui/ui.mock";
 import { XrmStaticMock } from "../../src/xrm-mock/xrmstatic.mock";
 

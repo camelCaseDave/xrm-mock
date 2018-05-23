@@ -1,4 +1,4 @@
-export class UiFocusableMock implements Xrm.Page.UiFocusable {
+export class UiFocusableMock implements Xrm.Controls.UiFocusable {
     public constructor(public hasFocus = false) {
     }
 

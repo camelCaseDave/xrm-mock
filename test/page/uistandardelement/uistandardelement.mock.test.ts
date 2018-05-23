@@ -1,6 +1,6 @@
-import * as Visible from "../../../src/xrm-mock/page/uicangetvisibleelement/uicangetvisibleelement.mock";
-import * as Label from "../../../src/xrm-mock/page/uilabelelement/uilabelelement.mock";
-import * as Ui from "../../../src/xrm-mock/page/uistandardelement/uistandardelement.mock";
+import * as Visible from "../../../src/xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
+import * as Label from "../../../src/xrm-mock/controls/uilabelelement/uilabelelement.mock";
+import * as Ui from "../../../src/xrm-mock/controls/uistandardelement/uistandardelement.mock";
 
 describe("Xrm.Ui Mock", () => {
     beforeEach(() => {

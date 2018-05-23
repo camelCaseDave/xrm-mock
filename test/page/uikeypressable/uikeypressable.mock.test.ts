@@ -1,4 +1,4 @@
-import { UiKeyPressableMock } from "../../../src/xrm-mock/page/uikeypressable/uikeypressable.mock";
+import { UiKeyPressableMock } from "../../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
 
 describe("Xrm.Page.StandardControl Mock", () => {
   beforeEach(() => {
