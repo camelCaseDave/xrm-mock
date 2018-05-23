@@ -1,4 +1,4 @@
-export class AutoCompleteCommandMock implements Xrm.Page.AutoCompleteCommand {
+export class AutoCompleteCommandMock implements Xrm.Controls.AutoCompleteCommand {
     public id: string;
     public icon?: string;
     public label: string;
@@ -11,6 +11,6 @@ export class AutoCompleteCommandMock implements Xrm.Page.AutoCompleteCommand {
     }
 
     public action(): void {
-        throw new Error(("action not implemented."));
+        throw new Error("Action not implemented.");
     }
 }

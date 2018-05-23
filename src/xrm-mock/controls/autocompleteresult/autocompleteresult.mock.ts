@@ -1,4 +1,4 @@
-export class AutoCompleteResult implements Xrm.Page.AutoCompleteResult {
+export class AutoCompleteResultMock implements Xrm.Controls.AutoCompleteResult {
     public id: string | number;
     public icon?: string;
     public fields: string[];

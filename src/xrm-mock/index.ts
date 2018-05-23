@@ -1,6 +1,9 @@
 export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./page/attribute/attribute.mock";
+export { AutoCompleteCommandMock } from "./controls/autocompletecommand/autocompletecommand.mock";
+export { AutoCompleteResultMock } from "./controls/autocompleteresult/autocompleteresult.mock";
+export { AutoCompleteResultSetMock } from "./controls/autocompleteresultset/autocompleteresultset.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./page/autolookupcontrol/autolookupcontrol.mock";
 export { BooleanAttributeMock } from "./page/booleanattribute/booleanattribute.mock";
 export { ICalendarComponents, CalendarMock } from "./calendar/calendar.mock";
