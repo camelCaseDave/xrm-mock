@@ -1,4 +1,4 @@
-export class LookupValueMock implements Xrm.Page.LookupValue {
+export class LookupValueMock implements Xrm.LookupValue {
     public id: string;
     public name?: string;
     public entityType: string;

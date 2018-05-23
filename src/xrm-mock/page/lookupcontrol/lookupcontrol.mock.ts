@@ -1,9 +1,9 @@
+import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
 import { AttributeMock, AttributeReturnType } from "../attribute/attribute.mock";
 import { LookupAttributeMock } from "../lookupattribute/lookupattribute.mock";
 import { IAttStandardControlComponents,
          IStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";
-import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class LookupControlMock extends StandardControlMock<LookupControlMock,
                                                            LookupAttributeMock, Xrm.Page.LookupValue[]>

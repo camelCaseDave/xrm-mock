@@ -1,4 +1,4 @@
-import { OptionSetValueMock} from "../../../src/xrm-mock/page/optionsetvalue/optionsetvalue.mock";
+import { OptionSetValueMock} from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
 describe("Xrm.Page.OptionSetValue Mock", () => {
     beforeEach(() => {

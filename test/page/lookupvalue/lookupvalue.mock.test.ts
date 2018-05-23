@@ -1,4 +1,4 @@
-import { LookupValueMock} from "../../../src/xrm-mock/page/lookupvalue/lookupvalue.mock";
+import { LookupValueMock} from "../../../src/xrm-mock/lookupvalue/lookupvalue.mock";
 
 describe("Xrm.Page.LookupValue Mock", () => {
     beforeEach(() => {

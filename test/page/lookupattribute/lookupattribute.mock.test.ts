@@ -1,6 +1,6 @@
+import { LookupValueMock } from "../../../src/xrm-mock/lookupvalue/lookupvalue.mock";
 import { AttributeMock } from "../../../src/xrm-mock/page/attribute/attribute.mock";
 import { LookupAttributeMock} from "../../../src/xrm-mock/page/lookupattribute/lookupattribute.mock";
-import { LookupValueMock } from "../../../src/xrm-mock/page/lookupvalue/lookupvalue.mock";
 
 describe("Xrm.Page.LookupAttribute Mock", () => {
     let lookupAttribute: LookupAttributeMock;

@@ -1,4 +1,4 @@
-export class OptionSetValueMock implements Xrm.Page.OptionSetValue {
+export class OptionSetValueMock implements Xrm.OptionSetValue {
     public text: string;
     public value: number;
 

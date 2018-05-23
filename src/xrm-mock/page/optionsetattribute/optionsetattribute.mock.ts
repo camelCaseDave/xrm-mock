@@ -1,7 +1,7 @@
+import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
 import { ControlMock } from "../control/control.mock";
 import { EnumAttributeMock, IEnumAttributeComponents } from "../enumattribute/enumattribute.mock";
 import { OptionSetControlMock } from "../optionsetcontrol/optionsetcontrol.mock";
-import { OptionSetValueMock } from "../optionsetvalue/optionsetvalue.mock";
 
 export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMock, number>
                                     implements Xrm.Page.OptionSetAttribute {
