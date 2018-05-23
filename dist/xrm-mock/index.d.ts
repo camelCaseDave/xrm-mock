@@ -15,7 +15,7 @@ export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./attributes/dateattribute/dateattribute.mock";
 export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./page/datecontrol/datecontrol.mock";
 export { IDateFormattingInfoComponents, DateFormattingInfoMock } from "./dateformattinginfo/dateformattinginfo.mock";
-export { EntityMock } from "./page/entity/entity.mock";
+export { EntityMock } from "./entity/entity.mock";
 export { EnumAttributeMock } from "./attributes/enumattribute/enumattribute.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
 export { EventContextMock } from "./events/eventcontext/eventcontext.mock";

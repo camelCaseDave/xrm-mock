@@ -1,4 +1,4 @@
-import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 
 export class EntityMock implements Xrm.Page.Entity {
     public id: string;
