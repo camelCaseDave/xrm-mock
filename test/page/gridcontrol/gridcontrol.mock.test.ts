@@ -1,4 +1,4 @@
-import { GridControlMock } from "../../../src/xrm-mock/page/gridcontrol/gridcontrol.mock";
+import { GridControlMock } from "../../../src/xrm-mock/controls/gridcontrol/gridcontrol.mock";
 
 describe("Xrm.Page.GridControl Mock", () => {
     let gridControl: GridControlMock;

@@ -1,10 +1,10 @@
+import { ControlMock } from "../../controls/control/control.mock";
+import { OptionSetControlMock } from "../../controls/optionsetcontrol/optionsetcontrol.mock";
 import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
-import { ControlMock } from "../../page/control/control.mock";
-import { OptionSetControlMock } from "../../page/optionsetcontrol/optionsetcontrol.mock";
 import { EnumAttributeMock, IEnumAttributeComponents } from "../enumattribute/enumattribute.mock";
 
 export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMock, number>
-                                    implements Xrm.Page.OptionSetAttribute {
+                                    implements Xrm.Attributes.OptionSetAttribute {
     public static create(name: string, value?: number): OptionSetAttributeMock {
         return new OptionSetAttributeMock({ name, value });
     }
@@ -33,21 +33,21 @@ export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMo
         this.selectedOption = this.getOption(this.getValue());
     }
 
-    public getFormat(): Xrm.Page.OptionSetAttributeFormat {
-        return super.getFormat() as Xrm.Page.OptionSetAttributeFormat;
+    public getFormat(): Xrm.Attributes.OptionSetAttributeFormat {
+        return super.getFormat() as Xrm.Attributes.OptionSetAttributeFormat;
     }
 
-    public getOption(param: number | string): Xrm.Page.OptionSetValue {
+    public getOption(param: number | string): Xrm.OptionSetValue {
         return typeof param === "number"
             ? this.options.filter((o) => o.value === param)[0]
             : this.options.filter((o) => o.text === param)[0];
     }
 
-    public getOptions(): Xrm.Page.OptionSetValue[] {
+    public getOptions(): Xrm.OptionSetValue[] {
         return this.options;
     }
 
-    public getSelectedOption(): Xrm.Page.OptionSetValue {
+    public getSelectedOption(): Xrm.OptionSetValue {
         return this.selectedOption;
     }
 
@@ -62,7 +62,7 @@ export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMo
 }
 
 export interface IOptionSetAttributeComponents extends IEnumAttributeComponents<OptionSetControlMock, number> {
-    format?: Xrm.Page.OptionSetAttributeFormat;
-    options?: Xrm.Page.OptionSetValue[];
-    selectedOption?: Xrm.Page.OptionSetValue;
+    format?: Xrm.Attributes.OptionSetAttributeFormat;
+    options?: Xrm.OptionSetValue[];
+    selectedOption?: Xrm.OptionSetValue;
 }

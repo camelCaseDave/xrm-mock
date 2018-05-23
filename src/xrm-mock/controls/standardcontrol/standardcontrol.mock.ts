@@ -7,11 +7,11 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
                                  TAttribute extends AttributeMock<TControl, TValue>,
                                  TValue extends AttributeReturnType>
                                  extends ControlMock
-                                 implements Xrm.Page.StandardControl {
+                                 implements Xrm.Controls.StandardControl {
     public disabled: boolean;
     public attribute: TAttribute;
-    protected uiStandardElement: Xrm.Page.UiStandardElement;
-    protected uiFocusable: Xrm.Page.UiFocusable;
+    protected uiStandardElement: Xrm.Controls.UiStandardElement;
+    protected uiFocusable: Xrm.Controls.UiFocusable;
 
     constructor(components: IStandardControlComponents<TControl, TAttribute, TValue>) {
         super(components);

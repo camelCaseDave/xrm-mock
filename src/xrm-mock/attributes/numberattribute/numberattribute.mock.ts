@@ -1,9 +1,9 @@
-import { ControlMock } from "../../page/control/control.mock";
-import { NumberControlMock } from "../../page/numbercontrol/numbercontrol.mock";
+import { ControlMock } from "../../controls/control/control.mock";
+import { NumberControlMock } from "../../controls/numbercontrol/numbercontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
 export class NumberAttributeMock extends AttributeMock<NumberControlMock, number>
-                                 implements Xrm.Page.NumberAttribute {
+                                 implements Xrm.Attributes.NumberAttribute {
 
     private static defaultComponents(components: INumberAttributeComponents): INumberAttributeComponents {
         components.format = components.format || "none";
@@ -26,8 +26,8 @@ export class NumberAttributeMock extends AttributeMock<NumberControlMock, number
         this.validatePrecision();
     }
 
-    public getFormat(): Xrm.Page.IntegerAttributeFormat {
-        return super.getFormat() as Xrm.Page.IntegerAttributeFormat;
+    public getFormat(): Xrm.Attributes.IntegerAttributeFormat {
+        return super.getFormat() as Xrm.Attributes.IntegerAttributeFormat;
     }
 
     public getMax(): number {
@@ -65,5 +65,5 @@ export interface INumberAttributeComponents extends IAttributeComponents<NumberC
     min?: number;
     max?: number;
     precision?: number;
-    format?: Xrm.Page.IntegerAttributeFormat;
+    format?: Xrm.Attributes.IntegerAttributeFormat;
 }

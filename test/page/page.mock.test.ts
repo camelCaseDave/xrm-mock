@@ -1,15 +1,15 @@
 import { AttributeMock } from "../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { StringAttributeMock } from "../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
 import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { AutoLookupControlMock } from "../../src/xrm-mock/controls/autolookupcontrol/autolookupcontrol.mock";
+import { ControlMock } from "../../src/xrm-mock/controls/control/control.mock";
+import { StandardControlMock } from "../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
+import { StringControlMock } from "../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
 import { UiKeyPressableMock } from "../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
 import { DataMock } from "../../src/xrm-mock/data/data.mock";
 import { EntityMock } from "../../src/xrm-mock/entity/entity.mock";
 import { FormContextMock } from "../../src/xrm-mock/formcontext/formcontext.mock";
-import { AutoLookupControlMock } from "../../src/xrm-mock/page/autolookupcontrol/autolookupcontrol.mock";
-import { ControlMock } from "../../src/xrm-mock/page/control/control.mock";
 import { PageMock } from "../../src/xrm-mock/page/page.mock";
-import { StandardControlMock } from "../../src/xrm-mock/page/standardcontrol/standardcontrol.mock";
-import { StringControlMock } from "../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
 import { UiMock } from "../../src/xrm-mock/ui/ui.mock";
 import { XrmStaticMock } from "../../src/xrm-mock/xrmstatic.mock";
 

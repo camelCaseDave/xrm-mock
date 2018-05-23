@@ -1,5 +1,5 @@
-import { ControlMock } from "../../../src/xrm-mock/page/control/control.mock";
-import { StringControlMock } from "../../../src/xrm-mock/page/stringcontrol/stringcontrol.mock";
+import { ControlMock } from "../../../src/xrm-mock/controls/control/control.mock";
+import { StringControlMock } from "../../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
 
 describe("Xrm.Page.Control Mock", () => {
     beforeEach(() => {

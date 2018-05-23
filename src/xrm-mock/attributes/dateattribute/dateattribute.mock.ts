@@ -1,8 +1,8 @@
-import { DateControlMock } from "../../page/datecontrol/datecontrol.mock";
+import { DateControlMock } from "../../controls/datecontrol/datecontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
 export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
-                               implements Xrm.Page.DateAttribute {
+                               implements Xrm.Attributes.DateAttribute {
     public static create(name: string, value?: Date): DateAttributeMock {
         return new DateAttributeMock({ name, value });
     }
@@ -19,11 +19,11 @@ export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
         super(DateAttributeMock.defaultComponents(components));
     }
 
-    public getFormat(): Xrm.Page.DateAttributeFormat {
-        return super.getFormat() as Xrm.Page.DateAttributeFormat;
+    public getFormat(): Xrm.Attributes.DateAttributeFormat {
+        return super.getFormat() as Xrm.Attributes.DateAttributeFormat;
     }
 }
 
 export interface IDateAttributeComponents extends IAttributeComponents<DateControlMock, Date>  {
-    format?: Xrm.Page.DateAttributeFormat;
+    format?: Xrm.Attributes.DateAttributeFormat;
 }

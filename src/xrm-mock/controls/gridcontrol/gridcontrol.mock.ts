@@ -3,7 +3,7 @@ import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattr
 import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 
-export class GridControlMock extends ControlMock implements Xrm.Page.GridControl {
+export class GridControlMock extends ControlMock implements Xrm.Controls.GridControl {
     private static defaultComponents(components: IGridControlComponents): IGridControlComponents {
         components.controlType = "subgrid";
         components.contextType = components.contextType || 4 as XrmEnum.GridControlContext.FormContextRelated;

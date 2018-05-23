@@ -1,13 +1,13 @@
 /// <reference types="xrm" />
-import { NumberControlMock } from "../../page/numbercontrol/numbercontrol.mock";
+import { NumberControlMock } from "../../controls/numbercontrol/numbercontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
-export declare class NumberAttributeMock extends AttributeMock<NumberControlMock, number> implements Xrm.Page.NumberAttribute {
+export declare class NumberAttributeMock extends AttributeMock<NumberControlMock, number> implements Xrm.Attributes.NumberAttribute {
     private static defaultComponents(components);
     min: number;
     max: number;
     precision: number;
     constructor(components: INumberAttributeComponents);
-    getFormat(): Xrm.Page.IntegerAttributeFormat;
+    getFormat(): Xrm.Attributes.IntegerAttributeFormat;
     getMax(): number;
     getMin(): number;
     getPrecision(): number;
@@ -18,5 +18,5 @@ export interface INumberAttributeComponents extends IAttributeComponents<NumberC
     min?: number;
     max?: number;
     precision?: number;
-    format?: Xrm.Page.IntegerAttributeFormat;
+    format?: Xrm.Attributes.IntegerAttributeFormat;
 }

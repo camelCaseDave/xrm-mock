@@ -6,15 +6,15 @@ import { IAttStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
 export class LookupControlMock extends StandardControlMock<LookupControlMock,
-                                                           LookupAttributeMock, Xrm.Page.LookupValue[]>
-                               implements Xrm.Page.LookupControl {
+                                                           LookupAttributeMock, Xrm.LookupValue[]>
+                               implements Xrm.Controls.LookupControl {
 
     private static defaultComponents(components: ILookupControlComponents): ILookupControlComponents {
         components.controlType = "lookup";
         return components;
     }
 
-    public preSearchHandlers: Xrm.Page.ContextSensitiveHandler[] = [];
+    public preSearchHandlers: Xrm.Events.ContextSensitiveHandler[] = [];
     public views: ILookupView[];
     public filters: ILookupFilter[];
 
@@ -35,7 +35,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         }
     }
 
-    public addPreSearch(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public addPreSearch(handler: Xrm.Events.ContextSensitiveHandler): void {
         this.preSearchHandlers.push(handler);
     }
 
@@ -89,16 +89,16 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
 }
 
 export interface ILookupControlComponents
-    extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]>,
+    extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]>,
             IAttLookupControlComponents {
     name: string;
 }
 
 export interface IAttLookupControlComponents
-    extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.Page.LookupValue[]> {
+    extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> {
     filters?: ILookupFilter[];
     views?: ILookupView[];
-    preSearchHandlers?: Xrm.Page.ContextSensitiveHandler[];
+    preSearchHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }
 
 export interface ILookupFilter {

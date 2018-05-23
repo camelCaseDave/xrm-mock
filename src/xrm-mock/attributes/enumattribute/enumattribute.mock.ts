@@ -1,9 +1,9 @@
-import { ControlMock } from "../../page/control/control.mock";
+import { ControlMock } from "../../controls/control/control.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
 export class EnumAttributeMock<TControl extends ControlMock,
                                TValue extends number | boolean>
-                               extends AttributeMock<TControl, TValue> implements Xrm.Page.EnumAttribute {
+                               extends AttributeMock<TControl, TValue> implements Xrm.Attributes.EnumAttribute {
     public initialValue: TValue;
 
     constructor(components: IEnumAttributeComponents<TControl, TValue>) {

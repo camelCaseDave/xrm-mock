@@ -5,7 +5,7 @@ import { IAttStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
 export class OptionSetControlMock extends StandardControlMock<OptionSetControlMock, OptionSetAttributeMock, number>
-                                   implements Xrm.Page.OptionSetControl {
+                                   implements Xrm.Controls.OptionSetControl {
 
     private static defaultComponents(components: IOptionSetControlComponents): IOptionSetControlComponents {
         components.controlType = "optionset";
@@ -19,7 +19,7 @@ export class OptionSetControlMock extends StandardControlMock<OptionSetControlMo
         this.options = components.options || [];
     }
 
-    public addOption(option: Xrm.Page.OptionSetValue, index?: number): void {
+    public addOption(option: Xrm.OptionSetValue, index?: number): void {
         index = index || index === 0
             ? index
             : this.options.length;
@@ -55,5 +55,5 @@ export interface IOptionSetControlComponents
 
 export interface IAttOptionSetControlComponents
     extends IAttStandardControlComponents<OptionSetControlMock, OptionSetAttributeMock, number> {
-    options?: Xrm.Page.OptionSetValue[];
+    options?: Xrm.OptionSetValue[];
 }

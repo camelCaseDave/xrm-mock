@@ -1,7 +1,7 @@
-export class ControlMock implements Xrm.Page.Control {
-    public controlType: Xrm.Page.ControlType;
+export class ControlMock implements Xrm.Controls.Control {
+    public controlType: Xrm.Controls.ControlType;
     public name: string;
-    public parent: Xrm.Page.Section;
+    public parent: Xrm.Controls.Section;
     public label: string;
     public visible: boolean;
 
@@ -13,7 +13,7 @@ export class ControlMock implements Xrm.Page.Control {
         this.parent = components.parent;
     }
 
-    public getControlType(): Xrm.Page.ControlType | string {
+    public getControlType(): Xrm.Controls.ControlType | string {
         return this.controlType;
     }
 
@@ -21,7 +21,7 @@ export class ControlMock implements Xrm.Page.Control {
         return this.name;
     }
 
-    public getParent(): Xrm.Page.Section {
+    public getParent(): Xrm.Controls.Section {
         return this.parent;
     }
 
@@ -44,8 +44,8 @@ export interface IControlComponents extends IAttControlComponents {
 
 export interface IAttControlComponents {
     name?: string;
-    controlType?: Xrm.Page.ControlType;
+    controlType?: Xrm.Controls.ControlType;
     label?: string;
     visible?: boolean;
-    parent?: Xrm.Page.Section;
+    parent?: Xrm.Controls.Section;
 }

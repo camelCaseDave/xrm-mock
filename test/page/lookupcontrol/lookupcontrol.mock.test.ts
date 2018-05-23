@@ -1,5 +1,5 @@
 import { LookupAttributeMock } from "../../../src/xrm-mock";
-import { ILookupView, LookupControlMock } from "../../../src/xrm-mock/page/lookupcontrol/lookupcontrol.mock";
+import { ILookupView, LookupControlMock } from "../../../src/xrm-mock/controls/lookupcontrol/lookupcontrol.mock";
 
 describe("Xrm.Page.LookupControl Mock", () => {
     let lookupControl: LookupControlMock;

@@ -8,7 +8,7 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
                                    TAttribute extends AttributeMock<TControl, TValue>,
                                    TValue extends AttributeReturnType>
                                    extends StandardControlMock<TControl, TAttribute, TValue>
-                                   implements Xrm.Page.AutoLookupControl {
+                                   implements Xrm.Controls.AutoLookupControl {
 
     public uiKeyPressable: UiKeyPressableMock;
     /**
@@ -30,11 +30,11 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
         throw new Error(("hide autocomplete not implemented"));
     }
 
-    public showAutoComplete(resultSet: Xrm.Page.AutoCompleteResultSet): void {
+    public showAutoComplete(resultSet: Xrm.Controls.AutoCompleteResultSet): void {
         throw new Error(("show autocomplete not implemented"));
     }
 
-    public addOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public addOnKeyPress(handler: Xrm.Events.ContextSensitiveHandler): void {
         this.uiKeyPressable.addOnKeyPress(handler);
     }
 
@@ -42,7 +42,7 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
         this.uiKeyPressable.fireOnKeyPress();
     }
 
-    public removeOnKeyPress(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public removeOnKeyPress(handler: Xrm.Events.ContextSensitiveHandler): void {
         this.uiKeyPressable.removeOnKeyPress(handler);
     }
 }
@@ -59,7 +59,7 @@ export interface IAttAutoLookupControlComponents<TControl extends AutoLookupCont
                                               TAttribute extends AttributeMock<TControl, TValue>,
                                               TValue extends AttributeReturnType>
                                               extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
-    keyPressHandlers?: Xrm.Page.ContextSensitiveHandler[];
+    keyPressHandlers?: Xrm.Events.ContextSensitiveHandler[];
     /**
      * Auto Lookup allows for getting the value that has currently been typed in,
      * but not necessarily saved to the attribute

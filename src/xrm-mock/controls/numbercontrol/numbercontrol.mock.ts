@@ -4,7 +4,7 @@ import { AutoLookupControlMock,
          IAutoLookupControlComponents } from "../autolookupcontrol/autolookupcontrol.mock";
 
 export class NumberControlMock extends AutoLookupControlMock<NumberControlMock, NumberAttributeMock, number>
-                               implements Xrm.Page.NumberControl {
+                               implements Xrm.Controls.NumberControl {
 
     private static defaultComponents(components: INumberControlComponents): INumberControlComponents {
         return components;

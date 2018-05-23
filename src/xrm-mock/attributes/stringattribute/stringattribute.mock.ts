@@ -1,10 +1,10 @@
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
-import { ControlMock } from "../../page/control/control.mock";
-import { StringControlMock } from "../../page/stringcontrol/stringcontrol.mock";
+import { ControlMock } from "../../controls/control/control.mock";
+import { StringControlMock } from "../../controls/stringcontrol/stringcontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
 export class StringAttributeMock extends AttributeMock<StringControlMock, string>
-                                 implements Xrm.Page.StringAttribute {
+                                 implements Xrm.Attributes.StringAttribute {
 
     public static create(name: string, value?: string): StringAttributeMock {
         return new StringAttributeMock({ name, value }  as any as IStringAttributeComponents);
@@ -23,8 +23,8 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
         this.maxLength = components.maxLength || 100;
     }
 
-    public getFormat(): Xrm.Page.StringAttributeFormat {
-        return super.getFormat() as Xrm.Page.StringAttributeFormat;
+    public getFormat(): Xrm.Attributes.StringAttributeFormat {
+        return super.getFormat() as Xrm.Attributes.StringAttributeFormat;
     }
 
     public getMaxLength(): number {
@@ -41,6 +41,6 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
 }
 
 export interface IStringAttributeComponents extends IAttributeComponents<StringControlMock, string> {
-    format?: Xrm.Page.StringAttributeFormat;
+    format?: Xrm.Attributes.StringAttributeFormat;
     maxLength?: number;
 }

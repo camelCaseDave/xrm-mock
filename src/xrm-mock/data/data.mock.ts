@@ -1,13 +1,13 @@
 import { AttributeMock, AttributeReturnType } from "../attributes/attribute/attribute.mock";
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
-import { ControlMock } from "../page/control/control.mock";
+import { ControlMock } from "../controls/control/control.mock";
 
 export class DataMock implements Xrm.Data {
     public attributes: ItemCollectionMock<AttributeMock<ControlMock, AttributeReturnType>>;
-    public entity: Xrm.Page.Entity;
-    public process: Xrm.Page.data.ProcessManager;
+    public entity: Xrm.Entity;
+    public process: Xrm.ProcessFlow.ProcessManager;
 
-    constructor(entity: Xrm.Page.Entity, process?: Xrm.Page.data.ProcessManager) {
+    constructor(entity: Xrm.Entity, process?: Xrm.ProcessFlow.ProcessManager) {
         this.entity = entity;
         this.process = process;
     }

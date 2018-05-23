@@ -1,5 +1,5 @@
 import { DateAttributeMock } from "../../../src/xrm-mock/attributes/dateattribute/dateattribute.mock";
-import { DateControlMock } from "../../../src/xrm-mock/page/datecontrol/datecontrol.mock";
+import { DateControlMock } from "../../../src/xrm-mock/controls/datecontrol/datecontrol.mock";
 
 describe("Xrm.Page.DateControl Mock", () => {
     let control: DateControlMock;

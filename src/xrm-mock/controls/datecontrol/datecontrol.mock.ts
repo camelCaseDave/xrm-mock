@@ -4,7 +4,7 @@ import { IAttStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
 export class DateControlMock extends StandardControlMock<DateControlMock, DateAttributeMock, Date>
-                             implements Xrm.Page.DateControl {
+                             implements Xrm.Controls.DateControl {
 
     private static defaultComponents(components: IDateControlComponents): IDateControlComponents {
         if (!("showTime" in components)) {

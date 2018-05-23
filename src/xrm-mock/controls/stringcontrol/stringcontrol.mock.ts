@@ -4,7 +4,7 @@ import { AutoLookupControlMock,
          IAutoLookupControlComponents } from "../autolookupcontrol/autolookupcontrol.mock";
 
 export class StringControlMock extends AutoLookupControlMock<StringControlMock, StringAttributeMock, string>
-                               implements Xrm.Page.StringControl {
+                               implements Xrm.Controls.StringControl {
     constructor(components: IStringControlComponents) {
         super(components);
     }
