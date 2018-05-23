@@ -28,6 +28,7 @@ export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, I
 export { ILookupOptionsComponents, LookupOptionsMock } from "./lookupoptions/lookupoptions.mock";
 export { LookupValueMock } from "./page/lookupvalue/lookupvalue.mock";
 export { NavigationMock } from "./controls/navigation/navigation.mock";
+export { NavigationItemMock } from "./controls/navigationitem/navigationitem.mock";
 export { INumberAttributeComponents, NumberAttributeMock } from "./page/numberattribute/numberattribute.mock";
 export { IAttNumberControlComponents, INumberControlComponents, NumberControlMock } from "./page/numbercontrol/numbercontrol.mock";
 export { OpenParametersMock } from "./utility/openparameters/openparameters.mock";
