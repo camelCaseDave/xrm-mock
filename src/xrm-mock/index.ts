@@ -8,6 +8,7 @@ export { ControlMock, IAttControlComponents, IControlComponents } from "./page/c
 export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./page/dateattribute/dateattribute.mock";
 export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./page/datecontrol/datecontrol.mock";
+export { IDateFormattingInfoComponents, DateFormattingInfoMock } from "./dateformattinginfo/dateformattinginfo.mock";
 export { EntityMock } from "./page/entity/entity.mock";
 export { EnumAttributeMock } from "./page/enumattribute/enumattribute.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
