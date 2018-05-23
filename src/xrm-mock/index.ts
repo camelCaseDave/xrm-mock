@@ -23,6 +23,7 @@ export { GridControlMock, IAttGridControlComponents, IGridControlComponents } fr
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
 export { ILookupAttributeComponents, LookupAttributeMock } from "./page/lookupattribute/lookupattribute.mock";
 export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./page/lookupcontrol/lookupcontrol.mock";
+export { ILookupOptionsComponents, LookupOptionsMock } from "./lookupoptions/lookupoptions.mock";
 export { LookupValueMock } from "./page/lookupvalue/lookupvalue.mock";
 export { INumberAttributeComponents, NumberAttributeMock } from "./page/numberattribute/numberattribute.mock";
 export { IAttNumberControlComponents, INumberControlComponents, NumberControlMock } from "./page/numbercontrol/numbercontrol.mock";
