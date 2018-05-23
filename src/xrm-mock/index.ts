@@ -37,6 +37,7 @@ export { ProcessMock, IProcessComponents } from "./page/process/process.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
 export { SectionMock } from "./page/section/section.mock";
+export { StageChangeEventArgumentsMock } from "./events/stagechangeeventarguments/stagechangeeventarguments.mock";
 export { StageMock } from "./page/stage/stage.mock";
 export { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "./page/standardcontrol/standardcontrol.mock";
 export { StepMock } from "./page/step/step.mock";
