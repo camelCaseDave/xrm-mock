@@ -51,6 +51,7 @@ export { StageChangeEventArgumentsMock } from "./events/stagechangeeventargument
 export { StageChangeEventContextMock } from "./events/stagechangeeventcontext/stagechangeeventcontext.mock";
 export { StageMock } from "./processflow/stage/stage.mock";
 export { StageSelectedEventArgumentsMock } from "./events/stageselectedeventarguments/stageselectedeventarguments.mock";
+export { StageSelectedEventContextMock } from "./events/stageselectedeventcontext/stageselectedeventcontext.mock";
 export { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "./page/standardcontrol/standardcontrol.mock";
 export { StepMock } from "./processflow/step/step.mock";
 export { IStringAttributeComponents, StringAttributeMock } from "./page/stringattribute/stringattribute.mock";
