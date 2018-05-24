@@ -1,6 +1,7 @@
 export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
 export { AlertStringsMock } from "./navigation/alertstrings/alertstrings.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
+export { IAttributeMetadataComponents, AttributeMetadataMock } from "./metadata/attributemetadata/attributemetadata.mock";
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./attributes/attribute/attribute.mock";
 export { AutoCompleteCommandMock } from "./controls/autocompletecommand/autocompletecommand.mock";
 export { AutoCompleteResultMock } from "./controls/autocompleteresult/autocompleteresult.mock";
@@ -38,6 +39,8 @@ export { GridMock } from "./controls/grid/grid.mock";
 export { GridRowMock } from "./controls/grid/gridrow/gridrow.mock";
 export { GridRowDataMock } from "./controls/grid/gridrowdata/gridrowdata.mock";
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
+export { LabelMock } from "./metadata/label/label.mock";
+export { LocalizedLabelMock } from "./metadata/localizedlabel/localizedlabel.mock";
 export { ILookupAttributeComponents, LookupAttributeMock } from "./attributes/lookupattribute/lookupattribute.mock";
 export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./controls/lookupcontrol/lookupcontrol.mock";
 export { ILookupOptionsComponents, LookupOptionsMock } from "./lookupoptions/lookupoptions.mock";
@@ -50,6 +53,7 @@ export { OpenParametersMock } from "./utility/openparameters/openparameters.mock
 export { OpenWebresourceOptionsMock } from "./navigation/openwebresourceoptions/openwebresourceoptions.mock";
 export { IOptionSetAttributeComponents, OptionSetAttributeMock } from "./attributes/optionsetattribute/optionsetattribute.mock";
 export { IAttOptionSetControlComponents, IOptionSetControlComponents, OptionSetControlMock } from "./controls/optionsetcontrol/optionsetcontrol.mock";
+export { IOptionMetadataComponents, OptionMetadataMock } from "./metadata/optionmetadata/optionmetadata.mock";
 export { OptionSetValueMock } from "./optionsetvalue/optionsetvalue.mock";
 export { IOrganizationSettingsComponents, OrganizationSettingsMock } from "./organizationsettings/organizationsettings.mock";
 export { PageMock } from "./page/page.mock";
