@@ -50,7 +50,7 @@ export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievem
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
 export { SaveEventContextMock } from "./events/saveeventcontext/saveeventcontext.mock";
 export { SaveOptionsMock } from "./saveoptions/saveoptions.mock";
-export { SectionMock } from "./page/section/section.mock";
+export { SectionMock } from "./controls/section/section.mock";
 export { StageChangeEventArgumentsMock } from "./events/stagechangeeventarguments/stagechangeeventarguments.mock";
 export { StageChangeEventContextMock } from "./events/stagechangeeventcontext/stagechangeeventcontext.mock";
 export { StageMock } from "./processflow/stage/stage.mock";

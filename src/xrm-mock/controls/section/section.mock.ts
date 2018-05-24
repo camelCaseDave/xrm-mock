@@ -1,11 +1,11 @@
-export class SectionMock implements Xrm.Page.Section {
-    public name: string;
-    public parent: Xrm.Page.Tab;
-    public controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
-    public uiStandardElement: Xrm.Page.UiStandardElement;
+export class SectionMock implements Xrm.Controls.Section {
+    public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    private name: string;
+    private parent: Xrm.Controls.Tab;
+    private uiStandardElement: Xrm.Controls.UiStandardElement;
 
-    constructor(name: string, parent: Xrm.Page.Tab, uiStandardElement: Xrm.Page.UiStandardElement,
-                controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>) {
+    constructor(name: string, parent: Xrm.Controls.Tab, uiStandardElement: Xrm.Controls.UiStandardElement,
+                controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>) {
         this.name = name;
         this.parent = parent;
         this.uiStandardElement = uiStandardElement;
@@ -16,7 +16,7 @@ export class SectionMock implements Xrm.Page.Section {
         return this.name;
     }
 
-    public getParent(): Xrm.Page.Tab {
+    public getParent(): Xrm.Controls.Tab {
         return this.parent;
     }
 
