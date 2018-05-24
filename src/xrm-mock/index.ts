@@ -50,6 +50,7 @@ export { ProcessControlMock } from "./controls/processcontrol/processcontrol.moc
 export { ProcessDictionaryMock } from "./processflow/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
 export { ProcessMock, IProcessComponents } from "./processflow/process/process.mock";
+export { ReportOpenParametersMock } from "./url/reportopenparameters/reportopenparameters.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
 export { SaveEventContextMock } from "./events/saveeventcontext/saveeventcontext.mock";

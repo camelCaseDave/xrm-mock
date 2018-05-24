@@ -50,6 +50,7 @@ export { ProcessControlMock } from "./controls/processcontrol/processcontrol.moc
 export { ProcessDictionaryMock } from "./processflow/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
 export { ProcessMock, IProcessComponents } from "./processflow/process/process.mock";
+export { ReportOpenParametersMock } from "./url/reportopenparameters/reportopenparameters.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
 export { SaveEventContextMock } from "./events/saveeventcontext/saveeventcontext.mock";
@@ -65,6 +66,7 @@ export { StepMock } from "./processflow/step/step.mock";
 export { IStringAttributeComponents, StringAttributeMock } from "./attributes/stringattribute/stringattribute.mock";
 export { IAttStringControlComponents, IStringControlComponents, StringControlMock } from "./controls/stringcontrol/stringcontrol.mock";
 export { TabMock } from "./controls/tab/tab.mock";
+export { TimelineWallMock } from "./controls/timelinewall/timelinewall.mock";
 export { UiCanGetVisibleElementMock } from "./controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 export { UiFocusableMock } from "./controls/uifocusable/uifocusable.mock";
 export { UiKeyPressableMock } from "./controls/uikeypressable/uikeypressable.mock";
