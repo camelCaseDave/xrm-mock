@@ -1,5 +1,5 @@
-import { ProcessManagerMock } from "./data/processmanager/processmanager.mock";
 import { PageMock } from "./page/page.mock";
+import { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
 import { UtilityMock } from "./utility/utility.mock";
 
 export class XrmStaticMock implements Xrm.XrmStatic {

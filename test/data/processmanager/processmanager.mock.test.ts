@@ -1,6 +1,6 @@
 import { ItemCollectionMock } from "../../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
-import { ProcessManagerMock } from "../../../src/xrm-mock/data/processmanager/processmanager.mock";
 import { ProcessMock } from "../../../src/xrm-mock/processflow/process/process.mock";
+import { ProcessManagerMock } from "../../../src/xrm-mock/processflow/processmanager/processmanager.mock";
 import { StageMock } from "../../../src/xrm-mock/processflow/stage/stage.mock";
 import { StepMock } from "../../../src/xrm-mock/processflow/step/step.mock";
 
