@@ -25,6 +25,10 @@ export { FormItemMock, IFormItemComponents } from "./controls/formitem/formitem.
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
 export { FormSelectorMock } from "./controls/formselector/formselector.mock";
 export { GridControlMock, IAttGridControlComponents, IGridControlComponents } from "./controls/gridcontrol/gridcontrol.mock";
+export { GridEntityMock } from "./controls/grid/gridentity/gridentity.mock";
+export { GridMock } from "./controls/grid/grid.mock";
+export { GridRowMock } from "./controls/grid/gridrow/gridrow.mock";
+export { GridRowDataMock } from "./controls/grid/gridrowdata/gridrowdata.mock";
 export { ItemCollectionMock } from "./collection/itemcollection/itemcollection.mock";
 export { ILookupAttributeComponents, LookupAttributeMock } from "./attributes/lookupattribute/lookupattribute.mock";
 export { IAttLookupControlComponents, ILookupControlComponents, ILookupFilter, ILookupView, LookupControlMock } from "./controls/lookupcontrol/lookupcontrol.mock";

@@ -62,5 +62,4 @@ export interface IAttGridControlComponents extends IAttControlComponents {
     entityName?: string;
     name?: string;
     onLoadHandlers?: Array<() => void>;
-
 }
