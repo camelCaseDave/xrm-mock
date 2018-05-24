@@ -3,7 +3,7 @@ import { ProcessMock } from "../../../src/xrm-mock/processflow/process/process.m
 import { StageMock } from "../../../src/xrm-mock/processflow/stage/stage.mock";
 import { StepMock } from "../../../src/xrm-mock/processflow/step/step.mock";
 
-describe("Xrm.Page.Process Mock", () => {
+describe("Xrm.ProcessFlow.Process Mock", () => {
     beforeEach(() => {
         const firstNameStep = new StepMock("First Name", "firstname", false);
         const lastNameStep = new StepMock("Last Name", "lastname", false);
@@ -14,7 +14,7 @@ describe("Xrm.Page.Process Mock", () => {
             id: "4444",
             name: "Sales Process",
             rendered: true,
-            stages: new ItemCollectionMock<Xrm.Page.Stage>([stage1, stage2]),
+            stages: new ItemCollectionMock<Xrm.ProcessFlow.Stage>([stage1, stage2]),
         });
     });
 

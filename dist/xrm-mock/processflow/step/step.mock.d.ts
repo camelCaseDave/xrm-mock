@@ -1,4 +1,4 @@
-export declare class StepMock implements Xrm.Page.Step {
+export declare class StepMock implements Xrm.ProcessFlow.Step {
     required: boolean;
     name: string;
     attribute: string;

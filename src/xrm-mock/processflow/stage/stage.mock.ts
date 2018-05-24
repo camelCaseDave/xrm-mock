@@ -1,12 +1,12 @@
 export class StageMock implements Xrm.ProcessFlow.Stage {
   public id: string;
   public name: string;
-  public status: Xrm.Page.StageStatus;
+  public status: Xrm.ProcessFlow.StageStatus;
   public category: XrmEnum.StageCategory;
-  public steps: Xrm.Page.Step[];
+  public steps: Xrm.ProcessFlow.Step[];
 
-  constructor(id: string, name: string, status: Xrm.Page.StageStatus, category?: XrmEnum.StageCategory,
-              steps?: Xrm.Page.Step[]) {
+  constructor(id: string, name: string, status: Xrm.ProcessFlow.StageStatus, category?: XrmEnum.StageCategory,
+              steps?: Xrm.ProcessFlow.Step[]) {
       this.id = id;
       this.name = name;
       this.status = status;
@@ -34,15 +34,15 @@ export class StageMock implements Xrm.ProcessFlow.Stage {
       return this.name;
   }
 
-  public getStatus(): Xrm.Page.StageStatus {
+  public getStatus(): Xrm.ProcessFlow.StageStatus {
       return this.status;
   }
 
-  public getSteps(): Xrm.Page.Step[] {
+  public getSteps(): Xrm.ProcessFlow.Step[] {
       return this.steps;
   }
 
-  public _setStatus(status: Xrm.Page.StageStatus) {
+  public _setStatus(status: Xrm.ProcessFlow.StageStatus) {
       this.status = status;
   }
 }

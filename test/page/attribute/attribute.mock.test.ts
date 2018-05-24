@@ -1,6 +1,6 @@
 import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 
-describe("Xrm.Page.Attribute Mock", () => {
+describe("Xrm.Attributes.Attribute Mock", () => {
     beforeEach(() => {
         this.attributeMock = new AttributeMock({
             isDirty: false,

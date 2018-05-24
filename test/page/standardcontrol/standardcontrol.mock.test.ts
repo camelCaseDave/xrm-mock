@@ -1,7 +1,7 @@
 import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { StandardControlMock } from "../../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
 
-describe("Xrm.Page.StandardControl Mock", () => {
+describe("Xrm.Controls.StandardControl Mock", () => {
     beforeEach(() => {
       this.standardControl = new StandardControlMock({
         attribute: new AttributeMock({

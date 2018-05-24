@@ -16,7 +16,7 @@ export class UtilityMock implements Xrm.Utility {
         throw new Error(("is activity type not implemented"));
     }
 
-    public openQuickCreate(entityLogicalName: string, createFromEntity?: Xrm.Page.LookupValue, parameters?: Xrm.Utility.OpenParameters):
+    public openQuickCreate(entityLogicalName: string, createFromEntity?: Xrm.LookupValue, parameters?: Xrm.Utility.OpenParameters):
         Xrm.Async.PromiseLike<Xrm.Async.OpenQuickCreateSuccessCallbackObject> {
         throw new Error(("open quick create not implemented"));
     }

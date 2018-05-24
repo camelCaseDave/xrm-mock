@@ -1,7 +1,7 @@
 export class ProcessMock implements Xrm.ProcessFlow.Process {
   public id: string;
   public name: string;
-  public stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>;
+  public stages: Xrm.Collection.ItemCollection<Xrm.ProcessFlow.Stage>;
   public rendered: boolean;
 
   constructor(components: IProcessComponents) {
@@ -19,7 +19,7 @@ export class ProcessMock implements Xrm.ProcessFlow.Process {
       return this.name;
   }
 
-  public getStages(): Xrm.Collection.ItemCollection<Xrm.Page.Stage> {
+  public getStages(): Xrm.Collection.ItemCollection<Xrm.ProcessFlow.Stage> {
       return this.stages;
   }
 
@@ -31,6 +31,6 @@ export class ProcessMock implements Xrm.ProcessFlow.Process {
 export interface IProcessComponents {
   id: string;
   name: string;
-  stages: Xrm.Collection.ItemCollection<Xrm.Page.Stage>;
+  stages: Xrm.Collection.ItemCollection<Xrm.ProcessFlow.Stage>;
   rendered: boolean;
 }

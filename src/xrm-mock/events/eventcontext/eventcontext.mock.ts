@@ -7,11 +7,11 @@ export class EventContextMock implements Xrm.Events.EventContext {
       throw new Error("not implemented");
   }
 
-  public getEventArgs(): Xrm.Page.SaveEventArguments {
+  public getEventArgs(): Xrm.Events.SaveEventContext {
       throw new Error("not implemented");
   }
 
-  public getEventSource(): Xrm.Page.Attribute | Xrm.Page.Control | Xrm.Page.Entity {
+  public getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity {
       throw new Error("not implemented");
   }
 

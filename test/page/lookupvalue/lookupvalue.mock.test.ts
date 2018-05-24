@@ -1,6 +1,6 @@
 import { LookupValueMock} from "../../../src/xrm-mock/lookupvalue/lookupvalue.mock";
 
-describe("Xrm.Page.LookupValue Mock", () => {
+describe("Xrm.LookupValue Mock", () => {
     beforeEach(() => {
         this.lookupValue = new LookupValueMock("5555", "account", "Parent Account");
     });

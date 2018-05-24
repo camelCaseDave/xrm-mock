@@ -1,7 +1,7 @@
 import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
 
-describe("Xrm.Page.EnumAttribute Mock", () => {
+describe("Xrm.Attributes.EnumAttribute Mock", () => {
     beforeEach(() => {
         this.enumAttribute = new EnumAttributeMock({
             isDirty: false,

@@ -1,22 +1,22 @@
 import { StageMock } from "../../processflow/stage/stage.mock";
 
-export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
-    public enabledProcesses: Xrm.Page.Process[] | Xrm.Page.data.ProcessDictionary;
+export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
+    public enabledProcesses: Xrm.Page.Process[] | Xrm.ProcessFlow.ProcessDictionary;
 
-    constructor(enabledProcesses: Xrm.Page.Process[]) {
+    constructor(enabledProcesses: Xrm.ProcessFlow.Process[]) {
         this.enabledProcesses = enabledProcesses;
     }
 
-    public getActiveProcess(): Xrm.Page.Process {
-        return (this.enabledProcesses as Xrm.Page.Process[]).filter((p) => {
+    public getActiveProcess(): Xrm.ProcessFlow.Process {
+        return (this.enabledProcesses as Xrm.ProcessFlow.Process[]).filter((p) => {
             return p.isRendered();
         })[0] || undefined;
     }
 
-    public setActiveProcess(processId: string, callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
+    public setActiveProcess(processId: string, callbackFunction?: Xrm.ProcessFlow.ProcessCallbackDelegate): void {
         const activeProcess = this.getActiveProcess();
         if (activeProcess) {
-            const newProcess = (this.enabledProcesses as Xrm.Page.Process[]).filter((p) => {
+            const newProcess = (this.enabledProcesses as Xrm.ProcessFlow.Process[]).filter((p) => {
                 return p.getId() === processId;
             })[0] || undefined;
 
@@ -28,19 +28,19 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
     }
 
     public setActiveProcessInstance(processInstanceId: string,
-                                    callbackFunction: Xrm.Page.data.SetProcessInstanceDelegate): void {
+                                    callbackFunction: Xrm.ProcessFlow.SetProcessInstanceDelegate): void {
         throw new Error("set active process instance not implemented.");
     }
 
-    public getProcessInstances(callbackFunction: Xrm.Page.data.GetProcessInstancesDelegate): void {
+    public getProcessInstances(callbackFunction: Xrm.ProcessFlow.GetProcessInstancesDelegate): void {
         throw new Error("get process instances not implemented.");
     }
 
-    public addOnProcessStatusChange(handler: Xrm.Page.ProcessStatusChangeHandler): void {
+    public addOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
         throw new Error("add on process status change not implemented.");
     }
 
-    public removeOnProcessStatusChange(handler: Xrm.Page.ProcessStatusChangeHandler): void {
+    public removeOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
         throw new Error("remove on process status change not implemented.");
     }
 
@@ -56,18 +56,18 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
         return instanceName;
     }
 
-    public getStatus(): Xrm.Page.ProcessStatus {
+    public getStatus(): Xrm.ProcessFlow.ProcessStatus {
         throw new Error("get status not implemented.");
     }
 
-    public setStatus(status: Xrm.Page.ProcessStatus, callbackFunction: Xrm.Page.data.ProcessSetStatusDelegate): void {
+    public setStatus(status: Xrm.ProcessFlow.ProcessStatus, callbackFunction: Xrm.ProcessFlow.ProcessSetStatusDelegate): void {
         throw new Error("set status not implemented.");
     }
 
-    public getActiveStage(): StageMock | Xrm.Page.Stage {
+    public getActiveStage(): StageMock | Xrm.ProcessFlow.Stage {
         const activeProcess = this.getActiveProcess();
         const stages = activeProcess.getStages();
-        const activeStages: Xrm.Page.Stage[] = [];
+        const activeStages: Xrm.ProcessFlow.Stage[] = [];
 
         stages.forEach((s: StageMock): void => {
             if (s.getStatus() === "active") {
@@ -78,7 +78,7 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
         return activeStages[0] || undefined;
     }
 
-    public setActiveStage(stageId: string, callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
+    public setActiveStage(stageId: string, callbackFunction?: Xrm.ProcessFlow.ProcessCallbackDelegate): void {
         const activeProcess = this.getActiveProcess();
         const stages = activeProcess.getStages();
         let setStatus = "";
@@ -97,39 +97,39 @@ export class ProcessManagerMock implements Xrm.Page.data.ProcessManager {
         }
     }
 
-    public getActivePath(): Xrm.Collection.ItemCollection<Xrm.Page.Stage> {
+    public getActivePath(): Xrm.Collection.ItemCollection<Xrm.ProcessFlow.Stage> {
         throw new Error("get active path not implemented");
     }
 
-    public getEnabledProcesses(callbackFunction: (enabledProcesses: Xrm.Page.data.ProcessDictionary) => void): void {
-        callbackFunction(this.enabledProcesses as Xrm.Page.data.ProcessDictionary);
+    public getEnabledProcesses(callbackFunction: (enabledProcesses: Xrm.ProcessFlow.ProcessDictionary) => void): void {
+        callbackFunction(this.enabledProcesses as Xrm.ProcessFlow.ProcessDictionary);
     }
 
-    public getSelectedStage(): Xrm.Page.Stage {
+    public getSelectedStage(): Xrm.ProcessFlow.Stage {
         throw new Error("get selected not implemented");
     }
 
-    public addOnStageChange(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public addOnStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("add on stage change not implemented");
     }
 
-    public addOnStageSelected(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public addOnStageSelected(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("add on stage selected not implemented");
     }
 
-    public removeOnStageChange(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public removeOnStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("remove on stage change not implemented");
     }
 
-    public removeOnStageSelected(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public removeOnStageSelected(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("remove on stage selected not implemented");
     }
 
-    public moveNext(callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
+    public moveNext(callbackFunction?: Xrm.ProcessFlow.ProcessCallbackDelegate): void {
         throw new Error("move next not implemented");
     }
 
-    public movePrevious(callbackFunction?: Xrm.Page.data.ProcessCallbackDelegate): void {
+    public movePrevious(callbackFunction?: Xrm.ProcessFlow.ProcessCallbackDelegate): void {
         throw new Error("move previous not implemented");
     }
 }

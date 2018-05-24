@@ -4,7 +4,7 @@ import { ProcessManagerMock } from "../../../src/xrm-mock/processflow/processman
 import { StageMock } from "../../../src/xrm-mock/processflow/stage/stage.mock";
 import { StepMock } from "../../../src/xrm-mock/processflow/step/step.mock";
 
-describe("Xrm.Page.data.ProcessManager Mock", () => {
+describe("Xrm.ProcessFlow.ProcessManager Mock", () => {
     beforeEach(() => {
         const firstNameStep = new StepMock("First Name", "firstname", false);
         const lastNameStep = new StepMock("Last Name", "lastname", false);
@@ -15,13 +15,13 @@ describe("Xrm.Page.data.ProcessManager Mock", () => {
             id: "4444",
             name: "Sales Process",
             rendered: true,
-            stages: new ItemCollectionMock<Xrm.Page.Stage>([this.stage1, this.stage2]),
+            stages: new ItemCollectionMock<Xrm.Controls.Stage>([this.stage1, this.stage2]),
         });
         this.process2 = new ProcessMock({
             id: "5555",
             name: "Service Process",
             rendered: false,
-            stages: new ItemCollectionMock<Xrm.Page.Stage>([this.stage1, this.stage2]),
+            stages: new ItemCollectionMock<Xrm.Controls.Stage>([this.stage1, this.stage2]),
         });
         this.processManager = new ProcessManagerMock([this.process1, this.process2]);
     });

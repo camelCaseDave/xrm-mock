@@ -1,6 +1,6 @@
 import { UiKeyPressableMock } from "../../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
 
-describe("Xrm.Page.StandardControl Mock", () => {
+describe("Xrm.Controls.StandardControl Mock", () => {
   beforeEach(() => {
     this.handler1 = jest.fn();
     this.handler2 = jest.fn();

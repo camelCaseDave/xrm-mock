@@ -1,7 +1,7 @@
 import { ControlMock } from "../../../src/xrm-mock/controls/control/control.mock";
 import { StringControlMock } from "../../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
 
-describe("Xrm.Page.Control Mock", () => {
+describe("Xrm.Controls.Control Mock", () => {
     beforeEach(() => {
         this.control = new ControlMock({
             controlType: "subgrid",

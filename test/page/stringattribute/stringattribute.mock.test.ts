@@ -2,7 +2,7 @@ import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attrib
 import { IStringAttributeComponents,
          StringAttributeMock } from "../../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
 
-describe("Xrm.Page.StringAttribute Mock", () => {
+describe("Xrm.Attributes.StringAttribute Mock", () => {
     beforeEach(() => {
         const attribute: IStringAttributeComponents = {
             isDirty: false,

@@ -1,4 +1,4 @@
-export class PageMock implements Xrm.Page {
+export class PageMock implements Xrm.FormContext {
     public context: Xrm.GlobalContext;
     public data: Xrm.Data;
     public ui: Xrm.Ui;
@@ -9,11 +9,11 @@ export class PageMock implements Xrm.Page {
         this.ui = formContext.ui;
     }
 
-    public getAttribute<T extends Xrm.Page.Attribute>(attributeNameOrIndex: number | string): T;
-    public getAttribute<T extends Xrm.Page.Attribute>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
+    public getAttribute<T extends Xrm.Attributes.Attribute>(attributeNameOrIndex: number | string): T;
+    public getAttribute<T extends Xrm.Attributes.Attribute>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
 
-    public getAttribute<T extends Xrm.Page.Attribute>(param?: number | string |
-        Xrm.Collection.MatchingDelegate<T>): T | Xrm.Page.Attribute[] {
+    public getAttribute<T extends Xrm.Attributes.Attribute>(param?: number | string |
+        Xrm.Collection.MatchingDelegate<T>): T | Xrm.Attributes.Attribute[] {
         if (!arguments.length) {
             return this.data.entity.attributes.get();
         } else if (param && typeof param === "string") {
@@ -26,10 +26,10 @@ export class PageMock implements Xrm.Page {
         throw new Error(`Collection.Get called with unknown parameter type: ${typeof param}`);
     }
 
-    public getControl<T extends Xrm.Page.Control>(controlNameOrIndex: string | number): T;
-    public getControl<T extends Xrm.Page.Control>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
+    public getControl<T extends Xrm.Controls.Control>(controlNameOrIndex: string | number): T;
+    public getControl<T extends Xrm.Controls.Control>(delegateFunction?: Xrm.Collection.MatchingDelegate<T>): T[];
 
-    public getControl<T extends Xrm.Page.Control>(param?: number | string |
+    public getControl<T extends Xrm.Controls.Control>(param?: number | string |
         Xrm.Collection.MatchingDelegate<T>): T | T[] {
         if (!arguments.length || param === undefined || param === null) {
             return this.ui.controls.get() as T[];

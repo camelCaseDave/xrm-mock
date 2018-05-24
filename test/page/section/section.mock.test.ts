@@ -3,7 +3,7 @@ import * as Visible from "../../../src/xrm-mock/controls/uicangetvisibleelement/
 import * as Label from "../../../src/xrm-mock/controls/uilabelelement/uilabelelement.mock";
 import * as Standard from "../../../src/xrm-mock/controls/uistandardelement/uistandardelement.mock";
 
-describe("Xrm.Page.Section Mock", () => {
+describe("Xrm.ProcessFlow.Section Mock", () => {
     beforeEach(() => {
         this.section = new SectionMock("Section_Main", null,
             new Standard.UiStandardElementMock(

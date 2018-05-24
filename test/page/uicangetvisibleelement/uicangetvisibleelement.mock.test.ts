@@ -1,6 +1,6 @@
 import * as UiVisibleMock from "../../../src/xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 
-describe("Xrm.Page.UiCanGetVisible Mock", () => {
+describe("Xrm.Controls.UiCanGetVisible Mock", () => {
     beforeEach(() => {
         this.uiCanGetVisibleElement = new UiVisibleMock.UiCanGetVisibleElementMock(true);
     });

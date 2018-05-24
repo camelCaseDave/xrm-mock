@@ -1,7 +1,7 @@
 export class OpenQuickCreateSuccessCallbackObjectMock implements Xrm.Async.OpenQuickCreateSuccessCallbackObject {
-    public savedEntityReference: Xrm.Page.LookupValue;
+    public savedEntityReference: Xrm.LookupValue;
 
-    constructor(savedEntityReference: Xrm.Page.LookupValue) {
+    constructor(savedEntityReference: Xrm.LookupValue) {
         this.savedEntityReference = savedEntityReference;
     }
 }

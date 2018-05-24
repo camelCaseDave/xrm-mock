@@ -35,13 +35,13 @@ export default class Attribute {
   }
 
   public createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
-  public createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
+  public createLookup(name: string, lookup: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
   public createLookup(nameOrComponents: string | XrmMock.ILookupAttributeComponents,
-                      valueOrControlComponents?: Xrm.Page.LookupValue | Xrm.Page.LookupValue[] | LookupControlComponent): XrmMock.LookupAttributeMock {
+                      valueOrControlComponents?: Xrm.LookupValue | Xrm.LookupValue[] | LookupControlComponent): XrmMock.LookupAttributeMock {
     if (typeof(nameOrComponents) === "string") {
       const components: XrmMock.ILookupAttributeComponents = {
         name: nameOrComponents,
-        value: this.arrayify(valueOrControlComponents as Xrm.Page.LookupValue) };
+        value: this.arrayify(valueOrControlComponents as Xrm.LookupValue) };
       const controls = [{name: nameOrComponents}];
 
       return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
@@ -68,10 +68,10 @@ export default class Attribute {
   }
 
   public createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
-  public createOptionSet(name: string, value?: string | number, options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
+  public createOptionSet(name: string, value?: string | number, options?: Xrm.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
   public createOptionSet(nameOrComponents: string | XrmMock.IOptionSetAttributeComponents,
                          valueOrControlComponents?: string | number | OptionSetControlComponent,
-                         options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
+                         options?: Xrm.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
     return typeof(nameOrComponents) === "string"
       ? this.createOptionSetFromParameters(nameOrComponents, valueOrControlComponents as string | number, options)
       : this.createOptionSetFromComponents(nameOrComponents,
@@ -96,7 +96,7 @@ export default class Attribute {
 
   private createOptionSetFromParameters(name: string,
                                         value: string | number,
-                                        options: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
+                                        options: Xrm.OptionSetValue[]): XrmMock.OptionSetAttributeMock {
     let num: number;
     if (value !== null
       && value !== undefined) {
@@ -159,7 +159,7 @@ export default class Attribute {
     return attribute;
   }
 
-  private addAttribute(attribute: Xrm.Page.Attribute): void {
+  private addAttribute(attribute: Xrm.Attributes.Attribute): void {
     (Xrm.Page.data.entity as XrmMock.EntityMock).attributes.push(attribute);
   }
 
@@ -169,9 +169,9 @@ export default class Attribute {
    * @param controls Array of Control Components to create controls for the given attribute
    * @param controlCreateFunction the name of the Control function to call to create the correct type of control
    */
-  private associateAttribute<TAtt extends Xrm.Page.Attribute>(attribute: TAtt,
-                                                              controls: any[],
-                                                              controlCreateFunction: ControlCreateMethods): TAtt {
+  private associateAttribute<TAtt extends Xrm.Attributes.Attribute>(attribute: TAtt,
+                                                                    controls: any[],
+                                                                    controlCreateFunction: ControlCreateMethods): TAtt {
       this.addAttribute(attribute);
       controls.forEach((c) => {
         c.attribute = attribute;
@@ -182,7 +182,7 @@ export default class Attribute {
       return attribute;
   }
 
-  private defaultName(control: any, attribute: Xrm.Page.Attribute) {
+  private defaultName(control: any, attribute: Xrm.Attributes.Attribute) {
     const names: string[] = [];
     attribute.controls.forEach((c) => {
       names.push(c.getName());

@@ -1,7 +1,7 @@
 import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { DateAttributeMock } from "../../../src/xrm-mock/attributes/dateattribute/dateattribute.mock";
 
-describe("Xrm.Page.DateAttribute Mock", () => {
+describe("Xrm.Attributes.DateAttribute Mock", () => {
     let dateAttribute: DateAttributeMock;
     beforeEach(() => {
         dateAttribute = new DateAttributeMock({

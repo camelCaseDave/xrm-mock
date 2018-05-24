@@ -7,7 +7,7 @@ export class UiStandardElementMock implements Xrm.Controls.UiStandardElement {
 
     }
     public uiLabelElement: Xrm.Controls.UiLabelElement;
-    public uiCanGetVisibleElement: Xrm.Page.UiCanGetVisibleElement;
+    public uiCanGetVisibleElement: Xrm.Controls.UiCanGetVisibleElement;
 
     constructor(uiLabelElement: Xrm.Controls.UiLabelElement, uiCanGetVisibleElement: Xrm.Controls.UiCanGetVisibleElement) {
         this.uiLabelElement = uiLabelElement;

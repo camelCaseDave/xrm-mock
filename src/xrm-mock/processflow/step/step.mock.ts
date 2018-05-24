@@ -1,4 +1,4 @@
-export class StepMock implements Xrm.Page.Step {
+export class StepMock implements Xrm.ProcessFlow.Step {
   public required: boolean;
   public name: string;
   public attribute: string;

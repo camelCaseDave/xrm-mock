@@ -2,7 +2,7 @@ import { OptionSetAttributeMock } from "../../../src/xrm-mock/attributes/options
 import { OptionSetControlMock } from "../../../src/xrm-mock/controls/optionsetcontrol/optionsetcontrol.mock";
 import { OptionSetValueMock } from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
-describe("Xrm.Page.OptionSetControl Mock", () => {
+describe("Xrm.Controls.OptionSetControl Mock", () => {
     let control: OptionSetControlMock;
     beforeEach(() => {
         const att = new OptionSetAttributeMock({name: "test"});

@@ -5,10 +5,10 @@ import { EntityMock } from "../../../src/xrm-mock/entity/entity.mock";
 import { FormContextMock } from "../../../src/xrm-mock/formcontext/formcontext.mock";
 import { PageMock } from "../../../src/xrm-mock/page/page.mock";
 
-describe("Xrm.Page.Entity Mock", () => {
+describe("Xrm.Entity Mock", () => {
     beforeEach(() => {
         this.id = "{0}";
-        const attributes: Xrm.Page.Attribute[] = [];
+        const attributes: Xrm.Attributes.Attribute[] = [];
         attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
         attributes.push(new AttributeMock({ name: "description", value: "" }));
         this.lastName = new AttributeMock({
@@ -21,7 +21,7 @@ describe("Xrm.Page.Entity Mock", () => {
         attributes.push(this.lastName);
 
         this.formContext = new FormContextMock(new DataMock(this.entityMock), null);
-        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<Xrm.Page.Attribute>(attributes));
+        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes));
         this.xrmPageMock = new PageMock(null, this.formContext);
     });
 

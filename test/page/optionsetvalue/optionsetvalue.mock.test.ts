@@ -1,6 +1,6 @@
 import { OptionSetValueMock} from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
-describe("Xrm.Page.OptionSetValue Mock", () => {
+describe("Xrm.OptionSetValue Mock", () => {
     beforeEach(() => {
         this.optionSetValue = new OptionSetValueMock("statecode", 0);
     });

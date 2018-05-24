@@ -1,15 +1,15 @@
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 
-export class EntityMock implements Xrm.Page.Entity {
+export class EntityMock implements Xrm.Entity {
     public id: string;
-    public attributes: ItemCollectionMock<Xrm.Page.Attribute>;
+    public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
 
-    constructor(id: string, attributes: ItemCollectionMock<Xrm.Page.Attribute>) {
+    constructor(id: string, attributes: ItemCollectionMock<Xrm.Attributes.Attribute>) {
         this.id = id;
         this.attributes = attributes;
     }
 
-    public addOnSave(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error(("addOnSave not implemented"));
     }
 
@@ -52,11 +52,11 @@ export class EntityMock implements Xrm.Page.Entity {
         throw new Error("Method not implemented.");
     }
 
-    public removeOnSave(handler: Xrm.Page.ContextSensitiveHandler): void {
+    public removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error(("removeOnSave not implemented"));
     }
 
-    public save(saveMode?: Xrm.Page.SaveMode): void;
+    public save(saveMode?: Xrm.EntitySaveMode): void;
 
     public save(param?: string): void {
         throw new Error(("save not implemented"));

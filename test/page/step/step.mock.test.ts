@@ -1,6 +1,6 @@
 import { StepMock } from "../../../src/xrm-mock/processflow/step/step.mock";
 
-describe("Xrm.Page.Step Mock", () => {
+describe("Xrm.ProcessFlow.Step Mock", () => {
     beforeEach(() => {
         this.step = new StepMock("First Name", "firstname", true);
     });

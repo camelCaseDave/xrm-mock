@@ -2,7 +2,7 @@ import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attrib
 import { BooleanAttributeMock } from "../../../src/xrm-mock/attributes/booleanattribute/booleanattribute.mock";
 import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
 
-describe("Xrm.Page.BooleanAttribute Mock", () => {
+describe("Xrm.Attributes.BooleanAttribute Mock", () => {
     beforeEach(() => {
         this.booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock({
             isDirty: false,

@@ -1,12 +1,12 @@
 /// <reference types="xrm" />
 import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 export declare class UiMock implements Xrm.Ui {
-    process: Xrm.Page.ui.ProcessManager;
-    controls: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    process: Xrm.Controls.ProcessControl;
+    controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
     formSelector: FormSelectorMock;
-    navigation: Xrm.Page.Navigation;
-    tabs: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
-    quickForms: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>;
+    navigation: Xrm.Controls.Navigation;
+    tabs: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
+    quickForms: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;
     formNotifications: [{
         message: string;
         level: Xrm.Page.ui.FormNotificationLevel;
@@ -23,10 +23,10 @@ export declare class UiMock implements Xrm.Ui {
     private _getFormNotificationExists(notifications, uniqueId);
 }
 export interface IUiComponents {
-    process?: Xrm.Page.ui.ProcessManager;
-    controls?: Xrm.Collection.ItemCollection<Xrm.Page.Control>;
+    process?: Xrm.Controls.ProcessControl;
+    controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
     formSelector?: FormSelectorMock;
-    navigation?: Xrm.Page.Navigation;
-    tabs?: Xrm.Collection.ItemCollection<Xrm.Page.Tab>;
-    quickForms?: Xrm.Collection.ItemCollection<Xrm.Page.ui.QuickForm>;
+    navigation?: Xrm.Controls.Navigation;
+    tabs?: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
+    quickForms?: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;
 }

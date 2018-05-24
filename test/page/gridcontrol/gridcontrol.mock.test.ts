@@ -1,6 +1,6 @@
 import { GridControlMock } from "../../../src/xrm-mock/controls/gridcontrol/gridcontrol.mock";
 
-describe("Xrm.Page.GridControl Mock", () => {
+describe("Xrm.Controls.GridControl Mock", () => {
     let gridControl: GridControlMock;
 
     beforeEach(() => {

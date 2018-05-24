@@ -11,11 +11,11 @@ export default class Attribute {
     createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
     createDate(name: string, value?: Date): XrmMock.DateAttributeMock;
     createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
-    createLookup(name: string, lookup: Xrm.Page.LookupValue | Xrm.Page.LookupValue[]): XrmMock.LookupAttributeMock;
+    createLookup(name: string, lookup: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
     createNumber(attComponents: XrmMock.INumberAttributeComponents, controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;
     createNumber(name: string, value?: number): XrmMock.NumberAttributeMock;
     createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;
-    createOptionSet(name: string, value?: string | number, options?: Xrm.Page.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
+    createOptionSet(name: string, value?: string | number, options?: Xrm.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
     createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: StringControlComponent): XrmMock.StringAttributeMock;
     createString(name: string, value?: string): XrmMock.StringAttributeMock;
     private createOptionSetFromParameters(name, value, options);

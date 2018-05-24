@@ -1,10 +1,10 @@
 /// <reference types="xrm" />
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
-export declare class EntityMock implements Xrm.Page.Entity {
+export declare class EntityMock implements Xrm.Entity {
     id: string;
-    attributes: ItemCollectionMock<Xrm.Page.Attribute>;
-    constructor(id: string, attributes: ItemCollectionMock<Xrm.Page.Attribute>);
-    addOnSave(handler: Xrm.Page.ContextSensitiveHandler): void;
+    attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
+    constructor(id: string, attributes: ItemCollectionMock<Xrm.Attributes.Attribute>);
+    addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
     getEntityName(): string;
     getDataXml(): string;
     getEntityReference(): Xrm.LookupValue;
@@ -12,6 +12,6 @@ export declare class EntityMock implements Xrm.Page.Entity {
     getIsDirty(): boolean;
     getPrimaryAttributeValue(): string;
     isValid(): boolean;
-    removeOnSave(handler: Xrm.Page.ContextSensitiveHandler): void;
-    save(saveMode?: Xrm.Page.SaveMode): void;
+    removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
+    save(saveMode?: Xrm.EntitySaveMode): void;
 }

@@ -2,7 +2,7 @@ import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attrib
 import { OptionSetAttributeMock } from "../../../src/xrm-mock/attributes/optionsetattribute/optionsetattribute.mock";
 import { OptionSetValueMock } from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
-describe("Xrm.Page.OptionSetAttribute Mock", () => {
+describe("Xrm.Attributes.OptionSetAttribute Mock", () => {
     let optionSetAttribute: OptionSetAttributeMock;
 
     beforeEach(() => {
