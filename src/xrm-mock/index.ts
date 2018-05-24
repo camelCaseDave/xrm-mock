@@ -20,6 +20,7 @@ export { DateControlMock, IAttDateControlComponents, IDateControlComponents } fr
 export { IDateFormattingInfoComponents, DateFormattingInfoMock } from "./dateformattinginfo/dateformattinginfo.mock";
 export { DialogSizeOptionsMock } from "./navigation/dialogsizeoptions/dialogsizeoptions.mock";
 export { IEntityFormOptionsComponents, EntityFormOptionsMock } from "./navigation/entityformoptions/entityformoptions.mock";
+export { IEntityMetadataComponents, EntityMetadataMock } from "./metadata/entitymetadata/entitymetadata.mock";
 export { EntityMock } from "./entity/entity.mock";
 export { EnumAttributeMock } from "./attributes/enumattribute/enumattribute.mock";
 export { ErrorDialogOptionsMock } from "./navigation/errordialogoptions/errordialogoptions.mock";
