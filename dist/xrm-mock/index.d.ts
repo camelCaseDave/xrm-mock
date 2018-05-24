@@ -60,6 +60,7 @@ export { IAttStandardControlComponents, IStandardControlComponents, StandardCont
 export { StepMock } from "./processflow/step/step.mock";
 export { IStringAttributeComponents, StringAttributeMock } from "./attributes/stringattribute/stringattribute.mock";
 export { IAttStringControlComponents, IStringControlComponents, StringControlMock } from "./controls/stringcontrol/stringcontrol.mock";
+export { TabMock } from "./controls/tab/tab.mock";
 export { UiCanGetVisibleElementMock } from "./controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 export { UiFocusableMock } from "./controls/uifocusable/uifocusable.mock";
 export { UiKeyPressableMock } from "./controls/uikeypressable/uikeypressable.mock";
