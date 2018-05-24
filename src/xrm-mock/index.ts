@@ -1,4 +1,5 @@
 export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
+export { AlertStringsMock } from "./navigation/alertstrings/alertstrings.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
 export { AttributeReturnType, AttributeMock, IAttributeComponents } from "./attributes/attribute/attribute.mock";
 export { AutoCompleteCommandMock } from "./controls/autocompletecommand/autocompletecommand.mock";
@@ -8,6 +9,8 @@ export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupCont
 export { BooleanAttributeMock } from "./attributes/booleanattribute/booleanattribute.mock";
 export { ICalendarComponents, CalendarMock } from "./calendar/calendar.mock";
 export { ClientContextMock } from "./clientcontext/clientcontext.mock";
+export { ConfirmResultMock } from "./navigation/confirmresult/confirmresult.mock";
+export { IConfirmStringsComponents, ConfirmStringsMock } from "./navigation/confirmstrings/confirmstrings.mock";
 export { ContextMock, IContextComponents } from "./globalcontext/context.mock";
 export { ControlMock, IAttControlComponents, IControlComponents } from "./controls/control/control.mock";
 export { ControlNotificationActionMock } from "./controls/controlnotificationaction/controlnotificationaction.mock";
@@ -15,11 +18,15 @@ export { DataMock } from "./data/data.mock";
 export { DateAttributeMock, IDateAttributeComponents } from "./attributes/dateattribute/dateattribute.mock";
 export { DateControlMock, IAttDateControlComponents, IDateControlComponents } from "./controls/datecontrol/datecontrol.mock";
 export { IDateFormattingInfoComponents, DateFormattingInfoMock } from "./dateformattinginfo/dateformattinginfo.mock";
+export { DialogSizeOptionsMock } from "./navigation/dialogsizeoptions/dialogsizeoptions.mock";
+export { IEntityFormOptionsComponents, EntityFormOptionsMock } from "./navigation/entityformoptions/entityformoptions.mock";
 export { EntityMock } from "./entity/entity.mock";
 export { EnumAttributeMock } from "./attributes/enumattribute/enumattribute.mock";
+export { ErrorDialogOptionsMock } from "./navigation/errordialogoptions/errordialogoptions.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";
 export { EventContextMock } from "./events/eventcontext/eventcontext.mock";
 export { IExecuteResponseComponents, ExecuteResponseMock } from "./executeresponse/executeresponse.mock";
+export { FileDetailsMock } from "./navigation/filedetails/filedetails.mock";
 export { FormContextMock } from "./formcontext/formcontext.mock";
 export { FormItemMock, IFormItemComponents } from "./controls/formitem/formitem.mock";
 export { FormOpenParametersMock } from "./utility/formopenparameters/formopenparameters.mock";
@@ -39,6 +46,7 @@ export { NavigationItemMock } from "./controls/navigationitem/navigationitem.moc
 export { INumberAttributeComponents, NumberAttributeMock } from "./attributes/numberattribute/numberattribute.mock";
 export { IAttNumberControlComponents, INumberControlComponents, NumberControlMock } from "./controls/numbercontrol/numbercontrol.mock";
 export { OpenParametersMock } from "./utility/openparameters/openparameters.mock";
+export { OpenWebresourceOptionsMock } from "./navigation/openwebresourceoptions/openwebresourceoptions.mock";
 export { IOptionSetAttributeComponents, OptionSetAttributeMock } from "./attributes/optionsetattribute/optionsetattribute.mock";
 export { IAttOptionSetControlComponents, IOptionSetControlComponents, OptionSetControlMock } from "./controls/optionsetcontrol/optionsetcontrol.mock";
 export { OptionSetValueMock } from "./optionsetvalue/optionsetvalue.mock";
@@ -50,6 +58,7 @@ export { ProcessControlMock } from "./controls/processcontrol/processcontrol.moc
 export { ProcessDictionaryMock } from "./processflow/processdictionary/processdictionary.mock";
 export { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
 export { ProcessMock, IProcessComponents } from "./processflow/process/process.mock";
+export { IRelationshipComponents, RelationshipMock } from "./navigation/relationship/relationship.mock";
 export { ReportOpenParametersMock } from "./url/reportopenparameters/reportopenparameters.mock";
 export { RetrieveMultipleRequestMock } from "./retrievemultiplerequest/retrievemultiplerequest.mock";
 export { SaveEventArgumentsMock } from "./events/saveeventarguments/saveeventarguments.mock";
