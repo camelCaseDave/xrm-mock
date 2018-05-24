@@ -1,0 +1,1 @@
+{"version":3,"file":"getcurrentpositionresponse.mock.js","sourceRoot":"","sources":["../../../../src/xrm-mock/device/getcurrentpositionresponse/getcurrentpositionresponse.mock.ts"],"names":[],"mappings":";;AAAA;IAIE,wCAAY,MAAW,EAAE,SAAiB;QACxC,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;IAC7B,CAAC;IACH,qCAAC;AAAD,CAAC,AARD,IAQC;AARY,wEAA8B"}
