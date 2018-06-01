@@ -32,7 +32,7 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
     }
 
     public setValue(value: string): void {
-        if (this.maxLength && value.length > this.maxLength) {
+        if (value && this.maxLength && value.length > this.maxLength) {
             throw new Error(("value cannot be greater than " + this.maxLength));
         } else {
             super.setValue(value);
