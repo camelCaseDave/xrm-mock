@@ -75,7 +75,7 @@ describe("Xrm.Attributes.Attribute Mock", () => {
     });
 
     it("should fire onchange", () => {
-        let anotherAttribute = new AttributeMock({
+        const anotherAttribute = new AttributeMock({
             isDirty: false,
             name: "lastname",
             requiredLevel: "none",
