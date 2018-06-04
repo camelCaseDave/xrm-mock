@@ -91,6 +91,7 @@ export class AttributeMock<TControl extends ControlMock,
     public setValue(value: TValue): void {
         this.value = value;
         this.isDirty = true;
+        this.fireOnChange();
     }
 }
 

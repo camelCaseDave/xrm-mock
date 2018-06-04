@@ -73,4 +73,20 @@ describe("Xrm.Attributes.Attribute Mock", () => {
 
         expect(this.attributeMock.getIsDirty()).toBe(true);
     });
+
+    it("should fire onchange", () => {
+        let anotherAttribute = new AttributeMock({
+            isDirty: false,
+            name: "lastname",
+            requiredLevel: "none",
+            submitMode: "dirty",
+            value: "Andrew",
+        });
+
+        const onChangeValue = "Fred";
+        expect(this.attributeMock.getValue()).toBe("Joe");
+        this.attributeMock.addOnChange(() => anotherAttribute.setValue(onChangeValue));
+        this.attributeMock.setValue("newValue");
+        expect(anotherAttribute.getValue()).toBe(onChangeValue);
+    });
 });
