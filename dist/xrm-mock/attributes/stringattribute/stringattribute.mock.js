@@ -33,7 +33,7 @@ var StringAttributeMock = /** @class */ (function (_super) {
         return this.maxLength;
     };
     StringAttributeMock.prototype.setValue = function (value) {
-        if (this.maxLength && value.length > this.maxLength) {
+        if (value && this.maxLength && value.length > this.maxLength) {
             throw new Error(("value cannot be greater than " + this.maxLength));
         }
         else {

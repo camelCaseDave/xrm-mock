@@ -46,6 +46,24 @@ describe("XrmMockGenerator.Attribute", () => {
     expect(Xrm.Page.getAttribute("primarycustomerid").getValue()[0].id).toBe("5555");
   });
 
+  it("should create a partyLookup", () => {
+    XrmMockGenerator.Attribute.createLookup("to", [new LookupValueMock("1", "contact"), new LookupValueMock("2", "contact")]);
+    const value: Xrm.Page.LookupAttribute = Xrm.Page.getAttribute("to");
+    expect(value.getIsPartyList()).toBe(true);
+    expect(value.getValue()[0].id).toBe("1");
+    expect(value.getValue()[1].id).toBe("2");
+    expect(value.controls.getLength()).toBe(1);
+    expect(value.controls.get(0).getName()).toBe("to");
+
+    XrmMockGenerator.Attribute.createLookup({
+      isPartyList: true,
+      name: "to2",
+      value: value.getValue(),
+    });
+
+    expect((Xrm.Page.getAttribute("to2") as Xrm.Page.LookupAttribute).getIsPartyList()).toBe(true);
+  });
+
   it("should create a number attribute", () => {
     XrmMockGenerator.Attribute.createNumber("units", 3);
     expect(Xrm.Page.getAttribute("units").getValue()).toBe(3);

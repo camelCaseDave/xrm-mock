@@ -25,6 +25,7 @@ var Attribute = /** @class */ (function () {
     Attribute.prototype.createLookup = function (nameOrComponents, valueOrControlComponents) {
         if (typeof (nameOrComponents) === "string") {
             var components = {
+                isPartyList: valueOrControlComponents && Array.isArray(valueOrControlComponents),
                 name: nameOrComponents,
                 value: this.arrayify(valueOrControlComponents)
             };
@@ -150,7 +151,10 @@ var Attribute = /** @class */ (function () {
         }
     };
     Attribute.prototype.arrayify = function (possibleArray) {
-        if (possibleArray instanceof Array) {
+        if (!possibleArray) {
+            return [];
+        }
+        else if (possibleArray instanceof Array) {
             return possibleArray;
         }
         else {

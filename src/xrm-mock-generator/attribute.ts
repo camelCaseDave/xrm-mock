@@ -40,6 +40,7 @@ export default class Attribute {
                       valueOrControlComponents?: Xrm.LookupValue | Xrm.LookupValue[] | LookupControlComponent): XrmMock.LookupAttributeMock {
     if (typeof(nameOrComponents) === "string") {
       const components: XrmMock.ILookupAttributeComponents = {
+        isPartyList: valueOrControlComponents && Array.isArray(valueOrControlComponents),
         name: nameOrComponents,
         value: this.arrayify(valueOrControlComponents as Xrm.LookupValue) };
       const controls = [{name: nameOrComponents}];
@@ -201,7 +202,9 @@ export default class Attribute {
   }
 
   private arrayify<T>(possibleArray: T[] | T): T[] {
-    if (possibleArray instanceof Array) {
+    if (!possibleArray) {
+      return [];
+    } else if (possibleArray instanceof Array) {
       return possibleArray;
     } else {
       return [possibleArray];
