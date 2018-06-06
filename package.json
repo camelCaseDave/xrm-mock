@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "3.4.5",
+  "version": "3.4.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
@@ -10,7 +10,8 @@
     "test": "test"
   },
   "files": [
-    "dist"
+    "dist",
+    "build"
   ],
   "keywords": [
     "dynamics-crm",
@@ -18,7 +19,7 @@
     "xrm"
   ],
   "scripts": {
-    "build": "tsc && npm run lint && npm run test",
+    "build": "tsc && npm run lint && npm run test && npm run buildOne",
     "buildOne": "tsc --outFile ./build/index.js --module amd",
     "lint": "tslint -c tslint.json 'src/**/*.ts' && tslint -c tslint.json 'test/**/*.ts'",
     "test": "jest --coverage --maxWorkers=4",
