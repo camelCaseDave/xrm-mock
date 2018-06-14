@@ -5,6 +5,7 @@ var EntityMock = /** @class */ (function () {
         this.id = id;
         this.entityName = entityName;
         this.attributes = attributes;
+        this.saveEventHandlers = [];
     }
     EntityMock.prototype.addOnSave = function (handler) {
         this.saveEventHandlers.push(handler);
@@ -49,33 +50,27 @@ var EntityMock = /** @class */ (function () {
         this.saveEventHandlers.splice(index);
     };
     EntityMock.prototype.save = function (saveMode) {
-        var context = {
+        var context = this.getSaveContext(saveMode);
+        var _loop_1 = function (handler) {
+            var index = this_1.saveEventHandlers.indexOf(handler);
+            context.getDepth = function () { return index; };
+            handler(context);
+        };
+        var this_1 = this;
+        for (var _i = 0, _a = this.saveEventHandlers; _i < _a.length; _i++) {
+            var handler = _a[_i];
+            _loop_1(handler);
+        }
+    };
+    EntityMock.prototype.getSaveContext = function (saveMode) {
+        var _this = this;
+        return {
             getContext: function () {
                 throw new Error("getContext not implemented.");
             },
-            getDepth: function () {
-                throw new Error("getDepth not implemented.");
-            },
+            getDepth: null,
             getEventArgs: function () {
-                return {
-                    getSaveMode: function () {
-                        var mode;
-                        if (saveMode == null) {
-                            mode = 1 /* Save */;
-                        }
-                        else if (saveMode === "saveandclose") {
-                            mode = 2 /* SaveAndClose */;
-                        }
-                        else if (saveMode === "saveandnew") {
-                            mode = 59 /* SaveAndNew */;
-                        }
-                        return mode;
-                    },
-                    isDefaultPrevented: function () { return false; },
-                    preventDefault: function () {
-                        throw new Error("preventDefault not implemented.");
-                    },
-                };
+                return _this.getSaveEventArgs(saveMode);
             },
             getEventSource: function () {
                 throw new Error("getEventSource not implemented.");
@@ -90,10 +85,27 @@ var EntityMock = /** @class */ (function () {
                 throw new Error("setSharedVariable not implemented.");
             },
         };
-        for (var _i = 0, _a = this.saveEventHandlers; _i < _a.length; _i++) {
-            var handler = _a[_i];
-            handler(context);
-        }
+    };
+    EntityMock.prototype.getSaveEventArgs = function (saveMode) {
+        return {
+            getSaveMode: function () {
+                var mode;
+                if (saveMode == null) {
+                    mode = 1 /* Save */;
+                }
+                else if (saveMode === "saveandclose") {
+                    mode = 2 /* SaveAndClose */;
+                }
+                else if (saveMode === "saveandnew") {
+                    mode = 59 /* SaveAndNew */;
+                }
+                return mode;
+            },
+            isDefaultPrevented: function () { return false; },
+            preventDefault: function () {
+                throw new Error("preventDefault not implemented.");
+            },
+        };
     };
     return EntityMock;
 }());
