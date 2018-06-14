@@ -8,6 +8,7 @@ import { PageMock } from "../../../src/xrm-mock/page/page.mock";
 describe("Xrm.Entity Mock", () => {
     beforeEach(() => {
         this.id = "{0}";
+        this.entityName = "contact";
         const attributes: Xrm.Attributes.Attribute[] = [];
         attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
         attributes.push(new AttributeMock({ name: "description", value: "" }));
@@ -21,7 +22,7 @@ describe("Xrm.Entity Mock", () => {
         attributes.push(this.lastName);
 
         this.formContext = new FormContextMock(new DataMock(this.entityMock), null);
-        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes));
+        this.entityMock = new EntityMock(this.id, this.entityName, new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes));
         this.xrmPageMock = new PageMock(null, this.formContext);
     });
 
@@ -43,5 +44,36 @@ describe("Xrm.Entity Mock", () => {
 
     it("should get an id of 0", () => {
         expect(this.entityMock.getId()).toBe(this.id);
+    });
+
+    it ("should get an entityName of contact", () => {
+        expect(this.entityMock.getEntityName()).toBe(this.entityName);
+    });
+
+    it ("should add and execute onSave event", () => {
+        let depth: number;
+
+        function onSave(context: Xrm.Events.SaveEventContext) {
+            depth = context.getDepth();
+        }
+
+        this.entityMock.addOnSave(onSave);
+
+        expect(this.entityMock.saveEventHandlers.length).toBe(1);
+
+        this.entityMock.save();
+
+        expect(depth).toBe(0);
+    });
+
+    it ("should remove an onSave event", () => {
+        // tslint:disable-next-line:no-empty
+        function onSave(context: Xrm.Events.SaveEventContext) {
+        }
+
+        this.entityMock.addOnSave(onSave);
+        this.entityMock.removeOnSave(onSave);
+
+        expect(this.entityMock.saveEventHandlers.length).toBe(0);
     });
 });

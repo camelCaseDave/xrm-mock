@@ -10,9 +10,9 @@ var webapi_1 = require("./webapi");
 var XrmMockGenerator = /** @class */ (function () {
     function XrmMockGenerator() {
     }
-    XrmMockGenerator.initialise = function () {
+    XrmMockGenerator.initialise = function (entityName) {
         var context = context_1.default.createContext();
-        var formContext = new XrmMock.FormContextMock(new XrmMock.DataMock(new XrmMock.EntityMock("{00000000-0000-0000-0000-000000000000}", new XrmMock.ItemCollectionMock([]))), ui_1.default.createUi());
+        var formContext = new XrmMock.FormContextMock(new XrmMock.DataMock(new XrmMock.EntityMock("{00000000-0000-0000-0000-000000000000}", entityName, new XrmMock.ItemCollectionMock([]))), ui_1.default.createUi());
         var xrm = new XrmMock.XrmStaticMock({
             page: new XrmMock.PageMock(context, formContext),
             webApi: webapi_1.default.createApi(context.client),

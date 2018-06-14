@@ -1,12 +1,10 @@
 import { XrmMockGenerator } from "../../src/xrm-mock-generator/index";
-import { LookupValueMock, XrmStaticMock } from "../../src/xrm-mock/index";
 import { PageMock } from "../../src/xrm-mock/page/page.mock";
-import { StringAttributeMock } from "../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 
 describe("XrmMockGenerator.Control", () => {
   let page: PageMock;
   beforeEach(() => {
-    page = XrmMockGenerator.initialise().Page;
+    page = XrmMockGenerator.initialise("contact").Page;
   });
 
   it("should create a grid control", () => {

@@ -6,7 +6,7 @@ import { PageMock } from "../../src/xrm-mock/page/page.mock";
 describe("XrmMockGenerator.Attribute", () => {
   let page: PageMock;
   beforeEach(() => {
-    page = XrmMockGenerator.initialise().Page;
+    page = XrmMockGenerator.initialise("contact").Page;
   });
 
   it("should create a string attribute", () => {

@@ -2,19 +2,23 @@ import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.
 
 export class EntityMock implements Xrm.Entity {
     public id: string;
+    public entityName: string;
     public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
+    public saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
 
-    constructor(id: string, attributes: ItemCollectionMock<Xrm.Attributes.Attribute>) {
+    constructor(id: string, entityName: string, attributes: ItemCollectionMock<Xrm.Attributes.Attribute>) {
         this.id = id;
+        this.entityName = entityName;
         this.attributes = attributes;
+        this.saveEventHandlers = [];
     }
 
     public addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error(("addOnSave not implemented"));
+        this.saveEventHandlers.push(handler);
     }
 
     public getEntityName(): string {
-        throw new Error(("getEntityName not implemented"));
+        return this.entityName;
     }
 
     public getDataXml(): string {
@@ -22,7 +26,11 @@ export class EntityMock implements Xrm.Entity {
     }
 
     public getEntityReference(): Xrm.LookupValue {
-        throw new Error("Method not implemented.");
+        return {
+            entityType: this.entityName,
+            id: this.id,
+            name: "",
+        };
     }
 
     public getId(): string {
@@ -49,16 +57,61 @@ export class EntityMock implements Xrm.Entity {
     }
 
     public isValid(): boolean {
-        throw new Error("Method not implemented.");
+        throw new Error("isValid not implemented.");
     }
 
     public removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error(("removeOnSave not implemented"));
+        const index: number = this.saveEventHandlers.indexOf(handler);
+
+        this.saveEventHandlers.splice(index);
     }
 
-    public save(saveMode?: Xrm.EntitySaveMode): void;
+    public save(saveMode?: Xrm.EntitySaveMode): void {
+        const context: Xrm.Events.SaveEventContext = {
+            getContext: (): Xrm.GlobalContext => {
+                throw new Error("getContext not implemented.");
+            },
+            getDepth: null, // implemented separately for each handler in for loop below
+            getEventArgs: (): Xrm.Events.SaveEventArguments => {
+                return {
+                    getSaveMode: () => {
+                        let mode: XrmEnum.SaveMode;
 
-    public save(param?: string): void {
-        throw new Error(("save not implemented"));
+                        if (saveMode == null) {
+                            mode = XrmEnum.SaveMode.Save;
+                        } else if (saveMode === "saveandclose") {
+                            mode = XrmEnum.SaveMode.SaveAndClose;
+                        } else if (saveMode === "saveandnew") {
+                            mode = XrmEnum.SaveMode.SaveAndNew;
+                        }
+
+                        return mode;
+                    },
+                    isDefaultPrevented: () => false,
+                    preventDefault: (): void => {
+                        throw new Error("preventDefault not implemented.");
+                    },
+                };
+            },
+            getEventSource: (): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity => {
+                throw new Error("getEventSource not implemented.");
+            },
+            getFormContext: (): Xrm.FormContext => {
+                throw new Error("getFormContext not implemented.");
+            },
+            getSharedVariable: (): any => {
+                throw new Error("getSharedVariable not implemented.");
+            },
+            setSharedVariable: (): void => {
+                throw new Error("setSharedVariable not implemented.");
+            },
+        };
+
+        for (const handler of this.saveEventHandlers) {
+            const index: number = this.saveEventHandlers.indexOf(handler);
+            context.getDepth = () => index;
+
+            handler(context);
+        }
     }
 }

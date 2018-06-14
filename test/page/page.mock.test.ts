@@ -46,7 +46,7 @@ describe("Xrm.Page Mock", () => {
 
         formContext = new FormContextMock(
             new DataMock(
-                new EntityMock("{0}", new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes))),
+                new EntityMock("{0}", "contact", new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes))),
                 new UiMock({
                     controls: new ItemCollectionMock<StringControlMock>(controls),
                 },
