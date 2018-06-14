@@ -16,12 +16,13 @@ export class XrmMockGenerator {
   public static Ui: Ui = new Ui();
   public static WebApi: WebApi = new WebApi();
 
-  public static initialise(): XrmMock.XrmStaticMock {
+  public static initialise(entityName: string): XrmMock.XrmStaticMock {
     const context = Context.createContext();
     const formContext = new XrmMock.FormContextMock(
       new XrmMock.DataMock(
         new XrmMock.EntityMock(
           "{00000000-0000-0000-0000-000000000000}",
+          entityName,
           new XrmMock.ItemCollectionMock([]))),
       Ui.createUi(),
     );

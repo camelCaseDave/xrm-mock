@@ -1,10 +1,8 @@
 import { XrmMockGenerator } from "../../src/xrm-mock-generator/index";
-import { XrmStaticMock } from "../../src/xrm-mock/index";
-import { StringAttributeMock } from "../../src/xrm-mock/page/stringattribute/stringattribute.mock";
 
 describe("XrmMockGenerator", () => {
   beforeEach(() => {
-    XrmMockGenerator.initialise();
+    XrmMockGenerator.initialise("contact");
   });
 
   it("should initialise Xrm globally", () => {

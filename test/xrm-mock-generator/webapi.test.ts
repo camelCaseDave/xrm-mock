@@ -5,7 +5,7 @@ describe("WebAPI", () => {
   let contact;
 
   beforeEach(() => {
-    XrmMockGenerator.initialise();
+    XrmMockGenerator.initialise("contact");
     contact = {
       firstname: "Joe",
       id: "123",
