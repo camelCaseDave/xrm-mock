@@ -67,31 +67,24 @@ export class EntityMock implements Xrm.Entity {
     }
 
     public save(saveMode?: Xrm.EntitySaveMode): void {
-        const context: Xrm.Events.SaveEventContext = {
+        const context = this.getSaveContext(saveMode);
+
+        for (const handler of this.saveEventHandlers) {
+            const index: number = this.saveEventHandlers.indexOf(handler);
+            context.getDepth = () => index;
+
+            handler(context);
+        }
+    }
+
+    private getSaveContext(saveMode: Xrm.EntitySaveMode): Xrm.Events.SaveEventContext {
+        return {
             getContext: (): Xrm.GlobalContext => {
                 throw new Error("getContext not implemented.");
             },
-            getDepth: null, // implemented separately for each handler in for loop below
+            getDepth: null, // implemented separately for each handler
             getEventArgs: (): Xrm.Events.SaveEventArguments => {
-                return {
-                    getSaveMode: () => {
-                        let mode: XrmEnum.SaveMode;
-
-                        if (saveMode == null) {
-                            mode = XrmEnum.SaveMode.Save;
-                        } else if (saveMode === "saveandclose") {
-                            mode = XrmEnum.SaveMode.SaveAndClose;
-                        } else if (saveMode === "saveandnew") {
-                            mode = XrmEnum.SaveMode.SaveAndNew;
-                        }
-
-                        return mode;
-                    },
-                    isDefaultPrevented: () => false,
-                    preventDefault: (): void => {
-                        throw new Error("preventDefault not implemented.");
-                    },
-                };
+                return this.getSaveEventArgs(saveMode);
             },
             getEventSource: (): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity => {
                 throw new Error("getEventSource not implemented.");
@@ -106,12 +99,27 @@ export class EntityMock implements Xrm.Entity {
                 throw new Error("setSharedVariable not implemented.");
             },
         };
+    }
 
-        for (const handler of this.saveEventHandlers) {
-            const index: number = this.saveEventHandlers.indexOf(handler);
-            context.getDepth = () => index;
+    private getSaveEventArgs(saveMode): Xrm.Events.SaveEventArguments {
+        return {
+            getSaveMode: () => {
+                let mode: XrmEnum.SaveMode;
 
-            handler(context);
-        }
+                if (saveMode == null) {
+                    mode = XrmEnum.SaveMode.Save;
+                } else if (saveMode === "saveandclose") {
+                    mode = XrmEnum.SaveMode.SaveAndClose;
+                } else if (saveMode === "saveandnew") {
+                    mode = XrmEnum.SaveMode.SaveAndNew;
+                }
+
+                return mode;
+            },
+            isDefaultPrevented: () => false,
+            preventDefault: (): void => {
+                throw new Error("preventDefault not implemented.");
+            },
+        };
     }
 }

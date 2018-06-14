@@ -16,4 +16,6 @@ export declare class EntityMock implements Xrm.Entity {
     isValid(): boolean;
     removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
     save(saveMode?: Xrm.EntitySaveMode): void;
+    private getSaveContext(saveMode);
+    private getSaveEventArgs(saveMode);
 }
