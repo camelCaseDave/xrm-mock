@@ -12,5 +12,8 @@ export declare class XrmMockGenerator {
     static Form: Form;
     static Ui: Ui;
     static WebApi: WebApi;
-    static initialise(entityName: string): XrmMock.XrmStaticMock;
+    static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock;
+}
+export interface IXrmGeneratorComponents {
+    entity?: XrmMock.IEntityComponents;
 }

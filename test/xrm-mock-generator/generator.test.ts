@@ -2,7 +2,7 @@ import { XrmMockGenerator } from "../../src/xrm-mock-generator/index";
 
 describe("XrmMockGenerator", () => {
   beforeEach(() => {
-    XrmMockGenerator.initialise("contact");
+    XrmMockGenerator.initialise();
   });
 
   it("should initialise Xrm globally", () => {

@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
 var EntityMock = /** @class */ (function () {
-    function EntityMock(id, entityName, attributes) {
-        this.id = id;
-        this.entityName = entityName;
-        this.attributes = attributes;
+    function EntityMock(components) {
+        components = components || {};
+        this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
+        this.entityName = components.entityName || "contact";
+        this.attributes = components.attributes || new itemcollection_mock_1.ItemCollectionMock();
         this.saveEventHandlers = [];
     }
     EntityMock.prototype.addOnSave = function (handler) {

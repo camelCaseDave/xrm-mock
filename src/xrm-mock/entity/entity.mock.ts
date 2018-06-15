@@ -6,10 +6,11 @@ export class EntityMock implements Xrm.Entity {
     public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
     public saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
 
-    constructor(id: string, entityName: string, attributes: ItemCollectionMock<Xrm.Attributes.Attribute>) {
-        this.id = id;
-        this.entityName = entityName;
-        this.attributes = attributes;
+    constructor(components?: IEntityComponents) {
+        components = components || {};
+        this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
+        this.entityName = components.entityName || "contact";
+        this.attributes = components.attributes || new ItemCollectionMock();
         this.saveEventHandlers = [];
     }
 
@@ -122,4 +123,10 @@ export class EntityMock implements Xrm.Entity {
             },
         };
     }
+}
+
+export interface IEntityComponents {
+    id?: string;
+    entityName?: string;
+    attributes?: ItemCollectionMock<Xrm.Attributes.Attribute>;
 }

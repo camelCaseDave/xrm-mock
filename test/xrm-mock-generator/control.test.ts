@@ -4,7 +4,7 @@ import { PageMock } from "../../src/xrm-mock/page/page.mock";
 describe("XrmMockGenerator.Control", () => {
   let page: PageMock;
   beforeEach(() => {
-    page = XrmMockGenerator.initialise("contact").Page;
+    page = XrmMockGenerator.initialise().Page;
   });
 
   it("should create a grid control", () => {

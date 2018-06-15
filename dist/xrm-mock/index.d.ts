@@ -26,7 +26,7 @@ export { DialogSizeOptionsMock } from "./navigation/dialogsizeoptions/dialogsize
 export { EncodingMock } from "./encoding/encoding.mock";
 export { IEntityFormOptionsComponents, EntityFormOptionsMock } from "./navigation/entityformoptions/entityformoptions.mock";
 export { IEntityMetadataComponents, EntityMetadataMock } from "./metadata/entitymetadata/entitymetadata.mock";
-export { EntityMock } from "./entity/entity.mock";
+export { EntityMock, IEntityComponents } from "./entity/entity.mock";
 export { EnumAttributeMock } from "./attributes/enumattribute/enumattribute.mock";
 export { ErrorDialogOptionsMock } from "./navigation/errordialogoptions/errordialogoptions.mock";
 export { ErrorResponseMock } from "./errorresponse/errorresponse.mock";

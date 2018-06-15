@@ -22,7 +22,7 @@ describe("Xrm.Entity Mock", () => {
         attributes.push(this.lastName);
 
         this.formContext = new FormContextMock(new DataMock(this.entityMock), null);
-        this.entityMock = new EntityMock(this.id, this.entityName, new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes));
+        this.entityMock = new EntityMock({id: this.id, entityName: this.entityName, attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes)});
         this.xrmPageMock = new PageMock(null, this.formContext);
     });
 
