@@ -16,13 +16,13 @@ export class XrmMockGenerator {
   public static Ui: Ui = new Ui();
   public static WebApi: WebApi = new WebApi();
 
-  public static initialise(entityName: string): XrmMock.XrmStaticMock {
+  public static initialise(entity: IEntity = this.defaultEntity): XrmMock.XrmStaticMock {
     const context = Context.createContext();
     const formContext = new XrmMock.FormContextMock(
       new XrmMock.DataMock(
         new XrmMock.EntityMock(
-          "{00000000-0000-0000-0000-000000000000}",
-          entityName,
+          entity.id,
+          entity.entityName,
           new XrmMock.ItemCollectionMock([]))),
       Ui.createUi(),
     );
@@ -42,4 +42,14 @@ export class XrmMockGenerator {
     }
     return xrm;
   }
+
+  private static defaultEntity: IEntity = {
+    entityName: "contact",
+    id: "{deadbeef-dead-beef-dead-beefdeadbeaf}",
+  };
+}
+
+export interface IEntity {
+  id?: string;
+  entityName?: string;
 }
