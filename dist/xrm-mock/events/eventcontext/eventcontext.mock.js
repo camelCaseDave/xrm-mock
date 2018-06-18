@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var EventContextMock = /** @class */ (function () {
-    function EventContextMock() {
+    function EventContextMock(components) {
+        this.formContext = components.formContext;
+        this.context = components.context;
     }
     EventContextMock.prototype.getContext = function () {
-        throw new Error("not implemented");
+        return this.context;
     };
     EventContextMock.prototype.getDepth = function () {
         throw new Error("not implemented");
@@ -16,7 +18,7 @@ var EventContextMock = /** @class */ (function () {
         throw new Error("not implemented");
     };
     EventContextMock.prototype.getFormContext = function () {
-        throw new Error("Method not implemented.");
+        return this.formContext;
     };
     EventContextMock.prototype.getSharedVariable = function (key) {
         throw new Error("not implemented");

@@ -1,6 +1,13 @@
 export class EventContextMock implements Xrm.Events.EventContext {
+  public formContext: Xrm.FormContext;
+  public context: Xrm.GlobalContext;
+  constructor(components: IEventContextComponents) {
+    this.formContext = components.formContext;
+    this.context = components.context;
+  }
+
   public getContext(): Xrm.GlobalContext {
-      throw new Error("not implemented");
+      return this.context;
   }
 
   public getDepth(): number {
@@ -16,7 +23,7 @@ export class EventContextMock implements Xrm.Events.EventContext {
   }
 
   public getFormContext(): Xrm.FormContext {
-      throw new Error("Method not implemented.");
+      return this.formContext;
   }
 
   public getSharedVariable<T>(key: string): T {
@@ -26,4 +33,8 @@ export class EventContextMock implements Xrm.Events.EventContext {
   public setSharedVariable<T>(key: string, value: T): void {
       throw new Error("not implemented");
   }
+}
+export interface IEventContextComponents {
+    formContext?: Xrm.FormContext;
+    context?: Xrm.GlobalContext;
 }

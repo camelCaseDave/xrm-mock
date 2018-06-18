@@ -24,6 +24,7 @@ export declare class ContextMock implements Xrm.GlobalContext {
         [index: string]: any;
     };
     getTimeZoneOffsetMinutes(): number;
+    getUserSettings(): Xrm.UserSettings;
     getUserId(): string;
     getUserLcid(): number;
     getUserName(): string;
@@ -44,6 +45,7 @@ export interface IContextComponents {
     orgLcid?: number;
     orgUniqueName?: string;
     timeZoneOffset?: number;
+    userSettings?: Xrm.UserSettings;
     userId?: string;
     userLcid?: number;
     userName?: string;
