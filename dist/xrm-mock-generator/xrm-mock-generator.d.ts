@@ -1,4 +1,3 @@
-/// <reference types="xrm" />
 import * as XrmMock from "../xrm-mock/index";
 import Attribute from "./attribute";
 import Context from "./context";
@@ -15,9 +14,12 @@ export declare class XrmMockGenerator {
     static Control: Control;
     static Form: Form;
     static WebApi: WebApi;
+    static context: XrmMock.ContextMock;
+    static formContext: XrmMock.FormContextMock;
+    static eventContext: XrmMock.EventContextMock;
     static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock;
-    static getEventContenxt(): Xrm.Events.EventContext;
-    static getFormContext(): Xrm.FormContext;
+    static getEventContext(): XrmMock.EventContextMock;
+    static getFormContext(): XrmMock.FormContextMock;
 }
 export interface IXrmGeneratorComponents {
     entity?: XrmMock.IEntityComponents;

@@ -6,10 +6,10 @@ var formcontext_1 = require("./formcontext");
 var EventContext = /** @class */ (function () {
     function EventContext() {
     }
-    EventContext.createEventContext = function (client, components) {
+    EventContext.createEventContext = function (entity, client) {
         var eventContext = new XrmMock.EventContextMock({
             context: context_1.default.createContext(client),
-            formContext: formcontext_1.default.createFormContext(components),
+            formContext: formcontext_1.default.createFormContext(entity),
         });
         return eventContext;
     };

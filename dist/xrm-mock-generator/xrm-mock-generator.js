@@ -13,11 +13,12 @@ var XrmMockGenerator = /** @class */ (function () {
     }
     XrmMockGenerator.initialise = function (components) {
         components = components || {};
-        var context = context_1.default.createContext();
-        var formContext = formcontext_1.default.createFormContext(components);
+        this.context = context_1.default.createContext();
+        this.formContext = formcontext_1.default.createFormContext(components.entity);
+        this.eventContext = eventcontext_1.default.createEventContext(components.entity);
         var xrm = new XrmMock.XrmStaticMock({
-            page: new XrmMock.PageMock(context, formContext),
-            webApi: webapi_1.default.createApi(context.client),
+            page: new XrmMock.PageMock(this.context, this.formContext),
+            webApi: webapi_1.default.createApi(this.context.client),
         });
         if (typeof global === "undefined") {
             window.Xrm = xrm;
@@ -27,11 +28,11 @@ var XrmMockGenerator = /** @class */ (function () {
         }
         return xrm;
     };
-    XrmMockGenerator.getEventContenxt = function () {
-        return eventcontext_1.default.createEventContext();
+    XrmMockGenerator.getEventContext = function () {
+        return this.eventContext;
     };
     XrmMockGenerator.getFormContext = function () {
-        return formcontext_1.default.createFormContext();
+        return this.formContext;
     };
     XrmMockGenerator.EventContext = new eventcontext_1.default();
     XrmMockGenerator.FormContenxt = new formcontext_1.default();

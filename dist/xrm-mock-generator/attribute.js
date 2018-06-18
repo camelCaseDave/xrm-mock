@@ -23,6 +23,7 @@ var Attribute = /** @class */ (function () {
         }
     };
     Attribute.prototype.createLookup = function (nameOrComponents, valueOrControlComponents) {
+        console.log(this.arrayify(valueOrControlComponents));
         if (typeof (nameOrComponents) === "string") {
             var components = {
                 isPartyList: valueOrControlComponents && Array.isArray(valueOrControlComponents),

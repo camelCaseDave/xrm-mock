@@ -18,18 +18,23 @@ export class XrmMockGenerator {
   public static Form: Form = new Form();
   public static WebApi: WebApi = new WebApi();
 
+  public static context: XrmMock.ContextMock;
+  public static formContext: XrmMock.FormContextMock;
+  public static eventContext: XrmMock.EventContextMock;
+
   public static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock {
     components = components || {};
 
-    const context = Context.createContext();
-    const formContext = FormContext.createFormContext(components);
+    this.context = Context.createContext();
+    this.formContext = FormContext.createFormContext(components.entity);
+    this.eventContext = EventContext.createEventContext(components.entity);
 
     const xrm = new XrmMock.XrmStaticMock({
       page: new XrmMock.PageMock(
-        context,
-        formContext,
+        this.context,
+        this.formContext,
       ),
-      webApi: WebApi.createApi(context.client),
+      webApi: WebApi.createApi(this.context.client),
     });
 
     if (typeof global === "undefined") {
@@ -40,12 +45,12 @@ export class XrmMockGenerator {
     return xrm;
   }
 
-  public static getEventContenxt(): Xrm.Events.EventContext {
-    return EventContext.createEventContext();
+  public static getEventContext(): XrmMock.EventContextMock {
+    return this.eventContext;
   }
 
-  public static getFormContext(): Xrm.FormContext {
-    return FormContext.createFormContext();
+  public static getFormContext(): XrmMock.FormContextMock {
+    return this.formContext;
   }
 }
 
