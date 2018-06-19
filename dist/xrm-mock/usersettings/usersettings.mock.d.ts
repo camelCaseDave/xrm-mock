@@ -15,14 +15,14 @@ export declare class UserSettingsMock implements Xrm.UserSettings {
     getTimeZoneOffsetMinutes(): number;
 }
 export interface IUserSettingsComponents {
-    defaultDashboardId: string;
+    defaultDashboardId?: string;
     isGuidedHelpEnabled: boolean;
     isHighContrastEnabled: boolean;
     isRTL: boolean;
-    languageId: number;
-    securityRolePrivileges: string[];
-    securityRoles: string[];
-    transactionCurrencyId: string;
+    languageId?: number;
+    securityRolePrivileges?: string[];
+    securityRoles?: string[];
+    transactionCurrencyId?: string;
     userId: string;
     userName: string;
 }

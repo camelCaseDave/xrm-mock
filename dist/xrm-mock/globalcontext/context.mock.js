@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ContextMock = /** @class */ (function () {
     function ContextMock(components) {
+        this.userSettings = components.userSettings;
         this.client = components.clientContext;
         this.clientUrl = components.clientUrl;
         this.currentTheme = components.currentTheme;
@@ -35,6 +36,9 @@ var ContextMock = /** @class */ (function () {
     };
     ContextMock.prototype.getTimeZoneOffsetMinutes = function () {
         return this.timeZoneOffset;
+    };
+    ContextMock.prototype.getUserSettings = function () {
+        return this.userSettings;
     };
     ContextMock.prototype.getUserId = function () {
         return this.userId;

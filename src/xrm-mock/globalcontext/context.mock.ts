@@ -15,6 +15,7 @@ export class ContextMock implements Xrm.GlobalContext {
     public version: string;
 
     constructor(components: IContextComponents) {
+        this.userSettings = components.userSettings;
         this.client = components.clientContext;
         this.clientUrl = components.clientUrl;
         this.currentTheme = components.currentTheme;
@@ -55,6 +56,10 @@ export class ContextMock implements Xrm.GlobalContext {
 
     public getTimeZoneOffsetMinutes(): number {
         return this.timeZoneOffset;
+    }
+
+    public getUserSettings(): Xrm.UserSettings {
+        return this.userSettings;
     }
 
     public getUserId(): string {
@@ -110,6 +115,7 @@ export interface IContextComponents {
     orgLcid?: number;
     orgUniqueName?: string;
     timeZoneOffset?: number;
+    userSettings?: Xrm.UserSettings;
     userId?: string;
     userLcid?: number;
     userName?: string;
