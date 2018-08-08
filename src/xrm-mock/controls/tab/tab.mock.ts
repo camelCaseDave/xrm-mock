@@ -1,3 +1,9 @@
+import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
+import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
+import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+
 export class TabMock implements Xrm.Controls.Tab {
   public sections: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
 
@@ -8,12 +14,15 @@ export class TabMock implements Xrm.Controls.Tab {
   private displayState: Xrm.DisplayState;
 
   constructor(components: ITabComponents) {
-    this.uiStandardElement = components.uiStandardElement;
-    this.uiFocusableElement = components.uiFocusableElement;
+    // [Yagasoft | 2018-08-05 | Added] default state values
+    this.uiStandardElement = components.uiStandardElement
+      || new UiStandardElementMock(new UiLabelElementMock(components.name), new UiCanGetVisibleElementMock(true));
+    this.uiFocusableElement = components.uiFocusableElement || new UiFocusableMock(false);
     this.name = components.name;
     this.parent = components.parent;
-    this.displayState = components.displayState;
-    this.sections = components.sections;
+    this.displayState = components.displayState || "expanded";
+    // [Yagasoft | 2018-08-05 | Added] sections definition
+    this.sections = components.sections || new ItemCollectionMock([]);
   }
 
   public getDisplayState(): Xrm.DisplayState {

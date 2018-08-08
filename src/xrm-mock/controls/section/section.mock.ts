@@ -1,14 +1,21 @@
+import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
+import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
+
 export class SectionMock implements Xrm.Controls.Section {
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
     private name: string;
-    private parent: Xrm.Controls.Tab;
+    // [Yagasoft | 2018-08-05 | Changed] made it public to be set when section is added to tab
+    public parent: Xrm.Controls.Tab;
     private uiStandardElement: Xrm.Controls.UiStandardElement;
 
     constructor(name: string, parent: Xrm.Controls.Tab, uiStandardElement: Xrm.Controls.UiStandardElement,
                 controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>) {
         this.name = name;
         this.parent = parent;
-        this.uiStandardElement = uiStandardElement;
+        // [Yagasoft | 2018-08-05 | Added] default state values
+        this.uiStandardElement = uiStandardElement
+            || new UiStandardElementMock(new UiLabelElementMock(name), new UiCanGetVisibleElementMock(true));
         this.controls = controls;
     }
 

@@ -16,4 +16,13 @@ describe("XrmMockGenerator", () => {
   it("should have a Control property", () => {
     expect(XrmMockGenerator.Control).toBeDefined();
   });
+
+    // [Yagasoft | 2018-08-05 | Added] tab and section tests
+    it("should have a Tab property", () => {
+        expect(XrmMockGenerator.Tab).toBeDefined();
+    });
+
+    it("should have a Section property", () => {
+        expect(XrmMockGenerator.Section).toBeDefined();
+    });
 });

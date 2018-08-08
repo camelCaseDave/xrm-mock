@@ -21,3 +21,6 @@ xrmtoolbox/.vs
 xrmtoolbox/bin
 xrmtoolbox/obj
 xrmtoolbox/packages
+
+# Ignore Jest override
+jest.config.js

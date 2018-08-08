@@ -6,6 +6,8 @@ import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
 import WebApi from "./webapi";
+import Section from "./section";
+import Tab from "./tab";
 
 declare var global: any;
 
@@ -15,6 +17,8 @@ export class XrmMockGenerator {
   public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
   public static Control: Control = new Control();
+  public static Tab: Tab = new Tab();
+  public static Section: Section = new Section();
   public static Form: Form = new Form();
   public static WebApi: WebApi = new WebApi();
 
