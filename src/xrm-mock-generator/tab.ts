@@ -39,7 +39,7 @@ export default class Tab {
                 displayState: displayState,
                 uiStandardElement: new UiStandardElementMock(new UiLabelElementMock(label),
                     new UiCanGetVisibleElementMock(isVisible)),
-                parent: parent
+                parent: parent || Xrm.Page.ui
             });
 
         if (sections)
