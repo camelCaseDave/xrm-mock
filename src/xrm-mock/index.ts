@@ -91,7 +91,7 @@ export { UiCanGetVisibleElementMock } from "./controls/uicangetvisibleelement/ui
 export { UiFocusableMock } from "./controls/uifocusable/uifocusable.mock";
 export { UiKeyPressableMock } from "./controls/uikeypressable/uikeypressable.mock";
 export { UiLabelElementMock } from "./controls/uilabelelement/uilabelelement.mock";
-export { UiMock } from "./ui/ui.mock";
+export { UiMock, IUiComponents } from "./ui/ui.mock";
 export { UiStandardElementMock } from "./controls/uistandardelement/uistandardelement.mock";
 export { IUserSettingsComponents, UserSettingsMock } from "./usersettings/usersettings.mock";
 export { UtilityMock } from "./utility/utility.mock";
