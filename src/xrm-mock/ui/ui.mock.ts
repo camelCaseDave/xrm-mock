@@ -1,5 +1,6 @@
 import { FormItemMock } from "../controls/formitem/formitem.mock";
 import { FormSelectorMock } from "../controls/formselector/formselector.mock";
+import { ItemCollectionMock } from "..";
 
 export class UiMock implements Xrm.Ui {
     public process: Xrm.Controls.ProcessControl;
@@ -12,11 +13,11 @@ export class UiMock implements Xrm.Ui {
 
     constructor(components: IUiComponents) {
         this.process = components.process;
-        this.controls = components.controls;
+		this.controls = components.controls || new ItemCollectionMock([]);
         this.formSelector = components.formSelector;
         this.navigation = components.navigation;
-        this.tabs = components.tabs;
-        this.quickForms = components.quickForms;
+		this.tabs = components.tabs ||  new ItemCollectionMock([]);
+		this.quickForms = components.quickForms || new ItemCollectionMock([]);
     }
 
     public setFormNotification(message: string, level: Xrm.Page.ui.FormNotificationLevel, uniqueId: string): boolean {
