@@ -4,6 +4,7 @@ import { UiStandardElementMock } from "../xrm-mock/controls/uistandardelement/ui
 import { UiLabelElementMock } from "../xrm-mock/controls/uilabelelement/uilabelelement.mock";
 import { UiCanGetVisibleElementMock } from "../xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 import { ItemCollectionMock } from "../xrm-mock/collection/itemcollection/itemcollection.mock";
+import ControlHelpers from "./helpers/control.helper";
 
 export default class Tab {
     /**
@@ -44,15 +45,7 @@ export default class Tab {
 
         if (sections)
         {
-            sections.forEach((section: Xrm.Controls.Section, index: number) =>
-            {
-                const sectionMock = section as XrmMock.SectionMock;
-
-                if (sectionMock)
-                {
-                    sectionMock.parent = tab;
-                }
-            });
+			ControlHelpers.setControlsParent(sections, tab);
         }
 
         tabs.push(tab);
