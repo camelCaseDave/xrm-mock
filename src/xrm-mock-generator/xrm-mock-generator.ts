@@ -29,14 +29,15 @@ export class XrmMockGenerator {
   public static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock {
     components = components || {};
 
-    this.context = Context.createContext();
-    this.formContext = FormContext.createFormContext(components.entity);
-    this.eventContext = EventContext.createEventContext(components.entity);
+    // [Yagasoft | 2018-08-12 | Added] Custom Global Context
+    this.context = components.context || Context.createContext();
+    this.formContext = FormContext.createFormContext(components.entity, components.ui, components.process);
+    this.eventContext = EventContext.createEventContext(components.entity, components.context, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
       page: new XrmMock.PageMock(
         this.context,
-        this.formContext,
+        this.formContext
       ),
       webApi: WebApi.createApi(this.context.client),
     });
@@ -59,5 +60,8 @@ export class XrmMockGenerator {
 }
 
 export interface IXrmGeneratorComponents {
+  context?: XrmMock.ContextMock;
+  ui?: XrmMock.IUiComponents;
   entity?: XrmMock.IEntityComponents;
+  process?: Xrm.ProcessFlow.ProcessManager
 }
