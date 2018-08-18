@@ -1,0 +1,374 @@
+import { AttributeMock, IAttributeComponents, StringControlMock, IEntityComponents, EntityMock, ItemCollectionMock, IUiComponents, UiMock, FormSelectorMock, FormItemMock, IStringControlComponents, ClientContextMock, ContextMock, EventContextMock, UserSettingsMock, IGridControlComponents, StepMock, ProcessMock, StageMock, ProcessManagerMock } from "../../src/xrm-mock";
+import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
+import FormContext from "../../src/xrm-mock-generator/formcontext";
+const sinon = require('sinon');
+
+describe("XrmMockGenerator Builder", () =>
+{
+	let tab: Xrm.Controls.Tab;
+	let section: Xrm.Controls.Section;
+	let control: Xrm.Controls.StringControl;
+	let attribute: Xrm.Attributes.Attribute;
+	let context: Xrm.GlobalContext;
+	let process: Xrm.ProcessFlow.ProcessManager;
+	const contact = {
+		id: "123",
+		firstname: "Joe",
+		lastname: "Bloggs",
+	};
+	let tempValue: string;
+
+	beforeAll(() =>
+	{
+		// attributes
+		const nameAttribute = new AttributeMock(<IAttributeComponents<StringControlMock, string>>
+			{
+				name: "name",
+				requiredLevel: "required"
+			});
+		nameAttribute.addOnChange(() => tempValue = "Test OnChange!");
+		// entity
+		const entity = new EntityMock(<IEntityComponents>
+			{
+				entityName: "account",
+				id: "{00000000-0000-0000-0000-000000000000}",
+				attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>([nameAttribute])
+			});
+		// ui
+		const ui = new UiMock(<IUiComponents>
+			{
+				formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>(
+					[
+						new FormItemMock({
+							currentItem: true,
+							formType: 2,
+							id: "5",
+							label: "Main",
+						})
+					]))
+			});
+		// context
+		const context = new ContextMock(
+			{
+				clientContext: new ClientContextMock("Web", "Online"),
+				userSettings: new UserSettingsMock(
+					{
+						isGuidedHelpEnabled: false,
+						isHighContrastEnabled: false,
+						isRTL: false,
+						userId: "1337",
+						userName: "jdoe",
+						languageId: 1033,
+						securityRoles: ["cf4cc7ce-5d51-df11-97e0-00155db232d0"]
+					}),
+				clientUrl: "https://org.crm.dynamics.com/",
+				currentTheme: "default",
+				isAutoSaveEnabled: false,
+				orgLcid: 1031,
+				orgUniqueName: "Contoso",
+				timeZoneOffset: 0,
+				userId: "{B05EC7CE-5D51-DF11-97E0-00155DB232D0}",
+				userLcid: 1033,
+				userName: "Joe Bloggs",
+				userRoles: ["cf4cc7ce-5d51-df11-97e0-00155db232d0"],
+				version: "8.2.1.185"
+
+			});
+		// bpf
+		/// steps
+		const firstNameStep = new StepMock("First Name", "firstname", false);
+		const lastNameStep = new StepMock("Last Name", "lastname", false);
+		const firstStage = new StageMock("6001", "Start", "active", null, [firstNameStep]);
+		const secondStage = new StageMock("6002", "Finish", "inactive", null, [lastNameStep]);
+		/// process
+		const process1 = new ProcessMock({
+			id: "4444",
+			name: "Sales Process",
+			rendered: true,
+			stages: new ItemCollectionMock<Xrm.ProcessFlow.Stage>([firstStage, secondStage]),
+		});
+		const process2 = new ProcessMock({
+			id: "5555",
+			name: "Service Process",
+			rendered: false,
+			stages: new ItemCollectionMock<Xrm.ProcessFlow.Stage>([firstStage, secondStage]),
+		});
+		const processManager = new ProcessManagerMock([process1, process2]);
+
+		XrmMockGenerator.initialise(<IXrmGeneratorComponents>
+			{
+				entity: entity,
+				ui: ui,
+				context: context,
+				process: processManager
+			});
+
+		// form structure
+		XrmMockGenerator.Tab.createTab("testTab", "Test Tab", false, "collapsed", null,
+			new ItemCollectionMock<Xrm.Controls.Section>(
+				[
+					XrmMockGenerator.Section.createSection("testSection", "Test Section", false, null,
+						new ItemCollectionMock<Xrm.Controls.Control>(
+							[
+								XrmMockGenerator.Control.createString(<IStringControlComponents>
+									{
+										name: "name",
+										label: "Name",
+										attribute: nameAttribute,
+										visible: false,
+										disabled: true,
+									}),
+								XrmMockGenerator.Control.createGrid(<IGridControlComponents>
+									{
+										name: "accounts",
+										entityName: "account",
+									})
+							]))
+				]))
+
+		// event context (OnLoad, OnChange ... etc.)
+		const eventContext = new EventContextMock(
+			{
+				context: context,
+				formContext: FormContext.createFormContext(entity, ui)
+			});
+
+		// web api
+		const recordId = "123";
+		const stub = sinon.stub(Xrm.WebApi, "retrieveRecord");
+		stub.withArgs("contact", recordId, "?$select=fullname").resolves(contact);
+
+		// extract sample doc from here and test.ts
+	});
+
+	describe("Tab", () =>
+	{
+		it("should create a tab", () =>
+		{
+			tab = Xrm.Page.ui.tabs.get("testTab");
+			expect(tab).toBeDefined();
+			expect(tab).not.toBeNull();
+		});
+
+		it("should have a name", () =>
+		{
+			expect(tab.getName()).toBe("testTab");
+		});
+
+		it("should have a label", () =>
+		{
+			expect(tab.getLabel()).toBe("Test Tab");
+		});
+
+		it("should have a parent", () =>
+		{
+			expect(tab.getParent()).toEqual(Xrm.Page.ui);
+		});
+
+		it("should be invisible", () =>
+		{
+			expect(tab.getVisible()).toBeFalsy();
+		});
+
+		it("should be collapsed", () =>
+		{
+			expect(tab.getDisplayState()).toBe("collapsed");
+		});
+	});
+
+	describe("Section", () =>
+	{
+		it("should create a section", () =>
+		{
+			const sections = Xrm.Page.ui.tabs.get("testTab").sections;
+			expect(sections).toBeDefined();
+			expect(sections).not.toBeNull();
+
+			section = sections.get("testSection");
+			expect(section).toBeDefined();
+			expect(section).not.toBeNull();
+		});
+
+		it("should have a name", () =>
+		{
+			expect(section.getName()).toBe("testSection");
+		});
+
+		it("should have a label", () =>
+		{
+			expect(section.getLabel()).toBe("Test Section");
+		});
+
+		it("should have a parent", () =>
+		{
+			expect(section.getParent()).toEqual(tab);
+		});
+
+		it("should be invisible", () =>
+		{
+			expect(section.getVisible()).toBeFalsy();
+		});
+	});
+
+	describe("Control", () =>
+	{
+		it("should create a control", () =>
+		{
+			const sections = Xrm.Page.ui.tabs.get("testTab").sections;
+			expect(sections).toBeDefined();
+			expect(sections).not.toBeNull();
+
+			section = sections.get("testSection");
+			expect(section).toBeDefined();
+			expect(section).not.toBeNull();
+
+			const controls = section.controls
+			expect(controls).toBeDefined();
+			expect(controls).not.toBeNull();
+
+			control = controls.get("name") as Xrm.Controls.StringControl;
+			expect(control).toBeDefined();
+			expect(control).not.toBeNull();
+
+			control = Xrm.Page.getControl("name");
+			expect(control).toBeDefined();
+			expect(control).not.toBeNull();
+		});
+
+		it("should have a name", () =>
+		{
+			expect(control.getName()).toBe("name");
+		});
+
+		it("should have a label", () =>
+		{
+			expect(control.getLabel()).toBe("Name");
+		});
+
+		it("should have a parent", () =>
+		{
+			expect(control.getParent()).toEqual(section);
+		});
+
+		it("should be invisible", () =>
+		{
+			expect(control.getVisible()).toBeFalsy();
+		});
+
+		it("should be disabled", () =>
+		{
+			expect(control.getDisabled()).toBeTruthy();
+		});
+	});
+
+	describe("Attribute", () =>
+	{
+		it("should create an attribute", () =>
+		{
+			attribute = Xrm.Page.getAttribute("name");
+			expect(attribute).toBeDefined();
+			expect(attribute).not.toBeNull();
+		});
+
+		it("should have a name", () =>
+		{
+			expect(attribute.getName()).toBe("name");
+		});
+
+		it("should be required", () =>
+		{
+			expect(attribute.getRequiredLevel()).toBe("required");
+		});
+
+		it("should be dirty", () =>
+		{
+			attribute.setValue("TEST!");
+			expect(attribute.getIsDirty()).toBeTruthy();
+		});
+
+		it("should be have value 'TEST!'", () =>
+		{
+			attribute.setValue("TEST!");
+			expect(attribute.getValue()).toBe("TEST!");
+		});
+
+		it("should fire OnChange", () =>
+		{
+			tempValue = "";
+			attribute.fireOnChange();
+			expect(tempValue).toBe("Test OnChange!");
+		});
+	});
+
+	describe("Entity", () =>
+	{
+		it("should be an account", () =>
+		{
+			expect(Xrm.Page.data.entity.getEntityName()).toBe("account");
+		});
+
+		it("should have an ID", () =>
+		{
+			expect(Xrm.Page.data.entity.getId()).toBe("{000}");
+		});
+	});
+
+	describe("Form", () =>
+	{
+		it("should have an ID", () =>
+		{
+			expect(Xrm.Page.ui.formSelector.getCurrentItem().getId()).toBe("5");
+		});
+
+		it("should have a label", () =>
+		{
+			expect(Xrm.Page.ui.formSelector.getCurrentItem().getLabel()).toBe("Main");
+		});
+	});
+
+	describe("Context", () =>
+	{
+		it("should have a context", () =>
+		{
+			context = Xrm.Page.context;
+			expect(context).toBeDefined();
+			expect(context).not.toBeNull();
+		});
+
+		it("should have a user language", () =>
+		{
+			expect(context.getUserLcid()).toBe(1033);
+		});
+	});
+
+	describe("Process", () =>
+	{
+		it("should have a process manager", () =>
+		{
+			process = Xrm.Page.data.process;
+			expect(process).toBeDefined();
+			expect(process).not.toBeNull();
+		});
+
+		it("should have an active stage", () =>
+		{
+			const activeStage = process.getActiveStage();
+			expect(activeStage).toBeDefined();
+			expect(activeStage).not.toBeNull();
+			expect(activeStage.getId()).toBe("6001");
+		});
+	});
+
+	describe("Web API", () =>
+	{
+		it("should return a contact with ID '123'", () =>
+		{
+			Xrm.WebApi
+				.retrieveRecord("contact", contact.id, "?$select=fullname")
+				.then((result: any) =>
+				{
+					expect(result.id).toBe(contact.id);
+				});
+		});
+	});
+});

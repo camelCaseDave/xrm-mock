@@ -5,8 +5,8 @@ import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mo
 
 export class SectionMock implements Xrm.Controls.Section {
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
-	public parent: Xrm.Controls.Tab;
-	
+    public parent: Xrm.Controls.Tab;
+    
     private name: string;
     // [Yagasoft | 2018-08-05 | Changed] made it public to be set when section is added to tab
     private uiStandardElement: Xrm.Controls.UiStandardElement;

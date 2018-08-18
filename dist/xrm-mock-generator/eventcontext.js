@@ -6,10 +6,12 @@ var formcontext_1 = require("./formcontext");
 var EventContext = /** @class */ (function () {
     function EventContext() {
     }
-    EventContext.createEventContext = function (entity, client) {
+    // [Yagasoft | 2018-08-12 | Added] Custom Global Context and Process Mock
+    // [Yagasoft | 2018-08-09 | Added] UI Mock as param to be able to inject the full model
+    EventContext.createEventContext = function (entity, context, ui, process) {
         var eventContext = new XrmMock.EventContextMock({
-            context: context_1.default.createContext(client),
-            formContext: formcontext_1.default.createFormContext(entity),
+            context: context || context_1.default.createContext(),
+            formContext: formcontext_1.default.createFormContext(entity, ui, process),
         });
         return eventContext;
     };

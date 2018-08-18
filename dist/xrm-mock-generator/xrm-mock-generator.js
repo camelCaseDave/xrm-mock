@@ -7,15 +7,18 @@ var control_1 = require("./control");
 var eventcontext_1 = require("./eventcontext");
 var form_1 = require("./form");
 var formcontext_1 = require("./formcontext");
+var section_1 = require("./section");
+var tab_1 = require("./tab");
 var webapi_1 = require("./webapi");
 var XrmMockGenerator = /** @class */ (function () {
     function XrmMockGenerator() {
     }
     XrmMockGenerator.initialise = function (components) {
         components = components || {};
-        this.context = context_1.default.createContext();
-        this.formContext = formcontext_1.default.createFormContext(components.entity);
-        this.eventContext = eventcontext_1.default.createEventContext(components.entity);
+        // [Yagasoft | 2018-08-12 | Added] Custom Global Context
+        this.context = components.context || context_1.default.createContext();
+        this.formContext = formcontext_1.default.createFormContext(components.entity, components.ui, components.process);
+        this.eventContext = eventcontext_1.default.createEventContext(components.entity, components.context, components.ui, components.process);
         var xrm = new XrmMock.XrmStaticMock({
             page: new XrmMock.PageMock(this.context, this.formContext),
             webApi: webapi_1.default.createApi(this.context.client),
@@ -39,6 +42,8 @@ var XrmMockGenerator = /** @class */ (function () {
     XrmMockGenerator.Attribute = new attribute_1.default();
     XrmMockGenerator.Context = new context_1.default();
     XrmMockGenerator.Control = new control_1.default();
+    XrmMockGenerator.Tab = new tab_1.default();
+    XrmMockGenerator.Section = new section_1.default();
     XrmMockGenerator.Form = new form_1.default();
     XrmMockGenerator.WebApi = new webapi_1.default();
     return XrmMockGenerator;
