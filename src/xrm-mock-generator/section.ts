@@ -1,6 +1,6 @@
 ﻿import * as XrmMock from "../xrm-mock/index";
-import { UiCanGetVisibleElementMock } from "../xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 import ControlHelpers from "./helpers/control.helper";
+import { UiCanGetVisibleElementMock } from "../xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiLabelElementMock } from "../xrm-mock/controls/uilabelelement/uilabelelement.mock";
 import { UiStandardElementMock } from "../xrm-mock/controls/uistandardelement/uistandardelement.mock";
 

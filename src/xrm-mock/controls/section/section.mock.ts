@@ -1,31 +1,30 @@
+import { ItemCollectionMock } from "../..";
+import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
 import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
-import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
-import { ItemCollectionMock } from "../..";
 
 export class SectionMock implements Xrm.Controls.Section {
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+	public parent: Xrm.Controls.Tab;
+	
     private name: string;
     // [Yagasoft | 2018-08-05 | Changed] made it public to be set when section is added to tab
-    public parent: Xrm.Controls.Tab;
     private uiStandardElement: Xrm.Controls.UiStandardElement;
 
     // [Yagasoft | 2018-08-09 | Changed] made the parent optional, in case the user wants to build it through a single constructor
     constructor(name: string, parent?: Xrm.Controls.Tab, uiStandardElement?: Xrm.Controls.UiStandardElement,
                 controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>) {
         this.name = name;
-		this.parent = parent;
+        this.parent = parent;
 
         // [Yagasoft | 2018-08-09 | Added] add section to parent
-		if (this.parent && this.parent.sections.get(name) == null)
-		{
-			const sections = this.parent.sections as ItemCollectionMock<Xrm.Controls.Section>;
+        if (this.parent && this.parent.sections.get(name) == null) {
+            const sections = this.parent.sections as ItemCollectionMock<Xrm.Controls.Section>;
 
-			if (sections)
-			{
-				sections.push(this);
-			}
-		}
+            if (sections) {
+                sections.push(this);
+            }
+        }
 
         // [Yagasoft | 2018-08-05 | Added] default state values
         this.uiStandardElement = uiStandardElement

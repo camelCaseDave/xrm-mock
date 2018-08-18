@@ -5,9 +5,9 @@ export default class Ui {
   public static createUi(): XrmMock.UiMock {
     const ui = new XrmMock.UiMock({
       controls: new XrmMock.ItemCollectionMock([]),
+      formSelector: new XrmMock.FormSelectorMock(new XrmMock.ItemCollectionMock([Form.createBlankForm()])),
       // [Yagasoft | 2018-08-05 | Added] tabs definition
       tabs: new XrmMock.ItemCollectionMock([]),
-      formSelector: new XrmMock.FormSelectorMock(new XrmMock.ItemCollectionMock([Form.createBlankForm()])),
     });
     return ui;
   }

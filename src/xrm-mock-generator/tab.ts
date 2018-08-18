@@ -1,7 +1,7 @@
 import * as XrmMock from "../xrm-mock/index";
 import ControlHelpers from "./helpers/control.helper";
-import { ITabComponents } from "../xrm-mock/controls/tab/tab.mock";
 import { ItemCollectionMock } from "../xrm-mock/collection/itemcollection/itemcollection.mock";
+import { ITabComponents } from "../xrm-mock/controls/tab/tab.mock";
 import { UiCanGetVisibleElementMock } from "../xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiLabelElementMock } from "../xrm-mock/controls/uilabelelement/uilabelelement.mock";
 import { UiStandardElementMock } from "../xrm-mock/controls/uistandardelement/uistandardelement.mock";
@@ -30,12 +30,12 @@ export default class Tab {
         }
 
         const tabComponents: ITabComponents = {
-            name: name,
-            sections: sections,
-            displayState: displayState,
+            displayState,
+            name,
+            parent: parent || Xrm.Page.ui,
+            sections,
             uiStandardElement: new UiStandardElementMock(new UiLabelElementMock(label),
                 new UiCanGetVisibleElementMock(isVisible)),
-            parent: parent || Xrm.Page.ui
         };
         const tab = new XrmMock.TabMock(tabComponents);
 

@@ -1,9 +1,9 @@
-import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
-import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
-import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
-import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { SectionMock } from "../..";
+import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
+import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
+import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
 
 export class TabMock implements Xrm.Controls.Tab {
   public sections: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
@@ -26,14 +26,13 @@ export class TabMock implements Xrm.Controls.Tab {
     // [Yagasoft | 2018-08-05 | Added] sections definition
     this.sections = components.sections || new ItemCollectionMock([]);
     // [Yagasoft | 2018-08-09 | Added] set sections' parent
-	this.sections.forEach((section: Xrm.Controls.Section, index: number) =>
-	{
-		const sectionMock = section as SectionMock;
+    this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
+        const sectionMock = section as SectionMock;
 
-		if (sectionMock) {
-			sectionMock.parent = this;
-		}
-	});
+        if (sectionMock) {
+            sectionMock.parent = this;
+        }
+    });
   }
 
   public getDisplayState(): Xrm.DisplayState {

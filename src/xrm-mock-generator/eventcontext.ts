@@ -9,12 +9,11 @@ export default class EventContext {
 
     // [Yagasoft | 2018-08-12 | Added] Custom Global Context and Process Mock
     // [Yagasoft | 2018-08-09 | Added] UI Mock as param to be able to inject the full model
-  public static createEventContext(entity?: XrmMock.IEntityComponents,
-	  context?: Xrm.GlobalContext, ui?: XrmMock.IUiComponents,
-	  process?: Xrm.ProcessFlow.ProcessManager): XrmMock.EventContextMock	{
+  public static createEventContext(entity?: XrmMock.IEntityComponents, context?: Xrm.GlobalContext, ui?: XrmMock.IUiComponents,
+                                   process?: Xrm.ProcessFlow.ProcessManager): XrmMock.EventContextMock    {
     const eventContext = new XrmMock.EventContextMock({
       context: context || Context.createContext(),
-      formContext: FormContext.createFormContext(entity, ui, process)
+      formContext: FormContext.createFormContext(entity, ui, process),
     });
     return eventContext;
   }

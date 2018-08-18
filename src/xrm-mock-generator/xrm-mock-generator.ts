@@ -5,9 +5,9 @@ import Control from "./control";
 import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
-import WebApi from "./webapi";
 import Section from "./section";
 import Tab from "./tab";
+import WebApi from "./webapi";
 
 declare var global: any;
 
@@ -37,7 +37,7 @@ export class XrmMockGenerator {
     const xrm = new XrmMock.XrmStaticMock({
       page: new XrmMock.PageMock(
         this.context,
-        this.formContext
+        this.formContext,
       ),
       webApi: WebApi.createApi(this.context.client),
     });
@@ -63,5 +63,5 @@ export interface IXrmGeneratorComponents {
   context?: XrmMock.ContextMock;
   ui?: XrmMock.IUiComponents;
   entity?: XrmMock.IEntityComponents;
-  process?: Xrm.ProcessFlow.ProcessManager
+  process?: Xrm.ProcessFlow.ProcessManager;
 }
