@@ -54,7 +54,6 @@ export class UtilityMock implements Xrm.Utility {
         throw new Error("Method not implemented.");
     }
 
-    // [Yagasoft | 2018-08-05 | Fixed] changed return type parameter to an array
     public lookupObjects(lookupOptions: Xrm.LookupOptions): Xrm.Async.PromiseLike<Xrm.LookupValue[]> {
         throw new Error("Method not implemented.");
     }

@@ -29,7 +29,6 @@ export class XrmMockGenerator {
   public static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock {
     components = components || {};
 
-    // [Yagasoft | 2018-08-12 | Added] Custom Global Context
     this.context = components.context || Context.createContext();
     this.formContext = FormContext.createFormContext(components.entity, components.ui, components.process);
     this.eventContext = EventContext.createEventContext(components.entity, components.context, components.ui, components.process);

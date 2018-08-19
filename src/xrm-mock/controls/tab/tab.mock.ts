@@ -15,7 +15,6 @@ export class TabMock implements Xrm.Controls.Tab {
   private displayState: Xrm.DisplayState;
 
   constructor(components: ITabComponents) {
-    // [Yagasoft | 2018-08-05 | Added] default state values
     this.uiStandardElement = components.uiStandardElement
       || new UiStandardElementMock(new UiLabelElementMock(components.name), new UiCanGetVisibleElementMock(true));
     this.uiFocusableElement = components.uiFocusableElement || new UiFocusableMock(false);
@@ -23,9 +22,7 @@ export class TabMock implements Xrm.Controls.Tab {
     this.parent = components.parent;
     this.displayState = components.displayState || "expanded";
     
-    // [Yagasoft | 2018-08-05 | Added] sections definition
     this.sections = components.sections || new ItemCollectionMock([]);
-    // [Yagasoft | 2018-08-09 | Added] set sections' parent
     this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
         const sectionMock = section as SectionMock;
 

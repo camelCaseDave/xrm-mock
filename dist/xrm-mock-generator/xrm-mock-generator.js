@@ -15,7 +15,6 @@ var XrmMockGenerator = /** @class */ (function () {
     }
     XrmMockGenerator.initialise = function (components) {
         components = components || {};
-        // [Yagasoft | 2018-08-12 | Added] Custom Global Context
         this.context = components.context || context_1.default.createContext();
         this.formContext = formcontext_1.default.createFormContext(components.entity, components.ui, components.process);
         this.eventContext = eventcontext_1.default.createEventContext(components.entity, components.context, components.ui, components.process);

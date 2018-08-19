@@ -8,16 +8,13 @@ var uistandardelement_mock_1 = require("../uistandardelement/uistandardelement.m
 var TabMock = /** @class */ (function () {
     function TabMock(components) {
         var _this = this;
-        // [Yagasoft | 2018-08-05 | Added] default state values
         this.uiStandardElement = components.uiStandardElement
             || new uistandardelement_mock_1.UiStandardElementMock(new uilabelelement_mock_1.UiLabelElementMock(components.name), new uicangetvisibleelement_mock_1.UiCanGetVisibleElementMock(true));
         this.uiFocusableElement = components.uiFocusableElement || new uifocusable_mock_1.UiFocusableMock(false);
         this.name = components.name;
         this.parent = components.parent;
         this.displayState = components.displayState || "expanded";
-        // [Yagasoft | 2018-08-05 | Added] sections definition
         this.sections = components.sections || new itemcollection_mock_1.ItemCollectionMock([]);
-        // [Yagasoft | 2018-08-09 | Added] set sections' parent
         this.sections.forEach(function (section, index) {
             var sectionMock = section;
             if (sectionMock) {

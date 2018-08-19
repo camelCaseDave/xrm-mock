@@ -45,7 +45,6 @@ var UtilityMock = /** @class */ (function () {
     UtilityMock.prototype.invokeProcessAction = function (name, parameters) {
         throw new Error("Method not implemented.");
     };
-    // [Yagasoft | 2018-08-05 | Fixed] changed return type parameter to an array
     UtilityMock.prototype.lookupObjects = function (lookupOptions) {
         throw new Error("Method not implemented.");
     };
