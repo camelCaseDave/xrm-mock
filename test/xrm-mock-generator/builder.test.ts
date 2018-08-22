@@ -1,4 +1,4 @@
-import sinon from "sinon";
+import * as sinon from "sinon";
 import { AttributeMock, ClientContextMock, ContextMock, EntityMock, EventContextMock, FormItemMock, FormSelectorMock, IAttributeComponents, IEntityComponents, IGridControlComponents, IStringControlComponents, ItemCollectionMock, IUiComponents, ProcessManagerMock, ProcessMock, StageMock, StepMock, StringAttributeMock, StringControlMock, UiMock, UserSettingsMock } from "../../src/xrm-mock";
 import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
 import FormContext from "../../src/xrm-mock-generator/formcontext";
@@ -270,7 +270,7 @@ describe("XrmMockGenerator Builder", () => {
         });
 
         it("should have an ID", () => {
-            expect(Xrm.Page.data.entity.getId()).toBe("{000}");
+            expect(Xrm.Page.data.entity.getId()).toBe("{00000000-0000-0000-0000-000000000000}");
         });
     });
 
