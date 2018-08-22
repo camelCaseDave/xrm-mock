@@ -1,5 +1,5 @@
-import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { SectionMock } from "../..";
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
 import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
@@ -21,7 +21,7 @@ export class TabMock implements Xrm.Controls.Tab {
     this.name = components.name;
     this.parent = components.parent;
     this.displayState = components.displayState || "expanded";
-    
+
     this.sections = components.sections || new ItemCollectionMock([]);
     this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
         const sectionMock = section as SectionMock;

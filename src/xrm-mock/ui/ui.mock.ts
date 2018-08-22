@@ -1,6 +1,6 @@
+import { ItemCollectionMock } from "..";
 import { FormItemMock } from "../controls/formitem/formitem.mock";
 import { FormSelectorMock } from "../controls/formselector/formselector.mock";
-import { ItemCollectionMock } from "..";
 
 export class UiMock implements Xrm.Ui {
     public process: Xrm.Controls.ProcessControl;

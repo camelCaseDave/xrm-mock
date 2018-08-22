@@ -26,6 +26,4 @@ xrmtoolbox/packages
 jest.config.js
 
 # Ignore temp files
-temp.ts
-test/xrm-mock-generator/xrm.model.ts
-test/xrm-mock-generator/model-builder.test.ts
+.nyc_output

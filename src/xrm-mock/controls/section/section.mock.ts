@@ -6,7 +6,7 @@ import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mo
 export class SectionMock implements Xrm.Controls.Section {
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
     public parent: Xrm.Controls.Tab;
-    
+
     private name: string;
     private uiStandardElement: Xrm.Controls.UiStandardElement;
 
