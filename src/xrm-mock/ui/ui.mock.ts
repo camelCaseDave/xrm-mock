@@ -1,4 +1,4 @@
-import { ItemCollectionMock } from "..";
+import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 import { FormItemMock } from "../controls/formitem/formitem.mock";
 import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 

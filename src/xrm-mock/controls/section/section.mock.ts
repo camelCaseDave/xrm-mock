@@ -1,4 +1,4 @@
-import { ItemCollectionMock } from "../..";
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
 import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";

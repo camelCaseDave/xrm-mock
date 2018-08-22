@@ -1,5 +1,5 @@
-import { SectionMock } from "../..";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { SectionMock } from "../section/section.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
 import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
 import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
