@@ -1,5 +1,5 @@
 import { XrmMockGenerator } from "../../src/xrm-mock-generator/index";
-import { UiMock, FormSelectorMock, ItemCollectionMock, FormItemMock } from "../../src/xrm-mock/index";
+import { FormItemMock, FormSelectorMock, ItemCollectionMock, UiMock } from "../../src/xrm-mock/index";
 import { PageMock } from "../../src/xrm-mock/page/page.mock";
 
 describe("XrmMockGenerator.Section", () => {
@@ -15,8 +15,8 @@ describe("XrmMockGenerator.Section", () => {
                     formType: 2,
                     id: "5",
                     label: "Main",
-                })
-            ]))
+                }),
+            ])),
         });
     });
 
