@@ -17,11 +17,11 @@ describe("XrmMockGenerator", () => {
     expect(XrmMockGenerator.Control).toBeDefined();
   });
 
-    it("should have a Tab property", () => {
+  it("should have a Tab property", () => {
         expect(XrmMockGenerator.Tab).toBeDefined();
     });
 
-    it("should have a Section property", () => {
+  it("should have a Section property", () => {
         expect(XrmMockGenerator.Section).toBeDefined();
     });
 });
