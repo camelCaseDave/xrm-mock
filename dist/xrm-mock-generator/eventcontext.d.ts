@@ -5,5 +5,5 @@ import FormContext from "./formcontext";
 export default class EventContext {
     static Context: Context;
     static FormContext: FormContext;
-    static createEventContext(entity?: XrmMock.IEntityComponents, client?: Xrm.Client): XrmMock.EventContextMock;
+    static createEventContext(entity?: XrmMock.IEntityComponents, context?: Xrm.GlobalContext, ui?: XrmMock.IUiComponents, process?: Xrm.ProcessFlow.ProcessManager): XrmMock.EventContextMock;
 }

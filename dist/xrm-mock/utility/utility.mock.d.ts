@@ -12,7 +12,7 @@ export declare class UtilityMock implements Xrm.Utility {
     getGlobalContext(): Xrm.GlobalContext;
     getResourceString(webResourceName: string, key: string): string;
     invokeProcessAction(name: string, parameters: Xrm.Collection.Dictionary<any>): Xrm.Async.PromiseLike<any>;
-    lookupObjects(lookupOptions: Xrm.LookupOptions): Xrm.Async.PromiseLike<Xrm.LookupValue>;
+    lookupObjects(lookupOptions: Xrm.LookupOptions): Xrm.Async.PromiseLike<Xrm.LookupValue[]>;
     refreshParentGrid(lookupOptions: Xrm.LookupValue): void;
     showProgressIndicator(message: string): void;
 }

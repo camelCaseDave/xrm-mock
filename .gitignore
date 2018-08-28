@@ -21,3 +21,9 @@ xrmtoolbox/.vs
 xrmtoolbox/bin
 xrmtoolbox/obj
 xrmtoolbox/packages
+
+# Ignore Jest override
+jest.config.js
+
+# Ignore temp files
+.nyc_output

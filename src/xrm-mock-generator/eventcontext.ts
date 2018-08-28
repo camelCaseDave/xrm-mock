@@ -7,10 +7,11 @@ export default class EventContext {
   public static Context: Context = new Context();
   public static FormContext: FormContext = new FormContext();
 
-  public static createEventContext(entity?: XrmMock.IEntityComponents, client?: Xrm.Client): XrmMock.EventContextMock {
+  public static createEventContext(entity?: XrmMock.IEntityComponents, context?: Xrm.GlobalContext, ui?: XrmMock.IUiComponents,
+                                   process?: Xrm.ProcessFlow.ProcessManager): XrmMock.EventContextMock    {
     const eventContext = new XrmMock.EventContextMock({
-      context: Context.createContext(client),
-      formContext: FormContext.createFormContext(entity),
+      context: context || Context.createContext(),
+      formContext: FormContext.createFormContext(entity, ui, process),
     });
     return eventContext;
   }
