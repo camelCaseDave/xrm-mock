@@ -7,7 +7,8 @@ export { AutoCompleteCommandMock } from "./controls/autocompletecommand/autocomp
 export { AutoCompleteResultMock } from "./controls/autocompleteresult/autocompleteresult.mock";
 export { AutoCompleteResultSetMock } from "./controls/autocompleteresultset/autocompleteresultset.mock";
 export { AutoLookupControlMock, IAttAutoLookupControlComponents, IAutoLookupControlComponents } from "./controls/autolookupcontrol/autolookupcontrol.mock";
-export { BooleanAttributeMock } from "./attributes/booleanattribute/booleanattribute.mock";
+export { IBooleanAttributeComponents, BooleanAttributeMock } from "./attributes/booleanattribute/booleanattribute.mock";
+export { IAttBooleanControlComponents, IBooleanControlComponents, BooleanControlMock } from "./controls/booleancontrol/booleancontrol.mock";
 export { ICalendarComponents, CalendarMock } from "./calendar/calendar.mock";
 export { CaptureFileResponseMock } from "./device/capturefileresponse/capturefileresponse.mock";
 export { ICaptureImageOptionsComponents, CaptureImageOptionsMock } from "./device/captureimageoptions/captureimageoptions.mock";

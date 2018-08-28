@@ -6,11 +6,15 @@ var Attribute = /** @class */ (function () {
     function Attribute() {
         this.Control = new control_1.default();
     }
-    Attribute.prototype.createBool = function (name, value) {
-        var attribute = this.createAttribute(name, value || false);
-        var boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
-        this.addAttribute(boolAttribute);
-        return boolAttribute;
+    Attribute.prototype.createBoolean = function (nameOrComponents, valueOrControlComponents) {
+        if (typeof (nameOrComponents) === "string") {
+            var components = { name: nameOrComponents, value: valueOrControlComponents };
+            var controls = [{ name: nameOrComponents }];
+            return this.associateAttribute(new XrmMock.BooleanAttributeMock(components), controls, "createBoolean");
+        }
+        else {
+            return this.associateAttribute(new XrmMock.BooleanAttributeMock(nameOrComponents), this.arrayify(valueOrControlComponents), "createBoolean");
+        }
     };
     Attribute.prototype.createDate = function (nameOrComponents, valueOrControlComponents) {
         if (typeof (nameOrComponents) === "string") {

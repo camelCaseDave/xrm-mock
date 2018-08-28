@@ -1,6 +1,8 @@
 import * as XrmMock from "../xrm-mock/index";
-export declare type CreateMethods = "createDate" | "createLookup" | "createNumber" | "createOptionSet" | "createString";
+export declare type CreateMethods = "createBoolean" | "createDate" | "createLookup" | "createNumber" | "createOptionSet" | "createString";
 export default class Control {
+    createBoolean(components: XrmMock.IBooleanControlComponents): XrmMock.BooleanControlMock;
+    createBoolean(attribute: XrmMock.BooleanAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.BooleanControlMock;
     createDate(components: XrmMock.IDateControlComponents): XrmMock.DateControlMock;
     createDate(attribute: XrmMock.DateAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.DateControlMock;
     createGrid(components: XrmMock.IGridControlComponents): XrmMock.GridControlMock;
