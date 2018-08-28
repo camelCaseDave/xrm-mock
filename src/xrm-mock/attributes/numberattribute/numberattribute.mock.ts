@@ -53,9 +53,7 @@ export class NumberAttributeMock extends AttributeMock<NumberControlMock, number
     }
 
     private validatePrecision(): void {
-        if (this.precision > 4) {
-            throw new Error((`precision cannot be greater than 4, but was ${this.precision}`));
-        } else if (this.precision < 0) {
+        if (this.precision < 0) {
             throw new Error((`precision cannot be less than 0, but was ${this.precision}`));
         }
     }
