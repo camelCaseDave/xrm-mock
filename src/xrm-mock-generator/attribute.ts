@@ -1,6 +1,7 @@
 import * as XrmMock from "../xrm-mock/index";
 import Control, { CreateMethods as ControlCreateMethods } from "./control";
 
+export type BooleanControlComponent = XrmMock.IAttBooleanControlComponents | XrmMock.IAttBooleanControlComponents[];
 export type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
 export type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
 export type NumberControlComponent = XrmMock.IAttNumberControlComponents | XrmMock.IAttNumberControlComponents[];
@@ -11,11 +12,19 @@ export default class Attribute {
 
   private Control = new Control();
 
-  public createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock {
-    const attribute = this.createAttribute(name, value || false);
-    const boolAttribute = new XrmMock.BooleanAttributeMock(new XrmMock.EnumAttributeMock(attribute));
-    this.addAttribute(boolAttribute);
-    return boolAttribute;
+  public createBoolean(attComponents: XrmMock.IBooleanAttributeComponents, controlComponents?: BooleanControlComponent): XrmMock.BooleanAttributeMock;
+  public createBoolean(name: string, value?: boolean): XrmMock.BooleanAttributeMock;
+  public createBoolean(nameOrComponents: string | XrmMock.IBooleanAttributeComponents,
+                       valueOrControlComponents: BooleanControlComponent | boolean): XrmMock.BooleanAttributeMock {
+    if (typeof(nameOrComponents) === "string") {
+      const components = { name: nameOrComponents, value: valueOrControlComponents as boolean };
+      const controls = [{name: nameOrComponents}];
+      return this.associateAttribute(new XrmMock.BooleanAttributeMock(components), controls, "createBoolean");
+    } else {
+      return this.associateAttribute(new XrmMock.BooleanAttributeMock(nameOrComponents),
+                                    this.arrayify(valueOrControlComponents as BooleanControlComponent),
+                                    "createBoolean");
+    }
   }
 
   public createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;

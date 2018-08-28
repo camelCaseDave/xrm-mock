@@ -31,8 +31,9 @@ describe("XrmMockGenerator.Attribute", () => {
   });
 
   it("should create a boolean attribute", () => {
-    XrmMockGenerator.Attribute.createBool("new_havingfun", true);
-    expect(Xrm.Page.getAttribute("new_havingfun").getValue()).toEqual(true);
+    XrmMockGenerator.Attribute.createBoolean("isapproved", true);
+    expect(Xrm.Page.getAttribute("isapproved").getValue()).toEqual(true);
+    expect(Xrm.Page.getControl<Xrm.Controls.StandardControl>("isapproved").getName()).toEqual("isapproved");
   });
 
   it("should create a date attribute without a time component", () => {
@@ -73,7 +74,7 @@ describe("XrmMockGenerator.Attribute", () => {
     // This is the Sample Code that is displayed on the wiki:
     // https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes
     const stringAttribute = XrmMockGenerator.Attribute.createString("firstname", "Joe");
-    const boolAttribute   = XrmMockGenerator.Attribute.createBool("havingFun", true);
+    const boolAttribute   = XrmMockGenerator.Attribute.createBoolean("isapproved", true);
     const dateAttribute   = XrmMockGenerator.Attribute.createDate("birthdate", new Date(1980, 12, 25));
     const numberAttribute = XrmMockGenerator.Attribute.createNumber("units", 2);
     const lookupAttribute = XrmMockGenerator.Attribute.createLookup("primarycustomerid", {
@@ -88,7 +89,7 @@ describe("XrmMockGenerator.Attribute", () => {
     ]);
 
     expect(page.getAttribute("firstname").getValue()).toBe("Joe");
-    expect(page.getAttribute("havingFun").getValue()).toBe(true);
+    expect(page.getAttribute("isapproved").getValue()).toBe(true);
     expect(page.getAttribute("birthdate").getValue()).toEqual(new Date(1980, 12, 25));
     expect(page.getAttribute("units").getValue()).toBe(2);
     expect(page.getAttribute<Xrm.Page.LookupAttribute>("primarycustomerid").getValue()[0].id)

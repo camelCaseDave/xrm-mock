@@ -1,9 +1,25 @@
 import * as XrmMock from "../xrm-mock/index";
 import Ui from "./ui";
 
-export type CreateMethods = "createDate" |  "createLookup" | "createNumber" | "createOptionSet" |  "createString";
+export type CreateMethods = "createBoolean" | "createDate" |  "createLookup" | "createNumber" | "createOptionSet" |  "createString";
 
 export default class Control {
+
+  public createBoolean(components: XrmMock.IBooleanControlComponents): XrmMock.BooleanControlMock;
+  public createBoolean(attribute: XrmMock.BooleanAttributeMock,
+                       name?: string,
+                       visible?: boolean,
+                       disabled?: boolean, label?: string): XrmMock.BooleanControlMock;
+  public createBoolean(attributeOrComponents: XrmMock.BooleanAttributeMock | XrmMock.IBooleanControlComponents,
+                       name?: string,
+                       visible: boolean = true,
+                       disabled: boolean = false,
+                       label?: string): XrmMock.BooleanControlMock {
+    const components: XrmMock.IBooleanControlComponents =
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+
+    return this.addControl(new XrmMock.BooleanControlMock(components));
+  }
 
   public createDate(components: XrmMock.IDateControlComponents): XrmMock.DateControlMock;
   public createDate(attribute: XrmMock.DateAttributeMock,
