@@ -1,14 +1,30 @@
+import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
+import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
+import { UiLabelElementMock } from "../uilabelelement/uilabelelement.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
+
 export class SectionMock implements Xrm.Controls.Section {
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    public parent: Xrm.Controls.Tab;
+
     private name: string;
-    private parent: Xrm.Controls.Tab;
     private uiStandardElement: Xrm.Controls.UiStandardElement;
 
-    constructor(name: string, parent: Xrm.Controls.Tab, uiStandardElement: Xrm.Controls.UiStandardElement,
+    constructor(name: string, parent?: Xrm.Controls.Tab, uiStandardElement?: Xrm.Controls.UiStandardElement,
                 controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>) {
         this.name = name;
         this.parent = parent;
-        this.uiStandardElement = uiStandardElement;
+
+        if (this.parent && this.parent.sections.get(name) == null) {
+            const sections = this.parent.sections as ItemCollectionMock<Xrm.Controls.Section>;
+
+            if (sections) {
+                sections.push(this);
+            }
+        }
+
+        this.uiStandardElement = uiStandardElement
+            || new UiStandardElementMock(new UiLabelElementMock(name), new UiCanGetVisibleElementMock(true));
         this.controls = controls;
     }
 

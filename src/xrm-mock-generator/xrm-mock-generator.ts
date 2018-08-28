@@ -5,6 +5,8 @@ import Control from "./control";
 import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
+import Section from "./section";
+import Tab from "./tab";
 import WebApi from "./webapi";
 
 declare var global: any;
@@ -15,6 +17,8 @@ export class XrmMockGenerator {
   public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
   public static Control: Control = new Control();
+  public static Tab: Tab = new Tab();
+  public static Section: Section = new Section();
   public static Form: Form = new Form();
   public static WebApi: WebApi = new WebApi();
 
@@ -25,9 +29,9 @@ export class XrmMockGenerator {
   public static initialise(components?: IXrmGeneratorComponents): XrmMock.XrmStaticMock {
     components = components || {};
 
-    this.context = Context.createContext();
-    this.formContext = FormContext.createFormContext(components.entity);
-    this.eventContext = EventContext.createEventContext(components.entity);
+    this.context = components.context || Context.createContext();
+    this.formContext = FormContext.createFormContext(components.entity, components.ui, components.process);
+    this.eventContext = EventContext.createEventContext(components.entity, components.context, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
       page: new XrmMock.PageMock(
@@ -55,5 +59,8 @@ export class XrmMockGenerator {
 }
 
 export interface IXrmGeneratorComponents {
+  context?: XrmMock.ContextMock;
+  ui?: XrmMock.IUiComponents;
   entity?: XrmMock.IEntityComponents;
+  process?: Xrm.ProcessFlow.ProcessManager;
 }

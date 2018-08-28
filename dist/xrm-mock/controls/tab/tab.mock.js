@@ -1,13 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
+var uicangetvisibleelement_mock_1 = require("../uicangetvisibleelement/uicangetvisibleelement.mock");
+var uifocusable_mock_1 = require("../uifocusable/uifocusable.mock");
+var uilabelelement_mock_1 = require("../uilabelelement/uilabelelement.mock");
+var uistandardelement_mock_1 = require("../uistandardelement/uistandardelement.mock");
 var TabMock = /** @class */ (function () {
     function TabMock(components) {
-        this.uiStandardElement = components.uiStandardElement;
-        this.uiFocusableElement = components.uiFocusableElement;
+        var _this = this;
+        this.uiStandardElement = components.uiStandardElement
+            || new uistandardelement_mock_1.UiStandardElementMock(new uilabelelement_mock_1.UiLabelElementMock(components.name), new uicangetvisibleelement_mock_1.UiCanGetVisibleElementMock(true));
+        this.uiFocusableElement = components.uiFocusableElement || new uifocusable_mock_1.UiFocusableMock(false);
         this.name = components.name;
         this.parent = components.parent;
-        this.displayState = components.displayState;
-        this.sections = components.sections;
+        this.displayState = components.displayState || "expanded";
+        this.sections = components.sections || new itemcollection_mock_1.ItemCollectionMock([]);
+        this.sections.forEach(function (section, index) {
+            var sectionMock = section;
+            if (sectionMock) {
+                sectionMock.parent = _this;
+            }
+        });
     }
     TabMock.prototype.getDisplayState = function () {
         return this.displayState;
