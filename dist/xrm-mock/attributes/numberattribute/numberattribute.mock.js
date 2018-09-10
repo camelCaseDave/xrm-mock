@@ -53,8 +53,8 @@ var NumberAttributeMock = /** @class */ (function (_super) {
         }
     };
     NumberAttributeMock.prototype.validatePrecision = function () {
-        if (this.precision > 4) {
-            throw new Error(("precision cannot be greater than 4, but was " + this.precision));
+        if (this.precision > 10) {
+            throw new Error(("precision cannot be greater than 10, but was " + this.precision));
         }
         else if (this.precision < 0) {
             throw new Error(("precision cannot be less than 0, but was " + this.precision));

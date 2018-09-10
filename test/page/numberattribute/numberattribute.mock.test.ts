@@ -89,7 +89,7 @@ describe("Xrm.Attributes.NumberAttribute", () => {
     it("should validate precision", () => {
         expect(() => { const a = new NumberAttributeMock({name: "", precision: -1}); })
             .toThrowError("precision cannot be less than 0, but was -1");
-        expect(() => { const a = new NumberAttributeMock({name: "", precision: 5}); })
-            .toThrowError("precision cannot be greater than 4, but was 5");
-    });
+        expect(() => { const a = new NumberAttributeMock({name: "", precision: 11}); })
+            .toThrowError("precision cannot be greater than 10, but was 11");
+});
 });
