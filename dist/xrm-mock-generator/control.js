@@ -4,6 +4,12 @@ var XrmMock = require("../xrm-mock/index");
 var Control = /** @class */ (function () {
     function Control() {
     }
+    Control.prototype.createBoolean = function (attributeOrComponents, name, visible, disabled, label) {
+        if (visible === void 0) { visible = true; }
+        if (disabled === void 0) { disabled = false; }
+        var components = this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+        return this.addControl(new XrmMock.BooleanControlMock(components));
+    };
     Control.prototype.createDate = function (attributeOrComponents, name, visible, disabled, label) {
         if (visible === void 0) { visible = true; }
         if (disabled === void 0) { disabled = false; }

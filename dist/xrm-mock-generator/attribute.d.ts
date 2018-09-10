@@ -1,5 +1,6 @@
 /// <reference types="xrm" />
 import * as XrmMock from "../xrm-mock/index";
+export declare type BooleanControlComponent = XrmMock.IAttBooleanControlComponents | XrmMock.IAttBooleanControlComponents[];
 export declare type DateControlComponent = XrmMock.IAttDateControlComponents | XrmMock.IAttDateControlComponents[];
 export declare type LookupControlComponent = XrmMock.IAttLookupControlComponents | XrmMock.IAttLookupControlComponents[];
 export declare type NumberControlComponent = XrmMock.IAttNumberControlComponents | XrmMock.IAttNumberControlComponents[];
@@ -7,7 +8,8 @@ export declare type OptionSetControlComponent = XrmMock.IAttOptionSetControlComp
 export declare type StringControlComponent = XrmMock.IAttStringControlComponents | XrmMock.IAttStringControlComponents[];
 export default class Attribute {
     private Control;
-    createBool(name: string, value: boolean): XrmMock.BooleanAttributeMock;
+    createBoolean(attComponents: XrmMock.IBooleanAttributeComponents, controlComponents?: BooleanControlComponent): XrmMock.BooleanAttributeMock;
+    createBoolean(name: string, value?: boolean): XrmMock.BooleanAttributeMock;
     createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
     createDate(name: string, value?: Date): XrmMock.DateAttributeMock;
     createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;

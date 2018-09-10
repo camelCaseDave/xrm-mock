@@ -1,7 +1,7 @@
-import { ControlMock } from "../../controls/control/control.mock";
+import { BooleanControlMock } from "../../controls/booleancontrol/booleancontrol.mock";
 import { EnumAttributeMock, IEnumAttributeComponents } from "../enumattribute/enumattribute.mock";
 
-export class BooleanAttributeMock extends EnumAttributeMock<ControlMock, boolean> implements Xrm.Attributes.BooleanAttribute {
+export class BooleanAttributeMock extends EnumAttributeMock<BooleanControlMock, boolean> implements Xrm.Attributes.BooleanAttribute {
     public static create(name: string, value: boolean = false): BooleanAttributeMock {
         return new BooleanAttributeMock({ name, value }  as any as IBooleanAttributeComponents);
     }
@@ -16,5 +16,5 @@ export class BooleanAttributeMock extends EnumAttributeMock<ControlMock, boolean
     }
 }
 
-export interface IBooleanAttributeComponents extends IEnumAttributeComponents<ControlMock, boolean> {
+export interface IBooleanAttributeComponents extends IEnumAttributeComponents<BooleanControlMock, boolean> {
 }
