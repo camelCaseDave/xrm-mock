@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var XrmMock = require("../xrm-mock");
 var uicangetvisibleelement_mock_1 = require("../xrm-mock/controls/uicangetvisibleelement/uicangetvisibleelement.mock");
 var uilabelelement_mock_1 = require("../xrm-mock/controls/uilabelelement/uilabelelement.mock");
 var uistandardelement_mock_1 = require("../xrm-mock/controls/uistandardelement/uistandardelement.mock");
-var XrmMock = require("../xrm-mock/index");
 var control_helper_1 = require("./helpers/control.helper");
 var Tab = /** @class */ (function () {
     function Tab() {

@@ -1,11 +1,12 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock/index";
+import * as XrmMock from "../xrm-mock";
 import Attribute from "./attribute";
 import Context from "./context";
 import Control from "./control";
 import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
+import Navigation from "./navigation";
 import Section from "./section";
 import Tab from "./tab";
 import WebApi from "./webapi";
@@ -18,6 +19,7 @@ export declare class XrmMockGenerator {
     static Tab: Tab;
     static Section: Section;
     static Form: Form;
+    static Navigation: Navigation;
     static WebApi: WebApi;
     static context: XrmMock.ContextMock;
     static formContext: XrmMock.FormContextMock;

@@ -1,4 +1,4 @@
-import * as XrmMock from "../xrm-mock/index";
+import * as XrmMock from "../xrm-mock";
 export declare type CreateMethods = "createBoolean" | "createDate" | "createLookup" | "createNumber" | "createOptionSet" | "createString";
 export default class Control {
     createBoolean(components: XrmMock.IBooleanControlComponents): XrmMock.BooleanControlMock;

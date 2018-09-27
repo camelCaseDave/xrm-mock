@@ -1,13 +1,13 @@
-import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
 import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattribute.mock";
-import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
-import { IAttStandardControlComponents,
-         IStandardControlComponents,
-         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+import {
+    IAttStandardControlComponents,
+    IStandardControlComponents,
+    StandardControlMock,
+} from "../standardcontrol/standardcontrol.mock";
 
 export class LookupControlMock extends StandardControlMock<LookupControlMock,
-                                                           LookupAttributeMock, Xrm.LookupValue[]>
-                               implements Xrm.Controls.LookupControl {
+    LookupAttributeMock, Xrm.LookupValue[]>
+    implements Xrm.Controls.LookupControl {
 
     private static defaultComponents(components: ILookupControlComponents): ILookupControlComponents {
         components.controlType = "lookup";
@@ -90,7 +90,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
 
 export interface ILookupControlComponents
     extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]>,
-            IAttLookupControlComponents {
+    IAttLookupControlComponents {
     name: string;
 }
 

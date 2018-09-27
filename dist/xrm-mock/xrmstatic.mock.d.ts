@@ -1,11 +1,12 @@
 /// <reference types="xrm" />
+import { NavigationStaticMock } from "./navigation/navigation.mock";
 import { PageMock } from "./page/page.mock";
 import { UtilityMock } from "./utility/utility.mock";
 export declare class XrmStaticMock implements Xrm.XrmStatic {
     Device: Xrm.Device;
     Encoding: Xrm.Encoding;
     Mobile: Xrm.Mobile;
-    Navigation: Xrm.Navigation;
+    Navigation: NavigationStaticMock;
     Page: PageMock;
     Panel: Xrm.Panel;
     Utility: UtilityMock;
@@ -16,7 +17,7 @@ export interface IXrmStaticComponents {
     device?: Xrm.Device;
     encoding?: Xrm.Encoding;
     mobile?: Xrm.Mobile;
-    navigation?: Xrm.Navigation;
+    navigation?: NavigationStaticMock;
     page?: PageMock;
     panel?: Xrm.Panel;
     utility?: UtilityMock;

@@ -1,14 +1,16 @@
 import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
-import { UiKeyPressableMock } from "../../controls/uikeypressable/uikeypressable.mock";
-import { IAttStandardControlComponents,
-         IStandardControlComponents,
-         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+import {
+    IAttStandardControlComponents,
+    IStandardControlComponents,
+    StandardControlMock,
+} from "../standardcontrol/standardcontrol.mock";
+import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-                                   TAttribute extends AttributeMock<TControl, TValue>,
-                                   TValue extends AttributeReturnType>
-                                   extends StandardControlMock<TControl, TAttribute, TValue>
-                                   implements Xrm.Controls.AutoLookupControl {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends StandardControlMock<TControl, TAttribute, TValue>
+    implements Xrm.Controls.AutoLookupControl {
 
     public uiKeyPressable: UiKeyPressableMock;
     /**
@@ -48,17 +50,17 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
 }
 
 export interface IAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-                                              TAttribute extends AttributeMock<TControl, TValue>,
-                                              TValue extends AttributeReturnType>
-                                              extends IStandardControlComponents<TControl, TAttribute, TValue>,
-                                                      IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends IStandardControlComponents<TControl, TAttribute, TValue>,
+    IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
     name: string;
 }
 
 export interface IAttAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-                                              TAttribute extends AttributeMock<TControl, TValue>,
-                                              TValue extends AttributeReturnType>
-                                              extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
     keyPressHandlers?: Xrm.Events.ContextSensitiveHandler[];
     /**
      * Auto Lookup allows for getting the value that has currently been typed in,

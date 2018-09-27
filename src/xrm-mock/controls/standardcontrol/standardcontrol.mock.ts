@@ -1,13 +1,13 @@
 import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
-import { UiFocusableMock } from "../../controls/uifocusable/uifocusable.mock";
-import { UiStandardElementMock } from "../../controls/uistandardelement/uistandardelement.mock";
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
+import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
+import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
 
 export class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-                                 TAttribute extends AttributeMock<TControl, TValue>,
-                                 TValue extends AttributeReturnType>
-                                 extends ControlMock
-                                 implements Xrm.Controls.StandardControl {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends ControlMock
+    implements Xrm.Controls.StandardControl {
     public disabled: boolean;
     public attribute: TAttribute;
     protected uiStandardElement: Xrm.Controls.UiStandardElement;
@@ -75,18 +75,18 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
 }
 
 export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-                                            TAttribute extends AttributeMock<TControl, TValue>,
-                                            TValue extends AttributeReturnType>
-                                            extends IAttStandardControlComponents<TControl, TAttribute, TValue>,
-                                                    IControlComponents {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends IAttStandardControlComponents<TControl, TAttribute, TValue>,
+    IControlComponents {
     attribute: TAttribute;
     name: string;
 }
 
 export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-                                               TAttribute extends AttributeMock<TControl, TValue>,
-                                               TValue extends AttributeReturnType>
-                                               extends IAttControlComponents {
+    TAttribute extends AttributeMock<TControl, TValue>,
+    TValue extends AttributeReturnType>
+    extends IAttControlComponents {
     disabled?: boolean;
     label?: string;
     visible?: boolean;

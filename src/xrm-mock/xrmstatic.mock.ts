@@ -1,3 +1,4 @@
+import { NavigationStaticMock } from "./navigation/navigation.mock";
 import { PageMock } from "./page/page.mock";
 import { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
 import { UtilityMock } from "./utility/utility.mock";
@@ -6,7 +7,7 @@ export class XrmStaticMock implements Xrm.XrmStatic {
     public Device: Xrm.Device;
     public Encoding: Xrm.Encoding;
     public Mobile: Xrm.Mobile;
-    public Navigation: Xrm.Navigation;
+    public Navigation: NavigationStaticMock;
     public Page: PageMock;
     public Panel: Xrm.Panel;
     public Utility: UtilityMock;
@@ -28,7 +29,7 @@ export interface IXrmStaticComponents {
     device?: Xrm.Device;
     encoding?: Xrm.Encoding;
     mobile?: Xrm.Mobile;
-    navigation?: Xrm.Navigation;
+    navigation?: NavigationStaticMock;
     page?: PageMock;
     panel?: Xrm.Panel;
     utility?: UtilityMock;

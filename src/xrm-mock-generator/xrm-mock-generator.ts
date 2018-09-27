@@ -5,6 +5,7 @@ import Control from "./control";
 import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
+import Navigation from "./navigation";
 import Section from "./section";
 import Tab from "./tab";
 import WebApi from "./webapi";
@@ -20,6 +21,7 @@ export class XrmMockGenerator {
   public static Tab: Tab = new Tab();
   public static Section: Section = new Section();
   public static Form: Form = new Form();
+  public static Navigation: Navigation = new Navigation();
   public static WebApi: WebApi = new WebApi();
 
   public static context: XrmMock.ContextMock;
@@ -34,6 +36,7 @@ export class XrmMockGenerator {
     this.eventContext = EventContext.createEventContext(components.entity, components.context, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
+      navigation: Navigation.createNavigation(),
       page: new XrmMock.PageMock(
         this.context,
         this.formContext,
@@ -46,6 +49,7 @@ export class XrmMockGenerator {
     } else {
       global.Xrm = xrm;
     }
+
     return xrm;
   }
 

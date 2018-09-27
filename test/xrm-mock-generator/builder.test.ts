@@ -1,5 +1,5 @@
 import * as sinon from "sinon";
-import { AttributeMock, ClientContextMock, ContextMock, EntityMock, EventContextMock, FormItemMock, FormSelectorMock, IAttributeComponents, IEntityComponents, IGridControlComponents, IStringControlComponents, ItemCollectionMock, IUiComponents, ProcessManagerMock, ProcessMock, StageMock, StepMock, StringAttributeMock, StringControlMock, UiMock, UserSettingsMock } from "../../src/xrm-mock";
+import { AttributeMock, ClientContextMock, ContextMock, EntityMock, EventContextMock, FormItemMock, FormSelectorMock, IAttributeComponents, IEntityComponents, IGridControlComponents, IStringControlComponents, ItemCollectionMock, IUiComponents, NavigationStaticMock, ProcessManagerMock, ProcessMock, StageMock, StepMock, StringAttributeMock, StringControlMock, UiMock, UserSettingsMock } from "../../src/xrm-mock";
 import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
 import FormContext from "../../src/xrm-mock-generator/formcontext";
 
@@ -9,6 +9,7 @@ describe("XrmMockGenerator Builder", () => {
     let control: Xrm.Controls.StringControl;
     let attribute: Xrm.Attributes.Attribute;
     let context: Xrm.GlobalContext;
+    let navigation: Xrm.Navigation;
     let process: Xrm.ProcessFlow.ProcessManager;
     const contact = {
         firstname: "Joe",
@@ -281,6 +282,17 @@ describe("XrmMockGenerator Builder", () => {
 
         it("should have a label", () => {
             expect(Xrm.Page.ui.formSelector.getCurrentItem().getLabel()).toBe("Main");
+        });
+    });
+
+    describe("Navigation", () => {
+        it("should be defined", () => {
+            navigation = Xrm.Navigation;
+            expect(navigation).toBeDefined();
+        });
+
+        it("should have openUrl stubed", () => {
+            expect(Xrm.Navigation.openUrl).toBeDefined();
         });
     });
 

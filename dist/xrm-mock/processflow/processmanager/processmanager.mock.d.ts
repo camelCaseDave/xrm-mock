@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import { StageMock } from "../../processflow/stage/stage.mock";
+import { StageMock } from "../stage/stage.mock";
 export declare class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
     enabledProcesses: Xrm.Page.Process[] | Xrm.ProcessFlow.ProcessDictionary;
     constructor(enabledProcesses: Xrm.ProcessFlow.Process[]);

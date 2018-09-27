@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock/index";
+import * as XrmMock from "../xrm-mock";
 export default class WebApi {
     static createApi(clientContext: Xrm.ClientContext): XrmMock.WebApiMock;
     private static createOfflineApi();

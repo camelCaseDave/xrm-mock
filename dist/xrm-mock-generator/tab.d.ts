@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock/index";
+import * as XrmMock from "../xrm-mock";
 export default class Tab {
     /**
      * Creates a tab mock added to the XRM tabs collection.

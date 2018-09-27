@@ -53,6 +53,7 @@ export { ILookupOptionsComponents, LookupOptionsMock } from "./lookupoptions/loo
 export { LookupValueMock } from "./lookupvalue/lookupvalue.mock";
 export { NavigationMock } from "./controls/navigation/navigation.mock";
 export { NavigationItemMock } from "./controls/navigationitem/navigationitem.mock";
+export { NavigationStaticMock } from "./navigation/navigation.mock";
 export { INumberAttributeComponents, NumberAttributeMock } from "./attributes/numberattribute/numberattribute.mock";
 export { IAttNumberControlComponents, INumberControlComponents, NumberControlMock } from "./controls/numbercontrol/numbercontrol.mock";
 export { OpenParametersMock } from "./utility/openparameters/openparameters.mock";

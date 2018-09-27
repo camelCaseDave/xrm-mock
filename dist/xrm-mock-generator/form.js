@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var XrmMock = require("../xrm-mock/index");
+var XrmMock = require("../xrm-mock");
 var Form = /** @class */ (function () {
     function Form() {
     }
