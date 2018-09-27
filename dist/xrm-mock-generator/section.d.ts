@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock";
+import * as XrmMock from "../xrm-mock/index";
 export default class Section {
     /**
      * Creates a section mock added to the XRM parent tab collection.

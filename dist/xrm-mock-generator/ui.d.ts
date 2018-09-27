@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock";
+import * as XrmMock from "../xrm-mock/index";
 export default class Ui {
     static createUi(): XrmMock.UiMock;
     static createLabelElement(label: string): XrmMock.UiLabelElementMock;

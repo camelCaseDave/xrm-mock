@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock";
+import * as XrmMock from "../xrm-mock/index";
 import Context from "./context";
 import FormContext from "./formcontext";
 export default class EventContext {

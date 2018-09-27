@@ -1,5 +1,5 @@
 /// <reference types="xrm" />
-import * as XrmMock from "../xrm-mock";
+import * as XrmMock from "../xrm-mock/index";
 import Attribute from "./attribute";
 import Context from "./context";
 import Control from "./control";

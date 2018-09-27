@@ -1,2 +1,2 @@
-export * from "./xrm-mock";
-export { XrmMockGenerator, IXrmGeneratorComponents } from "./xrm-mock-generator";
+export * from "./xrm-mock/index";
+export { XrmMockGenerator, IXrmGeneratorComponents } from "./xrm-mock-generator/index";
