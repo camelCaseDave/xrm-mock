@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class CaptureFileResponseMock implements Xrm.Device.CaptureFileResponse {
     fileContent: string;
     fileName: string;

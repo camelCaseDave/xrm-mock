@@ -1,7 +1,7 @@
 /// <reference types="xrm" />
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 export declare class GridControlMock extends ControlMock implements Xrm.Controls.GridControl {
-    private static defaultComponents(components);
+    private static defaultComponents;
     onLoadHandlers: Array<() => void>;
     contextType: XrmEnum.GridControlContext;
     entityName: string;

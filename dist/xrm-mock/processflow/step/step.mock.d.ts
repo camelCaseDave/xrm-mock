@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class StepMock implements Xrm.ProcessFlow.Step {
     required: boolean;
     name: string;

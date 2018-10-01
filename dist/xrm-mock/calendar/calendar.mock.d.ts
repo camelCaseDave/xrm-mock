@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class CalendarMock implements Xrm.Calendar {
     MinSupportedDateTime: Date;
     MaxSupportedDateTime: Date;

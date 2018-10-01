@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class LookupOptionsMock implements Xrm.LookupOptions {
     allowMultiSelect?: boolean;
     defaultEntityType?: string;

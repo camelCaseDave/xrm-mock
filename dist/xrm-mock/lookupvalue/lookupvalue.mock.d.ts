@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class LookupValueMock implements Xrm.LookupValue {
     id: string;
     name?: string;

@@ -20,18 +20,18 @@ export default class Attribute {
     createOptionSet(name: string, value?: string | number, options?: Xrm.OptionSetValue[]): XrmMock.OptionSetAttributeMock;
     createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: StringControlComponent): XrmMock.StringAttributeMock;
     createString(name: string, value?: string): XrmMock.StringAttributeMock;
-    private createOptionSetFromParameters(name, value, options);
-    private createOptionSetFromComponents(components, controls);
-    private createStringFromParameters(name, value);
-    private createAttribute(name, value);
-    private addAttribute(attribute);
+    private createOptionSetFromParameters;
+    private createOptionSetFromComponents;
+    private createStringFromParameters;
+    private createAttribute;
+    private addAttribute;
     /**
      * Creates the given attribute, as well as the controls for the attribute defined by the components
      * @param attribute The newly created attribute to be added to the page colleciton of attributes
      * @param controls Array of Control Components to create controls for the given attribute
      * @param controlCreateFunction the name of the Control function to call to create the correct type of control
      */
-    private associateAttribute<TAtt>(attribute, controls, controlCreateFunction);
-    private defaultName(control, attribute);
-    private arrayify<T>(possibleArray);
+    private associateAttribute;
+    private defaultName;
+    private arrayify;
 }

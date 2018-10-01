@@ -4,7 +4,7 @@ import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
 import { EnumAttributeMock, IEnumAttributeComponents } from "../enumattribute/enumattribute.mock";
 export declare class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMock, number> implements Xrm.Attributes.OptionSetAttribute {
     static create(name: string, value?: number): OptionSetAttributeMock;
-    private static defaultComponents(components);
+    private static defaultComponents;
     options: OptionSetValueMock[];
     selectedOption: OptionSetValueMock;
     constructor(components: IOptionSetAttributeComponents);

@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class OrganizationSettingsMock implements Xrm.OrganizationSettings {
     baseCurrencyId: string;
     defaultCountryCode: string;

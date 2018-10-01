@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class CaptureImageOptionsMock implements Xrm.Device.CaptureImageOptions {
     allowEdit: boolean;
     height: number;

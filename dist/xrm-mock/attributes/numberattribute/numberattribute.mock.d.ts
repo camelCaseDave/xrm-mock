@@ -2,7 +2,7 @@
 import { NumberControlMock } from "../../controls/numbercontrol/numbercontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 export declare class NumberAttributeMock extends AttributeMock<NumberControlMock, number> implements Xrm.Attributes.NumberAttribute {
-    private static defaultComponents(components);
+    private static defaultComponents;
     min: number;
     max: number;
     precision: number;
@@ -12,7 +12,7 @@ export declare class NumberAttributeMock extends AttributeMock<NumberControlMock
     getMin(): number;
     getPrecision(): number;
     setValue(value: number): void;
-    private validatePrecision();
+    private validatePrecision;
 }
 export interface INumberAttributeComponents extends IAttributeComponents<NumberControlMock, number> {
     min?: number;

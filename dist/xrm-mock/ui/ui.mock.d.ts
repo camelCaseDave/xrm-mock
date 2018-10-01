@@ -20,7 +20,7 @@ export declare class UiMock implements Xrm.Ui {
     getViewPortHeight(): number;
     getViewPortWidth(): number;
     refreshRibbon(): void;
-    private _getFormNotificationExists(notifications, uniqueId);
+    private _getFormNotificationExists;
 }
 export interface IUiComponents {
     process?: Xrm.Controls.ProcessControl;

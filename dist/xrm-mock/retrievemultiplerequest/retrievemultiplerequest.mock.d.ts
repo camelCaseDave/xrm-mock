@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class RetrieveMultipleRequestMock implements Xrm.RetrieveMultipleResult {
     entities: any[];
     nextLink: string;

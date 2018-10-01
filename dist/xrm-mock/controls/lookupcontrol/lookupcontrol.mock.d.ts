@@ -2,7 +2,7 @@
 import { LookupAttributeMock } from "../../attributes/lookupattribute/lookupattribute.mock";
 import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 export declare class LookupControlMock extends StandardControlMock<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> implements Xrm.Controls.LookupControl {
-    private static defaultComponents(components);
+    private static defaultComponents;
     preSearchHandlers: Xrm.Events.ContextSensitiveHandler[];
     views: ILookupView[];
     filters: ILookupFilter[];

@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class ExecuteResponseMock implements Xrm.ExecuteResponse {
     body: string;
     headers: any;

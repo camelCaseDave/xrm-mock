@@ -15,6 +15,6 @@ export default class Control {
     createOptionSet(attribute: XrmMock.OptionSetAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.OptionSetControlMock;
     createString(components: XrmMock.IStringControlComponents): XrmMock.StringControlMock;
     createString(attribute: XrmMock.StringAttributeMock, name?: string, visible?: boolean, disabled?: boolean, label?: string): XrmMock.StringControlMock;
-    private addControl<T>(control);
-    private createStandardComponent<TControl, TAttribute, TValue, TComponent>(attributeOrComponents, name?, visible?, disabled?, label?);
+    private addControl;
+    private createStandardComponent;
 }

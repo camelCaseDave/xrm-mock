@@ -3,7 +3,7 @@ import { StringControlMock } from "../../controls/stringcontrol/stringcontrol.mo
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 export declare class StringAttributeMock extends AttributeMock<StringControlMock, string> implements Xrm.Attributes.StringAttribute {
     static create(name: string, value?: string): StringAttributeMock;
-    private static defaultComponents(components);
+    private static defaultComponents;
     maxLength: number;
     constructor(components: IStringAttributeComponents);
     getFormat(): Xrm.Attributes.StringAttributeFormat;

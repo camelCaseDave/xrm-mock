@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 import { BooleanAttributeMock } from "../../attributes/booleanattribute/booleanattribute.mock";
 import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 export declare class BooleanControlMock extends StandardControlMock<BooleanControlMock, BooleanAttributeMock, boolean> implements Xrm.Controls.StandardControl {

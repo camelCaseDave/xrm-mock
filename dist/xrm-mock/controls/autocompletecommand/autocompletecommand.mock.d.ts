@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class AutoCompleteCommandMock implements Xrm.Controls.AutoCompleteCommand {
     id: string;
     icon?: string;

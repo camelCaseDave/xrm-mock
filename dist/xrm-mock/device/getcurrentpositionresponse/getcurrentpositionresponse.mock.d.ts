@@ -1,3 +1,4 @@
+/// <reference types="xrm" />
 export declare class GetCurrentPositionResponseMock implements Xrm.Device.GetCurrentPositionResponse {
     coords: any;
     timestamp: number;

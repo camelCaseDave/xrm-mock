@@ -55,6 +55,7 @@
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "testURL": "http://localhost/",
     "testMatch": [
       "**/test/**/*.+(ts|js)"
     ]

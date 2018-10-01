@@ -3,7 +3,7 @@ import { OptionSetAttributeMock } from "../../attributes/optionsetattribute/opti
 import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
 import { IAttStandardControlComponents, IStandardControlComponents, StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 export declare class OptionSetControlMock extends StandardControlMock<OptionSetControlMock, OptionSetAttributeMock, number> implements Xrm.Controls.OptionSetControl {
-    private static defaultComponents(components);
+    private static defaultComponents;
     options: OptionSetValueMock[];
     constructor(components: IOptionSetControlComponents);
     addOption(option: Xrm.OptionSetValue, index?: number): void;

@@ -3,7 +3,7 @@ import { DateControlMock } from "../../controls/datecontrol/datecontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 export declare class DateAttributeMock extends AttributeMock<DateControlMock, Date> implements Xrm.Attributes.DateAttribute {
     static create(name: string, value?: Date): DateAttributeMock;
-    private static defaultComponents(components);
+    private static defaultComponents;
     constructor(components: IDateAttributeComponents);
     getFormat(): Xrm.Attributes.DateAttributeFormat;
 }
