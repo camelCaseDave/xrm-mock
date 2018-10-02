@@ -2,16 +2,16 @@ import * as XrmMock from "../xrm-mock/index";
 import Attribute from "./attribute";
 import Context from "./context";
 import Control from "./control";
+import Device from "./device";
 import EventContext from "./eventcontext";
 import Form from "./form";
 import FormContext from "./formcontext";
+import Mobile from "./mobile";
 import Navigation from "./navigation";
 import Section from "./section";
 import Tab from "./tab";
-import WebApi from "./webapi";
 import Utility from "./utility";
-import Mobile from "./mobile";
-import Device from "./device";
+import WebApi from "./webapi";
 
 declare var global: any;
 
@@ -40,7 +40,7 @@ export class XrmMockGenerator {
     this.context = components.context || Context.createContext();
     this.formContext = FormContext.createFormContext(components.entity, components.ui, components.process);
     this.eventContext = EventContext.createEventContext(components.entity, components.context,
-                                                        this.formContext, components.ui, components.process);
+      this.formContext, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
       device: Device.createDevice(),
@@ -50,8 +50,8 @@ export class XrmMockGenerator {
         this.context,
         this.formContext,
       ),
-      webApi: WebApi.createApi(this.context.client),
       utility: Utility.createUtility(),
+      webApi: WebApi.createApi(this.context.client),
     });
 
     if (typeof global === "undefined") {
@@ -59,7 +59,7 @@ export class XrmMockGenerator {
     } else {
       global.Xrm = xrm;
     }
-    
+
     return xrm;
   }
 
