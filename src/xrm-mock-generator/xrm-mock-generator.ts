@@ -33,7 +33,8 @@ export class XrmMockGenerator {
 
     this.context = components.context || Context.createContext();
     this.formContext = FormContext.createFormContext(components.entity, components.ui, components.process);
-    this.eventContext = EventContext.createEventContext(components.entity, components.context, components.ui, components.process);
+    this.eventContext = EventContext.createEventContext(components.entity, components.context,
+                                                        this.formContext, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
       navigation: Navigation.createNavigation(),

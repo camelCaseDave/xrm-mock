@@ -18,7 +18,7 @@ var XrmMockGenerator = /** @class */ (function () {
         components = components || {};
         this.context = components.context || context_1.default.createContext();
         this.formContext = formcontext_1.default.createFormContext(components.entity, components.ui, components.process);
-        this.eventContext = eventcontext_1.default.createEventContext(components.entity, components.context, components.ui, components.process);
+        this.eventContext = eventcontext_1.default.createEventContext(components.entity, components.context, this.formContext, components.ui, components.process);
         var xrm = new XrmMock.XrmStaticMock({
             navigation: navigation_1.default.createNavigation(),
             page: new XrmMock.PageMock(this.context, this.formContext),
