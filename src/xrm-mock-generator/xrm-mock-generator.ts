@@ -11,6 +11,7 @@ import Tab from "./tab";
 import WebApi from "./webapi";
 import Utility from "./utility";
 import Mobile from "./mobile";
+import Device from "./device";
 
 declare var global: any;
 
@@ -20,6 +21,7 @@ export class XrmMockGenerator {
   public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
   public static Control: Control = new Control();
+  public static Device: Device = new Device();
   public static Mobile: Mobile = new Mobile();
   public static Tab: Tab = new Tab();
   public static Section: Section = new Section();
@@ -41,6 +43,7 @@ export class XrmMockGenerator {
                                                         this.formContext, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
+      device: Device.createDevice(),
       mobile: Mobile.createMobile(),
       navigation: Navigation.createNavigation(),
       page: new XrmMock.PageMock(
