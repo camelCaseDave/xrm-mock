@@ -3,6 +3,7 @@ import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.
 export class EntityMock implements Xrm.Entity {
     public id: string;
     public entityName: string;
+    public primaryValue: string;
     public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
     public saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
 
@@ -10,6 +11,7 @@ export class EntityMock implements Xrm.Entity {
         components = components || {};
         this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
         this.entityName = components.entityName || "contact";
+        this.primaryValue = components.primaryValue || "Default Contact";
         this.attributes = components.attributes || new ItemCollectionMock();
         this.saveEventHandlers = [];
     }
@@ -30,7 +32,7 @@ export class EntityMock implements Xrm.Entity {
         return {
             entityType: this.entityName,
             id: this.id,
-            name: "",
+            name: this.primaryValue,
         };
     }
 
@@ -54,7 +56,7 @@ export class EntityMock implements Xrm.Entity {
     }
 
     public getPrimaryAttributeValue(): string {
-        throw new Error(("getPrimaryAttributeValue not implemented"));
+        return this.primaryValue;
     }
 
     public isValid(): boolean {
@@ -128,5 +130,6 @@ export class EntityMock implements Xrm.Entity {
 export interface IEntityComponents {
     id?: string;
     entityName?: string;
+    primaryValue?: string;
     attributes?: ItemCollectionMock<Xrm.Attributes.Attribute>;
 }

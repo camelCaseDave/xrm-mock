@@ -3,6 +3,7 @@ import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.
 export declare class EntityMock implements Xrm.Entity {
     id: string;
     entityName: string;
+    primaryValue: string;
     attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
     saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
     constructor(components?: IEntityComponents);
@@ -22,5 +23,6 @@ export declare class EntityMock implements Xrm.Entity {
 export interface IEntityComponents {
     id?: string;
     entityName?: string;
+    primaryValue?: string;
     attributes?: ItemCollectionMock<Xrm.Attributes.Attribute>;
 }

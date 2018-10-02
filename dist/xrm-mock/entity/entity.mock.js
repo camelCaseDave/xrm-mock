@@ -6,6 +6,7 @@ var EntityMock = /** @class */ (function () {
         components = components || {};
         this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
         this.entityName = components.entityName || "contact";
+        this.primaryValue = components.primaryValue || "Default Contact";
         this.attributes = components.attributes || new itemcollection_mock_1.ItemCollectionMock();
         this.saveEventHandlers = [];
     }
@@ -22,7 +23,7 @@ var EntityMock = /** @class */ (function () {
         return {
             entityType: this.entityName,
             id: this.id,
-            name: "",
+            name: this.primaryValue,
         };
     };
     EntityMock.prototype.getId = function () {
@@ -42,7 +43,7 @@ var EntityMock = /** @class */ (function () {
         return isDirty;
     };
     EntityMock.prototype.getPrimaryAttributeValue = function () {
-        throw new Error(("getPrimaryAttributeValue not implemented"));
+        return this.primaryValue;
     };
     EntityMock.prototype.isValid = function () {
         throw new Error("isValid not implemented.");
