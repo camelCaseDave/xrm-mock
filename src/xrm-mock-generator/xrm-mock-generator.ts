@@ -9,6 +9,7 @@ import Navigation from "./navigation";
 import Section from "./section";
 import Tab from "./tab";
 import WebApi from "./webapi";
+import Utility from "./utility";
 
 declare var global: any;
 
@@ -23,6 +24,7 @@ export class XrmMockGenerator {
   public static Form: Form = new Form();
   public static Navigation: Navigation = new Navigation();
   public static WebApi: WebApi = new WebApi();
+  public static Utility: Utility = new Utility();
 
   public static context: XrmMock.ContextMock;
   public static formContext: XrmMock.FormContextMock;
@@ -43,6 +45,7 @@ export class XrmMockGenerator {
         this.formContext,
       ),
       webApi: WebApi.createApi(this.context.client),
+      utility: Utility.createUtility(),
     });
 
     if (typeof global === "undefined") {
@@ -50,7 +53,7 @@ export class XrmMockGenerator {
     } else {
       global.Xrm = xrm;
     }
-
+    
     return xrm;
   }
 
