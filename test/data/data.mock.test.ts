@@ -5,11 +5,14 @@ import { EntityMock } from "../../src/xrm-mock/entity/entity.mock";
 
 describe("Xrm.Data Mock", () => {
     beforeEach(() => {
-        const attributes: AttributeMock[] = [];
+        const attributes = [];
         attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
         attributes.push(new AttributeMock({ name: "description", value: "" }));
 
-        this.entityMock = new EntityMock(this.id, new ItemCollectionMock<AttributeMock>(attributes));
+        this.entityMock = new EntityMock({
+            attributes: new ItemCollectionMock(attributes),
+            id: this.id,
+        });
         this.dataMock = new DataMock(this.entityMock);
     });
 
