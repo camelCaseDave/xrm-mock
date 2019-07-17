@@ -26,7 +26,7 @@ describe("XrmMockGenerator.Attribute", () => {
 
   it("should create a string control with Label", () => {
     XrmMockGenerator.Control.createString(StringAttributeMock.create("firstname"), "firstname", true, false,
-                                          "First Name");
+      "First Name");
     expect(Xrm.Page.getControl("firstname").getLabel()).toBe("First Name");
   });
 
@@ -74,8 +74,8 @@ describe("XrmMockGenerator.Attribute", () => {
     // This is the Sample Code that is displayed on the wiki:
     // https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes
     const stringAttribute = XrmMockGenerator.Attribute.createString("firstname", "Joe");
-    const boolAttribute   = XrmMockGenerator.Attribute.createBoolean("isapproved", true);
-    const dateAttribute   = XrmMockGenerator.Attribute.createDate("birthdate", new Date(1980, 12, 25));
+    const boolAttribute = XrmMockGenerator.Attribute.createBoolean("isapproved", true);
+    const dateAttribute = XrmMockGenerator.Attribute.createDate("birthdate", new Date(1980, 12, 25));
     const numberAttribute = XrmMockGenerator.Attribute.createNumber("units", 2);
     const lookupAttribute = XrmMockGenerator.Attribute.createLookup("primarycustomerid", {
       entityType: "contact",
@@ -83,9 +83,9 @@ describe("XrmMockGenerator.Attribute", () => {
       name: "Joe Bloggs",
     });
     const optionSetAttribute = XrmMockGenerator.Attribute.createOptionSet("countries", 0, [
-        { text: "Austria", value: 0 },
-        { text: "France", value: 1 },
-        { text: "Spain", value: 2 },
+      { text: "Austria", value: 0 },
+      { text: "France", value: 1 },
+      { text: "Spain", value: 2 },
     ]);
 
     expect(page.getAttribute("firstname").getValue()).toBe("Joe");
@@ -102,12 +102,12 @@ describe("XrmMockGenerator.Attribute", () => {
     const stringAttribute = XrmMockGenerator.Attribute.createNumber({
       name: "number",
     },
-    // This can be a single instance of control components, or an array of control components as it is here
-    [{
-      label: "Number 1",
-    }, {
-      label: "Number 2",
-    }]);
+      // This can be a single instance of control components, or an array of control components as it is here
+      [{
+        label: "Number 1",
+      }, {
+        label: "Number 2",
+      }]);
     const controls = page.getAttribute("number").controls;
     expect(controls.getLength()).toBe(2);
     expect(controls.get("number")).toBeTruthy();
@@ -128,16 +128,16 @@ describe("XrmMockGenerator.Attribute", () => {
       submitMode: "always",      // Applies to all standard attributes
       value: "test@test.com",    // Applies to all standard attributes, but type is attribute specific
     },
-    // This can be a single instance of control components, or an array of control components as it is here
-    [{
-      disabled: true,
-      label: "Email",
-      name: "emailaddress1",
-      visible: false,
-    }, {
-      label: "Notification Email",
-      name: "header_emailaddress1",
-    }]);
+      // This can be a single instance of control components, or an array of control components as it is here
+      [{
+        disabled: true,
+        label: "Email",
+        name: "emailaddress1",
+        visible: false,
+      }, {
+        label: "Notification Email",
+        name: "header_emailaddress1",
+      }]);
 
     expect(page.getAttribute("emailaddress1").getValue()).toBe("test@test.com");
     expect(page.getControl("emailaddress1").getVisible()).toBe(false);

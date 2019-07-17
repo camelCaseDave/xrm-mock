@@ -28,7 +28,7 @@ Import `XrmMockGenerator` in your unit test file
 Initialise a global `Xrm` object
   
 ```typescript
-XrmMockGenerator.initialise("contact");
+XrmMockGenerator.initialise();
 ```
   
 Customise your form by [adding attributes](https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes)
@@ -64,7 +64,7 @@ import { XrmMockGenerator } from "xrm-mock";
 
 describe("Contact", () => {
   beforeEach(() => {
-    XrmMockGenerator.initialise("contact");
+    XrmMockGenerator.initialise();
     XrmMockGenerator.Attribute.createString("firstname", "Joe");
   });
 
