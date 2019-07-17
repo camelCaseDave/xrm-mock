@@ -41,4 +41,24 @@ describe("XrmMockGenerator", () => {
 
     expect(expected).toBe(XrmMockGenerator.formContext);
   });
+
+  it("should default entity name to contact", () => {
+    XrmMockGenerator.initialise();
+
+    const expected = Xrm.Page.data.entity.getEntityName();
+
+    expect(expected).toBe("contact");
+  });
+
+  it("should initialise given an entity name", () => {
+    XrmMockGenerator.initialise({
+      entity: {
+        entityName: "account",
+      },
+    });
+
+    const expected = Xrm.Page.data.entity.getEntityName();
+
+    expect(expected).toBe("account");
+  });
 });
