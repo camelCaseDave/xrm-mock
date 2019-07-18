@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProcessDictionaryMock = /** @class */ (function () {
     function ProcessDictionaryMock(index) {
-        this.index = index;
+        this[index] = index;
     }
     return ProcessDictionaryMock;
 }());
