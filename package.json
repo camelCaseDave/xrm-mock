@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A fake implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "3.4.13",
+  "version": "3.4.14",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
@@ -37,15 +37,15 @@
   },
   "homepage": "https://github.com/camelCaseDave/xrm-mock#readme",
   "devDependencies": {
-    "@types/jest": "^22.2.3",
+    "@types/jest": "^24.0.15",
     "@types/node": "8.10.12",
-    "@types/sinon": "^5.0.1",
+    "@types/sinon": "^7.0.13",
     "@types/xrm": "9.0.7",
-    "jest": "^22.4.4",
-    "sinon": "^5.1.1",
-    "ts-jest": "^22.4.6",
+    "jest": "^24.8.0",
+    "sinon": "^7.3.2",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.5.3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -53,7 +53,7 @@
       "js"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.(ts|tsx)$": "ts-jest"
     },
     "testURL": "http://localhost/",
     "testMatch": [

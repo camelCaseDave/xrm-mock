@@ -2,6 +2,7 @@ import { LookupAttributeMock } from "../../../src/xrm-mock";
 import { ILookupView, LookupControlMock } from "../../../src/xrm-mock/controls/lookupcontrol/lookupcontrol.mock";
 
 describe("Xrm.Controls.LookupControl Mock", () => {
+    let name: string;
     let lookupControl: LookupControlMock;
 
     beforeEach(() => {
@@ -12,10 +13,10 @@ describe("Xrm.Controls.LookupControl Mock", () => {
                     </filter>`,
         }];
         const views = [createView("1"), createView("2", false)];
-        this.name = "parentaccountid";
+        name = "parentaccountid";
         lookupControl = new LookupControlMock({
             attribute: new LookupAttributeMock({
-                name: this.name,
+                name,
                 value: [{
                     entityType: "test",
                     id: "0",
@@ -23,7 +24,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
             }),
             filters,
             label: "Parent Account",
-            name: this.name,
+            name,
             views,
             visible: true,
         });
@@ -49,7 +50,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
     it("should assert a default view exists when requested", () => {
         const lookup = new LookupControlMock({
             attribute: lookupControl.attribute,
-            name: this.name,
+            name,
         });
 
         lookup.views.push(createView("1", false));
@@ -60,7 +61,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
     it("should default a custom view on create", () => {
         const lookup = new LookupControlMock({
             attribute: lookupControl.attribute,
-            name: this.name,
+            name,
             views: [createView("1", false), createView("2", false)],
         });
 
@@ -73,7 +74,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
 
         expect(() => { const lookup = new LookupControlMock({
             attribute: lookupControl.attribute,
-            name: this.name,
+            name,
             views: [createView("1"), createView("2")],
         }); }).toThrowError("Lookup Control cannot have more than one default view.");
     });

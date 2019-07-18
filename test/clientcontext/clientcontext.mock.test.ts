@@ -1,5 +1,4 @@
 import { ClientContextMock} from "../../src/xrm-mock/clientcontext/clientcontext.mock";
-import { ContextMock } from "../../src/xrm-mock/context/context.mock";
 
 describe("Xrm.ClientContext Mock", () => {
     beforeEach(() => {
