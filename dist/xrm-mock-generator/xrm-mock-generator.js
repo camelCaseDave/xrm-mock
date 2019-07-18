@@ -45,7 +45,7 @@ var XrmMockGenerator = /** @class */ (function () {
         return this.formContext;
     };
     XrmMockGenerator.EventContext = new eventcontext_1.default();
-    XrmMockGenerator.FormContenxt = new formcontext_1.default();
+    XrmMockGenerator.FormContext = new formcontext_1.default();
     XrmMockGenerator.Attribute = new attribute_1.default();
     XrmMockGenerator.Context = new context_1.default();
     XrmMockGenerator.Control = new control_1.default();

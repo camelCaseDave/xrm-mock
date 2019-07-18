@@ -15,7 +15,7 @@ import Utility from "./utility";
 import WebApi from "./webapi";
 export declare class XrmMockGenerator {
     static EventContext: EventContext;
-    static FormContenxt: FormContext;
+    static FormContext: FormContext;
     static Attribute: Attribute;
     static Context: Context;
     static Control: Control;

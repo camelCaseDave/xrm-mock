@@ -15,7 +15,7 @@ describe("WebAPI", () => {
 
   it("should create a record", () => {
     const id = "123";
-    const stub = sinon.stub(Xrm.WebApi, "createRecord");
+    const stub = sinon.stub(Xrm.WebApi as any, "createRecord");
 
     stub.withArgs("contact", contact).resolves({
       entityType: "contact",
@@ -29,7 +29,7 @@ describe("WebAPI", () => {
 
   it("should delete a record", () => {
     const id = "456";
-    const stub = sinon.stub(Xrm.WebApi, "deleteRecord");
+    const stub = sinon.stub(Xrm.WebApi as any, "deleteRecord");
 
     stub.withArgs("contact", id).resolves({
       entityType: "contact",
