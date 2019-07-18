@@ -16,7 +16,7 @@ export default class Control {
                        disabled: boolean = false,
                        label?: string): XrmMock.BooleanControlMock {
     const components: XrmMock.IBooleanControlComponents =
-      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.IBooleanControlComponents;
 
     return this.addControl(new XrmMock.BooleanControlMock(components));
   }
@@ -34,7 +34,7 @@ export default class Control {
                     label?: string): XrmMock.DateControlMock {
 
     const components: XrmMock.IDateControlComponents =
-      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.IDateControlComponents;
 
     return this.addControl(new XrmMock.DateControlMock(components));
   }
@@ -68,7 +68,7 @@ export default class Control {
                       disabled: boolean = false,
                       label?: string): XrmMock.LookupControlMock {
     const components: XrmMock.ILookupControlComponents =
-      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.ILookupControlComponents;
 
     return this.addControl(new XrmMock.LookupControlMock(components));
   }
@@ -85,7 +85,7 @@ export default class Control {
                       disabled: boolean = false,
                       label?: string): XrmMock.NumberControlMock {
     const components: XrmMock.INumberControlComponents =
-      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.INumberControlComponents;
 
     return this.addControl(new XrmMock.NumberControlMock(components));
   }
@@ -102,7 +102,7 @@ export default class Control {
                          disabled: boolean = false,
                          label?: string): XrmMock.OptionSetControlMock {
       const components: XrmMock.IOptionSetControlComponents =
-        this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+        this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.IOptionSetControlComponents;
 
       return this.addControl(new XrmMock.OptionSetControlMock(components));
   }
@@ -118,7 +118,7 @@ export default class Control {
                       disabled?: boolean,
                       label?: string): XrmMock.StringControlMock {
     const components: XrmMock.IStringControlComponents =
-      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label);
+      this.createStandardComponent(attributeOrComponents, name, visible, disabled, label) as XrmMock.IStringControlComponents;
 
     return this.addControl(new XrmMock.StringControlMock(components));
   }
