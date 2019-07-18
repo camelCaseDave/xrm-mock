@@ -1,59 +1,66 @@
-import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute.mock';
-import { OptionSetValueMock } from '../../../src/page/optionsetvalue/optionsetvalue.mock';
-import { OptionSetAttributeMock } from '../../../src/page/optionsetattribute/optionsetattribute.mock';
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { OptionSetAttributeMock } from "../../../src/xrm-mock/attributes/optionsetattribute/optionsetattribute.mock";
+import { OptionSetValueMock } from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
-describe('Xrm.Page.OptionSetAttribute Mock', () => {
+describe("Xrm.Attributes.OptionSetAttribute Mock", () => {
+    let optionSetAttribute: OptionSetAttributeMock;
+
     beforeEach(() => {
-        let enumAttribute = new EnumAttributeMock(new AttributeMock({ name: 'new_leadSources', value: 100000, isDirty: false, requiredLevel: 'recommended', submitMode: 'dirty' }));
-        let options: OptionSetValueMock[] = [
-            new OptionSetValueMock('Phone Call', 100000),
-            new OptionSetValueMock('In Person', 100001),
-            new OptionSetValueMock('Email', 100002)
-        ];
-        this.optionSetAttribute = new OptionSetAttributeMock(enumAttribute, options, 'language');
+        optionSetAttribute = new OptionSetAttributeMock({
+            isDirty: false,
+            name: "new_leadSources",
+            options: [
+                new OptionSetValueMock("Phone Call", 100000),
+                new OptionSetValueMock("In Person", 100001),
+                new OptionSetValueMock("Email", 100002),
+            ],
+            requiredLevel: "recommended",
+            submitMode: "dirty",
+            value: 100000,
+        });
     });
 
-    it('should instantiate', () => {
-        expect(this.optionSetAttribute).toBeDefined();
+    it("should instantiate", () => {
+        expect(optionSetAttribute).toBeDefined();
+        expect(OptionSetAttributeMock.create("test").name).toBe("test");
     });
 
-    it('should have a language format', () => {
-        expect(this.optionSetAttribute.getFormat()).toBe('language');
+    it("should have a language format", () => {
+        expect(optionSetAttribute.getFormat()).toBe("language");
     });
 
-    it('should have an initial value of 100000', () => {
-        expect(this.optionSetAttribute.getInitialValue()).toBe(100000);
+    it("should have an initial value of 100000", () => {
+        expect(optionSetAttribute.getInitialValue()).toBe(100000);
     });
 
-    it('should return Email when given 100002', () => {
-        let email = new OptionSetValueMock('Email', 100002);
-        expect(this.optionSetAttribute.getOption(100002)).toEqual(email);
+    it("should return Email when given 100002", () => {
+        const email = new OptionSetValueMock("Email", 100002);
+        expect(optionSetAttribute.getOption(100002)).toEqual(email);
     });
 
-    it('should return Email when given Email', () => {
-        let email = new OptionSetValueMock('Email', 100002);
-        expect(this.optionSetAttribute.getOption('Email')).toEqual(email);
+    it("should return Email when given Email", () => {
+        const email = new OptionSetValueMock("Email", 100002);
+        expect(optionSetAttribute.getOption("Email")).toEqual(email);
     });
 
-    it('should have 3 options', () => {
-        let options = this.optionSetAttribute.getOptions();
+    it("should have 3 options", () => {
+        const options = optionSetAttribute.getOptions();
         expect(options.length).toBe(3);
     });
 
-    it('should have the Phone Call option selected', () => {
-        let phoneCall = new OptionSetValueMock('Phone Call', 100000);
-        expect(this.optionSetAttribute.getSelectedOption()).toEqual(phoneCall);
+    it("should have the Phone Call option selected", () => {
+        const phoneCall = new OptionSetValueMock("Phone Call", 100000);
+        expect(optionSetAttribute.getSelectedOption()).toEqual(phoneCall);
     });
 
-    it('should have a text of Phone Call', () => {
-        expect(this.optionSetAttribute.getText()).toBe('Phone Call');
+    it("should have a text of Phone Call", () => {
+        expect(optionSetAttribute.getText()).toBe("Phone Call");
     });
 
-    it('should change selected value to Email when its value is set to Email', () => {
-        let email = new OptionSetValueMock('Email', 100002);
-        this.optionSetAttribute.setValue(email.value);
-        expect(this.optionSetAttribute.getValue()).toBe(email.value);
-        expect(this.optionSetAttribute.getSelectedOption()).toEqual(email);
+    it("should change selected value to Email when its value is set to Email", () => {
+        const email = new OptionSetValueMock("Email", 100002);
+        optionSetAttribute.setValue(email.value);
+        expect(optionSetAttribute.getValue()).toBe(email.value);
+        expect(optionSetAttribute.getSelectedOption()).toEqual(email);
     });
 });

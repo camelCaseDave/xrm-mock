@@ -1,19 +1,30 @@
 {
   "name": "xrm-mock",
-  "description": "A mock implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "2.0.9",
-  "main": "index",
+  "description": "A fake implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
+  "version": "3.4.13",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
+    "output": "coverage",
+    "src": "src",
     "test": "test"
   },
+  "files": [
+    "dist",
+    "build"
+  ],
   "keywords": [
     "dynamics-crm",
     "dynamics-365",
     "xrm"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "build": "tsc && npm run lint && npm run test && npm run buildOne",
+    "buildOne": "tsc --outFile ./build/index.js --module amd",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' && tslint -c tslint.json 'test/**/*.ts'",
+    "test": "jest --coverage --maxWorkers=4",
+    "test-no-cover": "jest --maxWorkers=4",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,30 +37,27 @@
   },
   "homepage": "https://github.com/camelCaseDave/xrm-mock#readme",
   "devDependencies": {
-    "@types/jasmine": "^2.5.47",
-    "@types/node": "^8.0.4",
-    "@types/xrm": "^8.2.5",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-es2015": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "gulp": "^3.9.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-jasmine": "^2.4.2",
-    "gulp-jasmine-browser": "1.7.1",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-typescript": "^3.1.7",
-    "gulp-watch": "^4.3.11",
-    "istanbul": "^0.4.5",
-    "path": "^0.12.7",
-    "phantom": "4.0.4",
-    "ts-loader": "^2.2.0",
-    "typescript": "^2.3.3",
-    "wallaby-webpack": "0.0.38",
-    "webpack": "^3.0.0"
+    "@types/jest": "^22.2.3",
+    "@types/node": "8.10.12",
+    "@types/sinon": "^5.0.1",
+    "@types/xrm": "9.0.7",
+    "jest": "^22.4.4",
+    "sinon": "^5.1.1",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
   },
-  "dependencies": {
-    "@types/xrm": "^8.2.5"
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testURL": "http://localhost/",
+    "testMatch": [
+      "**/test/**/*.+(ts|js)"
+    ]
   }
 }

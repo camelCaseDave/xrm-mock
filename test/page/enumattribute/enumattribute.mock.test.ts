@@ -1,22 +1,22 @@
-import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { EnumAttributeMock } from '../../../src/page/enumattribute/enumattribute.mock';
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
 
-describe('Xrm.Page.EnumAttribute Mock', () => {
+describe("Xrm.Attributes.EnumAttribute Mock", () => {
     beforeEach(() => {
-        let attribute = new AttributeMock({ name: 'new_havingFun', value: true, isDirty: false, requiredLevel: 'none', submitMode: 'always' });
-        this.enumAttribute = new EnumAttributeMock(attribute);
+        this.enumAttribute = new EnumAttributeMock({
+            isDirty: false,
+            name: "new_havingFun",
+            requiredLevel: "none",
+            submitMode: "always",
+            value: true,
+        });
     });
 
-    it('should instantiate', () => {
+    it("should instantiate", () => {
         expect(this.enumAttribute).toBeDefined();
     });
 
-    it('should have an attribute', () => {
-        expect(this.enumAttribute.attribute).toBeDefined();
-    });
-
-    it('should have an initial value of true', () => {
+    it("should have an initial value of true", () => {
         expect(this.enumAttribute.getInitialValue()).toBe(true);
     });
 });
-

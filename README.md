@@ -1,60 +1,94 @@
-|Build|Chat|NPM|Coverage|Vulnerabilities|Climate|
-|-----|----|---|--------|---------------|-------|
-|[![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)|[![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|[![NPM](https://img.shields.io/npm/v/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)|[![Coverage Status](https://coveralls.io/repos/github/camelCaseDave/xrm-mock/badge.svg?branch=master)](https://coveralls.io/github/camelCaseDave/xrm-mock?branch=master)|[![Known Vulnerabilities](https://snyk.io/test/github/camelcasedave/xrm-mock/badge.svg)](https://snyk.io/test/github/camelcasedave/xrm-mock)|[![Code Climate](https://codeclimate.com/github/camelCaseDave/xrm-mock/badges/gpa.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock)|
+[![Build Status](https://travis-ci.org/camelCaseDave/xrm-mock.svg?branch=master)](https://travis-ci.org/camelCaseDave/xrm-mock)
+[![npm version](https://badge.fury.io/js/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)
+[![Downloads](https://img.shields.io/npm/dm/xrm-mock.svg)](https://www.npmjs.com/package/xrm-mock)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/camelCaseDave/xrm-mock.svg)](https://codeclimate.com/github/camelCaseDave/xrm-mock/test_coverage)
 
-<b>xrm-mock</b> is a mock implementation of the <a href="https://msdn.microsoft.com/en-gb/library/gg328474.aspx">Xrm.Page</a> object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
+# :books:  xrm-mock
+[![Join the chat at https://gitter.im/xrm-mock/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrm-mock/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## :books: Usage:
- - [Clone](https://github.com/camelCaseDave/xrm-mock.git), Fork or install the repository via ```npm i xrm-mock```
+<b>xrm-mock</b> is a fake implementation of the <a href="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/clientapi/reference">Dynamics 365 Client API</a> and Xrm object model. Written in TypeScript against <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/xrm">@types/xrm</a> definitions.
+
+<b>xrm-mock-generator</b> is an opinionated toolset for building fake Xrm objects.
+
+## Installing 
+
+For the latest stable version
  
- - Install generation tool ```npm i xrm-mock-generator``` [[link]](https://github.com/camelCaseDave/xrm-mock-generator) (_biased recommendation_)
-
- - Create a  file for your entity form:
+```bash
+npm install xrm-mock -D
+```
+     
+## Usage
+Import `XrmMockGenerator` in your unit test file
  
- #### src/contact.js
- ```javascript
-(function () {
-    "use strict";
-    
-    var Contact = () => {  };
-    
-    Contact.prototype.onLoad = () => {
-        Xrm.Page.getAttribute("firstname").setValue("Bob");
-    }
-    
-    // node
-    module.exports = new Contact();
-    
-    // browser
-    global.Contact = new Contact();    
-}());
+ ```typescript
+ import { XrmMockGenerator } from "xrm-mock";
  ```
  
- - Create a file to test your entity form:
+Initialise a global `Xrm` object
+  
+```typescript
+XrmMockGenerator.initialise();
+```
+  
+Customise your form by [adding attributes](https://github.com/camelCaseDave/xrm-mock/wiki/Adding-Attributes)
+  
+```typescript
+XrmMockGenerator.Attribute.createBool("new_havingfun", true);
+```
+Invoke your code and make your assertions
+ 
+ ```typescript
+ Contact.onLoad();
+ expect(Xrm.Page.getAttribute("new_havingfun").getValue()).toBe(true);
+ ```
 
-#### test/contact.test.js
-```javascript
-describe("Contact Form", () => {
-    var XrmMockGenerator = require("xrm-mock-generator");
-    var ContactForm = require("../src/contact.js");
-    
-    beforeEach(() => {
-        XrmMockGenerator.initialise();
-        XrmMockGenerator.createString("firstname", "Joe");
-    });
-    
-    describe("default", () => {
-        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Joe"); // true
-    });
-    
-    describe("onLoad", () => {
-        ContactForm.onLoad();        
-        expect(Xrm.Page.getAttribute("firstname").getValue()).toBe("Bob"); // true
-    });
+## Example
+
+This example demonstrates a script with an onLoad event handler registered on a contact form. When invoked, it changes the `firstname` attribute's value to Bob. See [the Wiki](https://github.com/camelCaseDave/xrm-mock/wiki/Demo) for a visual demo.
+ 
+ #### src/contact.ts
+ ```typescript
+export default class Contact {
+  public static onLoad() {
+    Xrm.Page.getAttribute("firstname").setValue("Bob");
+  }
+}
+ ```
+ 
+
+#### test/contact.test.ts
+```typescript
+import Contact from "../src/contact";
+import { XrmMockGenerator } from "xrm-mock";
+
+describe("Contact", () => {
+  beforeEach(() => {
+    XrmMockGenerator.initialise();
+    XrmMockGenerator.Attribute.createString("firstname", "Joe");
+  });
+
+  it("should initially be called Joe", () => {
+    let name = Xrm.Page.getAttribute("firstname").getValue();
+    expect(name).toBe("Joe"); // Pass
+  });
+
+  it("should change name to Bob onLoad", () => {
+    Contact.onLoad();
+    let name = Xrm.Page.getAttribute("firstname").getValue();
+    expect(name).toBe("Bob"); // Pass
+  });
 });
 ```
 
-## :heart:  Contributing and Project Roadmap:
- - Increase test coverage
- - Increase implementation
- - Include a project like [rewire](https://github.com/jhnns/rewire) so that non-exported classes can be tested
+## Contribute
+ - [Submit bugs](https://github.com/camelCaseDave/xrm-mock/issues)
+ - Implement a new function by inheriting `@types/Xrm`
+    - Test your code using `npm run test`
+    - Lint your code using `npm run lint`
+    - Build your code using `npm run build`
+
+## Roadmap
+ - Increased test coverage
+ - Increased implementation against different versions of `@types/Xrm` (8.2 and 9)
+ - Automatic generation of attributes from a given Dynamics organisation

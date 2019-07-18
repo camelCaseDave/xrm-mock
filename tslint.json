@@ -1,11 +1,7 @@
 {
-	"rules": {
-		"no-unused-expression": true,
-		"no-duplicate-variable": true,
-		"no-unused-variable": true,
-		"curly": true,
-		"class-name": true,
-		"semicolon": ["always"],
-		"triple-equals": true
-	}
+  "extends": "tslint:latest",
+  "rules":{
+    "max-line-length": [true, {"limit": 160, "ignore-pattern": "^import |^export {(.*?)}"}],"adjacent-overload-signatures":false,
+    "no-implicit-dependencies": false
+  }
 }

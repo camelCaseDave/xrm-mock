@@ -1,7 +1,14 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=828ef5abf2eea330559d5f64d8d231253330d01de31bd8271116c493a30a5f12
 language: node_js
 node_js:
   - "node"
 before_script:
-  - npm install -g gulp
-script: gulp
-after_success: 'npm run coveralls'
+  - npm install -g tslint
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script: npm run build
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

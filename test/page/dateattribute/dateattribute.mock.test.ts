@@ -1,27 +1,30 @@
-import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { DateAttributeMock } from '../../../src/page/dateattribute/dateattribute.mock';
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { DateAttributeMock } from "../../../src/xrm-mock/attributes/dateattribute/dateattribute.mock";
 
-describe('Xrm.Page.DateAttribute Mock', () => {
+describe("Xrm.Attributes.DateAttribute Mock", () => {
+    let dateAttribute: DateAttributeMock;
     beforeEach(() => {
-        this.dateAttribute = new DateAttributeMock({
-            attribute: new AttributeMock({
-                name: 'birthdate',
-                value: new Date('January 1, 1990'),
-                isDirty: false
-            }),
-            dateAttributeFormat: 'date'
+        dateAttribute = new DateAttributeMock({
+                format: "date",
+                isDirty: false,
+                name: "birthdate",
+                value: new Date("January 1, 1990"),
         });
     });
 
-    it('should instantiate', () => {
-        expect(this.dateAttribute).toBeDefined();
+    it("should instantiate", () => {
+        expect(dateAttribute).toBeDefined();
     });
 
-    it('should have a date format', () => {
-        expect(this.dateAttribute.getFormat()).toBe('date');
+    it("should default format to date", () => {
+        expect(DateAttributeMock.create("empty").getFormat()).toBe("date");
     });
 
-    it('should have a value of January 1, 1990', () => {
-        expect(this.dateAttribute.getValue()).toEqual(new Date('January 1, 1990'));
+    it("should have a date format", () => {
+        expect(dateAttribute.getFormat()).toBe("date");
+    });
+
+    it("should have a value of January 1, 1990", () => {
+        expect(dateAttribute.getValue()).toEqual(new Date("January 1, 1990"));
     });
 });

@@ -1,0 +1,1 @@
+{"version":3,"file":"errorresponse.mock.js","sourceRoot":"","sources":["../../../src/xrm-mock/errorresponse/errorresponse.mock.ts"],"names":[],"mappings":";;AAAA;IAIE,2BAAY,SAAiB,EAAE,OAAe;QAC5C,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;QAC3B,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IACzB,CAAC;IACH,wBAAC;AAAD,CAAC,AARD,IAQC;AARY,8CAAiB"}

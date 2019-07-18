@@ -1,38 +1,44 @@
-import { AttributeMock } from '../../../src/page/attribute/attribute.mock';
-import { StringAttributeMock } from '../../../src/page/stringattribute/stringattribute.mock';
+import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { IStringAttributeComponents,
+         StringAttributeMock } from "../../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
 
-describe('Xrm.Page.StringAttribute Mock', () => {
+describe("Xrm.Attributes.StringAttribute Mock", () => {
     beforeEach(() => {
-        let attribute = new AttributeMock({ name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'required', submitMode: 'dirty' });
-        this.stringAttribute = new StringAttributeMock(attribute, 'text', 20);
+        const attribute: IStringAttributeComponents = {
+            isDirty: false,
+            maxLength: 20,
+            name: "firstname",
+            submitMode: "dirty",
+            value: "Joe",
+        };
+        this.stringAttribute = new StringAttributeMock(attribute);
     });
 
-    it('should instantiate', () => {
+    it("should instantiate", () => {
         expect(this.stringAttribute).toBeDefined();
     });
 
-    it('should have a text format', () => {
-        expect(this.stringAttribute.getFormat()).toBe('text');
+    it("should have a text format", () => {
+        expect(this.stringAttribute.getFormat()).toBe("text");
     });
 
-    it('should have a max length of 20', () => {
+    it("should have a max length of 20", () => {
         expect(this.stringAttribute.getMaxLength()).toBe(20);
     });
 
-    it('should have a value of Joe', () => {
-        expect(this.stringAttribute.getValue()).toBe('Joe');
+    it("should have a value of Joe", () => {
+        expect(this.stringAttribute.getValue()).toBe("Joe");
     });
 
-    it('should set its value to Fred', () => {
-        expect(this.stringAttribute.getValue()).toBe('Joe');
-        this.stringAttribute.setValue('Fred');
-        expect(this.stringAttribute.getValue()).toBe('Fred');
+    it("should set its value to Fred", () => {
+        expect(this.stringAttribute.getValue()).toBe("Joe");
+        this.stringAttribute.setValue("Fred");
+        expect(this.stringAttribute.getValue()).toBe("Fred");
     });
 
-    it('should not set its value above its max length', () => {
+    it("should not set its value above its max length", () => {
         expect(this.stringAttribute.getMaxLength()).toBe(20);
-        let tooBig = 'abcdefghijklmnopqrstuvwxyz';
-        expect(() => { this.stringAttribute.setValue(tooBig) }).toThrow();
+        const tooBig = "abcdefghijklmnopqrstuvwxyz";
+        expect(() => { this.stringAttribute.setValue(tooBig); }).toThrow();
     });
 });
-

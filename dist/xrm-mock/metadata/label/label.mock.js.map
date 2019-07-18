@@ -1,0 +1,1 @@
+{"version":3,"file":"label.mock.js","sourceRoot":"","sources":["../../../../src/xrm-mock/metadata/label/label.mock.ts"],"names":[],"mappings":";;AAAA;IAIE,mBAAY,WAA0C,EAAE,eAA4C;QAClG,IAAI,CAAC,eAAe,GAAG,WAAW,CAAC;QACnC,IAAI,CAAC,kBAAkB,GAAG,eAAe,CAAC;IAC5C,CAAC;IACH,gBAAC;AAAD,CAAC,AARD,IAQC;AARY,8BAAS"}

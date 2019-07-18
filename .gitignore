@@ -9,8 +9,21 @@ src/**/*.d.ts
 
 node_modules
 coverage
+package
 
-build.js
+build/**/*
 npm-debug.log
+.vscode/settings.json
 
-.vscode
+# Ignore XrmToolBox files
+.vs
+xrmtoolbox/.vs
+xrmtoolbox/bin
+xrmtoolbox/obj
+xrmtoolbox/packages
+
+# Ignore Jest override
+jest.config.js
+
+# Ignore temp files
+.nyc_output

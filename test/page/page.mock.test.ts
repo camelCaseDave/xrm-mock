@@ -1,78 +1,126 @@
-import { UiKeyPressableMock } from '../../src/page/uikeypressable/uikeypressable.mock';
-import { StandardControlMock } from './../../src/page/standardcontrol/standardcontrol.mock';
-import { AutoLookupControlMock } from './../../src/page/autolookupcontrol/autolookupcontrol.mock';
-import { StringControlMock } from '../../src/page/stringcontrol/stringcontrol.mock';
-import { ControlMock } from './../../src/page/control/control.mock';
-import { UiMock } from '../../src/ui/ui.mock';
-/// <reference path="../../node_modules/@types/xrm/index.d.ts" />
-/// <reference path="../../node_modules/@types/jasmine/index.d.ts" />
+import { AttributeMock } from "../../src/xrm-mock/attributes/attribute/attribute.mock";
+import { StringAttributeMock } from "../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
+import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
+import { AutoLookupControlMock } from "../../src/xrm-mock/controls/autolookupcontrol/autolookupcontrol.mock";
+import { ControlMock } from "../../src/xrm-mock/controls/control/control.mock";
+import { StandardControlMock } from "../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
+import { StringControlMock } from "../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
+import { UiKeyPressableMock } from "../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
+import { DataMock } from "../../src/xrm-mock/data/data.mock";
+import { EntityMock } from "../../src/xrm-mock/entity/entity.mock";
+import { FormContextMock } from "../../src/xrm-mock/formcontext/formcontext.mock";
+import { PageMock } from "../../src/xrm-mock/page/page.mock";
+import { UiMock } from "../../src/xrm-mock/ui/ui.mock";
+import { XrmStaticMock } from "../../src/xrm-mock/xrmstatic.mock";
 
-import { XrmStaticMock } from '../../src/xrmstatic.mock';
-import { EntityMock } from '../../src/page/entity/entity.mock';
-import { DataMock } from '../../src/data/data.mock';
-import { AttributeMock } from '../../src/page/attribute/attribute.mock';
-import { ItemCollectionMock } from '../../src/collection/itemcollection/itemcollection.mock';
-import { PageMock } from '../../src/page/page.mock';
+describe("Xrm.Page Mock", () => {
+    let lastName: StringAttributeMock;
+    let xrmPageMock: PageMock;
+    let formContext: FormContextMock;
 
-describe('Xrm.Page Mock', () => {
     beforeEach(() => {
-        let attributes: AttributeMock[] = [];
-        attributes.push(new AttributeMock({ name: 'firstname', value: 'Joe', isDirty: false, requiredLevel: 'none' }));
-        attributes.push(new AttributeMock({ name: 'description', value: '' }));
-        this.lastName = new AttributeMock({ name: 'lastname', value: 'Bloggs', isDirty: true, requiredLevel: 'recommended', submitMode: 'always' });
-        attributes.push(this.lastName);
+        const attributes: Array<AttributeMock<StringControlMock, string>> = [];
+        attributes.push(new AttributeMock<StringControlMock, string>({ name: "firstname", value: "Joe" }));
+        attributes.push(new AttributeMock<StringControlMock, string>({ name: "description" }));
+        lastName = new StringAttributeMock({
+            isDirty: true,
+            name: "lastname",
+            requiredLevel: "recommended",
+            submitMode: "always",
+            value: "Bloggs",
+        });
+        attributes.push(lastName);
+        const controls = [];
+        controls.push(new StringControlMock({
+            attribute: lastName,
+            controlType: "standard",
+            name: "lastname",
+            uncommittedText: "Bloggs",
+        }));
+        controls.push(new StringControlMock({
+            attribute: attributes[0] as any,
+            controlType: "standard",
+            name: "firstname",
+            uncommittedText: "Bloggs",
+        }));
 
-        this.xrmPageMock = new PageMock({
-            data: new DataMock(
-                new EntityMock("{0}",
-                    new ItemCollectionMock<AttributeMock>(attributes))),
-                    ui: new UiMock({
-                        controls: new ItemCollectionMock<StringControlMock>([
-                            new StringControlMock(new AutoLookupControlMock(new StandardControlMock({
-                                attribute: this.lastName,
-                                control: new ControlMock({
-                                    name: 'lastname',
-                                    controlType: 'standard'
-                                })
-                            }), new UiKeyPressableMock))
-                        ])   
-                    })
+        formContext = new FormContextMock(
+            new DataMock(
+                new EntityMock({ attributes: new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes)})),
+                new UiMock({
+                    controls: new ItemCollectionMock<StringControlMock>(controls),
+                },
+        ));
+        xrmPageMock = new PageMock(null, formContext);
+    });
+
+    it("should exist", () => {
+        expect(xrmPageMock).toBeDefined();
+    });
+
+    describe("getAttribute", () => {
+        it("should exist", () => {
+            expect(xrmPageMock.getAttribute).toBeDefined();
+        });
+
+        it("should get all", () => {
+            expect(xrmPageMock.getAttribute().length).toBe(3);
+        });
+
+        it("by string should return Bloggs for lastname", () => {
+            expect(xrmPageMock.getAttribute("lastname")).toBe(lastName);
+        });
+
+        it("by index should return Bloggs for 2", () => {
+            expect(xrmPageMock.getAttribute(2)).toBe(lastName);
+        });
+
+        it("should get attribute and value in one line", () => {
+            expect(xrmPageMock.getAttribute("firstname").getValue()).toBe("Joe");
+        });
+
+        it("should return null if the attribute doesn't exist", () => {
+            expect(xrmPageMock.getAttribute("doesntexist")).toBeNull();
+        });
+
+        it("by delegate", () => {
+            expect(xrmPageMock.getAttribute((a) => a.getAttributeType() === "string").length).toBe(3);
+            expect(xrmPageMock.getAttribute((a) => a.getName() === "firstname").length).toBe(1);
+            expect(xrmPageMock.getAttribute((a) => a.getName() === "notExist").length).toBe(0);
+        });
+
+        it("should throw error", () => {
+            expect(() => { xrmPageMock.getAttribute([] as any); }).toThrowError();
         });
     });
 
-    it('should exist', () => {
-        expect(this.xrmPageMock).toBeDefined();
-    });
-
-    describe('getAttribute', () => {
-        it('should exist', () => {
-            expect(this.xrmPageMock.getAttribute).toBeDefined();
+    describe("getControl", () => {
+        it("should exist", () => {
+            expect(xrmPageMock.getControl).toBeDefined();
         });
 
-        it('by string should return Bloggs for lastname', () => {
-            expect(this.xrmPageMock.getAttribute('lastname')).toBe(this.lastName);
+        it("should get all", () => {
+            expect(xrmPageMock.getControl().length).toBe(2);
+            expect(xrmPageMock.getControl().length).toBe(2);
         });
 
-        it('by index should return Bloggs for 2', () => {
-            expect(this.xrmPageMock.getAttribute(2)).toBe(this.lastName);
+        it("should get by index", () => {
+            expect(xrmPageMock.getControl(0)).toBeDefined();
         });
 
-        it('should get attribute and value in one line', () => {
-            expect(this.xrmPageMock.getAttribute('firstname').getValue()).toBe('Joe');
-        });
-    });
-
-    describe('getControl', () => {
-        it('should exist', () => {
-            expect(this.xrmPageMock.getControl).toBeDefined();
+        it("should return Bloggs for the control's bound attribute value", () => {
+            expect(xrmPageMock.getControl<StringControlMock>("lastname").getAttribute().getValue()).toBe("Bloggs");
         });
 
-        it('should get by index', () => {
-             expect(this.xrmPageMock.getControl(0)).toBeDefined();
+        it("by delegate", () => {
+            expect(xrmPageMock.getControl((c) => c.getControlType() === "standard").length).toBe(2);
+            expect(xrmPageMock.getControl((c) => c.getControlType() === "standard").length).toBe(2);
+            expect(xrmPageMock.getControl((c) => c.getName() === "firstname").length).toBe(1);
+            expect(xrmPageMock.getControl((c) => c.getName() === "notExist").length).toBe(0);
         });
 
-        it('should return Bloggs for the control\'s bound attribute value', () => {
-            expect(this.xrmPageMock.getControl('lastname').getValue()).toBe('Bloggs');
+        it("should throw error", () => {
+            expect(() => { xrmPageMock.getControl([] as any); }).toThrowError();
         });
     });
-})
+});

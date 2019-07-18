@@ -1,22 +1,18 @@
-var babel = require('babel-loader');
-var wallabyWebpack = require('wallaby-webpack');
-
-var webpackPostprocessor = wallabyWebpack({});
-
 module.exports = function () {
     return {
         files: [
-            { pattern: 'src/**/*.ts', load: false }
+            'sinon/lib/sinon.js',
+            'tsconfig.json',
+            'src/**/*.ts'
         ],
-
         tests: [
-            { pattern: 'test/**/*.ts', load: false }
+            'test/**/*.ts'
         ],
-
-        postprocessor: webpackPostprocessor,
-
-        bootstrap: function () {
-            window.__moduleBundler.loadTests();
-        }
+        debug: true,
+        env: {
+            type: 'node',
+            runner: 'node'
+        },
+        testFramework: 'jest'
     };
 };
