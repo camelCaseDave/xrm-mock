@@ -17,7 +17,7 @@ declare var global: any;
 
 export class XrmMockGenerator {
   public static EventContext: EventContext = new EventContext();
-  public static FormContenxt: FormContext = new FormContext();
+  public static FormContext: FormContext = new FormContext();
   public static Attribute: Attribute = new Attribute();
   public static Context: Context = new Context();
   public static Control: Control = new Control();
