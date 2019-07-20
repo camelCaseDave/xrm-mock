@@ -1,3 +1,4 @@
+import {findIndex} from "../../../xrm-mock-generator/helpers/array.helper";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { SectionMock } from "../section/section.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
@@ -68,14 +69,12 @@ export class TabMock implements Xrm.Controls.Tab {
     return this.uiFocusableElement.setFocus();
   }
 
-  public addTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void
-  {
+  public addTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void {
     this.tabStateChangeHandlers.push(handler);
   }
 
-  public removeTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void
-  {
-    const index: number = this.tabStateChangeHandlers.findIndex(item => item.name === handler.name);
+  public removeTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void {
+    const index: number = findIndex(this.tabStateChangeHandlers, handler);
     this.tabStateChangeHandlers.splice(index, 1);
   }
 }
