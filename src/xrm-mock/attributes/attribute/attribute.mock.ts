@@ -1,4 +1,4 @@
-import {findIndex} from "../../../xrm-mock-generator/helpers/array.helper";
+import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../../controls/control/control.mock";
 

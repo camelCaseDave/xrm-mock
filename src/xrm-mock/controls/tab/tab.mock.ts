@@ -1,4 +1,4 @@
-import {findIndex} from "../../../xrm-mock-generator/helpers/array.helper";
+import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { SectionMock } from "../section/section.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
