@@ -1,6 +1,5 @@
-import { ControlMock } from "../../controls/control/control.mock";
-import { LookupControlMock } from "../../controls/lookupcontrol/lookupcontrol.mock";
-import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
+import {LookupControlMock} from "../../controls/lookupcontrol/lookupcontrol.mock";
+import {AttributeMock, IAttributeComponents} from "../attribute/attribute.mock";
 
 export class LookupAttributeMock extends AttributeMock<LookupControlMock, Xrm.LookupValue[]>
                                  implements Xrm.Attributes.LookupAttribute {

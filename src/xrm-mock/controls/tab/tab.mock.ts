@@ -13,6 +13,7 @@ export class TabMock implements Xrm.Controls.Tab {
   private name: string;
   private parent: Xrm.Ui;
   private displayState: Xrm.DisplayState;
+  public tabStateChangeHandlers: Xrm.Events.ContextSensitiveHandler[];
 
   constructor(components: ITabComponents) {
     this.uiStandardElement = components.uiStandardElement
@@ -21,7 +22,7 @@ export class TabMock implements Xrm.Controls.Tab {
     this.name = components.name;
     this.parent = components.parent;
     this.displayState = components.displayState || "expanded";
-
+    this.tabStateChangeHandlers = components.tabStateChangeHandlers || [] as Xrm.Events.ContextSensitiveHandler[];
     this.sections = components.sections || new ItemCollectionMock([]);
     this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
         const sectionMock = section as SectionMock;
@@ -66,6 +67,17 @@ export class TabMock implements Xrm.Controls.Tab {
   public setFocus(): void {
     return this.uiFocusableElement.setFocus();
   }
+
+  public addTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void
+  {
+    this.tabStateChangeHandlers.push(handler);
+  }
+
+  public removeTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void
+  {
+    const index: number = this.tabStateChangeHandlers.findIndex(item => item.name === handler.name);
+    this.tabStateChangeHandlers.splice(index, 1);
+  }
 }
 
 export interface ITabComponents {
@@ -75,4 +87,5 @@ export interface ITabComponents {
   parent?: Xrm.Ui;
   displayState?: Xrm.DisplayState;
   sections?: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+  tabStateChangeHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }

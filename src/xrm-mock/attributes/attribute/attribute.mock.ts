@@ -73,7 +73,8 @@ export class AttributeMock<TControl extends ControlMock,
     }
 
     public removeOnChange(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("removeOnChange not implemented");
+        const index: number = this.eventHandlers.findIndex(item => item.name === handler.name);
+        this.eventHandlers.splice(index, 1);
     }
 
     public setRequiredLevel(requirementLevel: Xrm.Attributes.RequirementLevel): void {

@@ -14,7 +14,7 @@ export class WebApiOnlineMock implements Xrm.WebApiOnline {
     throw new Error(this.notImplementedError);
   }
 
-  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<string> {
+  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<Xrm.CreateResponse> {
     return this.offline.createRecord(entityLogicalName, record);
   }
 

@@ -77,7 +77,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         throw new Error("Method not implemented.");
     }
 
-    public removePreSearch(handler: () => void): void {
+    public removePreSearch(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("remove presearch not implemented");
     }
 
