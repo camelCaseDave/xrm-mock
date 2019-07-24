@@ -1,5 +1,3 @@
-import { XrmPromiseMock } from "../async/xrmpromise/xrmpromise.mock";
-
 export class WebApiMock implements Xrm.WebApi {
   public online: Xrm.WebApiOnline;
   public offline: Xrm.WebApiOffline;
@@ -14,7 +12,7 @@ export class WebApiMock implements Xrm.WebApi {
     this.isOffline = clientContext.getClientState() === "Offline";
   }
 
-  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<string> {
+  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<Xrm.CreateResponse> {
     if (this.isOffline) {
       return this.offline.createRecord(entityLogicalName, record);
     } else {

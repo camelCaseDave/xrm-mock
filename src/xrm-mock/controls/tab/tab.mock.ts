@@ -1,3 +1,4 @@
+import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { SectionMock } from "../section/section.mock";
 import { UiCanGetVisibleElementMock } from "../uicangetvisibleelement/uicangetvisibleelement.mock";
@@ -7,6 +8,7 @@ import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mo
 
 export class TabMock implements Xrm.Controls.Tab {
   public sections: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+  public tabStateChangeHandlers: Xrm.Events.ContextSensitiveHandler[];
 
   private uiStandardElement: Xrm.Controls.UiStandardElement;
   private uiFocusableElement: Xrm.Controls.UiFocusable;
@@ -21,14 +23,14 @@ export class TabMock implements Xrm.Controls.Tab {
     this.name = components.name;
     this.parent = components.parent;
     this.displayState = components.displayState || "expanded";
-
+    this.tabStateChangeHandlers = components.tabStateChangeHandlers || [] as Xrm.Events.ContextSensitiveHandler[];
     this.sections = components.sections || new ItemCollectionMock([]);
     this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
-        const sectionMock = section as SectionMock;
+      const sectionMock = section as SectionMock;
 
-        if (sectionMock) {
-            sectionMock.parent = this;
-        }
+      if (sectionMock) {
+        sectionMock.parent = this;
+      }
     });
   }
 
@@ -66,6 +68,15 @@ export class TabMock implements Xrm.Controls.Tab {
   public setFocus(): void {
     return this.uiFocusableElement.setFocus();
   }
+
+  public addTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void {
+    this.tabStateChangeHandlers.push(handler);
+  }
+
+  public removeTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void {
+    const index: number = findIndex(this.tabStateChangeHandlers, handler);
+    this.tabStateChangeHandlers.splice(index, 1);
+  }
 }
 
 export interface ITabComponents {
@@ -75,4 +86,5 @@ export interface ITabComponents {
   parent?: Xrm.Ui;
   displayState?: Xrm.DisplayState;
   sections?: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+  tabStateChangeHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }

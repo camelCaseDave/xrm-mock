@@ -1,7 +1,7 @@
 export class WebApiOfflineMock implements Xrm.WebApiOffline {
   private notImplementedError = "WebApi methods not implemented. Consider faking API calls using a tool such as Sinon.JS";
 
-  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<string> {
+  public createRecord(entityLogicalName: string, record: any): Xrm.Async.PromiseLike<Xrm.CreateResponse> {
     throw new Error(this.notImplementedError);
   }
 

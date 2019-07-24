@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var array_helper_1 = require("../../../xrm-mock-generator/helpers/array.helper");
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var uicangetvisibleelement_mock_1 = require("../uicangetvisibleelement/uicangetvisibleelement.mock");
 var uifocusable_mock_1 = require("../uifocusable/uifocusable.mock");
@@ -14,6 +15,7 @@ var TabMock = /** @class */ (function () {
         this.name = components.name;
         this.parent = components.parent;
         this.displayState = components.displayState || "expanded";
+        this.tabStateChangeHandlers = components.tabStateChangeHandlers || [];
         this.sections = components.sections || new itemcollection_mock_1.ItemCollectionMock([]);
         this.sections.forEach(function (section, index) {
             var sectionMock = section;
@@ -48,6 +50,13 @@ var TabMock = /** @class */ (function () {
     };
     TabMock.prototype.setFocus = function () {
         return this.uiFocusableElement.setFocus();
+    };
+    TabMock.prototype.addTabStateChange = function (handler) {
+        this.tabStateChangeHandlers.push(handler);
+    };
+    TabMock.prototype.removeTabStateChange = function (handler) {
+        var index = array_helper_1.findIndex(this.tabStateChangeHandlers, handler);
+        this.tabStateChangeHandlers.splice(index, 1);
     };
     return TabMock;
 }());

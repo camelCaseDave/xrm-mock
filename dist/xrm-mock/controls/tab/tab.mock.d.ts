@@ -1,6 +1,7 @@
 /// <reference types="xrm" />
 export declare class TabMock implements Xrm.Controls.Tab {
     sections: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+    tabStateChangeHandlers: Xrm.Events.ContextSensitiveHandler[];
     private uiStandardElement;
     private uiFocusableElement;
     private name;
@@ -16,6 +17,8 @@ export declare class TabMock implements Xrm.Controls.Tab {
     getLabel(): string;
     setLabel(label: string): void;
     setFocus(): void;
+    addTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void;
+    removeTabStateChange(handler: (context: Xrm.Events.EventContext) => void): void;
 }
 export interface ITabComponents {
     uiStandardElement?: Xrm.Controls.UiStandardElement;
@@ -24,4 +27,5 @@ export interface ITabComponents {
     parent?: Xrm.Ui;
     displayState?: Xrm.DisplayState;
     sections?: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+    tabStateChangeHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }
