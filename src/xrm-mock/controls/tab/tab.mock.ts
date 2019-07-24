@@ -8,13 +8,13 @@ import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mo
 
 export class TabMock implements Xrm.Controls.Tab {
   public sections: Xrm.Collection.ItemCollection<Xrm.Controls.Section>;
+  public tabStateChangeHandlers: Xrm.Events.ContextSensitiveHandler[];
 
   private uiStandardElement: Xrm.Controls.UiStandardElement;
   private uiFocusableElement: Xrm.Controls.UiFocusable;
   private name: string;
   private parent: Xrm.Ui;
   private displayState: Xrm.DisplayState;
-  public tabStateChangeHandlers: Xrm.Events.ContextSensitiveHandler[];
 
   constructor(components: ITabComponents) {
     this.uiStandardElement = components.uiStandardElement
@@ -26,11 +26,11 @@ export class TabMock implements Xrm.Controls.Tab {
     this.tabStateChangeHandlers = components.tabStateChangeHandlers || [] as Xrm.Events.ContextSensitiveHandler[];
     this.sections = components.sections || new ItemCollectionMock([]);
     this.sections.forEach((section: Xrm.Controls.Section, index: number) => {
-        const sectionMock = section as SectionMock;
+      const sectionMock = section as SectionMock;
 
-        if (sectionMock) {
-            sectionMock.parent = this;
-        }
+      if (sectionMock) {
+        sectionMock.parent = this;
+      }
     });
   }
 

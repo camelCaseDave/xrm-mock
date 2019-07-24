@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var array_helper_1 = require("../../../xrm-mock-generator/helpers/array.helper");
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
@@ -49,7 +50,8 @@ var AttributeMock = /** @class */ (function () {
         throw new Error("getUserPrivilege not implemented");
     };
     AttributeMock.prototype.removeOnChange = function (handler) {
-        throw new Error("removeOnChange not implemented");
+        var index = array_helper_1.findIndex(this.eventHandlers, handler);
+        this.eventHandlers.splice(index, 1);
     };
     AttributeMock.prototype.setRequiredLevel = function (requirementLevel) {
         this.requiredLevel = requirementLevel;

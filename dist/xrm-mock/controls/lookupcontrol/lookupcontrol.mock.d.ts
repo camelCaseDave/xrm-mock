@@ -13,7 +13,7 @@ export declare class LookupControlMock extends StandardControlMock<LookupControl
     getDefaultView(): string;
     getEntityTypes(): string[];
     setEntityTypes(entityLogicalNames: string[]): void;
-    removePreSearch(handler: () => void): void;
+    removePreSearch(handler: Xrm.Events.ContextSensitiveHandler): void;
     setDefaultView(viewGuid: string): void;
 }
 export interface ILookupControlComponents extends IStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]>, IAttLookupControlComponents {
