@@ -1,4 +1,3 @@
-import { ControlMock } from "../../controls/control/control.mock";
 import { LookupControlMock } from "../../controls/lookupcontrol/lookupcontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 

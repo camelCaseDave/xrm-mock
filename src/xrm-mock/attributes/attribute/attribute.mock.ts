@@ -1,3 +1,4 @@
+import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../../controls/control/control.mock";
 
@@ -73,7 +74,8 @@ export class AttributeMock<TControl extends ControlMock,
     }
 
     public removeOnChange(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("removeOnChange not implemented");
+        const index: number = findIndex(this.eventHandlers, handler);
+        this.eventHandlers.splice(index, 1);
     }
 
     public setRequiredLevel(requirementLevel: Xrm.Attributes.RequirementLevel): void {
