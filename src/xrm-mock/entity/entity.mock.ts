@@ -1,5 +1,5 @@
-import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 import { XrmMockGenerator } from "../../xrm-mock-generator";
+import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 
 export class EntityMock implements Xrm.Entity {
     public id: string;
@@ -46,11 +46,11 @@ export class EntityMock implements Xrm.Entity {
 
         if (this.attributes) {
             for (let i = 0; i < this.attributes.getLength(); i++) {
-                  const attr = this.attributes.get(i);
-                  if (attr.getIsDirty()) {
-                      isDirty = true;
-                      break;
-                  }
+                const attr = this.attributes.get(i);
+                if (attr.getIsDirty()) {
+                    isDirty = true;
+                    break;
+                }
             }
         }
         return isDirty;
