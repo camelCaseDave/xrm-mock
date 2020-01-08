@@ -1,5 +1,5 @@
-import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 import { XrmMockGenerator } from "../../xrm-mock-generator";
+import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 
 export class EntityMock implements Xrm.Entity {
     public id: string;
