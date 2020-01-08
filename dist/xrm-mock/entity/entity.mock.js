@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var xrm_mock_generator_1 = require("../../xrm-mock-generator");
 var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
 var EntityMock = /** @class */ (function () {
     function EntityMock(components) {
@@ -69,7 +70,7 @@ var EntityMock = /** @class */ (function () {
         var _this = this;
         return {
             getContext: function () {
-                throw new Error("getContext not implemented.");
+                return xrm_mock_generator_1.XrmMockGenerator.context;
             },
             getDepth: null,
             getEventArgs: function () {
