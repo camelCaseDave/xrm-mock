@@ -1,4 +1,5 @@
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
+import { XrmMockGenerator } from "../../xrm-mock-generator";
 
 export class EntityMock implements Xrm.Entity {
     public id: string;
@@ -83,7 +84,7 @@ export class EntityMock implements Xrm.Entity {
     private getSaveContext(saveMode: Xrm.EntitySaveMode): Xrm.Events.SaveEventContext {
         return {
             getContext: (): Xrm.GlobalContext => {
-                throw new Error("getContext not implemented.");
+                return XrmMockGenerator.context;
             },
             getDepth: null, // implemented separately for each handler
             getEventArgs: (): Xrm.Events.SaveEventArguments => {

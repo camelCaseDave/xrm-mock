@@ -8,9 +8,12 @@ export default class Context {
         isGuidedHelpEnabled : false,
         isHighContrastEnabled: false,
         isRTL: false,
-        userId: "1337",
+        userId: "{00000000-0000-0000-0000-000000000000}",
         userName: "jdoe",
+        securityRoles: [],
+        securityRolePrivileges: []
       }),
+      orgUniqueName: ""
     });
     return context;
   }

@@ -8,6 +8,7 @@ export class DataMock implements Xrm.Data {
     public process: Xrm.ProcessFlow.ProcessManager;
 
     constructor(entity: Xrm.Entity, process?: Xrm.ProcessFlow.ProcessManager) {
+        this.attributes = new ItemCollectionMock();
         this.entity = entity;
         this.process = process;
     }
