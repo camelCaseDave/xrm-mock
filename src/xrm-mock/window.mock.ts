@@ -1,6 +1,5 @@
-import { ContextMock } from "./globalcontext/context.mock";
-import { XrmStaticMock } from "./xrmstatic.mock";
 import { XrmMockGenerator } from "../xrm-mock-generator/xrm-mock-generator";
+import { XrmStaticMock } from "./xrmstatic.mock";
 
 export class WindowMock {
     public Xrm: XrmStaticMock;
