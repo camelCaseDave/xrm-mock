@@ -9,7 +9,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         return components;
     }
 
-    public onLoadHandlers: Array<() => void>;
+    public onLoadHandlers: Xrm.Events.ContextSensitiveHandler[];
     public contextType: XrmEnum.GridControlContext;
     public entityName: string;
 
@@ -21,7 +21,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         this.onLoadHandlers = components.onLoadHandlers;
     }
 
-    public addOnLoad(handler: () => void): void {
+    public addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
         this.onLoadHandlers.push(handler);
     }
     public getContextType(): XrmEnum.GridControlContext {
@@ -58,5 +58,5 @@ export interface IAttGridControlComponents extends IAttControlComponents {
     contextType?: XrmEnum.GridControlContext;
     entityName?: string;
     name?: string;
-    onLoadHandlers?: Array<() => void>;
+    onLoadHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }
