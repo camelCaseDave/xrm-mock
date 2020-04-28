@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var xrm_mock_generator_1 = require("../../xrm-mock-generator/xrm-mock-generator");
 var UtilityMock = /** @class */ (function () {
     function UtilityMock() {
     }
@@ -37,7 +38,7 @@ var UtilityMock = /** @class */ (function () {
         throw new Error("Method not implemented.");
     };
     UtilityMock.prototype.getGlobalContext = function () {
-        throw new Error("Method not implemented.");
+        return xrm_mock_generator_1.XrmMockGenerator.context;
     };
     UtilityMock.prototype.getResourceString = function (webResourceName, key) {
         throw new Error("Method not implemented.");

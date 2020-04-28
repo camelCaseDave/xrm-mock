@@ -2,11 +2,11 @@
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
 export declare class GridControlMock extends ControlMock implements Xrm.Controls.GridControl {
     private static defaultComponents;
-    onLoadHandlers: Array<() => void>;
+    onLoadHandlers: Xrm.Events.ContextSensitiveHandler[];
     contextType: XrmEnum.GridControlContext;
     entityName: string;
     constructor(components: IGridControlComponents);
-    addOnLoad(handler: () => void): void;
+    addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void;
     getContextType(): XrmEnum.GridControlContext;
     getEntityName(): string;
     getGrid(): Xrm.Controls.Grid;
@@ -21,5 +21,5 @@ export interface IAttGridControlComponents extends IAttControlComponents {
     contextType?: XrmEnum.GridControlContext;
     entityName?: string;
     name?: string;
-    onLoadHandlers?: Array<() => void>;
+    onLoadHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }

@@ -10,10 +10,10 @@ var ContextMock = /** @class */ (function () {
         this.orgLcid = components.orgLcid;
         this.orgUniqueName = components.orgUniqueName;
         this.timeZoneOffset = components.timeZoneOffset;
-        this.userId = components.userId;
-        this.userLcid = components.userLcid;
-        this.userName = components.userName;
-        this.userRoles = components.userRoles;
+        this.userId = components.userId || components.userSettings.userId;
+        this.userLcid = components.userLcid || components.userSettings.languageId;
+        this.userName = components.userName || components.userSettings.userName;
+        this.userRoles = components.userRoles || components.userSettings.securityRoles;
         this.version = components.version;
     }
     ContextMock.prototype.getClientUrl = function () {

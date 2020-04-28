@@ -64,7 +64,7 @@ describe("XrmMockGenerator Builder", () => {
                         isRTL: false,
                         languageId: 1033,
                         securityRoles: ["cf4cc7ce-5d51-df11-97e0-00155db232d0"],
-                        userId: "1337",
+                        userId: "{00000000-0000-0000-0000-000000000000}",
                         userName: "jdoe",
                     }),
                 version: "8.2.1.185",

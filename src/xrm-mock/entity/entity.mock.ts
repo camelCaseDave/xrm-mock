@@ -1,3 +1,4 @@
+import { XrmMockGenerator } from "../../xrm-mock-generator";
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
 
 export class EntityMock implements Xrm.Entity {
@@ -45,11 +46,11 @@ export class EntityMock implements Xrm.Entity {
 
         if (this.attributes) {
             for (let i = 0; i < this.attributes.getLength(); i++) {
-                  const attr = this.attributes.get(i);
-                  if (attr.getIsDirty()) {
-                      isDirty = true;
-                      break;
-                  }
+                const attr = this.attributes.get(i);
+                if (attr.getIsDirty()) {
+                    isDirty = true;
+                    break;
+                }
             }
         }
         return isDirty;
@@ -83,7 +84,7 @@ export class EntityMock implements Xrm.Entity {
     private getSaveContext(saveMode: Xrm.EntitySaveMode): Xrm.Events.SaveEventContext {
         return {
             getContext: (): Xrm.GlobalContext => {
-                throw new Error("getContext not implemented.");
+                return XrmMockGenerator.context;
             },
             getDepth: null, // implemented separately for each handler
             getEventArgs: (): Xrm.Events.SaveEventArguments => {

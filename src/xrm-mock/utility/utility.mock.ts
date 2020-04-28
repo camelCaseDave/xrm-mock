@@ -1,3 +1,5 @@
+import { XrmMockGenerator } from "../../xrm-mock-generator/xrm-mock-generator";
+
 export class UtilityMock implements Xrm.Utility {
     public alertDialog(message: string, onCloseCallback: () => void): void {
         alert(message);
@@ -43,7 +45,7 @@ export class UtilityMock implements Xrm.Utility {
     }
 
     public getGlobalContext(): Xrm.GlobalContext {
-        throw new Error("Method not implemented.");
+        return XrmMockGenerator.context;
     }
 
     public getResourceString(webResourceName: string, key: string): string {

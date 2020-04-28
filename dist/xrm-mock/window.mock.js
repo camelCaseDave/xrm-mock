@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var xrm_mock_generator_1 = require("../xrm-mock-generator/xrm-mock-generator");
 var WindowMock = /** @class */ (function () {
     function WindowMock(xrm) {
         this.Xrm = xrm;
     }
     WindowMock.prototype.GetGlobalContext = function () {
-        throw new Error("not implemented");
+        return xrm_mock_generator_1.XrmMockGenerator.context;
     };
     return WindowMock;
 }());

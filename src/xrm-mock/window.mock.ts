@@ -1,4 +1,4 @@
-import { ContextMock } from "./globalcontext/context.mock";
+import { XrmMockGenerator } from "../xrm-mock-generator/xrm-mock-generator";
 import { XrmStaticMock } from "./xrmstatic.mock";
 
 export class WindowMock {
@@ -9,6 +9,6 @@ export class WindowMock {
     }
 
     public GetGlobalContext(): Xrm.GlobalContext {
-        throw new Error("not implemented");
+        return XrmMockGenerator.context;
     }
 }
