@@ -19,4 +19,8 @@ describe("Xrm.Data Mock", () => {
     it("should initialise", () => {
         expect(this.dataMock).toBeDefined();
     });
+
+    it("should equals 0", () => {
+        expect(this.dataMock.loadEventHandlers.length).toBe(0);
+    });
 });
