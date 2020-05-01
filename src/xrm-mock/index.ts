@@ -104,3 +104,4 @@ export { WebApiOfflineMock } from "./webapioffline/webapioffline.mock";
 export { WebApiOnlineMock } from "./webapionline/webapionline.mock";
 export { WindowMock } from "./window.mock";
 export { XrmStaticMock, IXrmStaticComponents } from "./xrmstatic.mock";
+export { IframeControlMock } from "./controls/iframecontrol/iframecontrol.mock"
