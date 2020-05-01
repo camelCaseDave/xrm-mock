@@ -42,6 +42,10 @@ export class NumberAttributeMock extends AttributeMock<NumberControlMock, number
         return this.precision;
     }
 
+    public setPrecision(value: number): void{
+        this.precision = value;
+    }
+
     public setValue(value: number): void {
         if ((this.min || this.min === 0) && this.min > value) {
             throw new Error(("value cannot be below the min of " + this.min));
