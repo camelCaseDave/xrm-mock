@@ -27,7 +27,7 @@ export class FormItemMock implements Xrm.Controls.FormItem {
     throw new Error("getVisible not implemented.");
   }
 
-  public setVisible(value: boolean): boolean{
+  public setVisible(value: boolean): boolean {
     throw new Error("setVisible not implemented.");
   }
 }

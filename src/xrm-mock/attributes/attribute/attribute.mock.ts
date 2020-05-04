@@ -5,8 +5,8 @@ import { ControlMock } from "../../controls/control/control.mock";
 export type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string;
 
 export class AttributeMock<TControl extends ControlMock,
-                           TValue extends AttributeReturnType>
-                           implements Xrm.Attributes.Attribute {
+    TValue extends AttributeReturnType>
+    implements Xrm.Attributes.Attribute {
     public attributeType: Xrm.Attributes.AttributeType;
     public controls: ItemCollectionMock<TControl>;
     public isDirty: boolean;
@@ -30,7 +30,7 @@ export class AttributeMock<TControl extends ControlMock,
     }
 
     public addOnChange(handler: Xrm.Events.ContextSensitiveHandler): void {
-       this.eventHandlers.push(handler);
+        this.eventHandlers.push(handler);
     }
 
     public fireOnChange(): void {
@@ -95,11 +95,11 @@ export class AttributeMock<TControl extends ControlMock,
         this.isDirty = true;
     }
 
-    public isValid(): boolean{
+    public isValid(): boolean {
         throw new Error("isValid not implemented");
     }
 
-    public setIsValid(valid: boolean, message: string) : void {
+    public setIsValid(valid: boolean, message: string): void {
         throw new Error("setIsValid not implemented");
     }
 }
