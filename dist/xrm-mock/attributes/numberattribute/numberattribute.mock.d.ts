@@ -11,6 +11,7 @@ export declare class NumberAttributeMock extends AttributeMock<NumberControlMock
     getMax(): number;
     getMin(): number;
     getPrecision(): number;
+    setPrecision(value: number): void;
     setValue(value: number): void;
     private validatePrecision;
 }

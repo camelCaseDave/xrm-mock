@@ -44,6 +44,9 @@ var NumberAttributeMock = /** @class */ (function (_super) {
     NumberAttributeMock.prototype.getPrecision = function () {
         return this.precision;
     };
+    NumberAttributeMock.prototype.setPrecision = function (value) {
+        this.precision = value;
+    };
     NumberAttributeMock.prototype.setValue = function (value) {
         if ((this.min || this.min === 0) && this.min > value) {
             throw new Error(("value cannot be below the min of " + this.min));

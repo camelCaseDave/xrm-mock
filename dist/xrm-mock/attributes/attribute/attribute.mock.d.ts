@@ -28,6 +28,8 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     setSubmitMode(submitMode: Xrm.SubmitMode): void;
     getValue(): TValue;
     setValue(value: TValue): void;
+    isValid(): boolean;
+    setIsValid(valid: boolean, message: string): void;
 }
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
     attributeType?: Xrm.Attributes.AttributeType;

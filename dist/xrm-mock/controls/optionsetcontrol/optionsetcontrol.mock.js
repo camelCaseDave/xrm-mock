@@ -49,6 +49,9 @@ var OptionSetControlMock = /** @class */ (function (_super) {
         var index = this.options.indexOf(option);
         this.options.splice(index, 1);
     };
+    OptionSetControlMock.prototype.getOptions = function () {
+        return this.options;
+    };
     return OptionSetControlMock;
 }(standardcontrol_mock_1.StandardControlMock));
 exports.OptionSetControlMock = OptionSetControlMock;
