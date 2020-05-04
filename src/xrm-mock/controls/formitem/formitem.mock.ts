@@ -22,6 +22,14 @@ export class FormItemMock implements Xrm.Controls.FormItem {
   public navigate(): void {
       throw new Error("Form navigation not implemented.");
   }
+
+  public getVisible(): boolean {
+    throw new Error("getVisible not implemented.");
+  }
+
+  public setVisible(value: boolean): boolean{
+    throw new Error("setVisible not implemented.");
+  }
 }
 
 export interface IFormItemComponents {

@@ -94,6 +94,14 @@ export class AttributeMock<TControl extends ControlMock,
         this.value = value;
         this.isDirty = true;
     }
+
+    public isValid(): boolean{
+        throw new Error("isValid not implemented");
+    }
+
+    public setIsValid(valid: boolean, message: string) : void {
+        throw new Error("setIsValid not implemented");
+    }
 }
 
 export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {

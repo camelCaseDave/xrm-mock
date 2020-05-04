@@ -1,3 +1,5 @@
+import { QuickFormControlMock } from "./controls/quickform/quickform.mock";
+
 export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
 export { AlertStringsMock } from "./navigation/alertstrings/alertstrings.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
@@ -104,3 +106,5 @@ export { WebApiOfflineMock } from "./webapioffline/webapioffline.mock";
 export { WebApiOnlineMock } from "./webapionline/webapionline.mock";
 export { WindowMock } from "./window.mock";
 export { XrmStaticMock, IXrmStaticComponents } from "./xrmstatic.mock";
+export { IframeControlMock } from "./controls/iframecontrol/iframecontrol.mock"
+export { QuickFormControlMock } from "./controls/quickform/quickform.mock"

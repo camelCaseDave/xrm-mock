@@ -86,6 +86,14 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
             view.isDefault = view.viewId === viewGuid;
         }
     }
+
+    public addOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error("addOnLookupTagClick not implemented");
+    }
+
+    public removeOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error("removeOnLookupTagClick not implemented");
+    } 
 }
 
 export interface ILookupControlComponents

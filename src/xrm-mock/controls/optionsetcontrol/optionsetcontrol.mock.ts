@@ -45,6 +45,10 @@ export class OptionSetControlMock extends StandardControlMock<OptionSetControlMo
         const index = this.options.indexOf(option);
         this.options.splice(index, 1);
     }
+
+    public getOptions(): Xrm.OptionSetValue[] {
+        return this.options;
+    }
 }
 
 export interface IOptionSetControlComponents
