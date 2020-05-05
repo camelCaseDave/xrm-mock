@@ -9,6 +9,7 @@ export declare class OptionSetControlMock extends StandardControlMock<OptionSetC
     addOption(option: Xrm.OptionSetValue, index?: number): void;
     clearOptions(): void;
     removeOption(value: number): void;
+    getOptions(): Xrm.OptionSetValue[];
 }
 export interface IOptionSetControlComponents extends IStandardControlComponents<OptionSetControlMock, OptionSetAttributeMock, number>, IAttOptionSetControlComponents {
     name: string;

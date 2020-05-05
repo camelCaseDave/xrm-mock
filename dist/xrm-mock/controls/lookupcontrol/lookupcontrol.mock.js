@@ -80,6 +80,12 @@ var LookupControlMock = /** @class */ (function (_super) {
             view.isDefault = view.viewId === viewGuid;
         }
     };
+    LookupControlMock.prototype.addOnLookupTagClick = function (handler) {
+        throw new Error("addOnLookupTagClick not implemented");
+    };
+    LookupControlMock.prototype.removeOnLookupTagClick = function (handler) {
+        throw new Error("removeOnLookupTagClick not implemented");
+    };
     return LookupControlMock;
 }(standardcontrol_mock_1.StandardControlMock));
 exports.LookupControlMock = LookupControlMock;

@@ -42,7 +42,7 @@ export class NumberAttributeMock extends AttributeMock<NumberControlMock, number
         return this.precision;
     }
 
-    public setPrecision(value: number): void{
+    public setPrecision(value: number): void {
         this.precision = value;
     }
 

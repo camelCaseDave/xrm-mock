@@ -16,6 +16,12 @@ var FormItemMock = /** @class */ (function () {
     FormItemMock.prototype.navigate = function () {
         throw new Error("Form navigation not implemented.");
     };
+    FormItemMock.prototype.getVisible = function () {
+        throw new Error("getVisible not implemented.");
+    };
+    FormItemMock.prototype.setVisible = function (value) {
+        throw new Error("setVisible not implemented.");
+    };
     return FormItemMock;
 }());
 exports.FormItemMock = FormItemMock;

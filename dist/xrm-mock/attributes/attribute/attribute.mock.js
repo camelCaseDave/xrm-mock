@@ -66,6 +66,12 @@ var AttributeMock = /** @class */ (function () {
         this.value = value;
         this.isDirty = true;
     };
+    AttributeMock.prototype.isValid = function () {
+        throw new Error("isValid not implemented");
+    };
+    AttributeMock.prototype.setIsValid = function (valid, message) {
+        throw new Error("setIsValid not implemented");
+    };
     return AttributeMock;
 }());
 exports.AttributeMock = AttributeMock;

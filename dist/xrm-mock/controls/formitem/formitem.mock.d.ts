@@ -8,6 +8,8 @@ export declare class FormItemMock implements Xrm.Controls.FormItem {
     getId(): string;
     getLabel(): string;
     navigate(): void;
+    getVisible(): boolean;
+    setVisible(value: boolean): boolean;
 }
 export interface IFormItemComponents {
     id: string;

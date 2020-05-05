@@ -93,7 +93,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
 
     public removeOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("removeOnLookupTagClick not implemented");
-    } 
+    }
 }
 
 export interface ILookupControlComponents
