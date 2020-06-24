@@ -1,3 +1,4 @@
+import { AppMock } from "./app/app.mock";
 import { NavigationStaticMock } from "./navigation/navigation.mock";
 import { PageMock } from "./page/page.mock";
 import { ProcessManagerMock } from "./processflow/processmanager/processmanager.mock";
@@ -12,6 +13,7 @@ export class XrmStaticMock implements Xrm.XrmStatic {
     public Panel: Xrm.Panel;
     public Utility: UtilityMock;
     public WebApi: Xrm.WebApi;
+    public App: AppMock;
 
     constructor(components: IXrmStaticComponents) {
         this.Device = components.device;
@@ -22,6 +24,7 @@ export class XrmStaticMock implements Xrm.XrmStatic {
         this.Panel = components.panel;
         this.Utility = components.utility;
         this.WebApi = components.webApi;
+        this.App = components.app;
     }
 }
 
@@ -34,4 +37,5 @@ export interface IXrmStaticComponents {
     panel?: Xrm.Panel;
     utility?: UtilityMock;
     webApi?: Xrm.WebApi;
+    app?: AppMock;
 }

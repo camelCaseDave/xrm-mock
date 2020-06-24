@@ -10,6 +10,7 @@ var XrmStaticMock = /** @class */ (function () {
         this.Panel = components.panel;
         this.Utility = components.utility;
         this.WebApi = components.webApi;
+        this.App = components.app;
     }
     return XrmStaticMock;
 }());

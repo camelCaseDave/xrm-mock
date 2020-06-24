@@ -1,4 +1,5 @@
 /// <reference types="xrm" />
+import { AppMock } from "./app/app.mock";
 import { NavigationStaticMock } from "./navigation/navigation.mock";
 import { PageMock } from "./page/page.mock";
 import { UtilityMock } from "./utility/utility.mock";
@@ -11,6 +12,7 @@ export declare class XrmStaticMock implements Xrm.XrmStatic {
     Panel: Xrm.Panel;
     Utility: UtilityMock;
     WebApi: Xrm.WebApi;
+    App: AppMock;
     constructor(components: IXrmStaticComponents);
 }
 export interface IXrmStaticComponents {
@@ -22,4 +24,5 @@ export interface IXrmStaticComponents {
     panel?: Xrm.Panel;
     utility?: UtilityMock;
     webApi?: Xrm.WebApi;
+    app?: AppMock;
 }

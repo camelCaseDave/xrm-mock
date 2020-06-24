@@ -106,3 +106,4 @@ export { WindowMock } from "./window.mock";
 export { XrmStaticMock, IXrmStaticComponents } from "./xrmstatic.mock";
 export { IframeControlMock } from "./controls/iframecontrol/iframecontrol.mock";
 export { QuickFormControlMock } from "./controls/quickform/quickform.mock";
+export { AppMock } from "./app/app.mock";

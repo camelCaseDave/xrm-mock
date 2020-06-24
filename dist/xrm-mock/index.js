@@ -216,4 +216,6 @@ var iframecontrol_mock_1 = require("./controls/iframecontrol/iframecontrol.mock"
 exports.IframeControlMock = iframecontrol_mock_1.IframeControlMock;
 var quickform_mock_1 = require("./controls/quickform/quickform.mock");
 exports.QuickFormControlMock = quickform_mock_1.QuickFormControlMock;
+var app_mock_1 = require("./app/app.mock");
+exports.AppMock = app_mock_1.AppMock;
 //# sourceMappingURL=index.js.map

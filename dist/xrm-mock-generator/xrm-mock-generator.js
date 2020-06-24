@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XrmMock = require("../xrm-mock/index");
+var app_1 = require("./app");
 var attribute_1 = require("./attribute");
 var context_1 = require("./context");
 var control_1 = require("./control");
@@ -23,6 +24,7 @@ var XrmMockGenerator = /** @class */ (function () {
         this.formContext = formcontext_1.default.createFormContext(components.entity, components.ui, components.process);
         this.eventContext = eventcontext_1.default.createEventContext(components.entity, components.context, this.formContext, components.ui, components.process);
         var xrm = new XrmMock.XrmStaticMock({
+            app: app_1.default.createApp(),
             device: device_1.default.createDevice(),
             mobile: mobile_1.default.createMobile(),
             navigation: navigation_1.default.createNavigation(),
@@ -57,6 +59,7 @@ var XrmMockGenerator = /** @class */ (function () {
     XrmMockGenerator.Navigation = new navigation_1.default();
     XrmMockGenerator.WebApi = new webapi_1.default();
     XrmMockGenerator.Utility = new utility_1.default();
+    XrmMockGenerator.App = new app_1.default();
     return XrmMockGenerator;
 }());
 exports.XrmMockGenerator = XrmMockGenerator;
