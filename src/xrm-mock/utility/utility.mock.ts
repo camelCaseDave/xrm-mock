@@ -67,4 +67,12 @@ export class UtilityMock implements Xrm.Utility {
     public showProgressIndicator(message: string): void {
         throw new Error("Method not implemented.");
     }
+
+    public getLearningPathAttributeName(): string {
+        throw new Error("Method not implemented.");
+    }
+
+    public getPageContext(): any {
+        throw new Error("Method not implemented.");
+    }
 }
