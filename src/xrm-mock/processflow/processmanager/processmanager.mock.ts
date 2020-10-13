@@ -7,6 +7,22 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         this.enabledProcesses = enabledProcesses;
     }
 
+    public addOnPreProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error("Method not implemented.");
+    }
+
+    public addOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error("Method not implemented.");
+    }
+
+    public removeOnPreProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
+        throw new Error("Method not implemented.");
+    }
+
+    public removeOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error("Method not implemented.");
+    }
+
     public getActiveProcess(): Xrm.ProcessFlow.Process {
         return (this.enabledProcesses as Xrm.ProcessFlow.Process[]).filter((p) => {
             return p.isRendered();
@@ -36,7 +52,7 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         throw new Error("get process instances not implemented.");
     }
 
-    public addOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
+    public addOnProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error("add on process status change not implemented.");
     }
 
