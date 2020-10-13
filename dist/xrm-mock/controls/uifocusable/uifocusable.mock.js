@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UiFocusableMock = void 0;
 var UiFocusableMock = /** @class */ (function () {
     function UiFocusableMock(hasFocus) {
         if (hasFocus === void 0) { hasFocus = false; }

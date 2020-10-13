@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OrganizationSettingsMock = void 0;
 var OrganizationSettingsMock = /** @class */ (function () {
     function OrganizationSettingsMock(components) {
         this.baseCurrencyId = components.baseCurrencyId;
@@ -9,6 +10,8 @@ var OrganizationSettingsMock = /** @class */ (function () {
         this.organizationId = components.organizationId;
         this.uniqueName = components.uniqueName;
         this.useSkypeProtocol = components.useSkypeProtocol;
+        this.baseCurrency = components.baseCurrency;
+        this.attributes = components.attributes;
     }
     return OrganizationSettingsMock;
 }());

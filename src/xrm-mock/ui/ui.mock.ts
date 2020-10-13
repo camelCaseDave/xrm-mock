@@ -89,6 +89,18 @@ export class UiMock implements Xrm.Ui {
         });
         return matchingNotificationsById && matchingNotificationsById.length ? true : false;
     }
+
+    public setFormEntityName(arg: string): void {
+        throw new Error(("setFormEntityName not implemented"));
+    }
+
+    public addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error(("addOnLoad not implemented"));
+    }
+
+    public removeOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
+        throw new Error(("removeOnLoad not implemented"));
+    }
 }
 
 export interface IUiComponents {

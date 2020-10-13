@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SectionMock = void 0;
 var uicangetvisibleelement_mock_1 = require("../uicangetvisibleelement/uicangetvisibleelement.mock");
 var uilabelelement_mock_1 = require("../uilabelelement/uilabelelement.mock");
 var uistandardelement_mock_1 = require("../uistandardelement/uistandardelement.mock");

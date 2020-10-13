@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UtilityMock = void 0;
 var xrm_mock_generator_1 = require("../../xrm-mock-generator/xrm-mock-generator");
 var UtilityMock = /** @class */ (function () {
     function UtilityMock() {
@@ -53,6 +54,12 @@ var UtilityMock = /** @class */ (function () {
         throw new Error("Method not implemented.");
     };
     UtilityMock.prototype.showProgressIndicator = function (message) {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getLearningPathAttributeName = function () {
+        throw new Error("Method not implemented.");
+    };
+    UtilityMock.prototype.getPageContext = function () {
         throw new Error("Method not implemented.");
     };
     return UtilityMock;

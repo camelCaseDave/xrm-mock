@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FileDetailsMock = void 0;
 var FileDetailsMock = /** @class */ (function () {
     function FileDetailsMock(fileContent, fileName, fileSize, mimeType) {
         this.fileContent = fileContent;

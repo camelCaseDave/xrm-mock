@@ -1,0 +1,1 @@
+{"version":3,"file":"app.mock.js","sourceRoot":"","sources":["../../../src/xrm-mock/app/app.mock.ts"],"names":[],"mappings":";;;AAAA;IAAA;IAQA,CAAC;IAPU,uCAAqB,GAA5B,UAA6B,YAAiB;QAC1C,MAAM,IAAI,KAAK,CAAC,yBAAyB,CAAC,CAAC;IAC/C,CAAC;IAEM,yCAAuB,GAA9B,UAA+B,QAAgB;QAC3C,MAAM,IAAI,KAAK,CAAC,yBAAyB,CAAC,CAAC;IAC/C,CAAC;IACL,cAAC;AAAD,CAAC,AARD,IAQC;AARY,0BAAO"}

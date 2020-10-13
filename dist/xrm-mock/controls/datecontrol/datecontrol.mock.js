@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DateControlMock = void 0;
 var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
 var DateControlMock = /** @class */ (function (_super) {
     __extends(DateControlMock, _super);

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CaptureImageOptionsMock = void 0;
 var CaptureImageOptionsMock = /** @class */ (function () {
     function CaptureImageOptionsMock(components) {
         this.allowEdit = components.allowEdit;

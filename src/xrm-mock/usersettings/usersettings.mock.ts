@@ -9,6 +9,8 @@ export class UserSettingsMock implements Xrm.UserSettings {
   public transactionCurrencyId: string;
   public userId: string;
   public userName: string;
+  public roles: Xrm.Collection.ItemCollection<Xrm.LookupValue>;
+  public transactionCurrency: Xrm.LookupValue;
 
   constructor(components: IUserSettingsComponents) {
     this.defaultDashboardId = components.defaultDashboardId;
@@ -21,11 +23,14 @@ export class UserSettingsMock implements Xrm.UserSettings {
     this.transactionCurrencyId = components.transactionCurrencyId;
     this.userId = components.userId;
     this.userName = components.userName;
+    this.roles = components.roles;
+    this.transactionCurrency = components.transactionCurrency;
   }
 
   public dateFormattingInfo(): Xrm.DateFormattingInfo {
     throw new Error("Not implemented.");
   }
+
   public getTimeZoneOffsetMinutes(): number {
     throw new Error("Not implemented");
   }
@@ -42,4 +47,6 @@ export interface IUserSettingsComponents {
   transactionCurrencyId?: string;
   userId: string;
   userName: string;
+  roles?: Xrm.Collection.ItemCollection<Xrm.LookupValue>;
+  transactionCurrency?: Xrm.LookupValue;
 }

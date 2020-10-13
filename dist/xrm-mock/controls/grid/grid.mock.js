@@ -1,17 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GridMock = void 0;
 var GridMock = /** @class */ (function () {
-    function GridMock(rows) {
+    function GridMock(rows, selectedRows) {
         this.rows = rows;
+        this.selectedRows = selectedRows;
     }
     GridMock.prototype.getRows = function () {
         return this.rows;
     };
     GridMock.prototype.getSelectedRows = function () {
-        throw new Error("Not implemented.");
+        return this.selectedRows;
     };
     GridMock.prototype.getTotalRecordCount = function () {
-        throw new Error("Not implemented.");
+        return this.rows.getLength();
     };
     return GridMock;
 }());

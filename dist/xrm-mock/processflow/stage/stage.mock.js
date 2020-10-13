@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StageMock = void 0;
 var StageMock = /** @class */ (function () {
     function StageMock(id, name, status, category, steps) {
         this.id = id;
@@ -9,9 +10,10 @@ var StageMock = /** @class */ (function () {
         this.steps = steps;
     }
     StageMock.prototype.getCategory = function () {
+        var _category = this.category;
         return {
             getValue: function () {
-                throw new Error("get category value not implemented");
+                return _category;
             },
         };
     };
@@ -32,6 +34,9 @@ var StageMock = /** @class */ (function () {
     };
     StageMock.prototype._setStatus = function (status) {
         this.status = status;
+    };
+    StageMock.prototype.getNavigationBehavior = function () {
+        throw new Error("getNavigationBehavior not implemented");
     };
     return StageMock;
 }());

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OfflineErrorCallbackObjectMock = void 0;
 var OfflineErrorCallbackObjectMock = /** @class */ (function () {
     function OfflineErrorCallbackObjectMock(errorCallbackObject, debugMessage) {
         this.errorCallbackObject = errorCallbackObject;

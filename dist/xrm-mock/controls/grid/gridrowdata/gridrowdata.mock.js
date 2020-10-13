@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GridRowDataMock = void 0;
 var GridRowDataMock = /** @class */ (function () {
     function GridRowDataMock(entity) {
         this.entity = entity;

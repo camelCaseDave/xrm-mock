@@ -1,8 +1,10 @@
 export class GridMock implements Xrm.Controls.Grid {
   private rows: Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow>;
+  private selectedRows: Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow>;
 
-  constructor(rows: Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow>) {
+  constructor(rows: Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow>, selectedRows: Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow>) {
     this.rows = rows;
+    this.selectedRows = selectedRows;
   }
 
   public getRows(): Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow> {
@@ -10,10 +12,10 @@ export class GridMock implements Xrm.Controls.Grid {
   }
 
   public getSelectedRows(): Xrm.Collection.ItemCollection<Xrm.Controls.Grid.GridRow> {
-    throw new Error("Not implemented.");
+    return this.selectedRows;
   }
 
   public getTotalRecordCount(): number {
-    throw new Error("Not implemented.");
+    return this.rows.getLength();
   }
 }

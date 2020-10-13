@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventContextMock = void 0;
 var EventContextMock = /** @class */ (function () {
     function EventContextMock(components) {
         this.formContext = components.formContext;

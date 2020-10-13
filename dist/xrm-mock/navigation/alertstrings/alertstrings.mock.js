@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AlertStringsMock = void 0;
 var AlertStringsMock = /** @class */ (function () {
     function AlertStringsMock(text, confirmButtonLabel) {
         this.text = text;

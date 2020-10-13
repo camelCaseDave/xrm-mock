@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AttributeMetadataMock = void 0;
 var AttributeMetadataMock = /** @class */ (function () {
     function AttributeMetadataMock(components) {
-        this.defaultFormValue = components.defaultFormValue;
-        this.options = components.options;
-        this.logicalName = components.logicalName;
-        this.displayName = components.displayName;
-        this.attributeType = components.attributeType;
-        this.entityLogicalName = components.entityLogicalName;
-        this.optionSet = components.optionSet;
+        this.DefaultFormValue = components.DefaultFormValue;
+        this.LogicalName = components.LogicalName;
+        this.DisplayName = components.DisplayName;
+        this.AttributeType = components.AttributeType;
+        this.EntityLogicalName = components.EntityLogicalName;
+        this.OptionSet = components.OptionSet;
     }
     return AttributeMetadataMock;
 }());

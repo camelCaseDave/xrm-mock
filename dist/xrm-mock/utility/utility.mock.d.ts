@@ -15,4 +15,6 @@ export declare class UtilityMock implements Xrm.Utility {
     lookupObjects(lookupOptions: Xrm.LookupOptions): Xrm.Async.PromiseLike<Xrm.LookupValue[]>;
     refreshParentGrid(lookupOptions: Xrm.LookupValue): void;
     showProgressIndicator(message: string): void;
+    getLearningPathAttributeName(): string;
+    getPageContext(): any;
 }

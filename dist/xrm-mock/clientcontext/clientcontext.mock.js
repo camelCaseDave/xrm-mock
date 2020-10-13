@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ClientContextMock = void 0;
 var ClientContextMock = /** @class */ (function () {
     function ClientContextMock(client, clientState) {
         this.client = client;

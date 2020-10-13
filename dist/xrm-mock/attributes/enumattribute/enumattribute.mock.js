@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EnumAttributeMock = void 0;
 var attribute_mock_1 = require("../attribute/attribute.mock");
 var EnumAttributeMock = /** @class */ (function (_super) {
     __extends(EnumAttributeMock, _super);
