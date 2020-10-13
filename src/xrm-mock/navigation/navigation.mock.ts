@@ -1,6 +1,11 @@
 export class NavigationStaticMock implements Xrm.Navigation {
     private notImplementedError = "Navigation methods not implemented. Consider stubbing calls using a tool such as Sinon.JS";
 
+    public navigateTo(pageInput: Xrm.Navigation.PageInputEntityList | Xrm.Navigation.PageInputHtmlWebResource,
+                      navigationOptions?: Xrm.Navigation.NavigationOptions): Xrm.Async.PromiseLike<any> {
+        throw new Error(this.notImplementedError);
+    }
+
     public openAlertDialog(alertStrings: Xrm.Navigation.AlertStrings, alertOptions: Xrm.Navigation.DialogSizeOptions)
         : Xrm.Async.PromiseLike<any> {
         throw new Error(this.notImplementedError);
