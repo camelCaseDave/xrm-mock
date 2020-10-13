@@ -15,4 +15,5 @@ export declare class StageMock implements Xrm.ProcessFlow.Stage {
     getStatus(): Xrm.ProcessFlow.StageStatus;
     getSteps(): Xrm.ProcessFlow.Step[];
     _setStatus(status: Xrm.ProcessFlow.StageStatus): void;
+    getNavigationBehavior(): any;
 }

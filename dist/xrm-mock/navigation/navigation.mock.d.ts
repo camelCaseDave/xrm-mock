@@ -1,6 +1,7 @@
 /// <reference types="xrm" />
 export declare class NavigationStaticMock implements Xrm.Navigation {
     private notImplementedError;
+    navigateTo(pageInput: Xrm.Navigation.PageInputEntityList | Xrm.Navigation.PageInputHtmlWebResource, navigationOptions?: Xrm.Navigation.NavigationOptions): Xrm.Async.PromiseLike<any>;
     openAlertDialog(alertStrings: Xrm.Navigation.AlertStrings, alertOptions: Xrm.Navigation.DialogSizeOptions): Xrm.Async.PromiseLike<any>;
     openConfirmDialog(confirmStrings: Xrm.Navigation.ConfirmStrings, confirmOptions: Xrm.Navigation.DialogSizeOptions): Xrm.Async.PromiseLike<Xrm.Navigation.ConfirmResult>;
     openConfirmDialog(errorOptions: Xrm.Navigation.ErrorDialogOptions): Xrm.Async.PromiseLike<any>;

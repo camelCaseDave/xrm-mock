@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ViewSelectorMock = void 0;
 var ViewSelectorMock = /** @class */ (function () {
     function ViewSelectorMock(isVisible) {
         this.visible = isVisible;
@@ -7,11 +8,11 @@ var ViewSelectorMock = /** @class */ (function () {
     ViewSelectorMock.prototype.getCurrentView = function () {
         return this.currentView;
     };
-    ViewSelectorMock.prototype.isVisible = function () {
-        return this.visible;
-    };
     ViewSelectorMock.prototype.setCurrentView = function (viewSelectorItem) {
         this.currentView = viewSelectorItem;
+    };
+    ViewSelectorMock.prototype.isVisible = function () {
+        return this.visible;
     };
     return ViewSelectorMock;
 }());

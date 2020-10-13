@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PrivilegeMock = void 0;
 var PrivilegeMock = /** @class */ (function () {
     function PrivilegeMock(canRead, canUpdate, canCreate) {
         this.canRead = canRead;

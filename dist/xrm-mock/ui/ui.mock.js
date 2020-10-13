@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UiMock = void 0;
 var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
 var UiMock = /** @class */ (function () {
     function UiMock(components) {
@@ -72,6 +73,15 @@ var UiMock = /** @class */ (function () {
             return item.uniqueId === uniqueId;
         });
         return matchingNotificationsById && matchingNotificationsById.length ? true : false;
+    };
+    UiMock.prototype.setFormEntityName = function (arg) {
+        throw new Error(("setFormEntityName not implemented"));
+    };
+    UiMock.prototype.addOnLoad = function (handler) {
+        throw new Error(("addOnLoad not implemented"));
+    };
+    UiMock.prototype.removeOnLoad = function (handler) {
+        throw new Error(("removeOnLoad not implemented"));
     };
     return UiMock;
 }());

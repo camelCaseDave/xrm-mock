@@ -10,6 +10,8 @@ export declare class UserSettingsMock implements Xrm.UserSettings {
     transactionCurrencyId: string;
     userId: string;
     userName: string;
+    roles: Xrm.Collection.ItemCollection<Xrm.LookupValue>;
+    transactionCurrency: Xrm.LookupValue;
     constructor(components: IUserSettingsComponents);
     dateFormattingInfo(): Xrm.DateFormattingInfo;
     getTimeZoneOffsetMinutes(): number;
@@ -25,4 +27,6 @@ export interface IUserSettingsComponents {
     transactionCurrencyId?: string;
     userId: string;
     userName: string;
+    roles?: Xrm.Collection.ItemCollection<Xrm.LookupValue>;
+    transactionCurrency?: Xrm.LookupValue;
 }

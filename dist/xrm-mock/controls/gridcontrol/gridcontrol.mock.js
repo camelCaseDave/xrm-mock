@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GridControlMock = void 0;
 var control_mock_1 = require("../control/control.mock");
 var GridControlMock = /** @class */ (function (_super) {
     __extends(GridControlMock, _super);
@@ -21,6 +22,9 @@ var GridControlMock = /** @class */ (function (_super) {
         _this.contextType = components.contextType;
         _this.entityName = components.entityName;
         _this.onLoadHandlers = components.onLoadHandlers;
+        _this.viewSelector = components.viewSelector;
+        _this.grid = components.grid;
+        _this.relationship = components.relationship;
         return _this;
     }
     GridControlMock.defaultComponents = function (components) {
@@ -29,6 +33,9 @@ var GridControlMock = /** @class */ (function (_super) {
         components.entityName = components.entityName || "contact";
         components.onLoadHandlers = components.onLoadHandlers || [];
         return components;
+    };
+    GridControlMock.prototype.refreshRibbon = function () {
+        throw new Error("Method not implemented.");
     };
     GridControlMock.prototype.addOnLoad = function (handler) {
         this.onLoadHandlers.push(handler);
@@ -40,10 +47,10 @@ var GridControlMock = /** @class */ (function (_super) {
         return this.entityName;
     };
     GridControlMock.prototype.getGrid = function () {
-        throw new Error("Method not implemented.");
+        return this.grid;
     };
     GridControlMock.prototype.getViewSelector = function () {
-        throw new Error("Method not implemented.");
+        return this.viewSelector;
     };
     GridControlMock.prototype.refresh = function () {
         throw new Error("Method not implemented.");
@@ -56,6 +63,21 @@ var GridControlMock = /** @class */ (function (_super) {
                 break;
             }
         }
+    };
+    GridControlMock.prototype.getFetchXml = function () {
+        throw new Error("getFetchXml not implemented.");
+    };
+    GridControlMock.prototype.getGridType = function () {
+        throw new Error("getGridType not implemented.");
+    };
+    GridControlMock.prototype.getRelationship = function () {
+        return this.relationship;
+    };
+    GridControlMock.prototype.getUrl = function (client) {
+        throw new Error("getUrl not implemented.");
+    };
+    GridControlMock.prototype.openRelatedGrid = function () {
+        throw new Error("openRelatedGrid not implemented.");
     };
     return GridControlMock;
 }(control_mock_1.ControlMock));

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DataMock = void 0;
 var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
 var DataMock = /** @class */ (function () {
     function DataMock(entity, process) {

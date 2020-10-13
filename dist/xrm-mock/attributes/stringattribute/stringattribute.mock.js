@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringAttributeMock = void 0;
 var attribute_mock_1 = require("../attribute/attribute.mock");
 var StringAttributeMock = /** @class */ (function (_super) {
     __extends(StringAttributeMock, _super);

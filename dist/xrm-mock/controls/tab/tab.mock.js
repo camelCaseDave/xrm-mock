@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TabMock = void 0;
 var array_helper_1 = require("../../../xrm-mock-generator/helpers/array.helper");
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var uicangetvisibleelement_mock_1 = require("../uicangetvisibleelement/uicangetvisibleelement.mock");

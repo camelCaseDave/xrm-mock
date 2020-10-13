@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.RelationshipMock = void 0;
 var RelationshipMock = /** @class */ (function () {
     function RelationshipMock(components) {
         this.attributeName = components.attributeName;

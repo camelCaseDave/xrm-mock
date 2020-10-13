@@ -36,6 +36,8 @@ export declare class ContextMock implements Xrm.GlobalContext {
     getCurrentAppProperties(): Xrm.Async.PromiseLike<Xrm.AppProperties>;
     getCurrentAppUrl(): string;
     isOnPremise(): boolean;
+    isOnPremises(): boolean;
+    getWebResourceUrl(webResourceName: string): string;
 }
 export interface IContextComponents {
     clientContext: Xrm.ClientContext;

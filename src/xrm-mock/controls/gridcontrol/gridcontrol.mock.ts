@@ -12,6 +12,9 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
     public onLoadHandlers: Xrm.Events.ContextSensitiveHandler[];
     public contextType: XrmEnum.GridControlContext;
     public entityName: string;
+    public viewSelector?: Xrm.Controls.ViewSelector;
+    public grid?: Xrm.Controls.Grid;
+    public relationship?: Xrm.Navigation.Relationship;
 
     constructor(components: IGridControlComponents) {
         super(GridControlMock.defaultComponents(components));
@@ -19,8 +22,13 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         this.contextType = components.contextType;
         this.entityName = components.entityName;
         this.onLoadHandlers = components.onLoadHandlers;
+        this.viewSelector = components.viewSelector;
+        this.grid = components.grid;
+        this.relationship = components.relationship;
     }
-
+    public refreshRibbon(): void {
+        throw new Error("Method not implemented.");
+    }
     public addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
         this.onLoadHandlers.push(handler);
     }
@@ -31,10 +39,10 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         return this.entityName;
     }
     public getGrid(): Xrm.Controls.Grid {
-        throw new Error("Method not implemented.");
+        return this.grid;
     }
     public getViewSelector(): Xrm.Controls.ViewSelector {
-        throw new Error("Method not implemented.");
+        return this.viewSelector;
     }
     public refresh(): void {
         throw new Error("Method not implemented.");
@@ -48,10 +56,31 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
             }
         }
     }
+    public getFetchXml(): string {
+        throw new Error("getFetchXml not implemented.");
+    }
+    public getGridType(): number {
+        throw new Error("getGridType not implemented.");
+    }
+
+    public getRelationship(): Xrm.Navigation.Relationship {
+        return this.relationship;
+    }
+
+    public getUrl(client: number): string {
+        throw new Error("getUrl not implemented.");
+    }
+
+    public openRelatedGrid(): void {
+        throw new Error("openRelatedGrid not implemented.");
+    }
 }
 
 export interface IGridControlComponents extends IAttGridControlComponents, IControlComponents {
     name: string;
+    viewSelector?: Xrm.Controls.ViewSelector;
+    grid?: Xrm.Controls.Grid;
+    relationship?: Xrm.Navigation.Relationship;
 }
 
 export interface IAttGridControlComponents extends IAttControlComponents {

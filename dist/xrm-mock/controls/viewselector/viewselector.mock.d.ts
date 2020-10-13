@@ -3,7 +3,7 @@ export declare class ViewSelectorMock implements Xrm.Controls.ViewSelector {
     private visible;
     private currentView;
     constructor(isVisible: boolean);
-    getCurrentView(): Xrm.Controls.ViewSelectorItem;
+    getCurrentView(): Xrm.LookupValue;
+    setCurrentView(viewSelectorItem: Xrm.LookupValue): void;
     isVisible(): boolean;
-    setCurrentView(viewSelectorItem: Xrm.Controls.ViewSelectorItem): void;
 }

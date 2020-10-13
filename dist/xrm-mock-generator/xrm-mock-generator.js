@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.XrmMockGenerator = void 0;
 var XrmMock = require("../xrm-mock/index");
 var app_1 = require("./app");
 var attribute_1 = require("./attribute");

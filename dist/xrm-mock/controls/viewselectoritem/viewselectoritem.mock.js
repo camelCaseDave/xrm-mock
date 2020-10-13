@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ViewSelectorItemMock = void 0;
 var ViewSelectorItemMock = /** @class */ (function () {
     function ViewSelectorItemMock(reference) {
         this.reference = reference;

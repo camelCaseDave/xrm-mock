@@ -3,11 +3,15 @@ import { StageMock } from "../stage/stage.mock";
 export declare class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
     enabledProcesses: Xrm.Page.Process[] | Xrm.ProcessFlow.ProcessDictionary;
     constructor(enabledProcesses: Xrm.ProcessFlow.Process[]);
+    addOnPreProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void;
+    addOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void;
+    removeOnPreProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void;
+    removeOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void;
     getActiveProcess(): Xrm.ProcessFlow.Process;
     setActiveProcess(processId: string, callbackFunction?: Xrm.ProcessFlow.ProcessCallbackDelegate): void;
     setActiveProcessInstance(processInstanceId: string, callbackFunction: Xrm.ProcessFlow.SetProcessInstanceDelegate): void;
     getProcessInstances(callbackFunction: Xrm.ProcessFlow.GetProcessInstancesDelegate): void;
-    addOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void;
+    addOnProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void;
     removeOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void;
     getInstanceId(): string;
     getInstanceName(): string;

@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.IframeControlMock = void 0;
 var control_mock_1 = require("../control/control.mock");
 var IframeControlMock = /** @class */ (function (_super) {
     __extends(IframeControlMock, _super);

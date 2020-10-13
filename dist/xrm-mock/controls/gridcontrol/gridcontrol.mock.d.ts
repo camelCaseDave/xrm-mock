@@ -5,7 +5,11 @@ export declare class GridControlMock extends ControlMock implements Xrm.Controls
     onLoadHandlers: Xrm.Events.ContextSensitiveHandler[];
     contextType: XrmEnum.GridControlContext;
     entityName: string;
+    viewSelector?: Xrm.Controls.ViewSelector;
+    grid?: Xrm.Controls.Grid;
+    relationship?: Xrm.Navigation.Relationship;
     constructor(components: IGridControlComponents);
+    refreshRibbon(): void;
     addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void;
     getContextType(): XrmEnum.GridControlContext;
     getEntityName(): string;
@@ -13,9 +17,17 @@ export declare class GridControlMock extends ControlMock implements Xrm.Controls
     getViewSelector(): Xrm.Controls.ViewSelector;
     refresh(): void;
     removeOnLoad(handler: () => void): void;
+    getFetchXml(): string;
+    getGridType(): number;
+    getRelationship(): Xrm.Navigation.Relationship;
+    getUrl(client: number): string;
+    openRelatedGrid(): void;
 }
 export interface IGridControlComponents extends IAttGridControlComponents, IControlComponents {
     name: string;
+    viewSelector?: Xrm.Controls.ViewSelector;
+    grid?: Xrm.Controls.Grid;
+    relationship?: Xrm.Navigation.Relationship;
 }
 export interface IAttGridControlComponents extends IAttControlComponents {
     contextType?: XrmEnum.GridControlContext;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PanelMock = void 0;
 var PanelMock = /** @class */ (function () {
     function PanelMock() {
     }

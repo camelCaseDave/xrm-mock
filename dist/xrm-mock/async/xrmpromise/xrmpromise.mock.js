@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.XrmPromiseMock = void 0;
 var XrmPromiseMock = /** @class */ (function () {
     function XrmPromiseMock() {
     }

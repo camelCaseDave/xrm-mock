@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ContextMock = void 0;
 var ContextMock = /** @class */ (function () {
     function ContextMock(components) {
         this.userSettings = components.userSettings;
@@ -71,6 +72,12 @@ var ContextMock = /** @class */ (function () {
         throw new Error("Method not implemented.");
     };
     ContextMock.prototype.isOnPremise = function () {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.isOnPremises = function () {
+        throw new Error("Method not implemented.");
+    };
+    ContextMock.prototype.getWebResourceUrl = function (webResourceName) {
         throw new Error("Method not implemented.");
     };
     return ContextMock;

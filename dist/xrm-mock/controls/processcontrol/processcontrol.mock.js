@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProcessControlMock = void 0;
 var ProcessControlMock = /** @class */ (function () {
     function ProcessControlMock(displayState, getVisibleElement, setVisibleElement) {
         this.displayState = displayState;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OptionMetadataMock = void 0;
 var OptionMetadataMock = /** @class */ (function () {
     function OptionMetadataMock(components) {
         this.Value = components.Value;

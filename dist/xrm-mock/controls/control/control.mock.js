@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ControlMock = void 0;
 var ControlMock = /** @class */ (function () {
     function ControlMock(components) {
         this.controlType = components.controlType || "standard";

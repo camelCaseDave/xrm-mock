@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ReportOpenParametersMock = void 0;
 var ReportOpenParametersMock = /** @class */ (function () {
     function ReportOpenParametersMock(action, id, helpID) {
         this.action = action;

@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.KbSearchControlMock = void 0;
 var control_mock_1 = require("../control/control.mock");
 var KbSearchControlMock = /** @class */ (function (_super) {
     __extends(KbSearchControlMock, _super);

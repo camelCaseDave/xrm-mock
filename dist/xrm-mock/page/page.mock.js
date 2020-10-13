@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageMock = void 0;
 var PageMock = /** @class */ (function () {
     function PageMock(context, formContext) {
         this.context = context;

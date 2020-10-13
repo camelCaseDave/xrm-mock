@@ -7,4 +7,6 @@ export declare class StepMock implements Xrm.ProcessFlow.Step {
     getAttribute(): string;
     getName(): string;
     isRequired(): boolean;
+    getProgress(): number;
+    setProgress(stepProgress: number, message: string): string;
 }
