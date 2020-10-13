@@ -105,6 +105,14 @@ export class ContextMock implements Xrm.GlobalContext {
     public isOnPremise(): boolean {
         throw new Error("Method not implemented.");
     }
+
+    public isOnPremises(): boolean {
+        throw new Error("Method not implemented.");
+    }
+
+    public getWebResourceUrl(webResourceName: string): string {
+        throw new Error("Method not implemented.");
+    }
 }
 
 export interface IContextComponents {
