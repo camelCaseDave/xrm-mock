@@ -15,10 +15,10 @@ export class StageMock implements Xrm.ProcessFlow.Stage {
   }
 
   public getCategory(): { getValue(): XrmEnum.StageCategory } {
-      const _category = this.category;
+      const stageCategory = this.category;
       return {
           getValue(): XrmEnum.StageCategory {
-              return _category;
+              return stageCategory;
           },
       };
   }
