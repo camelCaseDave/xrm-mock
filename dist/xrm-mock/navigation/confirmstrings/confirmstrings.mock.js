@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConfirmStringsMock = void 0;
 var ConfirmStringsMock = /** @class */ (function () {
     function ConfirmStringsMock(components) {
         this.cancelButtonLabel = components.cancelButtonLabel;

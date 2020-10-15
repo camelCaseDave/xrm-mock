@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UiLabelElementMock = void 0;
 var UiLabelElementMock = /** @class */ (function () {
     function UiLabelElementMock(label) {
         this.label = label;

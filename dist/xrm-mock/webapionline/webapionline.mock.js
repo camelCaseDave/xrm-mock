@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebApiOnlineMock = void 0;
 var WebApiOnlineMock = /** @class */ (function () {
     function WebApiOnlineMock(offlineCapabilities) {
         this.notImplementedError = "WebApi methods not implemented. Consider faking API calls using a tool such as Sinon.JS";

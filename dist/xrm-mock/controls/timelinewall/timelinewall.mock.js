@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TimelineWallMock = void 0;
 var control_mock_1 = require("../control/control.mock");
 var TimelineWallMock = /** @class */ (function (_super) {
     __extends(TimelineWallMock, _super);
@@ -21,6 +22,18 @@ var TimelineWallMock = /** @class */ (function (_super) {
     }
     TimelineWallMock.prototype.refresh = function () {
         throw new Error("Not implemented.");
+    };
+    TimelineWallMock.prototype.getDisabled = function () {
+        throw new Error("Method not implemented.");
+    };
+    TimelineWallMock.prototype.setDisabled = function (value) {
+        throw new Error("Method not implemented.");
+    };
+    TimelineWallMock.prototype.setFocus = function () {
+        throw new Error("Method not implemented.");
+    };
+    TimelineWallMock.prototype.setVisible = function (visible) {
+        throw new Error("Method not implemented.");
     };
     return TimelineWallMock;
 }(control_mock_1.ControlMock));

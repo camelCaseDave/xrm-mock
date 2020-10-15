@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StageChangeEventContextMock = void 0;
 var StageChangeEventContextMock = /** @class */ (function () {
     function StageChangeEventContextMock(eventContext) {
         this.eventContext = eventContext;

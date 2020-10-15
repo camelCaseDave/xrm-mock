@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppPropertiesMock = void 0;
 var AppPropertiesMock = /** @class */ (function () {
     function AppPropertiesMock(components) {
         this.appId = components.appId;

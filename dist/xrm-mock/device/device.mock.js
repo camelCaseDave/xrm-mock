@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DeviceMock = void 0;
 var DeviceMock = /** @class */ (function () {
     function DeviceMock() {
     }

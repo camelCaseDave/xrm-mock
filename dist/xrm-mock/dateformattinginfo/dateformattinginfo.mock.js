@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DateFormattingInfoMock = void 0;
 var DateFormattingInfoMock = /** @class */ (function () {
     function DateFormattingInfoMock(components) {
         this.amDesignator = components.amDesignator;

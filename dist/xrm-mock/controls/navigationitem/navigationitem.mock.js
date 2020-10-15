@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NavigationItemMock = void 0;
 var NavigationItemMock = /** @class */ (function () {
     function NavigationItemMock(id, standardElement, focusable) {
         this.id = id;

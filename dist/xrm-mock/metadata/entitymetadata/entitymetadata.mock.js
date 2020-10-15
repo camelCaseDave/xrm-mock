@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EntityMetadataMock = void 0;
 var EntityMetadataMock = /** @class */ (function () {
     function EntityMetadataMock(components) {
         this.ActivityTypeMask = components.ActivityTypeMask;

@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OptionSetAttributeMock = void 0;
 var optionsetvalue_mock_1 = require("../../optionsetvalue/optionsetvalue.mock");
 var enumattribute_mock_1 = require("../enumattribute/enumattribute.mock");
 var OptionSetAttributeMock = /** @class */ (function (_super) {

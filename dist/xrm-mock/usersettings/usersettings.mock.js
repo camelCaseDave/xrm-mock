@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserSettingsMock = void 0;
 var UserSettingsMock = /** @class */ (function () {
     function UserSettingsMock(components) {
         this.defaultDashboardId = components.defaultDashboardId;
@@ -12,6 +13,8 @@ var UserSettingsMock = /** @class */ (function () {
         this.transactionCurrencyId = components.transactionCurrencyId;
         this.userId = components.userId;
         this.userName = components.userName;
+        this.roles = components.roles;
+        this.transactionCurrency = components.transactionCurrency;
     }
     UserSettingsMock.prototype.dateFormattingInfo = function () {
         throw new Error("Not implemented.");

@@ -7,7 +7,7 @@ export class IframeControlMock extends ControlMock implements Xrm.Controls.Ifram
   public getObject(): any {
       throw new Error("getObject not implemented.");
   }
-  public getContentWindow(): Xrm.Async.PromiseLike<any> {
+  public getContentWindow(): Promise<Window> {
       throw new Error("getContentWindow not implemented.");
   }
   public getSrc(): string {

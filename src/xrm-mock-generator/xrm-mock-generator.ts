@@ -1,4 +1,5 @@
 import * as XrmMock from "../xrm-mock/index";
+import App from "./app";
 import Attribute from "./attribute";
 import Context from "./context";
 import Control from "./control";
@@ -29,6 +30,7 @@ export class XrmMockGenerator {
   public static Navigation: Navigation = new Navigation();
   public static WebApi: WebApi = new WebApi();
   public static Utility: Utility = new Utility();
+  public static App: App = new App();
 
   public static context: XrmMock.ContextMock;
   public static formContext: XrmMock.FormContextMock;
@@ -43,6 +45,7 @@ export class XrmMockGenerator {
       this.formContext, components.ui, components.process);
 
     const xrm = new XrmMock.XrmStaticMock({
+      app: App.createApp(),
       device: Device.createDevice(),
       mobile: Mobile.createMobile(),
       navigation: Navigation.createNavigation(),

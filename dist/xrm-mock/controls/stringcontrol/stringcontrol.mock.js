@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringControlMock = void 0;
 var autolookupcontrol_mock_1 = require("../autolookupcontrol/autolookupcontrol.mock");
 var StringControlMock = /** @class */ (function (_super) {
     __extends(StringControlMock, _super);

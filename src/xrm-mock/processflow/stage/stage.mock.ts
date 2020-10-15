@@ -15,9 +15,10 @@ export class StageMock implements Xrm.ProcessFlow.Stage {
   }
 
   public getCategory(): { getValue(): XrmEnum.StageCategory } {
+      const _category = this.category;
       return {
           getValue(): XrmEnum.StageCategory {
-              throw new Error("get category value not implemented");
+              return _category;
           },
       };
   }
@@ -44,5 +45,9 @@ export class StageMock implements Xrm.ProcessFlow.Stage {
 
   public _setStatus(status: Xrm.ProcessFlow.StageStatus) {
       this.status = status;
+  }
+
+  public getNavigationBehavior(): any {
+    throw new Error("getNavigationBehavior not implemented");
   }
 }

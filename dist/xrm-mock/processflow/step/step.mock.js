@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StepMock = void 0;
 var StepMock = /** @class */ (function () {
     function StepMock(name, attribute, required) {
         this.name = name;
@@ -14,6 +15,12 @@ var StepMock = /** @class */ (function () {
     };
     StepMock.prototype.isRequired = function () {
         return this.required;
+    };
+    StepMock.prototype.getProgress = function () {
+        throw new Error("getProgress not implemented");
+    };
+    StepMock.prototype.setProgress = function (stepProgress, message) {
+        throw new Error("setProgress not implemented");
     };
     return StepMock;
 }());

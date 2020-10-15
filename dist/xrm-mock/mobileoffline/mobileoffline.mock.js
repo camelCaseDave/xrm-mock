@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MobileOfflineMock = void 0;
 var MobileOfflineMock = /** @class */ (function () {
     function MobileOfflineMock() {
     }

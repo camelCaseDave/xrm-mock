@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AutoLookupControlMock = void 0;
 var standardcontrol_mock_1 = require("../standardcontrol/standardcontrol.mock");
 var uikeypressable_mock_1 = require("../uikeypressable/uikeypressable.mock");
 var AutoLookupControlMock = /** @class */ (function (_super) {

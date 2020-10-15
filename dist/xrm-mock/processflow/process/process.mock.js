@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProcessMock = void 0;
 var ProcessMock = /** @class */ (function () {
     function ProcessMock(components) {
         this.id = components.id;

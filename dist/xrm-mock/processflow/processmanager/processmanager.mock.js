@@ -1,9 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProcessManagerMock = void 0;
 var ProcessManagerMock = /** @class */ (function () {
     function ProcessManagerMock(enabledProcesses) {
         this.enabledProcesses = enabledProcesses;
     }
+    ProcessManagerMock.prototype.addOnPreProcessStatusChange = function (handler) {
+        throw new Error("Method not implemented.");
+    };
+    ProcessManagerMock.prototype.addOnPreStageChange = function (handler) {
+        throw new Error("Method not implemented.");
+    };
+    ProcessManagerMock.prototype.removeOnPreProcessStatusChange = function (handler) {
+        throw new Error("Method not implemented.");
+    };
+    ProcessManagerMock.prototype.removeOnPreStageChange = function (handler) {
+        throw new Error("Method not implemented.");
+    };
     ProcessManagerMock.prototype.getActiveProcess = function () {
         return this.enabledProcesses.filter(function (p) {
             return p.isRendered();

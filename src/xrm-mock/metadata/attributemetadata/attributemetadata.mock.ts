@@ -1,29 +1,26 @@
 export class AttributeMetadataMock implements Xrm.Metadata.AttributeMetadata {
-  public defaultFormValue: number;
-  public options: string[];
-  public logicalName: string;
-  public displayName: string;
-  public attributeType: XrmEnum.AttributeTypeCode;
-  public entityLogicalName: string;
-  public optionSet: Xrm.Metadata.OptionMetadata[];
+  public DefaultFormValue: number;
+  public LogicalName: string;
+  public DisplayName: string;
+  public AttributeType: XrmEnum.AttributeTypeCode;
+  public EntityLogicalName: string;
+  public OptionSet: Xrm.Metadata.OptionMetadata[];
 
   constructor(components: IAttributeMetadataComponents) {
-    this.defaultFormValue = components.defaultFormValue;
-    this.options = components.options;
-    this.logicalName = components.logicalName;
-    this.displayName = components.displayName;
-    this.attributeType = components.attributeType;
-    this.entityLogicalName = components.entityLogicalName;
-    this.optionSet = components.optionSet;
+    this.DefaultFormValue = components.DefaultFormValue;
+    this.LogicalName = components.LogicalName;
+    this.DisplayName = components.DisplayName;
+    this.AttributeType = components.AttributeType;
+    this.EntityLogicalName = components.EntityLogicalName;
+    this.OptionSet = components.OptionSet;
   }
 }
 
 export interface IAttributeMetadataComponents {
-  defaultFormValue?: number;
-  options?: string[];
-  logicalName?: string;
-  displayName?: string;
-  attributeType?: XrmEnum.AttributeTypeCode;
-  entityLogicalName?: string;
-  optionSet?: Xrm.Metadata.OptionMetadata[];
+  DefaultFormValue?: number;
+  LogicalName?: string;
+  DisplayName?: string;
+  AttributeType?: XrmEnum.AttributeTypeCode;
+  EntityLogicalName?: string;
+  OptionSet?: Xrm.Metadata.OptionMetadata[];
 }

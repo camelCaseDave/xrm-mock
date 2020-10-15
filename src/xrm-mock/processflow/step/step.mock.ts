@@ -20,4 +20,12 @@ export class StepMock implements Xrm.ProcessFlow.Step {
   public isRequired(): boolean {
       return this.required;
   }
+
+  public getProgress(): number {
+    throw new Error("getProgress not implemented");
+  }
+
+  public setProgress(stepProgress: number, message: string): string {
+    throw new Error("setProgress not implemented");
+  }
 }

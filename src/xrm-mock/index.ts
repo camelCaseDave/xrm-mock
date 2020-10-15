@@ -1,5 +1,3 @@
-import { QuickFormControlMock } from "./controls/quickform/quickform.mock";
-
 export { IAddControlNotificationOptionsComponents, AddControlNotificationOptionsMock } from "./controls/addcontrolnotificationoptions/addcontrolnotificationoptions.mock";
 export { AlertStringsMock } from "./navigation/alertstrings/alertstrings.mock";
 export { IAppPropertiesComponents, AppPropertiesMock } from "./appproperties/appproperties.mock";
@@ -108,3 +106,6 @@ export { WindowMock } from "./window.mock";
 export { XrmStaticMock, IXrmStaticComponents } from "./xrmstatic.mock";
 export { IframeControlMock } from "./controls/iframecontrol/iframecontrol.mock";
 export { QuickFormControlMock } from "./controls/quickform/quickform.mock";
+export { AppMock } from "./app/app.mock";
+export { KbSearchControlMock } from "./controls/kbsearchcontrol/kbsearchcontrol.mock";
+export { TimerControlMock} from "./controls/timercontrol/timercontrol.mock";

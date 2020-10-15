@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GridEntityMock = void 0;
 var GridEntityMock = /** @class */ (function () {
     function GridEntityMock(reference) {
         this.reference = reference;

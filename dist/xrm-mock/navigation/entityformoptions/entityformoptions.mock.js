@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EntityFormOptionsMock = void 0;
 var EntityFormOptionsMock = /** @class */ (function () {
     function EntityFormOptionsMock(components) {
         this.cmdbar = components.cmdbar;

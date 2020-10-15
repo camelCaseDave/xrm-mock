@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SaveEventArgumentsMock = void 0;
 var SaveEventArgumentsMock = /** @class */ (function () {
     function SaveEventArgumentsMock() {
     }

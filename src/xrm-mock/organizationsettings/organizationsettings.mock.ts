@@ -6,6 +6,8 @@ export class OrganizationSettingsMock implements Xrm.OrganizationSettings {
   public organizationId: string;
   public uniqueName: string;
   public useSkypeProtocol: boolean;
+  public baseCurrency: Xrm.LookupValue;
+  public attributes: any;
 
   constructor(components: IOrganizationSettingsComponents) {
     this.baseCurrencyId = components.baseCurrencyId;
@@ -15,6 +17,8 @@ export class OrganizationSettingsMock implements Xrm.OrganizationSettings {
     this.organizationId = components.organizationId;
     this.uniqueName = components.uniqueName;
     this.useSkypeProtocol = components.useSkypeProtocol;
+    this.baseCurrency = components.baseCurrency;
+    this.attributes = components.attributes;
   }
 }
 
@@ -26,4 +30,6 @@ export interface IOrganizationSettingsComponents {
   organizationId?: string;
   uniqueName?: string;
   useSkypeProtocol?: boolean;
+  baseCurrency?: Xrm.LookupValue;
+  attributes?: any;
 }

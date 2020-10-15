@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StageSelectedEventArgumentsMock = void 0;
 var StageSelectedEventArgumentsMock = /** @class */ (function () {
     function StageSelectedEventArgumentsMock() {
     }

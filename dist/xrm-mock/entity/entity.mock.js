@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EntityMock = void 0;
 var xrm_mock_generator_1 = require("../../xrm-mock-generator");
 var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
 var EntityMock = /** @class */ (function () {

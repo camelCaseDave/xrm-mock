@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemCollectionMock = void 0;
 var ItemCollectionMock = /** @class */ (function () {
     function ItemCollectionMock(itemCollection) {
         this.itemCollection = itemCollection || [];

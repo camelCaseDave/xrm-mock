@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OpenWebresourceOptionsMock = void 0;
 var dialogsizeoptions_mock_1 = require("../dialogsizeoptions/dialogsizeoptions.mock");
 var OpenWebresourceOptionsMock = /** @class */ (function (_super) {
     __extends(OpenWebresourceOptionsMock, _super);
