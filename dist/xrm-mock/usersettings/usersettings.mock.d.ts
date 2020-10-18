@@ -1,5 +1,6 @@
 /// <reference types="xrm" />
 export declare class UserSettingsMock implements Xrm.UserSettings {
+    dateFormattingInfo: Xrm.DateFormattingInfo;
     defaultDashboardId: string;
     isGuidedHelpEnabled: boolean;
     isHighContrastEnabled: boolean;
@@ -13,10 +14,10 @@ export declare class UserSettingsMock implements Xrm.UserSettings {
     roles: Xrm.Collection.ItemCollection<Xrm.LookupValue>;
     transactionCurrency: Xrm.LookupValue;
     constructor(components: IUserSettingsComponents);
-    dateFormattingInfo(): Xrm.DateFormattingInfo;
     getTimeZoneOffsetMinutes(): number;
 }
 export interface IUserSettingsComponents {
+    dateFormattingInfo?: Xrm.DateFormattingInfo;
     defaultDashboardId?: string;
     isGuidedHelpEnabled: boolean;
     isHighContrastEnabled: boolean;
