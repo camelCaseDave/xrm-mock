@@ -10,10 +10,10 @@ var StageMock = /** @class */ (function () {
         this.steps = steps;
     }
     StageMock.prototype.getCategory = function () {
-        var _category = this.category;
+        var stageCategory = this.category;
         return {
             getValue: function () {
-                return _category;
+                return stageCategory;
             },
         };
     };

@@ -68,12 +68,6 @@ var UiMock = /** @class */ (function () {
     UiMock.prototype.refreshRibbon = function () {
         throw new Error(("refreshRibbon not implemented"));
     };
-    UiMock.prototype._getFormNotificationExists = function (notifications, uniqueId) {
-        var matchingNotificationsById = notifications.filter(function (item) {
-            return item.uniqueId === uniqueId;
-        });
-        return matchingNotificationsById && matchingNotificationsById.length ? true : false;
-    };
     UiMock.prototype.setFormEntityName = function (arg) {
         throw new Error(("setFormEntityName not implemented"));
     };
@@ -82,6 +76,12 @@ var UiMock = /** @class */ (function () {
     };
     UiMock.prototype.removeOnLoad = function (handler) {
         throw new Error(("removeOnLoad not implemented"));
+    };
+    UiMock.prototype._getFormNotificationExists = function (notifications, uniqueId) {
+        var matchingNotificationsById = notifications.filter(function (item) {
+            return item.uniqueId === uniqueId;
+        });
+        return matchingNotificationsById && matchingNotificationsById.length ? true : false;
     };
     return UiMock;
 }());

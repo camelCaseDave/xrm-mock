@@ -83,13 +83,6 @@ export class UiMock implements Xrm.Ui {
         throw new Error(("refreshRibbon not implemented"));
     }
 
-    private _getFormNotificationExists(notifications, uniqueId): boolean {
-        const matchingNotificationsById = notifications.filter((item) => {
-            return item.uniqueId === uniqueId;
-        });
-        return matchingNotificationsById && matchingNotificationsById.length ? true : false;
-    }
-
     public setFormEntityName(arg: string): void {
         throw new Error(("setFormEntityName not implemented"));
     }
@@ -100,6 +93,13 @@ export class UiMock implements Xrm.Ui {
 
     public removeOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
         throw new Error(("removeOnLoad not implemented"));
+    }
+
+    private _getFormNotificationExists(notifications, uniqueId): boolean {
+        const matchingNotificationsById = notifications.filter((item) => {
+            return item.uniqueId === uniqueId;
+        });
+        return matchingNotificationsById && matchingNotificationsById.length ? true : false;
     }
 }
 
