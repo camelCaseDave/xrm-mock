@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSettingsMock = void 0;
 var UserSettingsMock = /** @class */ (function () {
     function UserSettingsMock(components) {
+        this.dateFormattingInfo = components.dateFormattingInfo;
         this.defaultDashboardId = components.defaultDashboardId;
         this.isGuidedHelpEnabled = components.isGuidedHelpEnabled;
         this.isHighContrastEnabled = components.isHighContrastEnabled;
@@ -16,9 +17,6 @@ var UserSettingsMock = /** @class */ (function () {
         this.roles = components.roles;
         this.transactionCurrency = components.transactionCurrency;
     }
-    UserSettingsMock.prototype.dateFormattingInfo = function () {
-        throw new Error("Not implemented.");
-    };
     UserSettingsMock.prototype.getTimeZoneOffsetMinutes = function () {
         throw new Error("Not implemented");
     };
