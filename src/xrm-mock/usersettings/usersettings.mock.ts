@@ -1,4 +1,5 @@
 export class UserSettingsMock implements Xrm.UserSettings {
+  public dateFormattingInfo: Xrm.DateFormattingInfo;
   public defaultDashboardId: string;
   public isGuidedHelpEnabled: boolean;
   public isHighContrastEnabled: boolean;
@@ -13,6 +14,7 @@ export class UserSettingsMock implements Xrm.UserSettings {
   public transactionCurrency: Xrm.LookupValue;
 
   constructor(components: IUserSettingsComponents) {
+    this.dateFormattingInfo = components.dateFormattingInfo;
     this.defaultDashboardId = components.defaultDashboardId;
     this.isGuidedHelpEnabled = components.isGuidedHelpEnabled;
     this.isHighContrastEnabled = components.isHighContrastEnabled;
@@ -27,16 +29,13 @@ export class UserSettingsMock implements Xrm.UserSettings {
     this.transactionCurrency = components.transactionCurrency;
   }
 
-  public dateFormattingInfo(): Xrm.DateFormattingInfo {
-    throw new Error("Not implemented.");
-  }
-
   public getTimeZoneOffsetMinutes(): number {
     throw new Error("Not implemented");
   }
 }
 
 export interface IUserSettingsComponents {
+  dateFormattingInfo?: Xrm.DateFormattingInfo;
   defaultDashboardId?: string;
   isGuidedHelpEnabled: boolean;
   isHighContrastEnabled: boolean;
