@@ -1,11 +1,13 @@
 import { OptionSetAttributeMock } from "../../attributes/optionsetattribute/optionsetattribute.mock";
 import { OptionSetValueMock } from "../../optionsetvalue/optionsetvalue.mock";
-import { IAttStandardControlComponents,
-         IStandardControlComponents,
-         StandardControlMock } from "../standardcontrol/standardcontrol.mock";
+import {
+    IAttStandardControlComponents,
+    IStandardControlComponents,
+    StandardControlMock
+} from "../standardcontrol/standardcontrol.mock";
 
 export class OptionSetControlMock extends StandardControlMock<OptionSetControlMock, OptionSetAttributeMock, number>
-                                   implements Xrm.Controls.OptionSetControl {
+    implements Xrm.Controls.OptionSetControl {
 
     private static defaultComponents(components: IOptionSetControlComponents): IOptionSetControlComponents {
         components.controlType = "optionset";
@@ -38,12 +40,26 @@ export class OptionSetControlMock extends StandardControlMock<OptionSetControlMo
         let option: OptionSetValueMock;
         for (const item of this.options) {
             if (item.value === value) {
-               option = item;
-               break;
+                option = item;
+                break;
             }
         }
         const index = this.options.indexOf(option);
         this.options.splice(index, 1);
+
+        // check if attribute is linked and update the removal accordingly
+        if (this.attribute && this.attribute.options) {
+            let attrOption: OptionSetValueMock;
+            for (const item2 of this.attribute.options) {
+                if (item2.value === value) {
+                    attrOption = item2;
+                    break;
+                }
+            }
+
+            const attrIndex = this.attribute.options.indexOf(attrOption);
+            this.attribute.options.splice(attrIndex, 1);
+        }
     }
 
     public getOptions(): Xrm.OptionSetValue[] {
@@ -53,7 +69,7 @@ export class OptionSetControlMock extends StandardControlMock<OptionSetControlMo
 
 export interface IOptionSetControlComponents
     extends IStandardControlComponents<OptionSetControlMock, OptionSetAttributeMock, number>,
-            IAttOptionSetControlComponents {
+    IAttOptionSetControlComponents {
     name: string;
 }
 
