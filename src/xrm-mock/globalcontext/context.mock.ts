@@ -34,12 +34,12 @@ export class ContextMock implements Xrm.GlobalContext {
                 id: "00000000-0000-0000-0000-0000000000000",
                 entityType: "transactioncurrency"
             },
-            defaultCountryCode: undefined,
-            isAutoSaveEnabled: undefined,
-            languageId: undefined,
-            organizationId: undefined,
-            uniqueName: undefined,
-            useSkypeProtocol: undefined
+            defaultCountryCode: null,
+            isAutoSaveEnabled: true,
+            languageId: 1033,
+            organizationId: "00000000-0000-0000-0000-0000000000000",
+            uniqueName: "test-uniqueName",
+            useSkypeProtocol: true
         }
     }
 
