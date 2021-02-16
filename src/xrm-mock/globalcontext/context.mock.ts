@@ -28,6 +28,7 @@ export class ContextMock implements Xrm.GlobalContext {
         this.userName = components.userName || components.userSettings.userName;
         this.userRoles = components.userRoles || components.userSettings.securityRoles;
         this.version = components.version;
+        this.organizationSettings = buildDefaultOrganizationSettings();
     }
 
     public getClientUrl(): string {
@@ -112,6 +113,22 @@ export class ContextMock implements Xrm.GlobalContext {
 
     public getWebResourceUrl(webResourceName: string): string {
         throw new Error("Method not implemented.");
+    }
+}
+
+function buildDefaultOrganizationSettings() {
+    return {
+        baseCurrencyId: "00000000-0000-0000-0000-0000000000000",
+        baseCurrency: {
+            id: "00000000-0000-0000-0000-0000000000000",
+            entityType: "transactioncurrency"
+        },
+        defaultCountryCode: null,
+        isAutoSaveEnabled: true,
+        languageId: 1033,
+        organizationId: "00000000-0000-0000-0000-0000000000000",
+        uniqueName: "test-uniqueName",
+        useSkypeProtocol: true
     }
 }
 
