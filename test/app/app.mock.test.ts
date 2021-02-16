@@ -1,8 +1,10 @@
 import { AppMock } from "../../src/xrm-mock";
 
 describe("Web API", () => {
+  let app: AppMock;
+
   beforeEach(() => {
-    this.app = new AppMock();
+    app = new AppMock();
   });
 
   afterEach(() => {
@@ -10,6 +12,6 @@ describe("Web API", () => {
   });
 
   it("should exist", () => {
-    expect(this.app).toBeDefined();
+    expect(app).toBeDefined();
   });
 });

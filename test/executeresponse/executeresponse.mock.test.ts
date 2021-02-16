@@ -1,10 +1,12 @@
 import { ExecuteResponseMock } from "../../src/xrm-mock/executeresponse/executeresponse.mock";
 
 describe("ExecuteResponse Mock", () => {
+    let executeResponse: ExecuteResponseMock;
+
     beforeEach(() => {
-        this.executeResponse = new ExecuteResponseMock({});
+        executeResponse = new ExecuteResponseMock({});
     });
     it("should exist", () => {
-        expect(this.executeResponse).toBeDefined();
+        expect(executeResponse).toBeDefined();
     });
 });

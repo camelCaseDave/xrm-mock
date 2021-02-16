@@ -16,6 +16,7 @@ var ContextMock = /** @class */ (function () {
         this.userName = components.userName || components.userSettings.userName;
         this.userRoles = components.userRoles || components.userSettings.securityRoles;
         this.version = components.version;
+        this.organizationSettings = buildDefaultOrganizationSettings();
     }
     ContextMock.prototype.getClientUrl = function () {
         return this.clientUrl;
@@ -83,4 +84,19 @@ var ContextMock = /** @class */ (function () {
     return ContextMock;
 }());
 exports.ContextMock = ContextMock;
+function buildDefaultOrganizationSettings() {
+    return {
+        baseCurrencyId: "00000000-0000-0000-0000-0000000000000",
+        baseCurrency: {
+            id: "00000000-0000-0000-0000-0000000000000",
+            entityType: "transactioncurrency"
+        },
+        defaultCountryCode: null,
+        isAutoSaveEnabled: true,
+        languageId: 1033,
+        organizationId: "00000000-0000-0000-0000-0000000000000",
+        uniqueName: "test-uniqueName",
+        useSkypeProtocol: true
+    };
+}
 //# sourceMappingURL=context.mock.js.map

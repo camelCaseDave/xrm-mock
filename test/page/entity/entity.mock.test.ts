@@ -4,76 +4,81 @@ import { DataMock } from "../../../src/xrm-mock/data/data.mock";
 import { EntityMock } from "../../../src/xrm-mock/entity/entity.mock";
 import { FormContextMock } from "../../../src/xrm-mock/formcontext/formcontext.mock";
 import { PageMock } from "../../../src/xrm-mock/page/page.mock";
+import { ControlMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Entity Mock", () => {
+    const id = "{0}";
+    const entityName = "contact"
+    const attributes: Xrm.Attributes.Attribute[] = [];
+    const lastName: AttributeMock<ControlMock, string> = new AttributeMock({
+        isDirty: false,
+        name: "lastname",
+        requiredLevel: "recommended",
+        submitMode: "always",
+        value: "Bloggs",
+    });
+    let entityMock: EntityMock;
+    let formContext: FormContextMock;
+    let xrmPageMock: PageMock;
+
     beforeEach(() => {
-        this.id = "{0}";
-        this.entityName = "contact";
-        const attributes: Xrm.Attributes.Attribute[] = [];
         attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
         attributes.push(new AttributeMock({ name: "description", value: "" }));
-        this.lastName = new AttributeMock({
-            isDirty: false,
-            name: "lastname",
-            requiredLevel: "recommended",
-            submitMode: "always",
-            value: "Bloggs",
-        });
-        attributes.push(this.lastName);
+        attributes.push(lastName);
 
-        this.formContext = new FormContextMock(new DataMock(this.entityMock), null);
-        this.entityMock = new EntityMock({id: this.id, entityName: this.entityName, attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes)});
-        this.xrmPageMock = new PageMock(null, this.formContext);
+        formContext = new FormContextMock(new DataMock(entityMock), null);
+        entityMock = new EntityMock({ id, entityName, attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes) });
+        xrmPageMock = new PageMock(null, formContext);
     });
 
     it("should exist", () => {
-        expect(this.entityMock).toBeDefined();
+        expect(entityMock).toBeDefined();
     });
 
     it("should not be dirty", () => {
-        expect(this.entityMock.getIsDirty()).toBe(false);
+        expect(entityMock.getIsDirty()).toBe(false);
     });
 
     it("should be dirty when an attribute value changes", () => {
-        expect(this.entityMock.getIsDirty()).toBe(false);
-        this.lastName.setValue("Lasty");
-        expect(this.lastName.getValue()).toBe("Lasty");
-        expect(this.lastName.getIsDirty()).toBe(true);
-        expect(this.entityMock.getIsDirty()).toBe(true);
+        expect(entityMock.getIsDirty()).toBe(false);
+        lastName.setValue("Lasty");
+        expect(lastName.getValue()).toBe("Lasty");
+        expect(lastName.getIsDirty()).toBe(true);
+        expect(entityMock.getIsDirty()).toBe(true);
     });
 
     it("should get an id of 0", () => {
-        expect(this.entityMock.getId()).toBe(this.id);
+        expect(entityMock.getId()).toBe(id);
     });
 
-    it ("should get an entityName of contact", () => {
-        expect(this.entityMock.getEntityName()).toBe(this.entityName);
+    it("should get an entityName of contact", () => {
+        expect(entityMock.getEntityName()).toBe(entityName);
     });
 
-    it ("should add and execute onSave event", () => {
+    it("should add and execute onSave event", () => {
         let depth: number;
 
         function onSave(context: Xrm.Events.SaveEventContext) {
             depth = context.getDepth();
         }
 
-        this.entityMock.addOnSave(onSave);
+        entityMock.addOnSave(onSave);
 
-        expect(this.entityMock.saveEventHandlers.length).toBe(1);
+        expect(entityMock.saveEventHandlers.length).toBe(1);
 
-        this.entityMock.save();
+        entityMock.save();
 
         expect(depth).toBe(0);
     });
 
-    it ("should remove an onSave event", () => {
+    it("should remove an onSave event", () => {
         // tslint:disable-next-line:no-empty
         function onSave(context: Xrm.Events.SaveEventContext) {
         }
 
-        this.entityMock.addOnSave(onSave);
-        this.entityMock.removeOnSave(onSave);
+        entityMock.addOnSave(onSave);
+        entityMock.removeOnSave(onSave);
 
-        expect(this.entityMock.saveEventHandlers.length).toBe(0);
+        expect(entityMock.saveEventHandlers.length).toBe(0);
     });
 });

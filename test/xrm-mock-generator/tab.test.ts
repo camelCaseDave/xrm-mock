@@ -5,9 +5,11 @@ import { PageMock } from "../../src/xrm-mock/page/page.mock";
 describe("XrmMockGenerator.Tab", () => {
     let page: PageMock;
     let tab: Xrm.Controls.Tab;
+    let xrmUiMock: UiMock;
+
     beforeEach(() => {
         page = XrmMockGenerator.initialise().Page;
-        this.xrmUiMock = new UiMock({
+        xrmUiMock = new UiMock({
             formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>([
                 new FormItemMock({
                     currentItem: true,
@@ -20,7 +22,7 @@ describe("XrmMockGenerator.Tab", () => {
     });
 
     it("should create a tab", () => {
-        XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", this.xrmUiMock, null);
+        XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", xrmUiMock, null);
         tab = Xrm.Page.ui.tabs.get("testTab");
         expect(tab).toBeDefined();
         expect(tab).not.toBeNull();
@@ -35,7 +37,7 @@ describe("XrmMockGenerator.Tab", () => {
     });
 
     it("should have a parent", () => {
-        expect(tab.getParent()).toEqual(this.xrmUiMock);
+        expect(tab.getParent()).toEqual(xrmUiMock);
     });
 
     it("should be invisible", () => {

@@ -2,34 +2,36 @@ import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attrib
 import { StandardControlMock } from "../../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
 
 describe("Xrm.Controls.StandardControl Mock", () => {
-    beforeEach(() => {
-      this.standardControl = new StandardControlMock({
-        attribute: new AttributeMock({
-          name: "firstname",
-          value: "Joe",
-        }),
-        disabled: false,
+  let standardControl: StandardControlMock<any, any, any>;
+
+  beforeEach(() => {
+    standardControl = new StandardControlMock({
+      attribute: new AttributeMock({
         name: "firstname",
-      });
+        value: "Joe",
+      }),
+      disabled: false,
+      name: "firstname",
     });
+  });
 
-    it("should exist", () => {
-        expect(this.standardControl).toBeDefined();
-    });
+  it("should exist", () => {
+    expect(standardControl).toBeDefined();
+  });
 
-    it("should not be disabled", () => {
-      expect(this.standardControl.getDisabled()).toBe(false);
-    });
+  it("should not be disabled", () => {
+    expect(standardControl.getDisabled()).toBe(false);
+  });
 
-    it("should set itself to disabled", () => {
-      this.standardControl.setDisabled(true);
-      expect(this.standardControl.getDisabled()).toBe(true);
-    });
+  it("should set itself to disabled", () => {
+    standardControl.setDisabled(true);
+    expect(standardControl.getDisabled()).toBe(true);
+  });
 
-    it("should set its label", () => {
-      const expected = "First Name Changed";
+  it("should set its label", () => {
+    const expected = "First Name Changed";
 
-      this.standardControl.setLabel(expected);
-      expect(this.standardControl.getLabel()).toBe(expected);
-    });
+    standardControl.setLabel(expected);
+    expect(standardControl.getLabel()).toBe(expected);
+  });
 });

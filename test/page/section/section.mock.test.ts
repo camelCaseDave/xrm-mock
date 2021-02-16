@@ -4,42 +4,44 @@ import * as Label from "../../../src/xrm-mock/controls/uilabelelement/uilabelele
 import * as Standard from "../../../src/xrm-mock/controls/uistandardelement/uistandardelement.mock";
 
 describe("Xrm.ProcessFlow.Section Mock", () => {
+    let section: SectionMock;
+
     beforeEach(() => {
-        this.section = new SectionMock("Section_Main", null,
+        section = new SectionMock("Section_Main", null,
             new Standard.UiStandardElementMock(
                 new Label.UiLabelElementMock("Main Section"),
                 new Visible.UiCanGetVisibleElementMock(true)));
     });
 
     it("should instantiate", () => {
-        expect(this.section).toBeDefined();
+        expect(section).toBeDefined();
     });
 
     it("should be called Section_Main", () => {
-        expect(this.section.getName()).toBe("Section_Main");
+        expect(section.getName()).toBe("Section_Main");
     });
 
     it("should be visible", () => {
-        expect(this.section.getVisible()).toBe(true);
+        expect(section.getVisible()).toBe(true);
     });
 
     it("should be labelled Main Section", () => {
-        expect(this.section.getLabel()).toBe("Main Section");
+        expect(section.getLabel()).toBe("Main Section");
     });
 
     it("should return a null parent", () => {
-        expect(this.section.getParent()).toBe(null);
+        expect(section.getParent()).toBe(null);
     });
 
     it("should toggle to not visible", () => {
-        expect(this.section.getVisible()).toBe(true);
-        this.section.setVisible(false);
-        expect(this.section.getVisible()).toBe(false);
-    });
+        expect(section.getVisible()).toBe(true);
+        section.setVisible(false);
+        expect(section.getVisible()).toBe(false);
+    })
 
     it("should change its label to Not Main Section", () => {
-        expect(this.section.getLabel()).toBe("Main Section");
-        this.section.setLabel("Not Main Section");
-        expect(this.section.getLabel()).toBe("Not Main Section");
+        expect(section.getLabel()).toBe("Main Section");
+        section.setLabel("Not Main Section");
+        expect(section.getLabel()).toBe("Not Main Section");
     });
 });

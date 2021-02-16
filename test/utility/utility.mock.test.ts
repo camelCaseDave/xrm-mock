@@ -2,6 +2,7 @@ import { UtilityMock } from "../../src/xrm-mock/utility/utility.mock";
 
 describe("Xrm.Utility Mock", () => {
     let utility: UtilityMock;
+
     beforeEach(() => {
         utility = new UtilityMock();
     });
@@ -18,12 +19,14 @@ describe("Xrm.Utility Mock", () => {
     });
 
     describe("confirmDialog", () => {
+        let confirmSpy;
+
         beforeEach(() => {
-            this.confirmSpy = jest.spyOn(window, "confirm");
+            confirmSpy = jest.spyOn(window, "confirm");
         });
 
         it("should confirm and call yes callback", () => {
-            this.confirmSpy.mockReturnValueOnce(true);
+            confirmSpy.mockReturnValueOnce(true);
             utility.confirmDialog("Are you sure?",
                 () => {
                     expect(true);
@@ -34,7 +37,7 @@ describe("Xrm.Utility Mock", () => {
         });
 
         it("should confirm and call no callback", () => {
-            this.confirmSpy.mockReturnValueOnce(false);
+            confirmSpy.mockReturnValueOnce(false);
             utility.confirmDialog("Are you sure?",
                 () => {
                     fail();

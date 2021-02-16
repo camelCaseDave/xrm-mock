@@ -1,8 +1,10 @@
 import { EntityMetadataMock } from "../../../src/xrm-mock/";
 
 describe("Xrm.Metadata.AttributeMetadata Mock", () => {
+  let entityMetadata: EntityMetadataMock;
+
   beforeEach(() => {
-    this.entityMetadata = new EntityMetadataMock({
+    entityMetadata = new EntityMetadataMock({
       IsQuickCreateEnabled: true,
       LogicalName: "contact",
       PrimaryIdAttribute: "contactid",
@@ -10,6 +12,6 @@ describe("Xrm.Metadata.AttributeMetadata Mock", () => {
   });
 
   it("should exist", () => {
-    expect(this.entityMetadata).toBeDefined();
+    expect(entityMetadata).toBeDefined();
   });
 });

@@ -1,8 +1,10 @@
 import { CaptureImageOptionsMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Device.CaptureImageOptions Mock", () => {
+  let captureImageOptions: CaptureImageOptionsMock;
+
   beforeEach(() => {
-    this.captureImageOptions = new CaptureImageOptionsMock({
+    captureImageOptions = new CaptureImageOptionsMock({
       allowEdit: true,
       height: 60,
       preferFrontCamera: true,
@@ -12,6 +14,6 @@ describe("Xrm.Device.CaptureImageOptions Mock", () => {
   });
 
   it("should exist", () => {
-    expect(this.captureImageOptions).toBeDefined();
+    expect(captureImageOptions).toBeDefined();
   });
 });

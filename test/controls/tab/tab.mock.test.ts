@@ -5,8 +5,11 @@ import { TabMock } from "../../../src/xrm-mock/controls/tab/tab.mock";
 import { UiMock } from "../../../src/xrm-mock/ui/ui.mock";
 
 describe("Tab Mock", () => {
+  let ui: UiMock;
+  let tab: TabMock;
+
   beforeEach(() => {
-    this.ui = new UiMock({
+    ui = new UiMock({
       formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>([
         new FormItemMock({
           currentItem: true,
@@ -16,26 +19,26 @@ describe("Tab Mock", () => {
         }),
       ])),
     });
-    this.tab = new TabMock({
+    tab = new TabMock({
       displayState: "expanded",
       name: "Main Details",
-      parent: this.ui,
+      parent: ui,
     });
   });
 
   it("should exist", () => {
-    expect(this.tab).toBeDefined();
+    expect(tab).toBeDefined();
   });
 
   it("should be called Main Details", () => {
-    expect(this.tab.getName()).toBe("Main Details");
+    expect(tab.getName()).toBe("Main Details");
   });
 
   it("should be expanded", () => {
-    expect(this.tab.getDisplayState()).toBe("expanded");
+    expect(tab.getDisplayState()).toBe("expanded");
   });
 
   it("should get its parent Ui", () => {
-    expect(this.tab.getParent()).toMatchObject(this.ui);
+    expect(tab.getParent()).toMatchObject(ui);
   });
 });

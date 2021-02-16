@@ -1,9 +1,11 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
 import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
+import { ControlMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.EnumAttribute Mock", () => {
+    let enumAttribute: EnumAttributeMock<ControlMock, boolean>;
+
     beforeEach(() => {
-        this.enumAttribute = new EnumAttributeMock({
+        enumAttribute = new EnumAttributeMock({
             isDirty: false,
             name: "new_havingFun",
             requiredLevel: "none",
@@ -13,10 +15,10 @@ describe("Xrm.Attributes.EnumAttribute Mock", () => {
     });
 
     it("should instantiate", () => {
-        expect(this.enumAttribute).toBeDefined();
+        expect(enumAttribute).toBeDefined();
     });
 
     it("should have an initial value of true", () => {
-        expect(this.enumAttribute.getInitialValue()).toBe(true);
+        expect(enumAttribute.getInitialValue()).toBe(true);
     });
 });

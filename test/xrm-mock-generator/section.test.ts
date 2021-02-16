@@ -6,9 +6,11 @@ describe("XrmMockGenerator.Section", () => {
     let page: PageMock;
     let tab: Xrm.Controls.Tab;
     let section: Xrm.Controls.Section;
+    let xrmUiMock: UiMock;
+
     beforeEach(() => {
         page = XrmMockGenerator.initialise().Page;
-        this.xrmUiMock = new UiMock({
+        xrmUiMock = new UiMock({
             formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>([
                 new FormItemMock({
                     currentItem: true,
@@ -21,7 +23,7 @@ describe("XrmMockGenerator.Section", () => {
     });
 
     it("should create a tab", () => {
-        tab = XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", this.xrmUiMock, null);
+        tab = XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", xrmUiMock, null);
         XrmMockGenerator.Section.createSection("testSection", "TestSection", false, tab, null);
 
         const sections = Xrm.Page.ui.tabs.get("testTab").sections;

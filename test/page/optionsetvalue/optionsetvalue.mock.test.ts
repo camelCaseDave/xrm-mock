@@ -1,19 +1,21 @@
-import { OptionSetValueMock} from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
+import { OptionSetValueMock } from "../../../src/xrm-mock/optionsetvalue/optionsetvalue.mock";
 
 describe("Xrm.OptionSetValue Mock", () => {
+    let optionSetValue: OptionSetValueMock;
+
     beforeEach(() => {
-        this.optionSetValue = new OptionSetValueMock("statecode", 0);
+        optionSetValue = new OptionSetValueMock("statecode", 0);
     });
 
     it("should instantiate", () => {
-        expect(this.optionSetValue).toBeDefined();
+        expect(optionSetValue).toBeDefined();
     });
 
     it("should have a text property of statecode", () => {
-        expect(this.optionSetValue.text).toBe("statecode");
+        expect(optionSetValue.text).toBe("statecode");
     });
 
     it("should have a value property of 0", () => {
-        expect(this.optionSetValue.value).toBe(0);
+        expect(optionSetValue.value).toBe(0);
     });
 });

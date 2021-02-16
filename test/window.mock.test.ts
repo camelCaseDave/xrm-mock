@@ -2,10 +2,11 @@ import { WindowMock } from "../src/xrm-mock/window.mock";
 import { XrmStaticMock } from "../src/xrm-mock/xrmstatic.mock";
 
 describe("Window Mock", () => {
+    let windowMock;
     beforeEach(() => {
-        this.windowMock = new WindowMock(new XrmStaticMock({}));
+        windowMock = new WindowMock(new XrmStaticMock({}));
     });
     it("should exist", () => {
-        expect(this.windowMock).toBeDefined();
+        expect(windowMock).toBeDefined();
     });
 });

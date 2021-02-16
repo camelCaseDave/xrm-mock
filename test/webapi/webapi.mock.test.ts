@@ -1,12 +1,17 @@
 import { ClientContextMock, WebApiMock, WebApiOfflineMock, WebApiOnlineMock } from "../../src/xrm-mock";
 
 describe("Web API", () => {
-  beforeEach(() => {
-    const clientContext = new ClientContextMock("Web", "Online");
+  let clientContext: ClientContextMock;
+  let offlineApi: WebApiOfflineMock;
+  let onlineApi: WebApiOnlineMock;
+  let webApi: WebApiMock;
 
-    this.offlineApi = new WebApiOfflineMock();
-    this.onlineApi = new WebApiOnlineMock(this.offlineApi);
-    this.webApi = new WebApiMock(clientContext, this.onlineApi, this.offlineApi);
+  beforeEach(() => {
+    clientContext = new ClientContextMock("Web", "Online");
+
+    offlineApi = new WebApiOfflineMock();
+    onlineApi = new WebApiOnlineMock(offlineApi);
+    webApi = new WebApiMock(clientContext, onlineApi, offlineApi);
   });
 
   afterEach(() => {
@@ -14,46 +19,46 @@ describe("Web API", () => {
   });
 
   it("should exist", () => {
-    expect(this.webApi).toBeDefined();
+    expect(webApi).toBeDefined();
   });
 
   it("should call online.createRecord when it's online", () => {
-    const spy = jest.spyOn(this.onlineApi, "createRecord");
-    expect(() => this.webApi.createRecord()).toThrow();
-    expect(this.onlineApi.createRecord).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(onlineApi, "createRecord");
+    expect(() => webApi.createRecord("", "")).toThrow();
+    expect(onlineApi.createRecord).toHaveBeenCalledTimes(1);
   });
 
   it("should call online.deleteRecord when it's online", () => {
-    const spy = jest.spyOn(this.onlineApi, "deleteRecord");
-    expect(() => this.webApi.deleteRecord()).toThrow();
-    expect(this.onlineApi.deleteRecord).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(onlineApi, "deleteRecord");
+    expect(() => webApi.deleteRecord("", "")).toThrow();
+    expect(onlineApi.deleteRecord).toHaveBeenCalledTimes(1);
   });
 
   it("should call online.retrieveRecord when it's online", () => {
-    const spy = jest.spyOn(this.onlineApi, "retrieveRecord");
-    expect(() => this.webApi.retrieveRecord()).toThrow();
-    expect(this.onlineApi.retrieveRecord).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(onlineApi, "retrieveRecord");
+    expect(() => webApi.retrieveRecord("", "", "")).toThrow();
+    expect(onlineApi.retrieveRecord).toHaveBeenCalledTimes(1);
   });
 
   it("should call online.retrieveMultipleRecords when it's online", () => {
-    const spy = jest.spyOn(this.onlineApi, "retrieveMultipleRecords");
-    expect(() => this.webApi.retrieveMultipleRecords()).toThrow();
-    expect(this.onlineApi.retrieveMultipleRecords).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(onlineApi, "retrieveMultipleRecords");
+    expect(() => webApi.retrieveMultipleRecords("")).toThrow();
+    expect(onlineApi.retrieveMultipleRecords).toHaveBeenCalledTimes(1);
   });
 
   it("should call online.updateRecord when it's online", () => {
-    const spy = jest.spyOn(this.onlineApi, "updateRecord");
-    expect(() => this.webApi.updateRecord()).toThrow();
-    expect(this.onlineApi.updateRecord).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(onlineApi, "updateRecord");
+    expect(() => webApi.updateRecord("", "", "")).toThrow();
+    expect(onlineApi.updateRecord).toHaveBeenCalledTimes(1);
   });
 
   describe("online", () => {
     it("should throw for execute", () => {
-      expect(() => this.onlineApi.execute()).toThrow();
+      expect(() => onlineApi.execute(null)).toThrow();
     });
 
     it("should throw for executeMultiple", () => {
-      expect(() => this.onlineApi.executeMultiple()).toThrow();
+      expect(() => onlineApi.executeMultiple(null)).toThrow();
     });
   });
 });

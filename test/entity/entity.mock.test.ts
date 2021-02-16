@@ -1,21 +1,23 @@
 import { EntityMock } from "../../src/xrm-mock/index";
 
 describe("Xrm.Entity Mock", () => {
+    let entity: EntityMock;
+
     beforeEach(() => {
-        this.entity = new EntityMock();
+        entity = new EntityMock();
     });
 
     it("should exist", () => {
-        expect(this.entity).toBeDefined();
+        expect(entity).toBeDefined();
     });
 
     it("should return a default id", () => {
-        const id = this.entity.getId();
+        const id = entity.getId();
         expect(id).toContain("{");
     });
 
     it("should return a defaulted LookupValue from getEntityReference", () => {
-        const entityReference = this.entity.getEntityReference();
+        const entityReference = entity.getEntityReference();
         expect(entityReference.entityType).toBe("contact");
     });
 });

@@ -1,11 +1,13 @@
 import { OptionMetadataMock } from "../../../src/xrm-mock/";
 
 describe("Xrm.Metadata.OptionMetadata Mock", () => {
+  let optionMetadata: OptionMetadataMock;
+
   beforeEach(() => {
-    this.optionmetadata = new OptionMetadataMock({});
+    optionMetadata = new OptionMetadataMock({});
   });
 
   it("should exist", () => {
-    expect(this.optionmetadata).toBeDefined();
+    expect(optionMetadata).toBeDefined();
   });
 });

@@ -3,8 +3,10 @@ import { BooleanAttributeMock } from "../../../src/xrm-mock/attributes/booleanat
 import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
 
 describe("Xrm.Attributes.BooleanAttribute Mock", () => {
+    let booleanAttribute: BooleanAttributeMock;
+
     beforeEach(() => {
-        this.booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock({
+        booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock({
             isDirty: false,
             name: "new_isHavingFun",
             value: true,
@@ -12,11 +14,11 @@ describe("Xrm.Attributes.BooleanAttribute Mock", () => {
     });
 
     it("should instantiate", () => {
-        expect(this.booleanAttribute).toBeDefined();
+        expect(booleanAttribute).toBeDefined();
         expect(BooleanAttributeMock.create("empty").getName()).toBe("empty");
     });
 
     it("should have an initial value of true", () => {
-        expect(this.booleanAttribute.getInitialValue()).toBe(true);
+        expect(booleanAttribute.getInitialValue()).toBe(true);
     });
 });

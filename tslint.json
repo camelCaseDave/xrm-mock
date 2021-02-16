@@ -1,7 +1,20 @@
 {
   "extends": "tslint:latest",
-  "rules":{
-    "max-line-length": [true, {"limit": 160, "ignore-pattern": "^import |^export {(.*?)}"}],"adjacent-overload-signatures":false,
+  "linterOptions": {
+    "exclude": [
+      "node_modules",
+      "test"
+    ]
+  },
+  "rules": {
+    "max-line-length": [
+      true,
+      {
+        "limit": 160,
+        "ignore-pattern": "^import |^export {(.*?)}"
+      }
+    ],
+    "adjacent-overload-signatures": false,
     "no-implicit-dependencies": false,
     "array-type": false
   }

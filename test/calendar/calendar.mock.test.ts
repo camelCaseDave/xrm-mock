@@ -1,8 +1,10 @@
 import { CalendarMock, ICalendarComponents } from "../../src/xrm-mock";
 
 describe("Xrm.Calendar", () => {
+  let calendar;
+
   beforeEach(() => {
-    this.calendar = new CalendarMock({
+    calendar = new CalendarMock({
       AlgorithmType: 5,
       CalendarType: 4,
       Eras: [1, 2],
@@ -14,6 +16,6 @@ describe("Xrm.Calendar", () => {
   });
 
   it("should exist", () => {
-    expect(this.calendar).toBeDefined();
+    expect(calendar).toBeDefined();
   });
 });

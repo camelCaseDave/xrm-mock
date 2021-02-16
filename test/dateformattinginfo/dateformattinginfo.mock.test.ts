@@ -1,8 +1,10 @@
 import { DateFormattingInfoMock } from "../../src/xrm-mock/";
 
 describe("Xrm.Controls.DateFormattingInfoMock Mock", () => {
+  let dateFormattingInfo: DateFormattingInfoMock;
+
   beforeEach(() => {
-    this.dateFormattingInfo = new DateFormattingInfoMock({
+    dateFormattingInfo = new DateFormattingInfoMock({
       AbbreviatedDayNames: ["SU", "MO", "TU", "WE", "TH", "FR", "SA"],
       AbbreviatedMonthGenitiveNames: ["J", "F"],
       AbbreviatedMonthNames: [],
@@ -30,6 +32,6 @@ describe("Xrm.Controls.DateFormattingInfoMock Mock", () => {
   });
 
   it("should exist", () => {
-    expect(this.dateFormattingInfo).toBeDefined();
+    expect(dateFormattingInfo).toBeDefined();
   });
 });

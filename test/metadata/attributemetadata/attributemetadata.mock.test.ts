@@ -1,8 +1,10 @@
 import { AttributeMetadataMock } from "../../../src/xrm-mock/";
 
 describe("Xrm.Metadata.AttributeMetadata Mock", () => {
+  let attributeMetadata: AttributeMetadataMock;
+
   beforeEach(() => {
-    this.attributeMetadata = new AttributeMetadataMock({
+    attributeMetadata = new AttributeMetadataMock({
       AttributeType: 11,
       DefaultFormValue: 1,
       DisplayName: "Lead Source",
@@ -13,6 +15,6 @@ describe("Xrm.Metadata.AttributeMetadata Mock", () => {
   });
 
   it("should exist", () => {
-    expect(this.attributeMetadata).toBeDefined();
+    expect(attributeMetadata).toBeDefined();
   });
 });
