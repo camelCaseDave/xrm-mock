@@ -1,5 +1,4 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { ControlMock } from "../../../src/xrm-mock";
+import { AttributeMock, ControlMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.Attribute Mock", () => {
     let attributeMock: AttributeMock<ControlMock, string>;

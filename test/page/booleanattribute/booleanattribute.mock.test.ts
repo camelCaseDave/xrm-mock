@@ -1,6 +1,4 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { BooleanAttributeMock } from "../../../src/xrm-mock/attributes/booleanattribute/booleanattribute.mock";
-import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
+import { AttributeMock, BooleanAttributeMock, EnumAttributeMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.BooleanAttribute Mock", () => {
     let booleanAttribute: BooleanAttributeMock;

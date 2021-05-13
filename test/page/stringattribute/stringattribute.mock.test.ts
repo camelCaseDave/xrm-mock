@@ -1,7 +1,7 @@
 import {
     IStringAttributeComponents,
     StringAttributeMock
-} from "../../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
+} from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.StringAttribute Mock", () => {
     const attribute: IStringAttributeComponents = {

@@ -1,8 +1,11 @@
-import { AttributeMock } from "../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
-import { DataMock } from "../../src/xrm-mock/data/data.mock";
-import { EntityMock } from "../../src/xrm-mock/entity/entity.mock";
-import { ControlMock } from "../../src/xrm-mock";
+import {
+    AttributeMock,
+    ControlMock,
+    DataMock,
+    EntityMock,
+    ItemCollectionMock
+} from "../../src/xrm-mock";
+
 
 describe("Xrm.Data Mock", () => {
     const id = "{B05EC7CE-5D51-DF11-97E0-00155DB232D0}";

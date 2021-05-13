@@ -1,5 +1,4 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { StandardControlMock } from "../../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
+import { AttributeMock, StandardControlMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Controls.StandardControl Mock", () => {
   let standardControl: StandardControlMock<any, any, any>;

@@ -1,5 +1,4 @@
-import { EnumAttributeMock } from "../../../src/xrm-mock/attributes/enumattribute/enumattribute.mock";
-import { ControlMock } from "../../../src/xrm-mock";
+import { ControlMock, EnumAttributeMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.EnumAttribute Mock", () => {
     let enumAttribute: EnumAttributeMock<ControlMock, boolean>;
