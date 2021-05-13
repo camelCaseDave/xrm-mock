@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttributeMock = void 0;
 var array_helper_1 = require("../../../xrm-mock-generator/helpers/array.helper");
+var xrm_mock_generator_1 = require("../../../xrm-mock-generator/xrm-mock-generator");
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
@@ -22,7 +23,7 @@ var AttributeMock = /** @class */ (function () {
         if (this.eventHandlers.length) {
             for (var _i = 0, _a = this.eventHandlers; _i < _a.length; _i++) {
                 var handler = _a[_i];
-                handler.call(this);
+                handler.call(this, xrm_mock_generator_1.XrmMockGenerator.getEventContext());
             }
         }
     };
