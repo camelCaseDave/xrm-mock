@@ -1,17 +1,14 @@
-import { AttributeMock } from "../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { StringAttributeMock } from "../../src/xrm-mock/attributes/stringattribute/stringattribute.mock";
-import { ItemCollectionMock } from "../../src/xrm-mock/collection/itemcollection/itemcollection.mock";
-import { AutoLookupControlMock } from "../../src/xrm-mock/controls/autolookupcontrol/autolookupcontrol.mock";
-import { ControlMock } from "../../src/xrm-mock/controls/control/control.mock";
-import { StandardControlMock } from "../../src/xrm-mock/controls/standardcontrol/standardcontrol.mock";
-import { StringControlMock } from "../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
-import { UiKeyPressableMock } from "../../src/xrm-mock/controls/uikeypressable/uikeypressable.mock";
-import { DataMock } from "../../src/xrm-mock/data/data.mock";
-import { EntityMock } from "../../src/xrm-mock/entity/entity.mock";
-import { FormContextMock } from "../../src/xrm-mock/formcontext/formcontext.mock";
-import { PageMock } from "../../src/xrm-mock/page/page.mock";
-import { UiMock } from "../../src/xrm-mock/ui/ui.mock";
-import { XrmStaticMock } from "../../src/xrm-mock/xrmstatic.mock";
+import {
+    AttributeMock,
+    DataMock,
+    EntityMock,
+    FormContextMock,
+    ItemCollectionMock,
+    StringAttributeMock,
+    StringControlMock,
+    UiMock
+} from "../../src/xrm-mock";
+
 
 describe("FormContext Mock", () => {
     let lastName: StringAttributeMock;
@@ -45,11 +42,11 @@ describe("FormContext Mock", () => {
 
         formContext = new FormContextMock(
             new DataMock(
-                new EntityMock({ attributes: new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes)})),
-                new UiMock({
-                    controls: new ItemCollectionMock<StringControlMock>(controls),
-                },
-        ));
+            new EntityMock({ attributes: new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes)})),
+            new UiMock({
+                controls: new ItemCollectionMock<StringControlMock>(controls),
+            },
+            ));
     });
 
     it("should exist", () => {

@@ -1,4 +1,5 @@
 import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
+import { XrmMockGenerator } from "../../../xrm-mock-generator/xrm-mock-generator";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../../controls/control/control.mock";
 
@@ -36,7 +37,7 @@ export class AttributeMock<TControl extends ControlMock,
     public fireOnChange(): void {
         if (this.eventHandlers.length) {
             for (const handler of this.eventHandlers) {
-                handler.call(this);
+                handler.call(this, XrmMockGenerator.getEventContext());
             }
         }
     }

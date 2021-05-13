@@ -1,6 +1,21 @@
 import * as sinon from "sinon";
-import { AttributeMock, ClientContextMock, ContextMock, EntityMock, EventContextMock, FormItemMock, FormSelectorMock, IAttributeComponents, IEntityComponents, IGridControlComponents, IStringControlComponents, ItemCollectionMock, IUiComponents, NavigationStaticMock, ProcessManagerMock, ProcessMock, StageMock, StepMock, StringAttributeMock, StringControlMock, UiMock, UserSettingsMock } from "../../src/xrm-mock";
-import { IXrmGeneratorComponents, XrmMockGenerator } from "../../src/xrm-mock-generator";
+import {
+    ClientContextMock,
+    ContextMock,
+    EntityMock,
+    EventContextMock,
+    FormItemMock,
+    FormSelectorMock,
+    ItemCollectionMock,
+    ProcessManagerMock,
+    ProcessMock,
+    StageMock,
+    StepMock,
+    StringAttributeMock,
+    UiMock,
+    UserSettingsMock
+} from "../../src/xrm-mock";
+import { XrmMockGenerator } from "../../src/xrm-mock-generator";
 import FormContext from "../../src/xrm-mock-generator/formcontext";
 
 describe("XrmMockGenerator Builder", () => {
@@ -21,28 +36,28 @@ describe("XrmMockGenerator Builder", () => {
     beforeAll(() => {
         // attributes
         const nameAttribute = new StringAttributeMock({
-                name: "name",
-                requiredLevel: "required",
-            });
+            name: "name",
+            requiredLevel: "required",
+        });
         nameAttribute.addOnChange(() => tempValue = "Test OnChange!");
         // entity
         const entity = new EntityMock({
-                attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>([nameAttribute]),
-                entityName: "account",
-                id: "{00000000-0000-0000-0000-000000000000}",
-            });
+            attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>([nameAttribute]),
+            entityName: "account",
+            id: "{00000000-0000-0000-0000-000000000000}",
+        });
         // ui
         const ui = new UiMock({
-                formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>(
-                    [
-                        new FormItemMock({
-                            currentItem: true,
-                            formType: 2,
-                            id: "5",
-                            label: "Main",
-                        }),
-                    ])),
-            });
+            formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>(
+                [
+                    new FormItemMock({
+                        currentItem: true,
+                        formType: 2,
+                        id: "5",
+                        label: "Main",
+                    }),
+                ])),
+        });
         // context
         const globalContext = new ContextMock(
             {
@@ -91,11 +106,11 @@ describe("XrmMockGenerator Builder", () => {
         const processManager = new ProcessManagerMock([process1, process2]);
 
         XrmMockGenerator.initialise({
-                context: globalContext,
-                entity,
-                process: processManager,
-                ui,
-            });
+            context: globalContext,
+            entity,
+            process: processManager,
+            ui,
+        });
 
         // form structure
         XrmMockGenerator.Tab.createTab("testTab", "Test Tab", false, "collapsed", null,
@@ -262,6 +277,13 @@ describe("XrmMockGenerator Builder", () => {
             tempValue = "";
             attribute.fireOnChange();
             expect(tempValue).toBe("Test OnChange!");
+        });
+
+        it("should fire OnChange with eventContext", () => {
+            const onChangeEventMock = jest.fn();
+            attribute.addOnChange(onChangeEventMock);
+            attribute.fireOnChange();
+            expect(onChangeEventMock).toBeCalledWith(XrmMockGenerator.getEventContext());
         });
     });
 

@@ -1,7 +1,4 @@
-import {
-    BooleanAttributeMock,
-    IBooleanAttributeComponents
-} from "../../../src/xrm-mock/attributes/booleanattribute/booleanattribute.mock";
+import { BooleanAttributeMock, IBooleanAttributeComponents } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.BooleanAttribute Mock", () => {
     const attribute: IBooleanAttributeComponents = {

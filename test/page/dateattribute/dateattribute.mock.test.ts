@@ -1,14 +1,13 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { DateAttributeMock } from "../../../src/xrm-mock/attributes/dateattribute/dateattribute.mock";
+import { DateAttributeMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.DateAttribute Mock", () => {
     let dateAttribute: DateAttributeMock;
     beforeEach(() => {
         dateAttribute = new DateAttributeMock({
-                format: "date",
-                isDirty: false,
-                name: "birthdate",
-                value: new Date("January 1, 1990"),
+            format: "date",
+            isDirty: false,
+            name: "birthdate",
+            value: new Date("January 1, 1990"),
         });
     });
 

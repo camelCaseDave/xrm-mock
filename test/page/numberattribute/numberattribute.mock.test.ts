@@ -1,5 +1,4 @@
-import { AttributeMock } from "../../../src/xrm-mock/attributes/attribute/attribute.mock";
-import { NumberAttributeMock } from "../../../src/xrm-mock/attributes/numberattribute/numberattribute.mock";
+import { NumberAttributeMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.NumberAttribute", () => {
     let numberAttribute: NumberAttributeMock;
@@ -91,5 +90,5 @@ describe("Xrm.Attributes.NumberAttribute", () => {
             .toThrowError("precision cannot be less than 0, but was -1");
         expect(() => { const a = new NumberAttributeMock({name: "", precision: 11}); })
             .toThrowError("precision cannot be greater than 10, but was 11");
-});
+    });
 });
