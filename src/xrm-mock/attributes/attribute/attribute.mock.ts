@@ -1,4 +1,3 @@
-import { exception } from "console";
 import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { XrmMockGenerator } from "../../../xrm-mock-generator/xrm-mock-generator";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
