@@ -1,9 +1,21 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttributeMock = void 0;
 var array_helper_1 = require("../../../xrm-mock-generator/helpers/array.helper");
 var xrm_mock_generator_1 = require("../../../xrm-mock-generator/xrm-mock-generator");
 var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
+var eventcontext_mock_1 = require("../../events/eventcontext/eventcontext.mock");
 var AttributeMock = /** @class */ (function () {
     function AttributeMock(components) {
         this.attributeType = components.attributeType || "string";
@@ -21,9 +33,11 @@ var AttributeMock = /** @class */ (function () {
     };
     AttributeMock.prototype.fireOnChange = function () {
         if (this.eventHandlers.length) {
+            var globalContext = xrm_mock_generator_1.XrmMockGenerator.getEventContext();
+            var context = new eventcontext_mock_1.EventContextMock(__assign(__assign({}, globalContext), { depth: globalContext.depth ? globalContext.depth + 1 : 1, eventSource: this }));
             for (var _i = 0, _a = this.eventHandlers; _i < _a.length; _i++) {
                 var handler = _a[_i];
-                handler.call(this, xrm_mock_generator_1.XrmMockGenerator.getEventContext());
+                handler.call(this, context);
             }
         }
     };

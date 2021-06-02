@@ -38,12 +38,11 @@ export class AttributeMock<TControl extends ControlMock,
     public fireOnChange(): void {
         if (this.eventHandlers.length) {
             const globalContext = XrmMockGenerator.getEventContext();
-            const context = new EventContextMock(Object.assign(
-                globalContext,
-                {
-                    depth: globalContext.depth ? globalContext.depth + 1 : 1,
-                    eventSource: this,
-                }));
+            const context = new EventContextMock({
+                ...globalContext,
+                depth: globalContext.depth ? globalContext.depth + 1 : 1,
+                eventSource: this,
+            });
             for (const handler of this.eventHandlers) {
                 handler.call(this, context);
             }
