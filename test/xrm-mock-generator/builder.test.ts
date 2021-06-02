@@ -1,4 +1,5 @@
 import * as sinon from "sinon";
+import { mock } from "sinon";
 import {
     ClientContextMock,
     ContextMock,
@@ -280,10 +281,11 @@ describe("XrmMockGenerator Builder", () => {
         });
 
         it("should fire OnChange with eventContext", () => {
-            const onChangeEventMock = jest.fn();
-            attribute.addOnChange(onChangeEventMock);
+            let context: Xrm.Events.EventContext;
+            attribute.addOnChange((c: Xrm.Events.EventContext) => {context = c});
             attribute.fireOnChange();
-            expect(onChangeEventMock).toBeCalledWith(XrmMockGenerator.getEventContext());
+            expect(context.getContext()).toBe(XrmMockGenerator.getEventContext().getContext());
+            expect(context.getEventSource()).toBe(attribute);
         });
     });
 

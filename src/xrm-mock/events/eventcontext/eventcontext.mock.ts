@@ -1,9 +1,18 @@
 export class EventContextMock implements Xrm.Events.EventContext {
-  public formContext: Xrm.FormContext;
   public context: Xrm.GlobalContext;
+  public depth: number;
+  public eventArgs: Xrm.Events.SaveEventContext;
+  public eventSource: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
+  public formContext: Xrm.FormContext;
+  public sharedVariables: {[index:string] : any};
+
   constructor(components: IEventContextComponents) {
-    this.formContext = components.formContext;
     this.context = components.context;
+    this.depth = components.depth == undefined || components.depth == null ? 1 : components.depth;
+    this.eventArgs = components.eventArgs;
+    this.eventSource = components.eventSource;
+    this.formContext = components.formContext;
+    this.sharedVariables = components.sharedVariables || {};
   }
 
   public getContext(): Xrm.GlobalContext {
@@ -11,15 +20,21 @@ export class EventContextMock implements Xrm.Events.EventContext {
   }
 
   public getDepth(): number {
-      throw new Error("not implemented");
+      return this.depth;
   }
 
   public getEventArgs(): Xrm.Events.SaveEventContext {
-      throw new Error("not implemented");
+      if(this.eventArgs){
+        return this.eventArgs;
+      }
+      throw new Error("no event args given");
   }
 
   public getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity {
-      throw new Error("not implemented");
+    if(this.eventSource){
+        return this.eventSource;
+      }
+      throw new Error("no event source given");
   }
 
   public getFormContext(): Xrm.FormContext {
@@ -27,14 +42,18 @@ export class EventContextMock implements Xrm.Events.EventContext {
   }
 
   public getSharedVariable<T>(key: string): T {
-      throw new Error("not implemented");
+      return this.sharedVariables[key];
   }
 
   public setSharedVariable<T>(key: string, value: T): void {
-      throw new Error("not implemented");
+      this.sharedVariables[key] = value;
   }
 }
 export interface IEventContextComponents {
-    formContext?: Xrm.FormContext;
     context?: Xrm.GlobalContext;
+    depth?: number;
+    eventArgs?: Xrm.Events.SaveEventContext;
+    eventSource?: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
+    formContext?: Xrm.FormContext;
+    sharedVariables?: {[index:string] : any};
 }
