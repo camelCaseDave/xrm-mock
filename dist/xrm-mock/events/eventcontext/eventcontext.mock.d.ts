@@ -1,7 +1,13 @@
 /// <reference types="xrm" />
 export declare class EventContextMock implements Xrm.Events.EventContext {
-    formContext: Xrm.FormContext;
     context: Xrm.GlobalContext;
+    depth: number;
+    eventArgs: Xrm.Events.SaveEventContext;
+    eventSource: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
+    formContext: Xrm.FormContext;
+    sharedVariables: {
+        [index: string]: any;
+    };
     constructor(components: IEventContextComponents);
     getContext(): Xrm.GlobalContext;
     getDepth(): number;
@@ -12,6 +18,12 @@ export declare class EventContextMock implements Xrm.Events.EventContext {
     setSharedVariable<T>(key: string, value: T): void;
 }
 export interface IEventContextComponents {
-    formContext?: Xrm.FormContext;
     context?: Xrm.GlobalContext;
+    depth?: number;
+    eventArgs?: Xrm.Events.SaveEventContext;
+    eventSource?: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
+    formContext?: Xrm.FormContext;
+    sharedVariables?: {
+        [index: string]: any;
+    };
 }

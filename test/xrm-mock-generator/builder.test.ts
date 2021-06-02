@@ -1,5 +1,4 @@
 import * as sinon from "sinon";
-import { mock } from "sinon";
 import {
     ClientContextMock,
     ContextMock,
@@ -281,11 +280,11 @@ describe("XrmMockGenerator Builder", () => {
         });
 
         it("should fire OnChange with eventContext", () => {
-            let context: Xrm.Events.EventContext;
-            attribute.addOnChange((c: Xrm.Events.EventContext) => {context = c});
+            let contextArg: Xrm.Events.EventContext;
+            attribute.addOnChange((c: Xrm.Events.EventContext) => {contextArg = c});
             attribute.fireOnChange();
-            expect(context.getContext()).toBe(XrmMockGenerator.getEventContext().getContext());
-            expect(context.getEventSource()).toBe(attribute);
+            expect(contextArg.getContext()).toBe(XrmMockGenerator.getEventContext().getContext());
+            expect(contextArg.getEventSource()).toBe(attribute);
         });
     });
 

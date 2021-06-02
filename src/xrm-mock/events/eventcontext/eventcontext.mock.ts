@@ -4,11 +4,11 @@ export class EventContextMock implements Xrm.Events.EventContext {
   public eventArgs: Xrm.Events.SaveEventContext;
   public eventSource: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
   public formContext: Xrm.FormContext;
-  public sharedVariables: {[index:string] : any};
+  public sharedVariables: {[index: string] : any};
 
   constructor(components: IEventContextComponents) {
     this.context = components.context;
-    this.depth = components.depth == undefined || components.depth == null ? 1 : components.depth;
+    this.depth = components.depth === undefined || components.depth === null ? 1 : components.depth;
     this.eventArgs = components.eventArgs;
     this.eventSource = components.eventSource;
     this.formContext = components.formContext;
@@ -24,17 +24,17 @@ export class EventContextMock implements Xrm.Events.EventContext {
   }
 
   public getEventArgs(): Xrm.Events.SaveEventContext {
-      if(this.eventArgs){
-        return this.eventArgs;
-      }
-      throw new Error("no event args given");
+        if (this.eventArgs) {
+            return this.eventArgs;
+        }
+        throw new Error("no event args given");
   }
 
   public getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity {
-    if(this.eventSource){
+    if (this.eventSource) {
         return this.eventSource;
-      }
-      throw new Error("no event source given");
+    }
+    throw new Error("no event source given");
   }
 
   public getFormContext(): Xrm.FormContext {
@@ -55,5 +55,5 @@ export interface IEventContextComponents {
     eventArgs?: Xrm.Events.SaveEventContext;
     eventSource?: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
     formContext?: Xrm.FormContext;
-    sharedVariables?: {[index:string] : any};
+    sharedVariables?: {[index: string] : any};
 }

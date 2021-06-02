@@ -3,29 +3,39 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventContextMock = void 0;
 var EventContextMock = /** @class */ (function () {
     function EventContextMock(components) {
-        this.formContext = components.formContext;
         this.context = components.context;
+        this.depth = components.depth === undefined || components.depth === null ? 1 : components.depth;
+        this.eventArgs = components.eventArgs;
+        this.eventSource = components.eventSource;
+        this.formContext = components.formContext;
+        this.sharedVariables = components.sharedVariables || {};
     }
     EventContextMock.prototype.getContext = function () {
         return this.context;
     };
     EventContextMock.prototype.getDepth = function () {
-        throw new Error("not implemented");
+        return this.depth;
     };
     EventContextMock.prototype.getEventArgs = function () {
-        throw new Error("not implemented");
+        if (this.eventArgs) {
+            return this.eventArgs;
+        }
+        throw new Error("no event args given");
     };
     EventContextMock.prototype.getEventSource = function () {
-        throw new Error("not implemented");
+        if (this.eventSource) {
+            return this.eventSource;
+        }
+        throw new Error("no event source given");
     };
     EventContextMock.prototype.getFormContext = function () {
         return this.formContext;
     };
     EventContextMock.prototype.getSharedVariable = function (key) {
-        throw new Error("not implemented");
+        return this.sharedVariables[key];
     };
     EventContextMock.prototype.setSharedVariable = function (key, value) {
-        throw new Error("not implemented");
+        this.sharedVariables[key] = value;
     };
     return EventContextMock;
 }());
