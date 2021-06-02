@@ -2,6 +2,7 @@ import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { XrmMockGenerator } from "../../../xrm-mock-generator/xrm-mock-generator";
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
 import { ControlMock } from "../../controls/control/control.mock";
+import { EventContextMock } from "../../events/eventcontext/eventcontext.mock";
 
 export type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string;
 
@@ -36,8 +37,15 @@ export class AttributeMock<TControl extends ControlMock,
 
     public fireOnChange(): void {
         if (this.eventHandlers.length) {
+            const globalContext = XrmMockGenerator.getEventContext();
+            const context = new EventContextMock(Object.assign(
+                globalContext,
+                {
+                    depth: globalContext.depth ? globalContext.depth + 1 : 1,
+                    eventSource: this,
+                }));
             for (const handler of this.eventHandlers) {
-                handler.call(this, XrmMockGenerator.getEventContext());
+                handler.call(this, context);
             }
         }
     }
