@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SectionMock = void 0;
+var itemcollection_mock_1 = require("../../collection/itemcollection/itemcollection.mock");
 var uicangetvisibleelement_mock_1 = require("../uicangetvisibleelement/uicangetvisibleelement.mock");
 var uilabelelement_mock_1 = require("../uilabelelement/uilabelelement.mock");
 var uistandardelement_mock_1 = require("../uistandardelement/uistandardelement.mock");
@@ -16,7 +17,7 @@ var SectionMock = /** @class */ (function () {
         }
         this.uiStandardElement = uiStandardElement
             || new uistandardelement_mock_1.UiStandardElementMock(new uilabelelement_mock_1.UiLabelElementMock(name), new uicangetvisibleelement_mock_1.UiCanGetVisibleElementMock(true));
-        this.controls = controls;
+        this.controls = controls || new itemcollection_mock_1.ItemCollectionMock();
     }
     SectionMock.prototype.getName = function () {
         return this.name;

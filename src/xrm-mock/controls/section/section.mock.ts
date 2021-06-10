@@ -25,7 +25,7 @@ export class SectionMock implements Xrm.Controls.Section {
 
         this.uiStandardElement = uiStandardElement
             || new UiStandardElementMock(new UiLabelElementMock(name), new UiCanGetVisibleElementMock(true));
-        this.controls = controls;
+        this.controls = controls || new ItemCollectionMock();
     }
 
     public getName(): string {

@@ -51,4 +51,9 @@ describe("XrmMockGenerator.Section", () => {
     it("should be invisible", () => {
         expect(section.getVisible()).toBeFalsy();
     });
+
+    it("should have an empty controls collection", () => {
+        expect(section.controls).not.toBeNull();
+        expect(section.controls.getLength()).toBe(0);
+    });
 });
