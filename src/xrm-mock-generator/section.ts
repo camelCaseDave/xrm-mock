@@ -25,14 +25,6 @@ export default class Section {
             new UiStandardElementMock(new UiLabelElementMock(label), new UiCanGetVisibleElementMock(isVisible)),
             controls);
 
-        if (parent) {
-            const sections = parent.sections as XrmMock.ItemCollectionMock<Xrm.Controls.Section>;
-
-            if (sections) {
-                sections.push(section);
-            }
-        }
-
         if (controls) {
             ControlHelpers.setControlsParent(controls, section);
         }

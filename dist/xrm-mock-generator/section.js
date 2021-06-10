@@ -24,12 +24,6 @@ var Section = /** @class */ (function () {
      */
     Section.prototype.createSection = function (name, label, isVisible, parent, controls) {
         var section = new XrmMock.SectionMock(name, parent, new uistandardelement_mock_1.UiStandardElementMock(new uilabelelement_mock_1.UiLabelElementMock(label), new uicangetvisibleelement_mock_1.UiCanGetVisibleElementMock(isVisible)), controls);
-        if (parent) {
-            var sections = parent.sections;
-            if (sections) {
-                sections.push(section);
-            }
-        }
         if (controls) {
             control_helper_1.default.setControlsParent(controls, section);
         }

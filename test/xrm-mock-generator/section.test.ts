@@ -8,7 +8,7 @@ describe("XrmMockGenerator.Section", () => {
     let section: Xrm.Controls.Section;
     let xrmUiMock: UiMock;
 
-    beforeEach(() => {
+    beforeAll(() => {
         page = XrmMockGenerator.initialise().Page;
         xrmUiMock = new UiMock({
             formSelector: new FormSelectorMock(new ItemCollectionMock<FormItemMock>([
@@ -20,19 +20,20 @@ describe("XrmMockGenerator.Section", () => {
                 }),
             ])),
         });
+        tab = XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", xrmUiMock, null);
+        section = XrmMockGenerator.Section.createSection("testSection", "TestSection", false, tab, null);
     });
 
-    it("should create a tab", () => {
-        tab = XrmMockGenerator.Tab.createTab("testTab", "Test", false, "collapsed", xrmUiMock, null);
-        XrmMockGenerator.Section.createSection("testSection", "TestSection", false, tab, null);
-
+    it("should create a section", () => {
         const sections = Xrm.Page.ui.tabs.get("testTab").sections;
+        expect(tab.sections.getLength()).toBe(1);
+        expect(sections.getLength()).toBe(1);
         expect(sections).toBeDefined();
         expect(sections).not.toBeNull();
 
-        section = sections.get("testSection");
-        expect(section).toBeDefined();
-        expect(section).not.toBeNull();
+        const localSection = sections.get("testSection");
+        expect(localSection).toBeDefined();
+        expect(localSection).not.toBeNull();
     });
 
     it("should have a name", () => {
