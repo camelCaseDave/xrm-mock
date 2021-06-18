@@ -14,15 +14,19 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         return components;
     }
 
-    public preSearchHandlers: Xrm.Events.ContextSensitiveHandler[] = [];
-    public views: ILookupView[];
+    public entityTypes: string[];
     public filters: ILookupFilter[];
+    public onLookupTagHandlers: Xrm.Events.ContextSensitiveHandler[];
+    public preSearchHandlers: Xrm.Events.ContextSensitiveHandler[];
+    public views: ILookupView[];
 
     constructor(components: ILookupControlComponents) {
         super(LookupControlMock.defaultComponents(components));
-        this.views = components.views || [];
+        this.entityTypes = components.entityTypes || [];
         this.filters = components.filters || [];
+        this.onLookupTagHandlers = components.onLookupTagHandlers || [];
         this.preSearchHandlers = components.preSearchHandlers || [];
+        this.views = components.views || [];
 
         if (this.views && this.views.length > 1) {
             const defaultViews = this.views.filter((v) => v.isDefault).length;
@@ -33,6 +37,10 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
                 this.views[0].isDefault = true;
             }
         }
+    }
+
+    public addOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+        this.onLookupTagHandlers.push(handler);
     }
 
     public addPreSearch(handler: Xrm.Events.ContextSensitiveHandler): void {
@@ -59,6 +67,18 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         });
     }
 
+    public fireOnLookupTagClick(context: Xrm.Events.EventContext): void {
+        for (const handler of this.onLookupTagHandlers) {
+            handler(context);
+        }
+    }
+
+    public firePreSearch(context: Xrm.Events.EventContext): void {
+        for (const handler of this.preSearchHandlers) {
+            handler(context);
+        }
+    }
+
     public getDefaultView(): string {
         for (const view of this.views) {
             if (view.isDefault) {
@@ -70,29 +90,33 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
     }
 
     public getEntityTypes(): string[] {
-        throw new Error("Method not implemented.");
+        return this.entityTypes;
     }
 
     public setEntityTypes(entityLogicalNames: string[]): void {
-        throw new Error("Method not implemented.");
+        this.entityTypes = entityLogicalNames;
+    }
+
+    public removeOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+        let index = this.onLookupTagHandlers.indexOf(handler)
+        while (index >= 0) {
+            this.onLookupTagHandlers.splice(index, 1);
+            index = this.onLookupTagHandlers.indexOf(handler)
+        }
     }
 
     public removePreSearch(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("remove presearch not implemented");
+        let index = this.preSearchHandlers.indexOf(handler);
+        while (index >= 0) {
+            this.preSearchHandlers.splice(index, 1);
+            index = this.preSearchHandlers.indexOf(handler);
+        }
     }
 
     public setDefaultView(viewGuid: string): void {
         for (const view of this.views) {
             view.isDefault = view.viewId === viewGuid;
         }
-    }
-
-    public addOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("addOnLookupTagClick not implemented");
-    }
-
-    public removeOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("removeOnLookupTagClick not implemented");
     }
 }
 
@@ -104,8 +128,10 @@ export interface ILookupControlComponents
 
 export interface IAttLookupControlComponents
     extends IAttStandardControlComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> {
+    entityTypes?: string[];
     filters?: ILookupFilter[];
     views?: ILookupView[];
+    onLookupTagHandlers?: Xrm.Events.ContextSensitiveHandler[];
     preSearchHandlers?: Xrm.Events.ContextSensitiveHandler[];
 }
 

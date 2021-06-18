@@ -22,6 +22,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
                     id: "0",
                 }],
             }),
+            entityTypes: ["account"],
             filters,
             label: "Parent Account",
             name,
@@ -89,11 +90,69 @@ describe("Xrm.Controls.LookupControl Mock", () => {
         expect(lookupControl.getDefaultView()).toBe("2");
     });
 
-    describe("presearch handler", () => {
-        it("should add a pre search handler", () => {
+    describe("onLookupTagClick handler", () => {
+        it("should add a onLookupTagClick handler", () => {
+            expect(lookupControl.onLookupTagHandlers.length).toBe(0);
+            lookupControl.addOnLookupTagClick(() => { /**/ });
+            expect(lookupControl.onLookupTagHandlers.length).toBe(1);
+        });
+
+        it("should remove a onLookupTagClick handler", () => {
+            const localFunc = () => { /**/ }
+            expect(lookupControl.onLookupTagHandlers.length).toBe(0);
+            lookupControl.addOnLookupTagClick(localFunc);
+            lookupControl.addOnLookupTagClick(() => { /**/ });
+            expect(lookupControl.onLookupTagHandlers.length).toBe(2);
+            lookupControl.removeOnLookupTagClick(localFunc);
+            expect(lookupControl.onLookupTagHandlers.length).toBe(1);
+        });
+
+        it("should fire onLookupTagClick handlers", () => {
+            let fired = false;
+            lookupControl.addOnLookupTagClick(() => { fired = true});
+            lookupControl.fireOnLookupTagClick({} as unknown as Xrm.Events.EventContext);
+            expect(fired).toBe(true);
+        });
+    });
+
+    describe("preSearch handler", () => {
+        it("should add a preSearch handler", () => {
             expect(lookupControl.preSearchHandlers.length).toBe(0);
             lookupControl.addPreSearch(() => { /**/ });
             expect(lookupControl.preSearchHandlers.length).toBe(1);
+        });
+
+        it("should remove a preSearch handler", () => {
+            const localFunc = () => { /**/ }
+            expect(lookupControl.preSearchHandlers.length).toBe(0);
+            lookupControl.addPreSearch(localFunc);
+            lookupControl.addPreSearch(() => { /**/ });
+            expect(lookupControl.preSearchHandlers.length).toBe(2);
+            lookupControl.removePreSearch(localFunc);
+            expect(lookupControl.preSearchHandlers.length).toBe(1);
+        });
+
+        it("should fire preSearch handlers", () => {
+            let fired = false;
+            lookupControl.addPreSearch(() => { fired = true});
+            lookupControl.firePreSearch({} as unknown as Xrm.Events.EventContext);
+            expect(fired).toBe(true);
+        });
+    });
+
+    describe("entity types", () => {
+        it("should update read types from components", () => {
+            const types = lookupControl.getEntityTypes();
+            expect(types.length).toBe(1);
+            expect(types[0]).toBe("account");
+        });
+
+        it("should allow for updates", () => {
+            lookupControl.setEntityTypes(["contact", "lead"])
+            const types = lookupControl.getEntityTypes();
+            expect(types.length).toBe(2);
+            expect(types[0]).toBe("contact");
+            expect(types[1]).toBe("lead");
         });
     });
 });

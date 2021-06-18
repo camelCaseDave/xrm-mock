@@ -19,10 +19,11 @@ var LookupControlMock = /** @class */ (function (_super) {
     __extends(LookupControlMock, _super);
     function LookupControlMock(components) {
         var _this = _super.call(this, LookupControlMock.defaultComponents(components)) || this;
-        _this.preSearchHandlers = [];
-        _this.views = components.views || [];
+        _this.entityTypes = components.entityTypes || [];
         _this.filters = components.filters || [];
+        _this.onLookupTagHandlers = components.onLookupTagHandlers || [];
         _this.preSearchHandlers = components.preSearchHandlers || [];
+        _this.views = components.views || [];
         if (_this.views && _this.views.length > 1) {
             var defaultViews = _this.views.filter(function (v) { return v.isDefault; }).length;
             if (defaultViews > 1) {
@@ -37,6 +38,9 @@ var LookupControlMock = /** @class */ (function (_super) {
     LookupControlMock.defaultComponents = function (components) {
         components.controlType = "lookup";
         return components;
+    };
+    LookupControlMock.prototype.addOnLookupTagClick = function (handler) {
+        this.onLookupTagHandlers.push(handler);
     };
     LookupControlMock.prototype.addPreSearch = function (handler) {
         this.preSearchHandlers.push(handler);
@@ -57,6 +61,18 @@ var LookupControlMock = /** @class */ (function (_super) {
             viewId: viewId,
         });
     };
+    LookupControlMock.prototype.fireOnLookupTagClick = function (context) {
+        for (var _i = 0, _a = this.onLookupTagHandlers; _i < _a.length; _i++) {
+            var handler = _a[_i];
+            handler(context);
+        }
+    };
+    LookupControlMock.prototype.firePreSearch = function (context) {
+        for (var _i = 0, _a = this.preSearchHandlers; _i < _a.length; _i++) {
+            var handler = _a[_i];
+            handler(context);
+        }
+    };
     LookupControlMock.prototype.getDefaultView = function () {
         for (var _i = 0, _a = this.views; _i < _a.length; _i++) {
             var view = _a[_i];
@@ -67,25 +83,30 @@ var LookupControlMock = /** @class */ (function (_super) {
         throw new Error("No default view was found!");
     };
     LookupControlMock.prototype.getEntityTypes = function () {
-        throw new Error("Method not implemented.");
+        return this.entityTypes;
     };
     LookupControlMock.prototype.setEntityTypes = function (entityLogicalNames) {
-        throw new Error("Method not implemented.");
+        this.entityTypes = entityLogicalNames;
+    };
+    LookupControlMock.prototype.removeOnLookupTagClick = function (handler) {
+        var index = this.onLookupTagHandlers.indexOf(handler);
+        while (index >= 0) {
+            this.onLookupTagHandlers.splice(index, 1);
+            index = this.onLookupTagHandlers.indexOf(handler);
+        }
     };
     LookupControlMock.prototype.removePreSearch = function (handler) {
-        throw new Error("remove presearch not implemented");
+        var index = this.preSearchHandlers.indexOf(handler);
+        while (index >= 0) {
+            this.preSearchHandlers.splice(index, 1);
+            index = this.preSearchHandlers.indexOf(handler);
+        }
     };
     LookupControlMock.prototype.setDefaultView = function (viewGuid) {
         for (var _i = 0, _a = this.views; _i < _a.length; _i++) {
             var view = _a[_i];
             view.isDefault = view.viewId === viewGuid;
         }
-    };
-    LookupControlMock.prototype.addOnLookupTagClick = function (handler) {
-        throw new Error("addOnLookupTagClick not implemented");
-    };
-    LookupControlMock.prototype.removeOnLookupTagClick = function (handler) {
-        throw new Error("removeOnLookupTagClick not implemented");
     };
     return LookupControlMock;
 }(standardcontrol_mock_1.StandardControlMock));
