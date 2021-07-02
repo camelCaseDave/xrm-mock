@@ -7,6 +7,7 @@ export declare class EntityMock implements Xrm.Entity {
     attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
     saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
     constructor(components?: IEntityComponents);
+    addOnPostSave(handler: Xrm.Events.ContextSensitiveHandler): void;
     addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
     getEntityName(): string;
     getDataXml(): string;

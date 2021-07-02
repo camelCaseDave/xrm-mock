@@ -1,7 +1,14 @@
 export class SaveOptionsMock implements Xrm.SaveOptions {
   public UseSchedulingEngine?: boolean;
+  public saveMode: XrmEnum.SaveMode;
 
-  constructor(UseSchedulingEngine?: boolean) {
-    this.UseSchedulingEngine = UseSchedulingEngine;
+  constructor(components: ISaveOptionsComponents) {
+    this.UseSchedulingEngine = components.UseSchedulingEngine;
+    this.saveMode = components.saveMode;
   }
+}
+
+export interface ISaveOptionsComponents {
+  UseSchedulingEngine?: boolean;
+  saveMode: XrmEnum.SaveMode;
 }

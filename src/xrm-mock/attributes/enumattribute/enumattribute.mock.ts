@@ -3,7 +3,7 @@ import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock
 
 export class EnumAttributeMock<TControl extends ControlMock,
                                TValue extends number | boolean>
-                               extends AttributeMock<TControl, TValue> implements Xrm.Attributes.EnumAttribute {
+                               extends AttributeMock<TControl, TValue> implements Xrm.Attributes.EnumAttribute<TValue> {
     public initialValue: TValue;
 
     constructor(components: IEnumAttributeComponents<TControl, TValue>) {

@@ -9,6 +9,9 @@ var LookupOptionsMock = /** @class */ (function () {
         this.entityTypes = components.entityTypes;
         this.showBarcodeScanner = components.showBarcodeScanner;
         this.viewIds = components.viewIds;
+        this.disableMru = components.disableMru;
+        this.filters = components.filters;
+        this.searchText = components.searchText;
     }
     return LookupOptionsMock;
 }());
