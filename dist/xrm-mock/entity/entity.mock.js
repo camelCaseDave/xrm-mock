@@ -12,6 +12,9 @@ var EntityMock = /** @class */ (function () {
         this.attributes = components.attributes || new itemcollection_mock_1.ItemCollectionMock();
         this.saveEventHandlers = [];
     }
+    EntityMock.prototype.addOnPostSave = function (handler) {
+        throw new Error("addOnPostSave not implemented.");
+    };
     EntityMock.prototype.addOnSave = function (handler) {
         this.saveEventHandlers.push(handler);
     };
