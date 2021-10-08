@@ -9,6 +9,7 @@ export declare class GridControlMock extends ControlMock implements Xrm.Controls
     grid?: Xrm.Controls.Grid;
     relationship?: Xrm.Navigation.Relationship;
     constructor(components: IGridControlComponents);
+    setVisible(visible: boolean): void;
     refreshRibbon(): void;
     addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void;
     getContextType(): XrmEnum.GridControlContext;
