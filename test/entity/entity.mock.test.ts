@@ -22,13 +22,13 @@ describe("Xrm.Entity Mock", () => {
     });
 
     it('should allow additional save modes', () => {
-        let saveMode: Number;
-        entity.addOnSave(function(context: Xrm.Events.SaveEventContext) {
+        let saveMode: number;
+        entity.addOnSave((context: Xrm.Events.SaveEventContext) => {
             saveMode = context.getEventArgs().getSaveMode();
         });
-        
+
         const qualify = 16;
-        entity.save(<any>qualify);
+        entity.save(qualify as any);
         expect(saveMode).toBe(16);
     })
 });
