@@ -26,6 +26,9 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         this.grid = components.grid;
         this.relationship = components.relationship;
     }
+    public setVisible(visible: boolean): void {
+        throw new Error("Method not implemented.");
+    }
     public refreshRibbon(): void {
         throw new Error("Method not implemented.");
     }

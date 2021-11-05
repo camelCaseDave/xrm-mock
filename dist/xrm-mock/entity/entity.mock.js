@@ -12,6 +12,9 @@ var EntityMock = /** @class */ (function () {
         this.attributes = components.attributes || new itemcollection_mock_1.ItemCollectionMock();
         this.saveEventHandlers = [];
     }
+    EntityMock.prototype.addOnPostSave = function (handler) {
+        throw new Error("Method not implemented.");
+    };
     EntityMock.prototype.addOnSave = function (handler) {
         this.saveEventHandlers.push(handler);
     };
@@ -113,6 +116,9 @@ var EntityMock = /** @class */ (function () {
             preventDefault: function () {
                 throw new Error("preventDefault not implemented.");
             },
+            preventDefaultOnError: function () {
+                throw new Error("preventDefaultOnError not implemented.");
+            }
         };
     };
     return EntityMock;

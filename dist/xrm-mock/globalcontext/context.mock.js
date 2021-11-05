@@ -96,7 +96,8 @@ function buildDefaultOrganizationSettings() {
         languageId: 1033,
         organizationId: "00000000-0000-0000-0000-0000000000000",
         uniqueName: "test-uniqueName",
-        useSkypeProtocol: true
+        useSkypeProtocol: true,
+        organizationGeo: ""
     };
 }
 //# sourceMappingURL=context.mock.js.map

@@ -4,6 +4,9 @@ exports.SaveEventArgumentsMock = void 0;
 var SaveEventArgumentsMock = /** @class */ (function () {
     function SaveEventArgumentsMock() {
     }
+    SaveEventArgumentsMock.prototype.preventDefaultOnError = function () {
+        throw new Error("Method not implemented.");
+    };
     SaveEventArgumentsMock.prototype.getSaveMode = function () {
         throw new Error("Not implemented.");
     };

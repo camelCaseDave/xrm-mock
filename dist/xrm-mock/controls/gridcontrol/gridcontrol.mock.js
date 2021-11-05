@@ -34,6 +34,9 @@ var GridControlMock = /** @class */ (function (_super) {
         components.onLoadHandlers = components.onLoadHandlers || [];
         return components;
     };
+    GridControlMock.prototype.setVisible = function (visible) {
+        throw new Error("Method not implemented.");
+    };
     GridControlMock.prototype.refreshRibbon = function () {
         throw new Error("Method not implemented.");
     };
