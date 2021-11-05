@@ -1,7 +1,7 @@
 {
   "name": "xrm-mock",
   "description": "A fake implementation of the Xrm object model. Used for testing Dynamics 365 client-side scripts.",
-  "version": "3.5.5",
+  "version": "3.5.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
@@ -41,7 +41,7 @@
     "@types/jest": "^26.0.20",
     "@types/node": "^14.0.13",
     "@types/sinon": "^9.0.4",
-    "@types/xrm": "9.0.33",
+    "@types/xrm": "9.0.47",
     "jest": "^26.6.3",
     "sinon": "^9.0.2",
     "ts-jest": "^26.1.1",
