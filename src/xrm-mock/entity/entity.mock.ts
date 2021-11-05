@@ -116,6 +116,8 @@ export class EntityMock implements Xrm.Entity {
                     mode = XrmEnum.SaveMode.SaveAndClose;
                 } else if (saveMode === "saveandnew") {
                     mode = XrmEnum.SaveMode.SaveAndNew;
+                } else {
+                    mode = saveMode;
                 }
 
                 return mode;
