@@ -107,6 +107,9 @@ var EntityMock = /** @class */ (function () {
                 else if (saveMode === "saveandnew") {
                     mode = 59 /* SaveAndNew */;
                 }
+                else {
+                    mode = saveMode;
+                }
                 return mode;
             },
             isDefaultPrevented: function () { return false; },
