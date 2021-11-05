@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { UtilityMock } from "../../src/xrm-mock/utility/utility.mock";
 
 describe("Xrm.Utility Mock", () => {
@@ -12,7 +16,7 @@ describe("Xrm.Utility Mock", () => {
     });
 
     it("should alert", () => {
-        const windowSpy = spyOn(window, "alert");
+        const windowSpy = jest.spyOn(window, "alert");
         utility.alertDialog("Are you sure?", () => true);
 
         expect(windowSpy).toHaveBeenCalledWith("Are you sure?");

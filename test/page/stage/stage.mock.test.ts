@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { StageMock } from "../../../src/xrm-mock/processflow/stage/stage.mock";
 
 describe("Xrm.Page.Stage Mock", () => {
@@ -16,8 +20,8 @@ describe("Xrm.Page.Stage Mock", () => {
     });
 
     it("should have a category object", () => {
-        expect(stage.getCategory).toEqual(jasmine.any(Function));
-        expect(stage.getCategory().getValue).toEqual(jasmine.any(Function));
+        expect(typeof stage.getCategory).toBe("function");
+        expect(typeof stage.getCategory().getValue).toBe("function");
     });
 
     it("should be called Sales Pipeline", () => {
