@@ -15,6 +15,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
     public viewSelector?: Xrm.Controls.ViewSelector;
     public grid?: Xrm.Controls.Grid;
     public relationship?: Xrm.Navigation.Relationship;
+    private _visible: boolean;
 
     constructor(components: IGridControlComponents) {
         super(GridControlMock.defaultComponents(components));
@@ -25,9 +26,10 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         this.viewSelector = components.viewSelector;
         this.grid = components.grid;
         this.relationship = components.relationship;
+        this._visible = components.visible!==undefined? components.visible : true;
     }
     public setVisible(visible: boolean): void {
-        throw new Error("Method not implemented.");
+       this._visible = visible;
     }
     public refreshRibbon(): void {
         throw new Error("Method not implemented.");
@@ -46,6 +48,9 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
     }
     public getViewSelector(): Xrm.Controls.ViewSelector {
         return this.viewSelector;
+    }
+    public getVisible(): boolean {
+        return this._visible;
     }
     public refresh(): void {
         throw new Error("Method not implemented.");
