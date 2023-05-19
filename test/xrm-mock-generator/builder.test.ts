@@ -26,6 +26,7 @@ describe("XrmMockGenerator Builder", () => {
     let context: Xrm.GlobalContext;
     let navigation: Xrm.Navigation;
     let process: Xrm.ProcessFlow.ProcessManager;
+    let entity: EntityMock;
     const contact = {
         firstname: "Joe",
         id: "123",
@@ -41,7 +42,7 @@ describe("XrmMockGenerator Builder", () => {
         });
         nameAttribute.addOnChange(() => tempValue = "Test OnChange!");
         // entity
-        const entity = new EntityMock({
+        entity = new EntityMock({
             attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>([nameAttribute]),
             entityName: "account",
             id: "{00000000-0000-0000-0000-000000000000}",
@@ -306,6 +307,16 @@ describe("XrmMockGenerator Builder", () => {
         it("should have a label", () => {
             expect(Xrm.Page.ui.formSelector.getCurrentItem().getLabel()).toBe("Main");
         });
+
+        it ('should fire onSave with eventContext', () => {
+            let formContext: Xrm.FormContext;
+            entity.addOnSave((saveContext: Xrm.Events.SaveEventContext) => {
+                formContext = saveContext.getFormContext();
+            });
+
+            entity.save();
+            expect(formContext).toEqual(XrmMockGenerator.getFormContext());
+        })
     });
 
     describe("Navigation", () => {

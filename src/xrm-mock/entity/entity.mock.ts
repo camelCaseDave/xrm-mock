@@ -97,7 +97,7 @@ export class EntityMock implements Xrm.Entity {
                 throw new Error("getEventSource not implemented.");
             },
             getFormContext: (): Xrm.FormContext => {
-                throw new Error("getFormContext not implemented.");
+                return XrmMockGenerator.formContext;
             },
             getSharedVariable: (): any => {
                 throw new Error("getSharedVariable not implemented.");

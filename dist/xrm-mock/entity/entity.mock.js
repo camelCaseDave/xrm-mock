@@ -84,7 +84,7 @@ var EntityMock = /** @class */ (function () {
                 throw new Error("getEventSource not implemented.");
             },
             getFormContext: function () {
-                throw new Error("getFormContext not implemented.");
+                return xrm_mock_generator_1.XrmMockGenerator.formContext;
             },
             getSharedVariable: function () {
                 throw new Error("getSharedVariable not implemented.");
