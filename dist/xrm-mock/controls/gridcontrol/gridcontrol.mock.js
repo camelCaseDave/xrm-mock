@@ -25,6 +25,7 @@ var GridControlMock = /** @class */ (function (_super) {
         _this.viewSelector = components.viewSelector;
         _this.grid = components.grid;
         _this.relationship = components.relationship;
+        _this._visible = components.visible !== undefined ? components.visible : true;
         return _this;
     }
     GridControlMock.defaultComponents = function (components) {
@@ -35,7 +36,7 @@ var GridControlMock = /** @class */ (function (_super) {
         return components;
     };
     GridControlMock.prototype.setVisible = function (visible) {
-        throw new Error("Method not implemented.");
+        this._visible = visible;
     };
     GridControlMock.prototype.refreshRibbon = function () {
         throw new Error("Method not implemented.");
@@ -54,6 +55,9 @@ var GridControlMock = /** @class */ (function (_super) {
     };
     GridControlMock.prototype.getViewSelector = function () {
         return this.viewSelector;
+    };
+    GridControlMock.prototype.getVisible = function () {
+        return this._visible;
     };
     GridControlMock.prototype.refresh = function () {
         throw new Error("Method not implemented.");

@@ -26,7 +26,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         this.viewSelector = components.viewSelector;
         this.grid = components.grid;
         this.relationship = components.relationship;
-        this._visible = components.visible!==undefined? components.visible : true;
+        this._visible = components.visible !== undefined ? components.visible : true;
     }
     public setVisible(visible: boolean): void {
        this._visible = visible;

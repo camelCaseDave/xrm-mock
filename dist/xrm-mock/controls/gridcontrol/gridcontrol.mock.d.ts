@@ -8,6 +8,7 @@ export declare class GridControlMock extends ControlMock implements Xrm.Controls
     viewSelector?: Xrm.Controls.ViewSelector;
     grid?: Xrm.Controls.Grid;
     relationship?: Xrm.Navigation.Relationship;
+    private _visible;
     constructor(components: IGridControlComponents);
     setVisible(visible: boolean): void;
     refreshRibbon(): void;
@@ -16,6 +17,7 @@ export declare class GridControlMock extends ControlMock implements Xrm.Controls
     getEntityName(): string;
     getGrid(): Xrm.Controls.Grid;
     getViewSelector(): Xrm.Controls.ViewSelector;
+    getVisible(): boolean;
     refresh(): void;
     removeOnLoad(handler: () => void): void;
     getFetchXml(): string;
