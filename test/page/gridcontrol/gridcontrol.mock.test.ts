@@ -7,7 +7,7 @@ describe("Xrm.Controls.GridControl Mock", () => {
         gridControl = new GridControlMock({
             contextType: 2,
             entityName: "lead",
-            name: "myGridControl",
+            name: "myGridControl"
         });
 
     });
@@ -28,6 +28,10 @@ describe("Xrm.Controls.GridControl Mock", () => {
         expect(gridControl.getEntityName()).toBe("lead");
     });
 
+    it("should get visible", () => {
+        expect(gridControl.getVisible()).toBe(true);
+    })
+
     it("should remove onLoad handler ", () => {
         const a = () => "a";
         const b = () => "b";
@@ -45,4 +49,9 @@ describe("Xrm.Controls.GridControl Mock", () => {
         gridControl.removeOnLoad(b);
         expect(gridControl.onLoadHandlers.length).toBe(0);
     });
+
+    it("should set visible", () => {
+        gridControl.setVisible(false);
+        expect(gridControl.getVisible()).toBe(false);
+    })
 });
