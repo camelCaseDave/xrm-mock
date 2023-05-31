@@ -12,6 +12,8 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
     public attribute: TAttribute;
     protected uiStandardElement: Xrm.Controls.UiStandardElement;
     protected uiFocusable: Xrm.Controls.UiFocusable;
+    protected notifications: Xrm.Controls.AddControlNotificationOptions[];
+
 
     constructor(components: IStandardControlComponents<TControl, TAttribute, TValue>) {
         super(components);
@@ -22,18 +24,55 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
         if (this.attribute && this.attribute.controls) {
             this.attribute.controls.push(this as any);
         }
+        this.notifications = [];
     }
 
     public addNotification(notification: Xrm.Controls.AddControlNotificationOptions): void {
-        throw new Error("Method not implemented.");
+        this.notifications.push(notification);
+    }
+
+    /**
+     * Fires the action event(s) of the first notification if it is a RECOMMENDATION notification level.
+     * @returns true if it was able to apply the notification, false otherwise
+     */
+    public applyNotification(): boolean {
+        if(this.notifications.length === 0){
+            return false;
+        }
+
+        const notification = this.notifications[0];
+        if(notification.actions?.length > 0
+            && notification.notificationLevel === "RECOMMENDATION"
+            && notification.actions[0].actions?.length > 0){
+            notification.actions[0].actions.forEach((action) => action());
+            return true;
+        }
+        return false;
     }
 
     public clearNotification(uniqueId?: string): boolean {
-        throw new Error(("clear notification not implemented"));
+        if(this.notifications.length === 0){
+            return false;
+        }
+
+        if(uniqueId){
+            const index = this.notifications.findIndex((n) => n.uniqueId === uniqueId);
+            if(index > -1){
+                this.notifications.splice(index, 1);
+            }
+            return index > -1;
+        }
+        
+        this.notifications.splice(0, 1);
+        return true;
     }
 
     public getDisabled(): boolean {
         return this.disabled;
+    }
+
+    public getNotifications(): Xrm.Controls.AddControlNotificationOptions[] {
+        return this.notifications;
     }
 
     public setDisabled(disabled: boolean): void {
@@ -41,7 +80,13 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
     }
 
     public setNotification(message: string, uniqueId: string): boolean {
-        throw new Error(("set notification not implemented"));
+        this.notifications = [];
+        this.addNotification({
+            notificationLevel: "ERROR",
+            messages: [message],
+            uniqueId: uniqueId,
+        });
+        return true;
     }
 
     public getAttribute(): TAttribute {

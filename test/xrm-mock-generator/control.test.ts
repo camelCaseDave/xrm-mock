@@ -8,12 +8,15 @@ describe("XrmMockGenerator.Control", () => {
   });
 
   it("should create a grid control", () => {
-    XrmMockGenerator.Control.createGrid("contacts");
-    XrmMockGenerator.Control.createGrid({
+    const contactsGrid = XrmMockGenerator.Control.createGrid("contacts");
+    const accoutnsGrid = XrmMockGenerator.Control.createGrid({
         entityName: "account",
         name: "accounts",
     });
-    expect(Xrm.Page.getControl("contacts").getControlType()).toBe("subgrid");
+    expect(contactsGrid.getControlType()).toBe("subgrid");
     expect(Xrm.Page.getControl<Xrm.Controls.GridControl>("accounts").getEntityName()).toBe("account");
+    expect(contactsGrid.getVisible()).toBe(true);
+    contactsGrid.setVisible(false);
+    expect(contactsGrid.getVisible()).toBe(false);
   });
 });

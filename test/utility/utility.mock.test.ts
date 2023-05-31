@@ -16,7 +16,7 @@ describe("Xrm.Utility Mock", () => {
     });
 
     it("should alert", () => {
-        const windowSpy = jest.spyOn(window, "alert");
+        const windowSpy = jest.spyOn(window, "alert").mockImplementation(jest.fn);
         utility.alertDialog("Are you sure?", () => true);
 
         expect(windowSpy).toHaveBeenCalledWith("Are you sure?");

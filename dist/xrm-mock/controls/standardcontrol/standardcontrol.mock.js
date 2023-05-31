@@ -28,22 +28,60 @@ var StandardControlMock = /** @class */ (function (_super) {
         if (_this.attribute && _this.attribute.controls) {
             _this.attribute.controls.push(_this);
         }
+        _this.notifications = [];
         return _this;
     }
     StandardControlMock.prototype.addNotification = function (notification) {
-        throw new Error("Method not implemented.");
+        this.notifications.push(notification);
+    };
+    /**
+     * First the action event(s) of the first notification.
+     * @returns true if it was able to apply the notification, false otherwise
+     */
+    StandardControlMock.prototype.applyNotification = function () {
+        var _a, _b;
+        if (this.notifications.length === 0) {
+            return false;
+        }
+        var notification = this.notifications[0];
+        if (((_a = notification.actions) === null || _a === void 0 ? void 0 : _a.length) > 0
+            && ((_b = notification.actions[0].actions) === null || _b === void 0 ? void 0 : _b.length) > 0) {
+            notification.actions[0].actions.forEach(function (action) { return action(); });
+            return true;
+        }
+        return false;
     };
     StandardControlMock.prototype.clearNotification = function (uniqueId) {
-        throw new Error(("clear notification not implemented"));
+        if (this.notifications.length === 0) {
+            return false;
+        }
+        if (uniqueId) {
+            var index = this.notifications.findIndex(function (n) { return n.uniqueId === uniqueId; });
+            if (index > -1) {
+                this.notifications.splice(index, 1);
+            }
+            return index > -1;
+        }
+        this.notifications.splice(0, 1);
+        return true;
     };
     StandardControlMock.prototype.getDisabled = function () {
         return this.disabled;
+    };
+    StandardControlMock.prototype.getNotifications = function () {
+        return this.notifications;
     };
     StandardControlMock.prototype.setDisabled = function (disabled) {
         this.disabled = disabled;
     };
     StandardControlMock.prototype.setNotification = function (message, uniqueId) {
-        throw new Error(("set notification not implemented"));
+        this.notifications = [];
+        this.addNotification({
+            notificationLevel: "ERROR",
+            messages: [message],
+            uniqueId: uniqueId,
+        });
+        return true;
     };
     StandardControlMock.prototype.getAttribute = function () {
         if (["subgrid", "iframe", "webresource"].indexOf(this.getControlType()) === -1) {
