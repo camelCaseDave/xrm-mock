@@ -1,18 +1,20 @@
 import {
     AttributeMock,
-    ControlMock,
     DataMock,
     EntityMock,
     FormContextMock,
     ItemCollectionMock,
-    PageMock
+    PageMock,
+    StringAttributeMock,
+    UiMock
 } from "../../../src/xrm-mock";
+import { XrmMockGenerator } from "../../../src/xrm-mock-generator";
 
 describe("Xrm.Entity Mock", () => {
     const id = "{0}";
     const entityName = "contact"
     const attributes: Xrm.Attributes.Attribute[] = [];
-    const lastName: AttributeMock<ControlMock, string> = new AttributeMock({
+    const lastName: StringAttributeMock = new StringAttributeMock({
         isDirty: false,
         name: "lastname",
         requiredLevel: "recommended",
@@ -28,9 +30,9 @@ describe("Xrm.Entity Mock", () => {
         attributes.push(new AttributeMock({ name: "description", value: "" }));
         attributes.push(lastName);
 
-        formContext = new FormContextMock(new DataMock(entityMock), null);
+        formContext = new FormContextMock(new DataMock(entityMock), new UiMock({}));
         entityMock = new EntityMock({ id, entityName, attributes: new ItemCollectionMock<Xrm.Attributes.Attribute>(attributes) });
-        xrmPageMock = new PageMock(null, formContext);
+        xrmPageMock = new PageMock({} as any as Xrm.GlobalContext, formContext);
     });
 
     it("should exist", () => {
@@ -58,7 +60,7 @@ describe("Xrm.Entity Mock", () => {
     });
 
     it("should add and execute onSave event", () => {
-        let depth: number;
+        let depth: number = -1;
 
         function onSave(context: Xrm.Events.SaveEventContext) {
             depth = context.getDepth();

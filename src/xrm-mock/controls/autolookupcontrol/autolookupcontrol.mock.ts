@@ -7,7 +7,7 @@ import {
 import { UiKeyPressableMock } from "../uikeypressable/uikeypressable.mock";
 
 export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends StandardControlMock<TControl, TAttribute, TValue>
     implements Xrm.Controls.AutoLookupControl {
@@ -50,7 +50,7 @@ export class AutoLookupControlMock<TControl extends AutoLookupControlMock<TContr
 }
 
 export interface IAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends IStandardControlComponents<TControl, TAttribute, TValue>,
     IAttAutoLookupControlComponents<TControl, TAttribute, TValue> {
@@ -58,7 +58,7 @@ export interface IAutoLookupControlComponents<TControl extends AutoLookupControl
 }
 
 export interface IAttAutoLookupControlComponents<TControl extends AutoLookupControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends IAttStandardControlComponents<TControl, TAttribute, TValue> {
     keyPressHandlers?: Xrm.Events.ContextSensitiveHandler[];

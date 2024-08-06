@@ -5,10 +5,11 @@ export declare class EntityMock implements Xrm.Entity {
     entityName: string;
     primaryValue: string;
     attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
-    saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
+    postSaveEventHandlers: Xrm.Events.PostSaveEventHandler[];
+    saveEventHandlers: (Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync)[];
     constructor(components?: IEntityComponents);
-    addOnPostSave(handler: Xrm.Events.ContextSensitiveHandler): void;
-    addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
+    addOnPostSave(handler: Xrm.Events.PostSaveEventHandler): void;
+    addOnSave(handler: Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync): void;
     getEntityName(): string;
     getDataXml(): string;
     getEntityReference(): Xrm.LookupValue;
@@ -16,10 +17,11 @@ export declare class EntityMock implements Xrm.Entity {
     getIsDirty(): boolean;
     getPrimaryAttributeValue(): string;
     isValid(): boolean;
-    removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void;
+    removeOnPostSave(handler: Xrm.Events.PostSaveEventHandler): void;
+    removeOnSave(handler: Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync): void;
     save(saveMode?: Xrm.EntitySaveMode): void;
     private getSaveContext;
-    private getSaveEventArgs;
+    private getPostSaveContext;
 }
 export interface IEntityComponents {
     id?: string;

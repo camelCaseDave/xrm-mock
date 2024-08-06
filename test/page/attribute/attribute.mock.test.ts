@@ -1,7 +1,8 @@
-import { AttributeMock, ControlMock } from "../../../src/xrm-mock";
+import { StringControlMock } from "../../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
+import { AttributeMock, ControlMock, StringAttributeMock } from "../../../src/xrm-mock";
 
 describe("Xrm.Attributes.Attribute Mock", () => {
-    let attributeMock: AttributeMock<ControlMock, string>;
+    let attributeMock: AttributeMock<StringControlMock, StringAttributeMock, string>;
 
     beforeEach(() => {
         attributeMock = new AttributeMock({

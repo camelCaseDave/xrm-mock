@@ -129,7 +129,7 @@ export default class Control {
   }
 
   private createStandardComponent<TControl extends XrmMock.StandardControlMock<TControl, TAttribute, TValue>,
-                                  TAttribute extends XrmMock.AttributeMock<TControl, TValue>,
+                                  TAttribute extends XrmMock.AttributeMock<TControl, TAttribute, TValue>,
                                   TValue extends XrmMock.AttributeReturnType,
                                   TComponent extends XrmMock.IStandardControlComponents<TControl, TAttribute, TValue>>(
                                     attributeOrComponents: TAttribute | TComponent,

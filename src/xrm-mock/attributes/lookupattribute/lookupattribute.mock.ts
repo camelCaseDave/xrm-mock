@@ -1,7 +1,7 @@
 import { LookupControlMock } from "../../controls/lookupcontrol/lookupcontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
-export class LookupAttributeMock extends AttributeMock<LookupControlMock, Xrm.LookupValue[]>
+export class LookupAttributeMock extends AttributeMock<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]>
                                  implements Xrm.Attributes.LookupAttribute {
     private static defaultComponents(components: ILookupAttributeComponents): ILookupAttributeComponents {
         if (!("isPartyList" in components)) {
@@ -23,6 +23,6 @@ export class LookupAttributeMock extends AttributeMock<LookupControlMock, Xrm.Lo
     }
 }
 
-export interface ILookupAttributeComponents extends IAttributeComponents<LookupControlMock, Xrm.LookupValue[]> {
+export interface ILookupAttributeComponents extends IAttributeComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> {
     isPartyList?: boolean;
 }

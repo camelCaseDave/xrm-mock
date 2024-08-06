@@ -11,13 +11,17 @@
             "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
             "args": [
                 "--runInBand",
+                "--verbose",
+                "-i",
                 "--no-cache"
             ],
             "preLaunchTask": "npm: tsc",
             "runtimeArgs": [
                 "--inspect=127.0.0.1:5858"
             ],
-            "port": 5858
+            "port": 5858,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

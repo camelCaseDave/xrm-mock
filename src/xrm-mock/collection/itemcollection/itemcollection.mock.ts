@@ -5,9 +5,7 @@ export class ItemCollectionMock<T> implements Xrm.Collection.ItemCollection<T> {
         this.itemCollection = itemCollection || [];
     }
 
-    public forEach(delegate: () => void): void;
-    public forEach(delegate: Xrm.Collection.IterativeDelegate<T>): void;
-    public forEach(delegate: any): void {
+    public forEach(delegate: Xrm.Collection.IterativeDelegate<T>): void {
         this.itemCollection.map(delegate);
     }
 

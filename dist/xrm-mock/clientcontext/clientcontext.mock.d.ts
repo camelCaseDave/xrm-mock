@@ -7,4 +7,5 @@ export declare class ClientContextMock implements Xrm.ClientContext {
     getClientState(): Xrm.ClientState;
     getFormFactor(): XrmEnum.ClientFormFactor;
     isOffline(): boolean;
+    isNetworkAvailable(): boolean;
 }

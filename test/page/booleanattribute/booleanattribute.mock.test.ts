@@ -4,11 +4,11 @@ describe("Xrm.Attributes.BooleanAttribute Mock", () => {
     let booleanAttribute: BooleanAttributeMock;
 
     beforeEach(() => {
-        booleanAttribute = new BooleanAttributeMock(new EnumAttributeMock(new AttributeMock({
+        booleanAttribute = new BooleanAttributeMock({
             isDirty: false,
             name: "new_isHavingFun",
             value: true,
-        })));
+        });
     });
 
     it("should instantiate", () => {

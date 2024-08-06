@@ -110,7 +110,7 @@ describe("Xrm.Controls.LookupControl Mock", () => {
         it("should fire onLookupTagClick handlers", () => {
             let fired = false;
             lookupControl.addOnLookupTagClick(() => { fired = true});
-            lookupControl.fireOnLookupTagClick({} as unknown as Xrm.Events.EventContext);
+            lookupControl.fireOnLookupTagClick({} as unknown as Xrm.Events.LookupTagClickEventContext);
             expect(fired).toBe(true);
         });
     });

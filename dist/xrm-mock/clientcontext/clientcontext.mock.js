@@ -18,6 +18,9 @@ var ClientContextMock = /** @class */ (function () {
     ClientContextMock.prototype.isOffline = function () {
         throw new Error("Method not implemented.");
     };
+    ClientContextMock.prototype.isNetworkAvailable = function () {
+        throw new Error("Method not implemented.");
+    };
     return ClientContextMock;
 }());
 exports.ClientContextMock = ClientContextMock;

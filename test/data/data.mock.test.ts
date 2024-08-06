@@ -3,19 +3,20 @@ import {
     ControlMock,
     DataMock,
     EntityMock,
-    ItemCollectionMock
+    ItemCollectionMock,
+    StringAttributeMock
 } from "../../src/xrm-mock";
 
 
 describe("Xrm.Data Mock", () => {
     const id = "{B05EC7CE-5D51-DF11-97E0-00155DB232D0}";
-    const attributes: Array<AttributeMock<ControlMock, string>> = [];
+    const attributes: Array<StringAttributeMock> = [];
     let entityMock: EntityMock;
     let dataMock: DataMock;
 
     beforeEach(() => {
-        attributes.push(new AttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
-        attributes.push(new AttributeMock({ name: "description", value: "" }));
+        attributes.push(new StringAttributeMock({ name: "firstname", value: "Joe", isDirty: false, requiredLevel: "none" }));
+        attributes.push(new StringAttributeMock({ name: "description", value: "" }));
 
         entityMock = new EntityMock({
             attributes: new ItemCollectionMock(attributes),

@@ -6,7 +6,9 @@ var UiMock = /** @class */ (function () {
     function UiMock(components) {
         this.process = components.process;
         this.controls = components.controls || new itemcollection_mock_1.ItemCollectionMock([]);
+        this.footerSection = components.footerSection;
         this.formSelector = components.formSelector;
+        this.headerSection = components.headerSection;
         this.navigation = components.navigation;
         this.tabs = components.tabs || new itemcollection_mock_1.ItemCollectionMock([]);
         this.quickForms = components.quickForms || new itemcollection_mock_1.ItemCollectionMock([]);
@@ -56,7 +58,7 @@ var UiMock = /** @class */ (function () {
             }
         }
         else {
-            return 0 /* Undefined */;
+            return 0 /* XrmEnum.FormType.Undefined */;
         }
     };
     UiMock.prototype.getViewPortHeight = function () {

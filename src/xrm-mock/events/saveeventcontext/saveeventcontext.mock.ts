@@ -1,35 +1,23 @@
-export class SaveEventContextMock implements Xrm.Events.SaveEventContext {
-  private eventContext: Xrm.Events.EventContext;
+import { EventContextWithEventArgsMock, IGenericEventContextComponents } from "../eventcontextwitheventargs.mock";
+import { SaveEventArgumentsMock } from "../saveeventarguments/saveeventarguments.mock";
 
-  constructor(eventContext: Xrm.Events.EventContext) {
-    this.eventContext = eventContext;
-  }
+export class SaveEventContextMock extends EventContextWithEventArgsMock<Xrm.Events.SaveEventArguments> implements Xrm.Events.SaveEventContext {
+  constructor(components?: ISaveEventContextComponents) {
+    if (components?.saveMode
+      && components?.eventArgs){
+      throw new Error("SaveEventContextMock.constructor: saveMode and eventArgs cannot both be defined");
+    }
 
-  public getContext(): Xrm.GlobalContext {
-    return this.eventContext.getContext();
-  }
+    super(components);
 
-  public getDepth(): number {
-    return this.eventContext.getDepth();
-  }
-
-  public getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity {
-    return this.eventContext.getEventSource();
-  }
-
-  public getFormContext(): Xrm.FormContext {
-    return this.eventContext.getFormContext();
-  }
-
-  public getSharedVariable<T>(key: string): T {
-    return this.eventContext.getSharedVariable(key);
-  }
-
-  public setSharedVariable<T>(key: string, value: T): void {
-    return this.setSharedVariable(key, value);
-  }
-
-  public getEventArgs(): Xrm.Events.SaveEventArguments {
-    throw new Error("Not implemented.");
+    this.eventArgs ??= new SaveEventArgumentsMock(components?.saveMode ?? XrmEnum.SaveMode.Save);
   }
 }
+
+export interface IGenericSaveEventContextComponents<TArgs extends Xrm.Events.SaveEventArguments> extends IGenericEventContextComponents<TArgs> {
+  saveMode?: XrmEnum.SaveMode;
+}
+
+export interface ISaveEventContextComponents extends IGenericSaveEventContextComponents<Xrm.Events.SaveEventArguments> {
+}
+

@@ -1,15 +1,19 @@
 import { AttributeMock, AttributeReturnType } from "../../attributes/attribute/attribute.mock";
 import { ControlMock, IAttControlComponents, IControlComponents } from "../control/control.mock";
+import { EventContextMock } from "../../events/eventcontext/eventcontext.mock";
+import { findIndex } from "../../../xrm-mock-generator/helpers/array.helper";
 import { UiFocusableMock } from "../uifocusable/uifocusable.mock";
 import { UiStandardElementMock } from "../uistandardelement/uistandardelement.mock";
+import { XrmMockGenerator } from "../../../xrm-mock-generator/xrm-mock-generator";
 
 export class StandardControlMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends ControlMock
     implements Xrm.Controls.StandardControl {
     public disabled: boolean;
     public attribute: TAttribute;
+    protected outChangedEventHandlers: Xrm.Events.ContextSensitiveHandler[];
     protected uiStandardElement: Xrm.Controls.UiStandardElement;
     protected uiFocusable: Xrm.Controls.UiFocusable;
     protected notifications: Xrm.Controls.AddControlNotificationOptions[];
@@ -25,6 +29,7 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
             this.attribute.controls.push(this as any);
         }
         this.notifications = [];
+        this.outChangedEventHandlers = [];
     }
 
     public addNotification(notification: Xrm.Controls.AddControlNotificationOptions): void {
@@ -36,12 +41,12 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
      * @returns true if it was able to apply the notification, false otherwise
      */
     public applyNotification(): boolean {
-        if(this.notifications.length === 0){
+        if (this.notifications.length === 0){
             return false;
         }
 
         const notification = this.notifications[0];
-        if(notification.actions?.length > 0
+        if (notification.actions?.length > 0
             && notification.notificationLevel === "RECOMMENDATION"
             && notification.actions[0].actions?.length > 0){
             notification.actions[0].actions.forEach((action) => action());
@@ -51,18 +56,18 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
     }
 
     public clearNotification(uniqueId?: string): boolean {
-        if(this.notifications.length === 0){
+        if (this.notifications.length === 0){
             return false;
         }
 
-        if(uniqueId){
+        if (uniqueId){
             const index = this.notifications.findIndex((n) => n.uniqueId === uniqueId);
-            if(index > -1){
+            if (index > -1){
                 this.notifications.splice(index, 1);
             }
             return index > -1;
         }
-        
+
         this.notifications.splice(0, 1);
         return true;
     }
@@ -84,7 +89,7 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
         this.addNotification({
             notificationLevel: "ERROR",
             messages: [message],
-            uniqueId: uniqueId,
+            uniqueId,
         });
         return true;
     }
@@ -117,10 +122,38 @@ export class StandardControlMock<TControl extends StandardControlMock<TControl, 
     public setFocus(): void {
         this.uiFocusable.setFocus();
     }
+
+    getOutputs(): { [index: string]: Xrm.Controls.FieldControlOutput; } {
+        throw new Error("Method not implemented.");
+    }
+
+    addOnOutputChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+        this.outChangedEventHandlers.push(handler);
+    }
+
+    fireOnOutputChange(): void {
+        if (this.outChangedEventHandlers.length) {
+            return;
+        }
+        const globalContext = XrmMockGenerator.getEventContext();
+        const context = new EventContextMock({
+            ...globalContext,
+            depth: globalContext.depth ? globalContext.depth + 1 : 1,
+            eventSource: this,
+        });
+        for (const handler of this.outChangedEventHandlers) {
+            handler.call(this, context);
+        }
+    }
+
+    removeOnOutputChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+        const index: number = findIndex(this.outChangedEventHandlers, handler);
+        this.outChangedEventHandlers.splice(index, 1);
+    }
 }
 
 export interface IStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends IAttStandardControlComponents<TControl, TAttribute, TValue>,
     IControlComponents {
@@ -129,7 +162,7 @@ export interface IStandardControlComponents<TControl extends StandardControlMock
 }
 
 export interface IAttStandardControlComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
-    TAttribute extends AttributeMock<TControl, TValue>,
+    TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
     TValue extends AttributeReturnType>
     extends IAttControlComponents {
     disabled?: boolean;

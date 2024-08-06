@@ -3,7 +3,9 @@ import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 export declare class UiMock implements Xrm.Ui {
     process: Xrm.Controls.ProcessControl;
     controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    footerSection: Xrm.Controls.FooterSection;
     formSelector: FormSelectorMock;
+    headerSection: Xrm.Controls.HeaderSection;
     navigation: Xrm.Controls.Navigation;
     tabs: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
     quickForms: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;
@@ -28,7 +30,9 @@ export declare class UiMock implements Xrm.Ui {
 export interface IUiComponents {
     process?: Xrm.Controls.ProcessControl;
     controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    footerSection?: Xrm.Controls.FooterSection;
     formSelector?: FormSelectorMock;
+    headerSection?: Xrm.Controls.HeaderSection;
     navigation?: Xrm.Controls.Navigation;
     tabs?: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
     quickForms?: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;

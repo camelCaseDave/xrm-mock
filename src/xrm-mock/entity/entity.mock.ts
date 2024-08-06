@@ -1,26 +1,33 @@
 import { XrmMockGenerator } from "../../xrm-mock-generator";
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
+import { EventContextMock } from "../events/eventcontext/eventcontext.mock";
+import { PostSaveEventArgumentsMock } from "../events/postsaveeventarguments.mock";
+import { PostSaveEventContextMock } from "../events/postsaveeventcontext.mock";
+import { SaveEventContextAsyncMock } from "../events/saveeventcontextasync.mock";
 
 export class EntityMock implements Xrm.Entity {
     public id: string;
     public entityName: string;
     public primaryValue: string;
     public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
-    public saveEventHandlers: Xrm.Events.ContextSensitiveHandler[];
+    public postSaveEventHandlers: Xrm.Events.PostSaveEventHandler[];
+    public saveEventHandlers: (Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync)[];
 
     constructor(components?: IEntityComponents) {
-        components = components || {};
+        components = components ?? {};
         this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
         this.entityName = components.entityName || "contact";
         this.primaryValue = components.primaryValue || "Default Contact";
-        this.attributes = components.attributes || new ItemCollectionMock();
+        this.attributes = components.attributes ?? new ItemCollectionMock();
+        this.postSaveEventHandlers = [];
         this.saveEventHandlers = [];
     }
-    public addOnPostSave(handler: Xrm.Events.ContextSensitiveHandler): void {
-        throw new Error("Method not implemented.");
+
+    public addOnPostSave(handler: Xrm.Events.PostSaveEventHandler): void {
+        this.postSaveEventHandlers.push(handler);
     }
 
-    public addOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnSave(handler: Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync): void {
         this.saveEventHandlers.push(handler);
     }
 
@@ -67,7 +74,13 @@ export class EntityMock implements Xrm.Entity {
         throw new Error("isValid not implemented.");
     }
 
-    public removeOnSave(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public removeOnPostSave(handler: Xrm.Events.PostSaveEventHandler): void {
+        const index: number = this.postSaveEventHandlers.indexOf(handler);
+
+        this.postSaveEventHandlers.splice(index);
+    }
+
+    public removeOnSave(handler: Xrm.Events.SaveEventHandler | Xrm.Events.SaveEventHandlerAsync): void {
         const index: number = this.saveEventHandlers.indexOf(handler);
 
         this.saveEventHandlers.splice(index);
@@ -77,62 +90,70 @@ export class EntityMock implements Xrm.Entity {
         const context = this.getSaveContext(saveMode);
 
         for (const handler of this.saveEventHandlers) {
-            const index: number = this.saveEventHandlers.indexOf(handler);
-            context.getDepth = () => index;
+            context.setDepth(this.saveEventHandlers.indexOf(handler));
 
             handler(context);
         }
+
+        if (context.getEventArgs().isDefaultPrevented()) {
+            return;
+        }
+
+        if (!(this.postSaveEventHandlers?.length > 0)) {
+            return;
+        }
+
+        const postContext = this.getPostSaveContext();
+        for (const handler of this.postSaveEventHandlers) {
+            postContext.setDepth(this.postSaveEventHandlers.indexOf(handler));
+
+            handler(postContext);
+        }
     }
 
-    private getSaveContext(saveMode: Xrm.EntitySaveMode): Xrm.Events.SaveEventContext {
-        return {
-            getContext: (): Xrm.GlobalContext => {
-                return XrmMockGenerator.context;
-            },
-            getDepth: null, // implemented separately for each handler
-            getEventArgs: (): Xrm.Events.SaveEventArguments => {
-                return this.getSaveEventArgs(saveMode);
-            },
-            getEventSource: (): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity => {
-                throw new Error("getEventSource not implemented.");
-            },
-            getFormContext: (): Xrm.FormContext => {
-                return XrmMockGenerator.formContext;
-            },
-            getSharedVariable: (): any => {
-                throw new Error("getSharedVariable not implemented.");
-            },
-            setSharedVariable: (): void => {
-                throw new Error("setSharedVariable not implemented.");
-            },
-        };
+    private getSaveContext(saveMode: Xrm.EntitySaveMode): SaveEventContextAsyncMock {
+        const eventContext = XrmMockGenerator.getEventContext() ?? new EventContextMock({});
+        eventContext.depth = 0;
+        let mode: XrmEnum.SaveMode;
+        switch (saveMode) {
+            case "saveandclose":
+                mode = XrmEnum.SaveMode.SaveAndClose;
+                break;
+            case "saveandnew":
+                mode =  XrmEnum.SaveMode.SaveAndNew;
+                break;
+            default:
+                mode = typeof saveMode === "number"
+                    ? saveMode
+                    : XrmEnum.SaveMode.Save;
+                break;
+        }
+
+        return new SaveEventContextAsyncMock({
+            context: eventContext.context,
+            depth: eventContext.depth,
+            saveMode: mode,
+            eventSource: eventContext.eventSource,
+            formContext: eventContext.formContext,
+            sharedVariables: eventContext.sharedVariables
+        });
     }
 
-    private getSaveEventArgs(saveMode): Xrm.Events.SaveEventArguments {
-        return {
-            getSaveMode: () => {
-                let mode: XrmEnum.SaveMode;
+    private getPostSaveContext(): PostSaveEventContextMock {
+        const eventContext = XrmMockGenerator.getEventContext() ?? new EventContextMock({});
 
-                if (saveMode == null) {
-                    mode = XrmEnum.SaveMode.Save;
-                } else if (saveMode === "saveandclose") {
-                    mode = XrmEnum.SaveMode.SaveAndClose;
-                } else if (saveMode === "saveandnew") {
-                    mode = XrmEnum.SaveMode.SaveAndNew;
-                } else {
-                    mode = saveMode;
-                }
-
-                return mode;
-            },
-            isDefaultPrevented: () => false,
-            preventDefault: (): void => {
-                throw new Error("preventDefault not implemented.");
-            },
-            preventDefaultOnError: (): void => {
-                throw new Error("preventDefaultOnError not implemented.");
-            }
-        };
+        return new PostSaveEventContextMock({
+            context: eventContext.context,
+            depth: eventContext.depth,
+            eventArgs: new PostSaveEventArgumentsMock({
+                entityReference: this.getEntityReference(),
+                isSaveSuccess: true,
+                saveErrorInfo: undefined
+            }),
+            eventSource: eventContext.eventSource,
+            formContext: eventContext.formContext,
+            sharedVariables: eventContext.sharedVariables
+        });
     }
 }
 

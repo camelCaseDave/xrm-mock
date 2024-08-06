@@ -1,12 +1,13 @@
-import { ControlMock } from "../../controls/control/control.mock";
+import { StandardControlMock } from "../../controls/standardcontrol/standardcontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
-export class EnumAttributeMock<TControl extends ControlMock,
+export class EnumAttributeMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
+                               TAttribute extends EnumAttributeMock<TControl, TAttribute, TValue>,
                                TValue extends number | boolean>
-                               extends AttributeMock<TControl, TValue> implements Xrm.Attributes.EnumAttribute<TValue> {
+                               extends AttributeMock<TControl, TAttribute, TValue> implements Xrm.Attributes.EnumAttribute<TValue> {
     public initialValue: TValue;
 
-    constructor(components: IEnumAttributeComponents<TControl, TValue>) {
+    constructor(components: IEnumAttributeComponents<TControl, TAttribute, TValue>) {
         super(components);
         this.initialValue = "initialValue" in components
             ? components.initialValue
@@ -18,8 +19,10 @@ export class EnumAttributeMock<TControl extends ControlMock,
     }
 }
 
-export interface IEnumAttributeComponents<TControl extends ControlMock,
-                                          TValue extends number | boolean>
-                                          extends IAttributeComponents<TControl, TValue> {
+export interface IEnumAttributeComponents<
+        TControl extends StandardControlMock<TControl, TAttribute, TValue>,
+        TAttribute extends EnumAttributeMock<TControl, TAttribute, TValue>,
+        TValue extends number | boolean>
+        extends IAttributeComponents<TControl, TAttribute, TValue> {
     initialValue?: TValue;
 }

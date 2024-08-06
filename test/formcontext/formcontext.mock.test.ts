@@ -15,9 +15,9 @@ describe("FormContext Mock", () => {
     let formContext: FormContextMock;
 
     beforeEach(() => {
-        const attributes: Array<AttributeMock<StringControlMock, string>> = [];
-        attributes.push(new AttributeMock<StringControlMock, string>({ name: "firstname", value: "Joe" }));
-        attributes.push(new AttributeMock<StringControlMock, string>({ name: "description" }));
+        const attributes: Array<StringAttributeMock> = [];
+        attributes.push(new StringAttributeMock({ name: "firstname", value: "Joe" }));
+        attributes.push(new StringAttributeMock({ name: "description" }));
         lastName = new StringAttributeMock({
             isDirty: true,
             name: "lastname",
@@ -26,7 +26,7 @@ describe("FormContext Mock", () => {
             value: "Bloggs",
         });
         attributes.push(lastName);
-        const controls = [];
+        const controls: StringControlMock[] = [];
         controls.push(new StringControlMock({
             attribute: lastName,
             controlType: "standard",
@@ -42,7 +42,7 @@ describe("FormContext Mock", () => {
 
         formContext = new FormContextMock(
             new DataMock(
-            new EntityMock({ attributes: new ItemCollectionMock<AttributeMock<StringControlMock, string>>(attributes)})),
+            new EntityMock({ attributes: new ItemCollectionMock<StringAttributeMock>(attributes)})),
             new UiMock({
                 controls: new ItemCollectionMock<StringControlMock>(controls),
             },

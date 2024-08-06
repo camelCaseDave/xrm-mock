@@ -3,17 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EntityMock = void 0;
 var xrm_mock_generator_1 = require("../../xrm-mock-generator");
 var itemcollection_mock_1 = require("../collection/itemcollection/itemcollection.mock");
+var eventcontext_mock_1 = require("../events/eventcontext/eventcontext.mock");
+var postsaveeventarguments_mock_1 = require("../events/postsaveeventarguments.mock");
+var postsaveeventcontext_mock_1 = require("../events/postsaveeventcontext.mock");
+var saveeventcontextasync_mock_1 = require("../events/saveeventcontextasync.mock");
 var EntityMock = /** @class */ (function () {
     function EntityMock(components) {
-        components = components || {};
+        var _a;
+        components = components !== null && components !== void 0 ? components : {};
         this.id = components.id || "{deadbeef-dead-beef-dead-beefdeadbeaf}";
         this.entityName = components.entityName || "contact";
         this.primaryValue = components.primaryValue || "Default Contact";
-        this.attributes = components.attributes || new itemcollection_mock_1.ItemCollectionMock();
+        this.attributes = (_a = components.attributes) !== null && _a !== void 0 ? _a : new itemcollection_mock_1.ItemCollectionMock();
+        this.postSaveEventHandlers = [];
         this.saveEventHandlers = [];
     }
     EntityMock.prototype.addOnPostSave = function (handler) {
-        throw new Error("Method not implemented.");
+        this.postSaveEventHandlers.push(handler);
     };
     EntityMock.prototype.addOnSave = function (handler) {
         this.saveEventHandlers.push(handler);
@@ -53,73 +59,77 @@ var EntityMock = /** @class */ (function () {
     EntityMock.prototype.isValid = function () {
         throw new Error("isValid not implemented.");
     };
+    EntityMock.prototype.removeOnPostSave = function (handler) {
+        var index = this.postSaveEventHandlers.indexOf(handler);
+        this.postSaveEventHandlers.splice(index);
+    };
     EntityMock.prototype.removeOnSave = function (handler) {
         var index = this.saveEventHandlers.indexOf(handler);
         this.saveEventHandlers.splice(index);
     };
     EntityMock.prototype.save = function (saveMode) {
+        var _a;
         var context = this.getSaveContext(saveMode);
-        var _loop_1 = function (handler) {
-            var index = this_1.saveEventHandlers.indexOf(handler);
-            context.getDepth = function () { return index; };
+        for (var _i = 0, _b = this.saveEventHandlers; _i < _b.length; _i++) {
+            var handler = _b[_i];
+            context.setDepth(this.saveEventHandlers.indexOf(handler));
             handler(context);
-        };
-        var this_1 = this;
-        for (var _i = 0, _a = this.saveEventHandlers; _i < _a.length; _i++) {
-            var handler = _a[_i];
-            _loop_1(handler);
+        }
+        if (context.getEventArgs().isDefaultPrevented()) {
+            return;
+        }
+        if (!(((_a = this.postSaveEventHandlers) === null || _a === void 0 ? void 0 : _a.length) > 0)) {
+            return;
+        }
+        var postContext = this.getPostSaveContext();
+        for (var _c = 0, _d = this.postSaveEventHandlers; _c < _d.length; _c++) {
+            var handler = _d[_c];
+            postContext.setDepth(this.postSaveEventHandlers.indexOf(handler));
+            handler(postContext);
         }
     };
     EntityMock.prototype.getSaveContext = function (saveMode) {
-        var _this = this;
-        return {
-            getContext: function () {
-                return xrm_mock_generator_1.XrmMockGenerator.context;
-            },
-            getDepth: null,
-            getEventArgs: function () {
-                return _this.getSaveEventArgs(saveMode);
-            },
-            getEventSource: function () {
-                throw new Error("getEventSource not implemented.");
-            },
-            getFormContext: function () {
-                return xrm_mock_generator_1.XrmMockGenerator.formContext;
-            },
-            getSharedVariable: function () {
-                throw new Error("getSharedVariable not implemented.");
-            },
-            setSharedVariable: function () {
-                throw new Error("setSharedVariable not implemented.");
-            },
-        };
+        var _a;
+        var eventContext = (_a = xrm_mock_generator_1.XrmMockGenerator.getEventContext()) !== null && _a !== void 0 ? _a : new eventcontext_mock_1.EventContextMock({});
+        eventContext.depth = 0;
+        var mode;
+        switch (saveMode) {
+            case "saveandclose":
+                mode = 2 /* XrmEnum.SaveMode.SaveAndClose */;
+                break;
+            case "saveandnew":
+                mode = 59 /* XrmEnum.SaveMode.SaveAndNew */;
+                break;
+            default:
+                mode = typeof saveMode === "number"
+                    ? saveMode
+                    : 1 /* XrmEnum.SaveMode.Save */;
+                break;
+        }
+        return new saveeventcontextasync_mock_1.SaveEventContextAsyncMock({
+            context: eventContext.context,
+            depth: eventContext.depth,
+            saveMode: mode,
+            eventSource: eventContext.eventSource,
+            formContext: eventContext.formContext,
+            sharedVariables: eventContext.sharedVariables
+        });
     };
-    EntityMock.prototype.getSaveEventArgs = function (saveMode) {
-        return {
-            getSaveMode: function () {
-                var mode;
-                if (saveMode == null) {
-                    mode = 1 /* Save */;
-                }
-                else if (saveMode === "saveandclose") {
-                    mode = 2 /* SaveAndClose */;
-                }
-                else if (saveMode === "saveandnew") {
-                    mode = 59 /* SaveAndNew */;
-                }
-                else {
-                    mode = saveMode;
-                }
-                return mode;
-            },
-            isDefaultPrevented: function () { return false; },
-            preventDefault: function () {
-                throw new Error("preventDefault not implemented.");
-            },
-            preventDefaultOnError: function () {
-                throw new Error("preventDefaultOnError not implemented.");
-            }
-        };
+    EntityMock.prototype.getPostSaveContext = function () {
+        var _a;
+        var eventContext = (_a = xrm_mock_generator_1.XrmMockGenerator.getEventContext()) !== null && _a !== void 0 ? _a : new eventcontext_mock_1.EventContextMock({});
+        return new postsaveeventcontext_mock_1.PostSaveEventContextMock({
+            context: eventContext.context,
+            depth: eventContext.depth,
+            eventArgs: new postsaveeventarguments_mock_1.PostSaveEventArgumentsMock({
+                entityReference: this.getEntityReference(),
+                isSaveSuccess: true,
+                saveErrorInfo: undefined
+            }),
+            eventSource: eventContext.eventSource,
+            formContext: eventContext.formContext,
+            sharedVariables: eventContext.sharedVariables
+        });
     };
     return EntityMock;
 }());

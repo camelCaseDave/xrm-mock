@@ -7,6 +7,8 @@ var __extends = (this && this.__extends) || (function () {
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -28,6 +30,11 @@ var BooleanAttributeMock = /** @class */ (function (_super) {
         components.attributeType = "boolean";
         return components;
     };
+    /**
+     * Gets the attribute format.
+     * @returns the string "boolean"
+     */
+    BooleanAttributeMock.prototype.getAttributeType = function () { return "boolean"; };
     return BooleanAttributeMock;
 }(enumattribute_mock_1.EnumAttributeMock));
 exports.BooleanAttributeMock = BooleanAttributeMock;

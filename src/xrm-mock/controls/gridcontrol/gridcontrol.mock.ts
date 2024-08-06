@@ -14,7 +14,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
     public entityName: string;
     public viewSelector?: Xrm.Controls.ViewSelector;
     public grid?: Xrm.Controls.Grid;
-    public relationship?: Xrm.Navigation.Relationship;
+    public relationship?: Xrm.Controls.GridRelationship;
     private _visible: boolean;
 
     constructor(components: IGridControlComponents) {
@@ -71,7 +71,7 @@ export class GridControlMock extends ControlMock implements Xrm.Controls.GridCon
         throw new Error("getGridType not implemented.");
     }
 
-    public getRelationship(): Xrm.Navigation.Relationship {
+    public getRelationship(): Xrm.Controls.GridRelationship {
         return this.relationship;
     }
 
@@ -88,7 +88,7 @@ export interface IGridControlComponents extends IAttGridControlComponents, ICont
     name: string;
     viewSelector?: Xrm.Controls.ViewSelector;
     grid?: Xrm.Controls.Grid;
-    relationship?: Xrm.Navigation.Relationship;
+    relationship?: Xrm.Controls.GridRelationship;
 }
 
 export interface IAttGridControlComponents extends IAttControlComponents {

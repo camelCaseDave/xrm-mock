@@ -1,3 +1,4 @@
+import { StringAttributeMock } from "../../../src/xrm-mock";
 import { ControlMock } from "../../../src/xrm-mock/controls/control/control.mock";
 import { StringControlMock } from "../../../src/xrm-mock/controls/stringcontrol/stringcontrol.mock";
 
@@ -46,7 +47,7 @@ describe("Xrm.Controls.Control Mock", () => {
 
     it("should get a value even without an attribute", () => {
         const stringControl = new StringControlMock({
-            attribute: undefined,
+            attribute: new StringAttributeMock({ name: "lastname", value: "Bloggs" }),
             name: "lastname",
             uncommittedText: "Bloggs",
         });

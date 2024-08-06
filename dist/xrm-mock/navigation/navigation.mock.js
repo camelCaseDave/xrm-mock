@@ -1,33 +1,61 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NavigationStaticMock = void 0;
+var xrmpromise_mock_1 = require("../async/xrmpromise/xrmpromise.mock");
 var NavigationStaticMock = /** @class */ (function () {
     function NavigationStaticMock() {
-        this.notImplementedError = "Navigation methods not implemented. Consider stubbing calls using a tool such as Sinon.JS";
+        this.returnValueNotImplemented = "Return value not implemented!";
+        this.alertDialogCalls = [];
+        this.confirmDialogCalls = [];
+        this.errorDialogCalls = [];
+        this.fileDialogCalls = [];
+        this.formCalls = [];
+        this.navigateToCalls = [];
+        this.urlCalls = [];
+        this.webResourceCalls = [];
     }
     NavigationStaticMock.prototype.navigateTo = function (pageInput, navigationOptions) {
-        throw new Error(this.notImplementedError);
+        var _this = this;
+        return xrmpromise_mock_1.XrmPromiseMock.delay(function () {
+            _this.navigateToCalls.push({ pageInput: pageInput, navigationOptions: navigationOptions });
+            return _this.returnValueNotImplemented;
+        });
     };
     NavigationStaticMock.prototype.openAlertDialog = function (alertStrings, alertOptions) {
-        throw new Error(this.notImplementedError);
+        var _this = this;
+        return xrmpromise_mock_1.XrmPromiseMock.delayVoid(function () {
+            _this.alertDialogCalls.push({ alertStrings: alertStrings, alertOptions: alertOptions });
+        });
     };
-    NavigationStaticMock.prototype.openConfirmDialog = function (param) {
-        throw new Error(this.notImplementedError);
+    NavigationStaticMock.prototype.openConfirmDialog = function (confirmStrings, confirmOptions) {
+        var _this = this;
+        return xrmpromise_mock_1.XrmPromiseMock.delay(function () {
+            _this.confirmDialogCalls.push({ confirmStrings: confirmStrings, confirmOptions: confirmOptions });
+            return { confirmed: true };
+        });
     };
     NavigationStaticMock.prototype.openErrorDialog = function (errorOptions) {
-        throw new Error(this.notImplementedError);
+        var _this = this;
+        return xrmpromise_mock_1.XrmPromiseMock.delay(function () {
+            _this.errorDialogCalls.push({ errorOptions: errorOptions });
+            return _this.returnValueNotImplemented;
+        });
     };
     NavigationStaticMock.prototype.openFile = function (file, openFileOptions) {
-        throw new Error(this.notImplementedError);
+        this.fileDialogCalls.push({ file: file, openFileOptions: openFileOptions });
     };
     NavigationStaticMock.prototype.openForm = function (entityFormOptions, formParameters) {
-        throw new Error(this.notImplementedError);
+        var _this = this;
+        return xrmpromise_mock_1.XrmPromiseMock.delay(function () {
+            _this.formCalls.push({ entityFormOptions: entityFormOptions, formParameters: formParameters });
+            return _this.returnValueNotImplemented;
+        });
     };
     NavigationStaticMock.prototype.openUrl = function (url, openUrlOptions) {
-        throw new Error(this.notImplementedError);
+        this.urlCalls.push({ url: url, openUrlOptions: openUrlOptions });
     };
     NavigationStaticMock.prototype.openWebResource = function (webResourceName, windowOptions, data) {
-        throw new Error(this.notImplementedError);
+        this.webResourceCalls.push({ webResourceName: webResourceName, windowOptions: windowOptions, data: data });
     };
     return NavigationStaticMock;
 }());

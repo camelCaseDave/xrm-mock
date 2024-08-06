@@ -1,34 +1,55 @@
+import { XrmPromiseMock } from "../async/xrmpromise/xrmpromise.mock";
 export class ContextMock implements Xrm.GlobalContext {
-    public organizationSettings: Xrm.OrganizationSettings;
-    public userSettings: Xrm.UserSettings;
+    public advancedConfigSetting: {[index in "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"]: number };
     public client: Xrm.ClientContext;
     public clientUrl: string;
+    public currentAppName: string;
+    public currentAppProperties: Xrm.AppProperties;
+    public currentAppSettings: { [index: string]: string | number | boolean  };
+    public currentAppUrl: string;
     public currentTheme: Xrm.Theme;
     public isAutoSaveEnabled: boolean;
+    public onPremise: boolean;
     public orgLcid: number;
     public orgUniqueName: string;
+    public organizationSettings: Xrm.OrganizationSettings;
+    public queryStringParameters: { [index: string]: any };
     public timeZoneOffset: number;
     public userId: string;
     public userLcid: number;
     public userName: string;
     public userRoles: string[];
+    public userSettings: Xrm.UserSettings;
     public version: string;
+    public webResourceUrl: { [index: string]: string };
 
     constructor(components: IContextComponents) {
-        this.userSettings = components.userSettings;
+        this.advancedConfigSetting = components.advancedConfigSetting ?? { MaxChildIncidentNumber: undefined, MaxIncidentMergeNumber: undefined };
         this.client = components.clientContext;
         this.clientUrl = components.clientUrl;
+        this.currentAppName = components.currentAppName;
+        this.currentAppProperties = components.currentAppProperties;
+        this.currentAppSettings = components.currentAppSettings ?? {};
+        this.currentAppUrl = components.currentAppUrl;
         this.currentTheme = components.currentTheme;
         this.isAutoSaveEnabled = components.isAutoSaveEnabled;
+        this.onPremise = components.onPremise;
         this.orgLcid = components.orgLcid;
         this.orgUniqueName = components.orgUniqueName;
+        this.organizationSettings = components.organizationSettings ?? buildDefaultOrganizationSettings();
+        this.queryStringParameters = components.queryStringParameters ?? {};
         this.timeZoneOffset = components.timeZoneOffset;
-        this.userId = components.userId || components.userSettings.userId;
-        this.userLcid = components.userLcid || components.userSettings.languageId;
-        this.userName = components.userName || components.userSettings.userName;
-        this.userRoles = components.userRoles || components.userSettings.securityRoles;
+        this.userId = components.userId ?? components.userSettings.userId;
+        this.userLcid = components.userLcid ?? components.userSettings.languageId;
+        this.userName = components.userName ?? components.userSettings.userName;
+        this.userRoles = components.userRoles ?? components.userSettings.securityRoles;
+        this.userSettings = components.userSettings;
         this.version = components.version;
-        this.organizationSettings = buildDefaultOrganizationSettings();
+        this.webResourceUrl = components.webResourceUrl;
+    }
+
+    getCurrentAppSetting(settingName: string): string | number | boolean {
+        return this.currentAppSettings[settingName];
     }
 
     public getClientUrl(): string {
@@ -52,7 +73,7 @@ export class ContextMock implements Xrm.GlobalContext {
     }
 
     public getQueryStringParameters(): { [index: string]: any } {
-        throw new Error(("get query string parameters not implemented"));
+        return this.queryStringParameters;
     }
 
     public getTimeZoneOffsetMinutes(): number {
@@ -88,31 +109,31 @@ export class ContextMock implements Xrm.GlobalContext {
     }
 
     public getAdvancedConfigSetting(setting: "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"): number {
-        throw new Error("Method not implemented.");
+        return this.advancedConfigSetting[setting];
     }
 
     public getCurrentAppName(): Xrm.Async.PromiseLike<string> {
-        throw new Error("Method not implemented.");
+        return new XrmPromiseMock(new Promise((resolve) => {
+            resolve(this.currentAppName);
+        }));
     }
 
     public getCurrentAppProperties(): Xrm.Async.PromiseLike<Xrm.AppProperties> {
-        throw new Error("Method not implemented.");
+        return new XrmPromiseMock(new Promise((resolve) => {
+            resolve(this.currentAppProperties);
+        }));
     }
 
     public getCurrentAppUrl(): string {
-        throw new Error("Method not implemented.");
+        return this.currentAppUrl;
     }
 
     public isOnPremise(): boolean {
-        throw new Error("Method not implemented.");
-    }
-
-    public isOnPremises(): boolean {
-        throw new Error("Method not implemented.");
+        return this.onPremise;
     }
 
     public getWebResourceUrl(webResourceName: string): string {
-        throw new Error("Method not implemented.");
+        return this.getWebResourceUrl[webResourceName];
     }
 }
 
@@ -134,12 +155,20 @@ function buildDefaultOrganizationSettings() {
 }
 
 export interface IContextComponents {
+    advancedConfigSetting?: {[index in "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"]: number };
     clientContext: Xrm.ClientContext;
     clientUrl?: string;
+    currentAppName?: string;
+    currentAppProperties?: Xrm.AppProperties;
+    currentAppUrl?: string;
+    currentAppSettings?: { [index: string]: string | number | boolean  };
     currentTheme?: Xrm.Theme;
     isAutoSaveEnabled?: boolean;
+    onPremise?: boolean;
+    organizationSettings?: Xrm.OrganizationSettings;
     orgLcid?: number;
     orgUniqueName?: string;
+    queryStringParameters?: { [index: string]: any };
     timeZoneOffset?: number;
     userSettings?: Xrm.UserSettings;
     userId?: string;
@@ -147,4 +176,5 @@ export interface IContextComponents {
     userName?: string;
     userRoles?: string[];
     version?: string;
+    webResourceUrl?: { [index: string]: string };
 }

@@ -1,9 +1,7 @@
-import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
-import { ControlMock } from "../../controls/control/control.mock";
 import { StringControlMock } from "../../controls/stringcontrol/stringcontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
-export class StringAttributeMock extends AttributeMock<StringControlMock, string>
+export class StringAttributeMock extends AttributeMock<StringControlMock, StringAttributeMock, string>
                                  implements Xrm.Attributes.StringAttribute {
 
     public static create(name: string, value?: string): StringAttributeMock {
@@ -40,7 +38,7 @@ export class StringAttributeMock extends AttributeMock<StringControlMock, string
     }
 }
 
-export interface IStringAttributeComponents extends IAttributeComponents<StringControlMock, string> {
+export interface IStringAttributeComponents extends IAttributeComponents<StringControlMock, StringAttributeMock, string> {
     format?: Xrm.Attributes.StringAttributeFormat;
     maxLength?: number;
 }

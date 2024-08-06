@@ -2,7 +2,6 @@
 export declare class EventContextMock implements Xrm.Events.EventContext {
     context: Xrm.GlobalContext;
     depth: number;
-    eventArgs: Xrm.Events.SaveEventContext;
     eventSource: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
     formContext: Xrm.FormContext;
     sharedVariables: {
@@ -11,7 +10,7 @@ export declare class EventContextMock implements Xrm.Events.EventContext {
     constructor(components: IEventContextComponents);
     getContext(): Xrm.GlobalContext;
     getDepth(): number;
-    getEventArgs(): Xrm.Events.SaveEventContext;
+    setDepth(depth: number): void;
     getEventSource(): Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
     getFormContext(): Xrm.FormContext;
     getSharedVariable<T>(key: string): T;
@@ -20,7 +19,6 @@ export declare class EventContextMock implements Xrm.Events.EventContext {
 export interface IEventContextComponents {
     context?: Xrm.GlobalContext;
     depth?: number;
-    eventArgs?: Xrm.Events.SaveEventContext;
     eventSource?: Xrm.Attributes.Attribute | Xrm.Controls.Control | Xrm.Entity;
     formContext?: Xrm.FormContext;
     sharedVariables?: {

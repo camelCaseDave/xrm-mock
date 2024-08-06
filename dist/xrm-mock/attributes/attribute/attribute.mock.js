@@ -66,7 +66,7 @@ var AttributeMock = /** @class */ (function () {
         throw new Error("getUserPrivilege not implemented");
     };
     AttributeMock.prototype.removeOnChange = function (handler) {
-        var index = array_helper_1.findIndex(this.eventHandlers, handler);
+        var index = (0, array_helper_1.findIndex)(this.eventHandlers, handler);
         this.eventHandlers.splice(index, 1);
     };
     AttributeMock.prototype.setRequiredLevel = function (requirementLevel) {

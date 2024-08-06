@@ -7,11 +7,11 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         this.enabledProcesses = enabledProcesses;
     }
 
-    public addOnPreProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnPreProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
         throw new Error("Method not implemented.");
     }
 
-    public addOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnPreStageChange(handler: Xrm.Events.StageChangeEventHandler): void {
         throw new Error("Method not implemented.");
     }
 
@@ -19,7 +19,7 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         throw new Error("Method not implemented.");
     }
 
-    public removeOnPreStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public removeOnPreStageChange(handler: Xrm.Events.StageChangeEventHandler): void {
         throw new Error("Method not implemented.");
     }
 
@@ -52,7 +52,7 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         throw new Error("get process instances not implemented.");
     }
 
-    public addOnProcessStatusChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnProcessStatusChange(handler: Xrm.Events.ProcessStatusChangeHandler): void {
         throw new Error("add on process status change not implemented.");
     }
 
@@ -125,7 +125,7 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         throw new Error("get selected not implemented");
     }
 
-    public addOnStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnStageChange(handler: Xrm.Events.StageChangeEventHandler): void {
         throw new Error("add on stage change not implemented");
     }
 
@@ -133,11 +133,11 @@ export class ProcessManagerMock implements Xrm.ProcessFlow.ProcessManager {
         throw new Error("add on stage selected not implemented");
     }
 
-    public removeOnStageChange(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public removeOnStageChange(handler: Xrm.Events.StageChangeEventHandler): void {
         throw new Error("remove on stage change not implemented");
     }
 
-    public removeOnStageSelected(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public removeOnStageSelected(handler: Xrm.Events.StageChangeEventHandler): void {
         throw new Error("remove on stage selected not implemented");
     }
 

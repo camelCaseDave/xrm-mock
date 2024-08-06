@@ -19,7 +19,7 @@ var FormContextMock = /** @class */ (function () {
         else if (typeof param === "function") {
             return this.data.entity.attributes.get(param);
         }
-        throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
+        throw new Error("Collection.Get called with unknown parameter type: ".concat(typeof param));
     };
     FormContextMock.prototype.getControl = function (param) {
         if (!arguments.length || param === undefined || param === null) {
@@ -34,7 +34,7 @@ var FormContextMock = /** @class */ (function () {
         else if (typeof param === "function") {
             return this.ui.controls.get(param);
         }
-        throw new Error("Collection.Get called with unknown parameter type: " + typeof param);
+        throw new Error("Collection.Get called with unknown parameter type: ".concat(typeof param));
     };
     return FormContextMock;
 }());

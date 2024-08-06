@@ -56,7 +56,7 @@ var TabMock = /** @class */ (function () {
         this.tabStateChangeHandlers.push(handler);
     };
     TabMock.prototype.removeTabStateChange = function (handler) {
-        var index = array_helper_1.findIndex(this.tabStateChangeHandlers, handler);
+        var index = (0, array_helper_1.findIndex)(this.tabStateChangeHandlers, handler);
         this.tabStateChangeHandlers.splice(index, 1);
     };
     return TabMock;

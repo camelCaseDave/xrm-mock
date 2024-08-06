@@ -1,7 +1,7 @@
 import { DateControlMock } from "../../controls/datecontrol/datecontrol.mock";
 import { AttributeMock, IAttributeComponents } from "../attribute/attribute.mock";
 
-export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
+export class DateAttributeMock extends AttributeMock<DateControlMock, DateAttributeMock, Date>
                                implements Xrm.Attributes.DateAttribute {
     public static create(name: string, value?: Date): DateAttributeMock {
         return new DateAttributeMock({ name, value });
@@ -24,6 +24,6 @@ export class DateAttributeMock extends AttributeMock<DateControlMock, Date>
     }
 }
 
-export interface IDateAttributeComponents extends IAttributeComponents<DateControlMock, Date>  {
+export interface IDateAttributeComponents extends IAttributeComponents<DateControlMock, DateAttributeMock, Date>  {
     format?: Xrm.Attributes.DateAttributeFormat;
 }

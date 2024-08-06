@@ -2,19 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SaveEventArgumentsMock = void 0;
 var SaveEventArgumentsMock = /** @class */ (function () {
-    function SaveEventArgumentsMock() {
+    function SaveEventArgumentsMock(saveMode) {
+        this.defaultPrevented = false;
+        this.preventOnError = false;
+        this.saveMode = saveMode;
     }
     SaveEventArgumentsMock.prototype.preventDefaultOnError = function () {
-        throw new Error("Method not implemented.");
+        this.preventOnError = true;
     };
     SaveEventArgumentsMock.prototype.getSaveMode = function () {
-        throw new Error("Not implemented.");
+        return this.saveMode;
     };
     SaveEventArgumentsMock.prototype.isDefaultPrevented = function () {
-        throw new Error("Not implemented.");
+        return this.defaultPrevented;
     };
     SaveEventArgumentsMock.prototype.preventDefault = function () {
-        throw new Error("Not implemented.");
+        this.defaultPrevented = true;
     };
     return SaveEventArgumentsMock;
 }());

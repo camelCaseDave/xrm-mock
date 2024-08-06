@@ -22,7 +22,7 @@ describe("Xrm.Entity Mock", () => {
     });
 
     it('should allow additional save modes', () => {
-        let saveMode: number;
+        let saveMode: number = -1;
         entity.addOnSave((context: Xrm.Events.SaveEventContext) => {
             saveMode = context.getEventArgs().getSaveMode();
         });

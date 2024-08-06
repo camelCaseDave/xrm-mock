@@ -4,15 +4,21 @@ import { IAttStandardControlComponents,
          StandardControlMock } from "../standardcontrol/standardcontrol.mock";
 
 export class BooleanControlMock extends StandardControlMock<BooleanControlMock, BooleanAttributeMock, boolean>
-                                implements Xrm.Controls.StandardControl {
+                                implements Xrm.Controls.BooleanControl {
+
+    private static defaultComponents(components: IBooleanControlComponents): IBooleanControlComponents {
+        components.controlType = "optionset";
+        return components;
+    }
+
     constructor(components: IBooleanControlComponents) {
-        super(components);
+        super(BooleanControlMock.defaultComponents(components));
     }
 }
 
 export interface IBooleanControlComponents
-    extends IAttBooleanControlComponents,
-            IStandardControlComponents<BooleanControlMock, BooleanAttributeMock, boolean> {
+    extends IStandardControlComponents<BooleanControlMock, BooleanAttributeMock, boolean>,
+        IAttBooleanControlComponents {
     name: string;
 }
 

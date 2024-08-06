@@ -1,8 +1,8 @@
 /// <reference types="xrm" />
 import { ItemCollectionMock } from "../../collection/itemcollection/itemcollection.mock";
-import { ControlMock } from "../../controls/control/control.mock";
-export declare type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string;
-export declare class AttributeMock<TControl extends ControlMock, TValue extends AttributeReturnType> implements Xrm.Attributes.Attribute {
+import { StandardControlMock } from "../../controls/standardcontrol/standardcontrol.mock";
+export type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string;
+export declare class AttributeMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TAttribute, TValue>, TValue extends AttributeReturnType> implements Xrm.Attributes.Attribute {
     attributeType: Xrm.Attributes.AttributeType;
     controls: ItemCollectionMock<TControl>;
     isDirty: boolean;
@@ -12,7 +12,7 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     value: TValue;
     format: Xrm.Attributes.AttributeFormat;
     eventHandlers: Xrm.Events.ContextSensitiveHandler[];
-    constructor(components: IAttributeComponents<TControl, TValue>);
+    constructor(components: IAttributeComponents<TControl, TAttribute, TValue>);
     addOnChange(handler: Xrm.Events.ContextSensitiveHandler): void;
     fireOnChange(): void;
     getAttributeType(): Xrm.Attributes.AttributeType;
@@ -31,9 +31,9 @@ export declare class AttributeMock<TControl extends ControlMock, TValue extends 
     isValid(): boolean;
     setIsValid(valid: boolean, message: string): void;
 }
-export interface IAttributeComponents<T extends ControlMock, TValue extends AttributeReturnType> {
+export interface IAttributeComponents<TControl extends StandardControlMock<TControl, TAttribute, TValue>, TAttribute extends AttributeMock<TControl, TAttribute, TValue>, TValue extends AttributeReturnType> {
     attributeType?: Xrm.Attributes.AttributeType;
-    controls?: ItemCollectionMock<T>;
+    controls?: ItemCollectionMock<TControl>;
     eventHandlers?: Xrm.Events.ContextSensitiveHandler[];
     format?: Xrm.Attributes.AttributeFormat;
     isDirty?: boolean;

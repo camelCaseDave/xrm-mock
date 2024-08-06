@@ -1,12 +1,10 @@
-import { AttributeMock, AttributeReturnType } from "../attributes/attribute/attribute.mock";
 import { ItemCollectionMock } from "../collection/itemcollection/itemcollection.mock";
-import { ControlMock } from "../controls/control/control.mock";
 
 export class DataMock implements Xrm.Data {
-    public attributes: ItemCollectionMock<AttributeMock<ControlMock, AttributeReturnType>>;
+    public attributes: ItemCollectionMock<Xrm.Attributes.Attribute>;
     public entity: Xrm.Entity;
     public process: Xrm.ProcessFlow.ProcessManager;
-    public loadEventHandlers: Xrm.Events.ContextSensitiveHandler[];
+    public loadEventHandlers: Xrm.Events.DataLoadEventHandler[];
 
     constructor(entity: Xrm.Entity, process?: Xrm.ProcessFlow.ProcessManager) {
         this.attributes = new ItemCollectionMock();
@@ -30,7 +28,7 @@ export class DataMock implements Xrm.Data {
         throw new Error(("getIsDirty not implemented"));
     }
 
-    public addOnLoad(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnLoad(handler: Xrm.Events.DataLoadEventHandler): void {
         this.loadEventHandlers.push(handler);
     }
 

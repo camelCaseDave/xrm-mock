@@ -147,7 +147,7 @@ var Attribute = /** @class */ (function () {
             control.name = attribute.getName();
         }
         else if (names.indexOf(control.name) >= 0) {
-            throw new Error("Name " + control.name + " has already been defined for a control for attribute " + attribute.getName());
+            throw new Error("Name ".concat(control.name, " has already been defined for a control for attribute ").concat(attribute.getName()));
         }
         var i = 1;
         while (names.indexOf(control.name) >= 0) {

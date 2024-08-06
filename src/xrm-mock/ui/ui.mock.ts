@@ -5,7 +5,9 @@ import { FormSelectorMock } from "../controls/formselector/formselector.mock";
 export class UiMock implements Xrm.Ui {
     public process: Xrm.Controls.ProcessControl;
     public controls: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    public footerSection: Xrm.Controls.FooterSection;
     public formSelector: FormSelectorMock;
+    public headerSection: Xrm.Controls.HeaderSection;
     public navigation: Xrm.Controls.Navigation;
     public tabs: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
     public quickForms: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;
@@ -14,7 +16,9 @@ export class UiMock implements Xrm.Ui {
     constructor(components: IUiComponents) {
         this.process = components.process;
         this.controls = components.controls || new ItemCollectionMock([]);
+        this.footerSection = components.footerSection;
         this.formSelector = components.formSelector;
+        this.headerSection = components.headerSection;
         this.navigation = components.navigation;
         this.tabs = components.tabs ||  new ItemCollectionMock([]);
         this.quickForms = components.quickForms || new ItemCollectionMock([]);
@@ -106,7 +110,9 @@ export class UiMock implements Xrm.Ui {
 export interface IUiComponents {
     process?: Xrm.Controls.ProcessControl;
     controls?: Xrm.Collection.ItemCollection<Xrm.Controls.Control>;
+    footerSection?: Xrm.Controls.FooterSection;
     formSelector?: FormSelectorMock;
+    headerSection?: Xrm.Controls.HeaderSection;
     navigation?: Xrm.Controls.Navigation;
     tabs?: Xrm.Collection.ItemCollection<Xrm.Controls.Tab>;
     quickForms?: Xrm.Collection.ItemCollection<Xrm.Controls.QuickFormControl>;

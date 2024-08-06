@@ -16,7 +16,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
 
     public entityTypes: string[];
     public filters: ILookupFilter[];
-    public onLookupTagHandlers: Xrm.Events.ContextSensitiveHandler[];
+    public onLookupTagHandlers: Xrm.Events.LookupTagClickHandler[];
     public preSearchHandlers: Xrm.Events.ContextSensitiveHandler[];
     public views: ILookupView[];
 
@@ -39,7 +39,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         }
     }
 
-    public addOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public addOnLookupTagClick(handler: Xrm.Events.LookupTagClickHandler): void {
         this.onLookupTagHandlers.push(handler);
     }
 
@@ -67,7 +67,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         });
     }
 
-    public fireOnLookupTagClick(context: Xrm.Events.EventContext): void {
+    public fireOnLookupTagClick(context: Xrm.Events.LookupTagClickEventContext): void {
         for (const handler of this.onLookupTagHandlers) {
             handler(context);
         }
@@ -97,7 +97,7 @@ export class LookupControlMock extends StandardControlMock<LookupControlMock,
         this.entityTypes = entityLogicalNames;
     }
 
-    public removeOnLookupTagClick(handler: Xrm.Events.ContextSensitiveHandler): void {
+    public removeOnLookupTagClick(handler: Xrm.Events.LookupTagClickHandler): void {
         let index = this.onLookupTagHandlers.indexOf(handler)
         while (index >= 0) {
             this.onLookupTagHandlers.splice(index, 1);

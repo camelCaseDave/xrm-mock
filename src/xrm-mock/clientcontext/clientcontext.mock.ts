@@ -22,4 +22,8 @@ export class ClientContextMock implements Xrm.ClientContext {
     public isOffline(): boolean {
         throw new Error("Method not implemented.");
     }
+
+    public isNetworkAvailable(): boolean {
+        throw new Error("Method not implemented.");
+    }
 }
