@@ -10,6 +10,7 @@ export class OptionSetAttributeMock extends EnumAttributeMock<OptionSetControlMo
 
     private static defaultComponents(components: IOptionSetAttributeComponents): IOptionSetAttributeComponents {
         components.attributeType = "optionset";
+        components.value = components.value === undefined ? null : components.value;
         return components;
     }
 

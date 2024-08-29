@@ -10,6 +10,7 @@ export class NumberAttributeMock extends AttributeMock<NumberControlMock, Number
         if (!components.attributeType) {
             components.attributeType = "decimal";
         }
+        components.value = components.value === undefined ? null : components.value;
         return components;
     }
 

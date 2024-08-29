@@ -13,7 +13,7 @@ export default class Attribute {
     createDate(attComponents: XrmMock.IDateAttributeComponents, controlComponents?: DateControlComponent): XrmMock.DateAttributeMock;
     createDate(name: string, value?: Date): XrmMock.DateAttributeMock;
     createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
-    createLookup(name: string, lookup: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
+    createLookup(name: string, lookup?: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
     createNumber(attComponents: XrmMock.INumberAttributeComponents, controlComponents?: NumberControlComponent): XrmMock.NumberAttributeMock;
     createNumber(name: string, value?: number): XrmMock.NumberAttributeMock;
     createOptionSet(attComponents: XrmMock.IOptionSetAttributeComponents, controlComponents?: OptionSetControlComponent): XrmMock.OptionSetAttributeMock;

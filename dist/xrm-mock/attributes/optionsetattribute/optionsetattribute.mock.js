@@ -41,6 +41,7 @@ var OptionSetAttributeMock = /** @class */ (function (_super) {
     };
     OptionSetAttributeMock.defaultComponents = function (components) {
         components.attributeType = "optionset";
+        components.value = components.value === undefined ? null : components.value;
         return components;
     };
     OptionSetAttributeMock.prototype.getFormat = function () {

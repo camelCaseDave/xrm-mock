@@ -6,6 +6,7 @@ export declare class LookupAttributeMock extends AttributeMock<LookupControlMock
     isPartyList: boolean;
     constructor(components: ILookupAttributeComponents);
     getIsPartyList(): boolean;
+    getValue(): Xrm.LookupValue[] | null;
 }
 export interface ILookupAttributeComponents extends IAttributeComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> {
     isPartyList?: boolean;

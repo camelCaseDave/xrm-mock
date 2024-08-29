@@ -21,6 +21,14 @@ export class LookupAttributeMock extends AttributeMock<LookupControlMock, Lookup
     public getIsPartyList(): boolean {
         return this.isPartyList;
     }
+
+    public getValue(): Xrm.LookupValue[] | null {
+        const value = super.getValue();
+        if (value === null) {
+            return null;
+        }
+        return value.length > 0 ? value : null;
+    }
 }
 
 export interface ILookupAttributeComponents extends IAttributeComponents<LookupControlMock, LookupAttributeMock, Xrm.LookupValue[]> {

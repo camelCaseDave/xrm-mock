@@ -4,7 +4,7 @@ import { ItemCollectionMock } from "../../collection/itemcollection/itemcollecti
 import { StandardControlMock } from "../../controls/standardcontrol/standardcontrol.mock";
 import { EventContextMock } from "../../events/eventcontext/eventcontext.mock";
 
-export type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string;
+export type AttributeReturnType = boolean | Date | number | Xrm.LookupValue[] | string | null;
 
 export class AttributeMock<TControl extends StandardControlMock<TControl, TAttribute, TValue>,
         TAttribute extends AttributeMock<TControl, TAttribute, TValue>,
@@ -125,5 +125,5 @@ export interface IAttributeComponents<
     name: string;
     requiredLevel?: Xrm.Attributes.RequirementLevel;
     submitMode?: Xrm.SubmitMode;
-    value?: TValue;
+    value?: TValue | null;
 }

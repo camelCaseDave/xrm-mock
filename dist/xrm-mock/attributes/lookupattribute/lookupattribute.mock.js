@@ -34,6 +34,13 @@ var LookupAttributeMock = /** @class */ (function (_super) {
     LookupAttributeMock.prototype.getIsPartyList = function () {
         return this.isPartyList;
     };
+    LookupAttributeMock.prototype.getValue = function () {
+        var value = _super.prototype.getValue.call(this);
+        if (value === null) {
+            return null;
+        }
+        return value.length > 0 ? value : null;
+    };
     return LookupAttributeMock;
 }(attribute_mock_1.AttributeMock));
 exports.LookupAttributeMock = LookupAttributeMock;

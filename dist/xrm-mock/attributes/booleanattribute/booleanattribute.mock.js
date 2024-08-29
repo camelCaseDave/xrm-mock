@@ -28,6 +28,7 @@ var BooleanAttributeMock = /** @class */ (function (_super) {
     };
     BooleanAttributeMock.defaultComponents = function (components) {
         components.attributeType = "boolean";
+        components.value = components.value === true;
         return components;
     };
     /**

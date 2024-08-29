@@ -12,6 +12,7 @@ export class DateAttributeMock extends AttributeMock<DateControlMock, DateAttrib
             components.format = "date";
         }
         components.attributeType = "datetime";
+        components.value = components.value === undefined ? null : components.value;
         return components;
     }
 

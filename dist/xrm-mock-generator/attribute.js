@@ -31,7 +31,7 @@ var Attribute = /** @class */ (function () {
             var components = {
                 isPartyList: valueOrControlComponents && Array.isArray(valueOrControlComponents),
                 name: nameOrComponents,
-                value: this.arrayify(valueOrControlComponents)
+                value: valueOrControlComponents ? this.arrayify(valueOrControlComponents) : null
             };
             var controls = [{ name: nameOrComponents }];
             return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
@@ -56,7 +56,7 @@ var Attribute = /** @class */ (function () {
             : this.createOptionSetFromComponents(nameOrComponents, this.arrayify(valueOrControlComponents));
     };
     Attribute.prototype.createString = function (nameOrComponents, valueOrControlComponents) {
-        if (valueOrControlComponents === void 0) { valueOrControlComponents = ""; }
+        if (valueOrControlComponents === void 0) { valueOrControlComponents = null; }
         if (typeof (nameOrComponents) === "string") {
             var components = { name: nameOrComponents, value: valueOrControlComponents };
             var controls = [{ name: nameOrComponents }];

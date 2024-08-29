@@ -44,14 +44,15 @@ export default class Attribute {
   }
 
   public createLookup(attComponents: XrmMock.ILookupAttributeComponents, controlComponents?: LookupControlComponent): XrmMock.LookupAttributeMock;
-  public createLookup(name: string, lookup: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
+  public createLookup(name: string, lookup?: Xrm.LookupValue | Xrm.LookupValue[]): XrmMock.LookupAttributeMock;
   public createLookup(nameOrComponents: string | XrmMock.ILookupAttributeComponents,
                       valueOrControlComponents?: Xrm.LookupValue | Xrm.LookupValue[] | LookupControlComponent): XrmMock.LookupAttributeMock {
     if (typeof(nameOrComponents) === "string") {
       const components: XrmMock.ILookupAttributeComponents = {
         isPartyList: valueOrControlComponents && Array.isArray(valueOrControlComponents),
         name: nameOrComponents,
-        value: this.arrayify(valueOrControlComponents as Xrm.LookupValue) };
+        value: valueOrControlComponents ? this.arrayify(valueOrControlComponents as Xrm.LookupValue) : null
+      };
       const controls = [{name: nameOrComponents}];
 
       return this.associateAttribute(new XrmMock.LookupAttributeMock(components), controls, "createLookup");
@@ -91,7 +92,7 @@ export default class Attribute {
   public createString(attComponents: XrmMock.IStringAttributeComponents, controlComponents?: StringControlComponent): XrmMock.StringAttributeMock;
   public createString(name: string, value?: string): XrmMock.StringAttributeMock;
   public createString(nameOrComponents: string | XrmMock.IStringAttributeComponents,
-                      valueOrControlComponents: StringControlComponent | string = ""): XrmMock.StringAttributeMock {
+                      valueOrControlComponents: StringControlComponent | string = null): XrmMock.StringAttributeMock {
     if (typeof(nameOrComponents) === "string") {
       const components = { name: nameOrComponents, value: valueOrControlComponents as string };
       const controls = [{name: nameOrComponents}];

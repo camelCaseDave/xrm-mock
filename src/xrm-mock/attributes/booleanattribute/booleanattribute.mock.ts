@@ -9,6 +9,7 @@ export class BooleanAttributeMock extends EnumAttributeMock<BooleanControlMock, 
 
     private static defaultComponents(components: IBooleanAttributeComponents): IBooleanAttributeComponents {
         components.attributeType = "boolean";
+        components.value = components.value === true;
         return components;
     }
 

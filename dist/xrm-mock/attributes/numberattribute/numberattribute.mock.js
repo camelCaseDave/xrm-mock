@@ -33,6 +33,7 @@ var NumberAttributeMock = /** @class */ (function (_super) {
         if (!components.attributeType) {
             components.attributeType = "decimal";
         }
+        components.value = components.value === undefined ? null : components.value;
         return components;
     };
     NumberAttributeMock.prototype.getFormat = function () {
